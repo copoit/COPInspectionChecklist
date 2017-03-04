@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 namespace COPInspectionChecklistProject
 {
     public partial class CaseMain : Page {
-        protected Case activeCase;
+        //protected Case activeCase;
          
         public void ConnectDB() {
             SqlConnection con = new SqlConnection(WebConfigurationManager.ConnectionStrings["CoPOIT"].ConnectionString);
@@ -38,12 +38,12 @@ namespace COPInspectionChecklistProject
 
         public void newCase()
         {
-            activeCase = new Case();
+    //        activeCase = new Case();
         }
 
         public void loadCase()
         {
-            activeCase.caseNumber = "";
+            //activeCase.caseNumber = "";
         }
     }
 }
