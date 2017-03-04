@@ -1,13 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CaseMain.aspx.cs" Inherits="COPInspectionChecklistProject.CaseMain" %>
+﻿<%@ Page Title="Case Main" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CaseMain.aspx.cs" Inherits="COPInspectionChecklistProject.CaseMain" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <-- This page displays information that was called for and retrieved from the database. Data is loaded per request
-    by either a Case Number -->
+    <%--This page displays information that was called for and retrieved from the database. Data is loaded per request
+    by a Case Number from CaseList page or InspectionMain page--%>
     <div class="container">
         <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:left;width:200px;height:200px;" /> 
-        <h1 style="font-size:50px;"><b>City of Pasadena</b></h1>
+        <h1 style="font-size:50px;"><b>City of Pasadena
+            </b></h1>
         <h3>Planning and Community Development Department</h3>
         <h3>Building and Safety Division</h3>
+<%--    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CoPOITConnectionString %>" SelectCommand="SELECT * FROM [CASE_ACTION]"></asp:SqlDataSource>--%>
     </div>
     <div>
 	    <div>
@@ -89,19 +91,21 @@
 		    </tr>
 		</tbody>
 	    </table>
+        <!-- Save (Rectangle) -->
         <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" style="margin-left:100px;" OnClick="btnSave_Click"/>
+        <!-- Delete (Rectangle) -->
         <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Text="Delete" Width="150px" OnClick="btnDelete_Click" />
         <hr />
-        <!-- cmd_InspectionMenu (Rectangle) -->
-		    <input name="btnInspectionMenu" id="MainContent_btnInspectionMenu" style="width: 200px;" type="submit" value="Inspection Menu" />
-        <!-- cmd_InspectionChecklist (Rectangle) -->
-		    <input name="btnInspectionChecklist" id="MainContent_btnInspectionChecklist" style="width: 200px;" type="submit" value="Inspection Checklist" />	
-        <!-- cmd_CertificateInspection (Rectangle) -->
-		    <input name="btnCertificateInspection" id="MainContent_btnCertificateInspection" style="width: 200px;" type="submit" value="Certificate of Inspection" />
-        <!-- cmd_ReinspectionNotice (Rectange) -->
-		    <input name="btnReinspectionNotice" id="MainContent_btnReinspectionNotice" style="width: 200px;" type="submit" value="ReinspectionNotice" />
-        <!-- cmd_NoticeNonCompliance (Rectangle) -->
-		    <input name="btnNoticeNonCompliance" id="MainContent_btnNoticeNonCompliance" style="width: 220px;" type="submit" value="Notice of NonCompliance" />
+        <div>
+        <!-- InspectionChecklist (Rectangle) -->
+            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Width="200px" />
+        <!-- CertificateInspection (Rectangle) -->
+            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Width="200px" />
+        <!-- ReinspectionNotice (Rectange) -->
+		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Width="200px" />
+        <!-- NoticeNonCompliance (Rectangle) -->
+            <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Width="200px" />
+        </div>
 	    <hr />
     </div>
 </asp:Content>
