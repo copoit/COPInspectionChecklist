@@ -1,0 +1,36 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="OITMain.Home" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title>Main Menu</title>
+
+    <style type="text/css">
+        #Button1 {
+            width: 131px;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+    </div>
+    <p>
+     <img src="CoPLogo.jpg" alt="PasadenaLogo" style="width:215px; height:194px; margin-left: 92px;">
+    </p>
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Main Menu</h1>
+    <form id="form1" runat="server">
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;
+        <asp:Button ID="btnConfirm" runat="server" Text="Reports Menu"
+PostBackUrl="~/Reports.aspx"/>
+            <asp:Button ID="Button2" runat="server" Text="Inspection Menu"
+PostBackUrl="~/Inspection.aspx"/>
+       
+    </h1>
+    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</form>
+  
+</body>
+</html>
