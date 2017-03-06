@@ -9,7 +9,6 @@
             </b></h1>
         <h3>Planning and Community Development Department</h3>
         <h3>Building and Safety Division</h3>
-<%--    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:CoPOITConnectionString %>" SelectCommand="SELECT * FROM [CASE_ACTION]"></asp:SqlDataSource>--%>
     </div>
     <div>
 	    <div>
@@ -19,44 +18,44 @@
 		<tbody>
 		    <tr>
 			<td style="width: 160px">Case Number</td>
-			<td><input name="txtCaseNum" id="MainContent-txtCaseNum" type="text" readonly="readonly" /></td>
+			<td><input name="txtCaseNum" id="txtCaseNum" type="text" readonly="readonly" /></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Property Address</td>
-			<td><input name="txtPropertyAddress" id="MainContent-txtPropertyAddress" type="text" readonly="readonly" /></td>
+			<td><input name="txtPropertyAddress" id="txtPropertyAddress" type="text" readonly="readonly" /></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Responsible Party</td>
-			<td><input name="txtRespParty" id="MainContent-txtRespParty" type="text" readonly="readonly" /></td>
+			<td><input name="txtRespParty" id="txtRespParty" type="text" readonly="readonly" /></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Mailing Address</td>
-			<td><input name="txtMailing Address" id="MainContent-txtMailing Address" type="text" readonly="readonly" />
+			<td><input name="txtMailing Address" id="txtMailing Address" type="text" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Email</td>
-			<td><input name="txtEmail" id="MainContent-txtEmail" type="email" readonly="readonly" />
+			<td><input name="txtEmail" id="txtEmail" type="email" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Applicant Phone</td>
-			<td><input name="txtAppPhone" id="MainContent-txtAppPhone" type="tel" readonly="readonly" />
+			<td><input name="txtAppPhone" id="txtAppPhone" type="tel" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Occupant Dwelling Info</td>
-			<td><input name="txtOccDwellInfo" id="MainContent-txtOccDwellInfo" type="text" readonly="readonly" />
+			<td><input name="txtOccDwellInfo" id="txtOccDwellInfo" type="text" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Number of Units</td>
-			<td><input name="txtNumUnits" id="MainContent-txtNumUnits" type="number" readonly="readonly" />
+			<td><input name="txtNumUnits" id="txtNumUnits" type="number" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Owner Name</td>
-			<td><input name="txtOwnerName" id="MainContent-txtOwnerName" type="text" readonly="readonly" />
+			<td><input name="txtOwnerName" id="txtOwnerName" type="text" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
@@ -66,35 +65,36 @@
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Sidewalk Fees</td>
-			<td><input name="txtSidewalk" id="MainContent-txtSidewalk" type="text" readonly="readonly" />
+			<td><input name="txtSidewalk" id="txtSidewalk" type="text" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspector</td>
-			<td><input name="txtInspector" id="MainContent-txtInspector" type="text" readonly="readonly" />
+			<td><input name="txtInspector" id="txtInspector" type="text" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspector Email</td>
-			<td><input name="txtInspectEmail" id="MainContent-txtInspectEmail" type="email" readonly="readonly" />
+			<td><input name="txtInspectEmail" id="txtInspectEmail" type="email" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspection Date</td>
-			<td><input name="txtInspectDate" id="MainContent-txtInspectDate" type="date" readonly="readonly" />
+			<td><input name="txtInspectDate" id="txtInspectDate" type="date" readonly="readonly" />
 			</td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Re-Inspection Date</td>
-			<td><input name="txtReInspectDate" id="MainContent-txtReInspectDate" type="date" readonly="readonly" />
+			<td><input name="txtReInspectDate" id="txtReInspectDate" type="date" readonly="readonly" />
 			</td>
 		    </tr>
 		</tbody>
 	    </table>
+        }
         <!-- Save (Rectangle) -->
-        <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" style="margin-left:100px;" OnClick="btnSave_Click"/>
+        <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" style="margin-left:75px;" OnClick="btnSave_Click"/>
         <!-- Delete (Rectangle) -->
-        <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Text="Delete" Width="150px" OnClick="btnDelete_Click" />
+        <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" style="margin-left:50px;" OnClick="btnDelete_Click" />
         <hr />
         <div>
         <!-- InspectionChecklist (Rectangle) -->

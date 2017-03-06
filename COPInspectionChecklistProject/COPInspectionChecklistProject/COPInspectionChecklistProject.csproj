@@ -199,7 +199,12 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Data\CoPOIT.mdf" />
+    <Content Include="App_Data\CoPOIT_log.ldf">
+      <DependentUpon>CoPOIT.mdf</DependentUpon>
+    </Content>
     <Content Include="CaseMain.aspx" />
+    <Content Include="CaseNumberService.asmx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -249,7 +254,9 @@
     <Content Include="Site.Master" />
     <Content Include="TestDeployment.aspx" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
@@ -380,11 +387,17 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Case.cs" />
     <Compile Include="CaseMain.aspx.cs">
       <DependentUpon>CaseMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CaseMain.aspx.designer.cs">
       <DependentUpon>CaseMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CaseNumberService.asmx.cs">
+      <DependentUpon>CaseNumberService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -405,6 +418,7 @@
     </Compile>
     <Compile Include="InspectionChecklist.aspx.cs">
       <DependentUpon>InspectionChecklist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="InspectionChecklist.aspx.designer.cs">
       <DependentUpon>InspectionChecklist.aspx</DependentUpon>
@@ -441,9 +455,7 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
