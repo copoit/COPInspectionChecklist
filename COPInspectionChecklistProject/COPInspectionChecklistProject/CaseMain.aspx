@@ -61,16 +61,16 @@
 			<td><asp:TextBox ID="txtSidewalk" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
-			<td style="width: 160px">Inspector</td>
-			<td><asp:TextBox ID="txtInspector" runat="server"></asp:TextBox></td>
+			<td style="width: 160px; height: 24px;">Inspector</td>
+			<td style="height: 24px"><asp:TextBox ID="txtInspector" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspector Email</td>
 			<td> <asp:TextBox ID="txtInspectEmail" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
-			<td style="width: 160px">Inspection Date</td>
-			<td><asp:TextBox ID="txtInspectDate" runat="server"></asp:TextBox></td>
+			<td style="width: 160px; height: 24px;">Inspection Date</td>
+			<td style="height: 24px"><asp:TextBox ID="txtInspectDate" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Re-Inspection Date</td>
