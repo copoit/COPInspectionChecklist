@@ -294,6 +294,7 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="PropertyMain.aspx" />
+    <Content Include="Reports.aspx" />
     <Content Include="ViewCases.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\CoP_logo.jpg" />
@@ -545,6 +546,13 @@
     </Compile>
     <Compile Include="ReinspectNotice.aspx.designer.cs">
       <DependentUpon>ReinspectNotice.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports.aspx.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports.aspx.designer.cs">
+      <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportsMain.aspx.cs">
       <DependentUpon>ReportsMain.aspx</DependentUpon>
