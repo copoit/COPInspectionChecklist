@@ -15,7 +15,7 @@ namespace COPInspectionChecklistProject
             try
             {
                 DbCommon clsCommon = new DbCommon();
-                string SQL = "SELECT * [PROPERTY_INFO]";
+                string SQL = "SELECT * PROPERTY_INFO";
                 var dt2 = clsCommon.TestDBConnection(SQL);
                 lblPropCnt.Text = dt2.Rows.Count.ToString();
 
