@@ -6,27 +6,45 @@ using System.Data;
 
 namespace COPInspectionChecklistProject
 {
-    public partial class CaseMain : Page {
+    public partial class CaseMain : Page
+    {
         public string caseNumber;
+        string conn = ConfigurationManager.ConnectionStrings["OITDB"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            caseNumber = Request.QueryString["CaseNumber"];
-            Case caseNo = getCaseByCaseNumber(caseNumber);
-            insertData(caseNo);
+            if (Request.QueryString["CaseNumber"] != null)
+            {
+                caseNumber = Request.QueryString["CaseNumber"];
+                Case caseNo = getCaseByCaseNumber(caseNumber);
+                insertData(caseNo);
+            }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            SqlDataAdapter ada = new SqlDataAdapter("Insert into CaseMain('" + txtCaseNum + "'.'" + txtPropAdd + "','" + txtRespParty
+                    + "','" + txtMailAdd + "','" + txtEmail + "','" + txtAppPhone + "','" + txtOccDwell + "','" + txtNumUnits + "','" + txtOwnerName
+                    + "','" + txtOwnerPhone + "','" + txtSidewalk + "','" + txtInspector + "','" + txtInspectEmail + "','" + txtInspectDate + "','"
+                    + txtReinspectDate + ")", conn);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                SqlCommand cmd = new SqlCommand("Delete from tblCaseMain where caseNumber = @CaseNumber", con);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                SqlParameter parameter = new SqlParameter("@CaseNumber", caseNumber);
+                cmd.Parameters.Add(parameter);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
         public Case getCaseByCaseNumber(string caseNumber)
         {
             Case caseNo = new Case();
-            string cs = ConfigurationManager.ConnectionStrings["CoPOIT"].ConnectionString;
-            using (SqlConnection con = new SqlConnection(cs))
+            using (SqlConnection con = new SqlConnection(conn))
             {
                 SqlCommand cmd = new SqlCommand("spGetCaseByCaseNumber", con);
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -38,35 +56,24 @@ namespace COPInspectionChecklistProject
             }
             return caseNo;
         }
-        public void insertData(Case newCase) {
-            //txtCaseNum = newCase.caseNumber;
-            //txtpropertyAddress = propAdd;
-            //txtresponsibleParty = resParty; ;
-            //txtmailingAddress = mail;
-            //txtemail = email;
-            //txtapplicantPhone = appPhone;
-            //txtoccupantDwellInfo = dwell;
-            //txtnumUnits = units;
-            //txtownerName = owner;
-            //txtownerPhone = ownPhone;
-            //txtsidewalkFees = fees;
-            //txtinspector = inspect;
-            //txtinspectorEmail = inspectPhone;
-            //txtinspectionDate = insDate;
-            //txtreinspectionDate = reinsDate;
-        }
-        /* Loaded from Inspection  Main
-        protected void btnSearchCase_Click(object sender, EventArgs e)
+        public void insertData(Case newCase)
         {
-            Response.Redirect("~/CaseMain.aspx.CaseNumber" + txtCaseNumber.Text;
+            txtCaseNum.Text = newCase.caseNumber;
+            txtPropAdd.Text = newCase.propertyAddress;
+            txtRespParty.Text = newCase.responsibleParty;
+            txtMailAdd.Text = newCase.mailingAddress;
+            txtEmail.Text = newCase.emailAddress;
+            txtAppPhone.Text = newCase.applicantPhone;
+            txtOccDwell.Text = newCase.occupantDwellInfo;
+            txtNumUnits.Text = newCase.numUnits.ToString();
+            txtOwnerName.Text = newCase.ownerName;
+            txtOwnerPhone.Text = newCase.ownerPhone;
+            txtSidewalk.Text = newCase.sidewalkFees.ToString();
+            txtInspector.Text = newCase.inspector;
+            txtInspectEmail.Text = newCase.inspectorEmail;
+            txtInspectDate.Text = newCase.inspectionDate.ToString();
+            txtReinspectDate.Text = newCase.reinspectionDate.ToString();
         }
-        */
-        /* Loaded from Case List
-        protected void btnSearchCase_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/CaseMain.aspx.CaseNumber" + txtCaseNumber.Text;
-        }
-        */
         public void deleteData(string name)
         {
 
@@ -89,6 +96,3 @@ namespace COPInspectionChecklistProject
         }
     }
 }
-
-
-

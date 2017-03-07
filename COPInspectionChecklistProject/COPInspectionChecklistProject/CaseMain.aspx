@@ -18,84 +18,74 @@
 		<tbody>
 		    <tr>
 			<td style="width: 160px">Case Number</td>
-			<td><input name="txtCaseNum" id="txtCaseNum" type="text" readonly="readonly" /></td>
+			<td><asp:TextBox ID="txtCaseNum" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Property Address</td>
-			<td><input name="txtPropertyAddress" id="txtPropertyAddress" type="text" readonly="readonly" /></td>
+			<td><asp:TextBox ID="txtPropAdd" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Responsible Party</td>
-			<td><input name="txtRespParty" id="txtRespParty" type="text" readonly="readonly" /></td>
+			<td><asp:TextBox ID="txtRespParty" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Mailing Address</td>
-			<td><input name="txtMailing Address" id="txtMailing Address" type="text" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtMailAdd" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Email</td>
-			<td><input name="txtEmail" id="txtEmail" type="email" readonly="readonly" />
-			</td>
+			<td> <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Applicant Phone</td>
-			<td><input name="txtAppPhone" id="txtAppPhone" type="tel" readonly="readonly" />
-			</td>
+			<td> <asp:TextBox ID="txtAppPhone" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Occupant Dwelling Info</td>
-			<td><input name="txtOccDwellInfo" id="txtOccDwellInfo" type="text" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtOccDwell" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Number of Units</td>
-			<td><input name="txtNumUnits" id="txtNumUnits" type="number" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtNumUnits" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Owner Name</td>
-			<td><input name="txtOwnerName" id="txtOwnerName" type="text" readonly="readonly" />
-			</td>
+			<td> <asp:TextBox ID="txtOwnerName" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Owner Phone</td>
-			<td><input name="txtOwnerPhone" id="MainContent-txtOwnerPhone" type="tel" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtOwnerPhone" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Sidewalk Fees</td>
-			<td><input name="txtSidewalk" id="txtSidewalk" type="text" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtSidewalk" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspector</td>
-			<td><input name="txtInspector" id="txtInspector" type="text" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtInspector" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspector Email</td>
-			<td><input name="txtInspectEmail" id="txtInspectEmail" type="email" readonly="readonly" />
-			</td>
+			<td> <asp:TextBox ID="txtInspectEmail" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspection Date</td>
-			<td><input name="txtInspectDate" id="txtInspectDate" type="date" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtInspectDate" runat="server"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Re-Inspection Date</td>
-			<td><input name="txtReInspectDate" id="txtReInspectDate" type="date" readonly="readonly" />
-			</td>
+			<td><asp:TextBox ID="txtReinspectDate" runat="server"></asp:TextBox></td>
 		    </tr>
 		</tbody>
 	    </table>
-        }
+        
+        <div>
         <!-- Save (Rectangle) -->
         <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" style="margin-left:75px;" OnClick="btnSave_Click"/>
         <!-- Delete (Rectangle) -->
         <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" style="margin-left:50px;" OnClick="btnDelete_Click" />
         <hr />
+        </div>
         <div>
         <!-- InspectionChecklist (Rectangle) -->
             <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Width="200px" />

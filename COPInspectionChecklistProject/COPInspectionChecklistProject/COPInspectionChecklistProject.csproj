@@ -199,12 +199,12 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="App_Data\CoPOIT.mdf" />
-    <Content Include="App_Data\CoPOIT_log.ldf">
-      <DependentUpon>CoPOIT.mdf</DependentUpon>
+    <Content Include="App_Data\OITDB.mdf" />
+    <Content Include="App_Data\OITDB_log.ldf">
+      <DependentUpon>OITDB.mdf</DependentUpon>
     </Content>
+    <Content Include="CaseList.aspx" />
     <Content Include="CaseMain.aspx" />
-    <Content Include="CaseNumberService.asmx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -219,6 +219,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="InspectionChecklist.aspx" />
+    <Content Include="OITDB.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -388,16 +389,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Case.cs" />
+    <Compile Include="CaseList.aspx.cs">
+      <DependentUpon>CaseList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CaseList.aspx.designer.cs">
+      <DependentUpon>CaseList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CaseMain.aspx.cs">
       <DependentUpon>CaseMain.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="CaseMain.aspx.designer.cs">
       <DependentUpon>CaseMain.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CaseNumberService.asmx.cs">
-      <DependentUpon>CaseNumberService.asmx</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
