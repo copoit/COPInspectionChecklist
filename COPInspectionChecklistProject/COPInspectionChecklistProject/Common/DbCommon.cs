@@ -31,14 +31,15 @@ namespace COPInspectionChecklistProject.Common
 
                     var cnt = dt.Rows.Count;
 
+                    return dt;
 
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.ToString());
+                    throw e;
                 }
 
-                return dt;
+               
             }
 
         }

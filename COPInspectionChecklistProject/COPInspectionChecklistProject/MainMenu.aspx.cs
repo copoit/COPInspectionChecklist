@@ -12,11 +12,20 @@ namespace COPInspectionChecklistProject
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT * [property_info]";
-            var dt2 = clsCommon.TestDBConnection(SQL);
+            try
+            {
+                DbCommon clsCommon = new DbCommon();
+                string SQL = "SELECT * [property_info]";
+                var dt2 = clsCommon.TestDBConnection(SQL);
+                lblPropCnt.Text = dt2.Rows.Count.ToString();
 
-            lblPropCnt.Text = dt2.Rows.Count.ToString();
+
+            }
+            catch (Exception ee)
+            {
+                lblPropCnt.Text = ee.ToString();
+            }
+            
         }
 	}
 }
