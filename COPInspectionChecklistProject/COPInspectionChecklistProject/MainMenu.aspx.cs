@@ -4,25 +4,65 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using COPInspectionChecklistProject.Common;
 
-namespace COPInspectionChecklistProject
+namespace OITMain
 {
-	public partial class MainMenu : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-            try
-            {
-                DbCommon clsCommon = new DbCommon();
-                string SQL = "SELECT * From [PROPERTY_INFO]";
-                var dt2 = clsCommon.TestDBConnection(SQL);
-                lblPropCnt.Text = dt2.Rows.Count.ToString();
-            }
-            catch (Exception ee)
-            {
-                lblPropCnt.Text = ee.ToString();
-            }           
+    public partial class _Default : Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
         }
-	}
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button3_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton2_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton3_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        protected void LinkButton6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void LinkButton7_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
