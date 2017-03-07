@@ -11,7 +11,6 @@ namespace COPInspectionChecklistProject.Common
     {
         public DataTable TestDBConnection(string sqlQuery)
         {
-
             using (SqlConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = "Data Source=teamdbserver.database.windows.net;Initial Catalog=OITDB;Persist Security Info=False;User ID=DBAdmin;Password=Mon#2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
@@ -21,7 +20,7 @@ namespace COPInspectionChecklistProject.Common
                 try
                 {
                     conn.Open();
-                                        
+
                     SqlCommand command = new SqlCommand(sqlQuery, conn);
 
                     SqlDataReader dr = command.ExecuteReader(CommandBehavior.CloseConnection);
@@ -31,16 +30,12 @@ namespace COPInspectionChecklistProject.Common
                     var cnt = dt.Rows.Count;
 
                     return dt;
-
-                }
+               }
                 catch (Exception e)
                 {
                     throw e;
-                }
-
-               
+                }             
             }
-
         }
     }
 }

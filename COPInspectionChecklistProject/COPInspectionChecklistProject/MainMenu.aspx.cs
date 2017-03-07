@@ -18,14 +18,11 @@ namespace COPInspectionChecklistProject
                 string SQL = "SELECT * From [PROPERTY_INFO]";
                 var dt2 = clsCommon.TestDBConnection(SQL);
                 lblPropCnt.Text = dt2.Rows.Count.ToString();
-
-
             }
             catch (Exception ee)
             {
                 lblPropCnt.Text = ee.ToString();
-            }
-            
+            }           
         }
 	}
 }

@@ -11,15 +11,22 @@ namespace COPInspectionChecklistProject
         Case newCase = new Case();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if page loads as current case, run this code
-            if (Request.QueryString["CaseNumber"] != null)
+            try
             {
-                string caseNumber = Request.QueryString["CaseNumber"];
-                getCaseByCaseNumber(caseNumber);
-                insertData();
+                DbCommon clsCommon = new DbCommon();
+                //if page loads as current case, run this code
+                if (Request.QueryString["CaseNumber"] != null)
+                {
+                    string caseNumber = Request.QueryString["CaseNumber"];
+                    getCaseByCaseNumber(caseNumber);
+                    insertData();
+                }
+                //else data is loaded as a blank page, with a generated caseNumber
+                txtCaseNum.Text = newCase.caseNumber;
+            } catch (Exception ee)
+            {
+                throw ee;
             }
-            //else data is loaded as a blank page, with a generated caseNumber
-            txtCaseNum.Text = newCase.caseNumber;
         }
         /// <summary>
         /// Save button updates database for new Case with current attributes
@@ -56,14 +63,14 @@ namespace COPInspectionChecklistProject
         private void getCaseByCaseNumber(string caseNumber)
         {
             Case caseNo = new Case();
-            using (SqlConnection con = new SqlConnection(conn))
+            using (SqlConnection conn = new SqlConnection())
             {
-                SqlCommand cmd = new SqlCommand("spGetCaseByCaseNumber", con);
+                SqlCommand cmd = new SqlCommand("spGetCaseByCaseNumber", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter parameter = new SqlParameter("@CaseNumber", caseNumber);
                 cmd.Parameters.Add(parameter);
-                con.Open();
+                conn.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
             }
             newCase = caseNo;
