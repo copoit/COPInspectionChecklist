@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Web.UI;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Data;
+using COPInspectionChecklistProject.Common;
 
 namespace COPInspectionChecklistProject
 {
     public partial class CaseMain : Page
     {
         Case newCase = new Case();
-        string conn = ConfigurationManager.ConnectionStrings["OITDB"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
             //if page loads as current case, run this code
@@ -54,7 +53,7 @@ namespace COPInspectionChecklistProject
         //        cmd.ExecuteNonQuery();
         //    }
         }
-        public void getCaseByCaseNumber(string caseNumber)
+        private void getCaseByCaseNumber(string caseNumber)
         {
             Case caseNo = new Case();
             using (SqlConnection con = new SqlConnection(conn))
@@ -69,7 +68,7 @@ namespace COPInspectionChecklistProject
             }
             newCase = caseNo;
         }
-        public void insertData()
+        private void insertData()
         {
             txtCaseNum.Text = newCase.caseNumber;
             txtPropAdd.Text = newCase.propertyAddress;
