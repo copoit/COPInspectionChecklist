@@ -289,7 +289,6 @@
     <Content Include="MainMenu.aspx" />
     <Content Include="NoticeNonCompliance.aspx" />
     <Content Include="obj\Debug\COPInspectionChecklistProject.csprojResolveAssemblyReference.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\COPInspectionChecklistProject.dll.config" />
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
