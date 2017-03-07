@@ -288,7 +288,6 @@
     <Content Include="InspectionMain.aspx" />
     <Content Include="MainMenu.aspx" />
     <Content Include="NoticeNonCompliance.aspx" />
-    <Content Include="obj\Debug\COPInspectionChecklistProject.csprojResolveAssemblyReference.cache" />
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\COPInspectionChecklistProject.dll.config" />
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
@@ -299,9 +298,6 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\CoP_logo.jpg" />
     <Content Include="InspectionChecklist.aspx" />
-    <Content Include="obj\Debug\COPInspectionChecklistProject.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\COPInspectionChecklistProject.dll" />
-    <Content Include="obj\Debug\COPInspectionChecklistProject.pdb" />
     <Content Include="OITDB.sql" />
     <Content Include="ReinspectNotice.aspx" />
     <Content Include="ReportsMain.aspx" />
