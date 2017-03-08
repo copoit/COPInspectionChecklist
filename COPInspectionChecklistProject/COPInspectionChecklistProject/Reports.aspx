@@ -1,6 +1,8 @@
-<%@ Page Title="Reports" Language="C#" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="OITMain.Reports" %>
+
+<%@ Page Title="Reports" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="OITMain._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
 
     <div class="jumbotron">
         <img src="Images/CoP_logo.jpg" alt="Pasadena Logo" style="float:right;width:215px; height:194px; margin-left: 92px;"><br />
