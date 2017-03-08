@@ -293,13 +293,13 @@
     <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="DbScripts\OITDB.sql" />
     <Content Include="PropertyMain.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="ViewCases.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\CoP_logo.jpg" />
     <Content Include="InspectionChecklist.aspx" />
-    <Content Include="OITDB.sql" />
     <Content Include="ReinspectNotice.aspx" />
     <Content Include="ReportsMain.aspx" />
     <Content Include="Scripts\bootstrap.js" />
