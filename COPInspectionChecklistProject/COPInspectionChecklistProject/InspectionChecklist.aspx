@@ -3,7 +3,7 @@
     <!-- Previous Page (Rectangle) -->
     <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" Width="200px" />
     <div class="container">
-        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:left;width:200px;height:200px;" /> 
+        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:right;width:200px;height:200px;" /> 
         <h1 style="font-size:50px;"><b>City of Pasadena</b></h1>
         <h3>Planning and Community Development Department</h3>
         <h3>Building and Safety Division</h3>

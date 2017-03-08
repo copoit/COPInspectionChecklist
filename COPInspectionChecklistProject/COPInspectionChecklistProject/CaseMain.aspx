@@ -4,11 +4,7 @@
     <%--This page displays information that was called for and retrieved from the database. Data is loaded per request
     by a Case Number from CaseList page or InspectionMain page--%>
     <div class="container">
-        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:left;width:200px;height:200px;" /> 
-        <h1 style="font-size:50px;"><b>City of Pasadena
-            </b></h1>
-        <h3>Planning and Community Development Department</h3>
-        <h3>Building and Safety Division</h3>
+        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:right;width:200px;height:200px;" /> 
     </div>
     <div>
 	    <div>
@@ -18,63 +14,63 @@
 		<tbody>
 		    <tr>
 			<td style="width: 160px">Case Number</td>
-			<td><asp:TextBox ID="txtCaseNum" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtCaseNum" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Property Address</td>
-			<td><asp:TextBox ID="txtPropAdd" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtPropAdd" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Responsible Party</td>
-			<td><asp:TextBox ID="txtRespParty" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtRespParty" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Mailing Address</td>
-			<td><asp:TextBox ID="txtMailAdd" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtMailAdd" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Email</td>
-			<td> <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox></td>
+			<td> <asp:TextBox ID="txtEmail" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Applicant Phone</td>
-			<td> <asp:TextBox ID="txtAppPhone" runat="server"></asp:TextBox></td>
+			<td> <asp:TextBox ID="txtAppPhone" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Occupant Dwelling Info</td>
-			<td><asp:TextBox ID="txtOccDwell" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtOccDwell" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Number of Units</td>
-			<td><asp:TextBox ID="txtNumUnits" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtNumUnits" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Owner Name</td>
-			<td> <asp:TextBox ID="txtOwnerName" runat="server"></asp:TextBox></td>
+			<td> <asp:TextBox ID="txtOwnerName" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Owner Phone</td>
-			<td><asp:TextBox ID="txtOwnerPhone" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Sidewalk Fees</td>
-			<td><asp:TextBox ID="txtSidewalk" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtSidewalk" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
-			<td style="width: 160px; height: 24px;">Inspector</td>
-			<td style="height: 24px"><asp:TextBox ID="txtInspector" runat="server"></asp:TextBox></td>
+			<td style="width: 160px">Inspector</td>
+			<td><asp:TextBox ID="txtInspector" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Inspector Email</td>
-			<td> <asp:TextBox ID="txtInspectEmail" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtInspectEmail" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px; height: 24px;">Inspection Date</td>
-			<td style="height: 24px"><asp:TextBox ID="txtInspectDate" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
 			<td style="width: 160px">Re-Inspection Date</td>
-			<td><asp:TextBox ID="txtReinspectDate" runat="server"></asp:TextBox></td>
+			<td><asp:TextBox ID="txtReinspectDate" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		</tbody>
 	    </table>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InspectionMain.aspx.cs" Inherits="COPInspectionChecklistProject.InspectionMain" %>
+﻿<%@ Page Title="Inspection Main" Language="C#" AutoEventWireup="true" CodeBehind="InspectionMain.aspx.cs" Inherits="COPInspectionChecklistProject.InspectionMain" %>
 
 <!DOCTYPE html>
 
