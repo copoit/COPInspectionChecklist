@@ -296,6 +296,7 @@
     <Content Include="DbScripts\OITDB.sql" />
     <Content Include="PropertyMain.aspx" />
     <Content Include="Reports.aspx" />
+    <Content Include="TestDbConnection.aspx" />
     <Content Include="ViewCases.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\CoP_logo.jpg" />
@@ -576,6 +577,13 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="TestDbConnection.aspx.cs">
+      <DependentUpon>TestDbConnection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestDbConnection.aspx.designer.cs">
+      <DependentUpon>TestDbConnection.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestDeployment.aspx.cs">
       <DependentUpon>TestDeployment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
