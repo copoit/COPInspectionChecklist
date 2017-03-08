@@ -9,7 +9,7 @@
 PostBackUrl="~/Reports.aspx" Height="38px" OnClick="btnConfirm_Click" Width="223px"/>
             &nbsp;&nbsp;&nbsp;
             <asp:Button ID="Button3" runat="server" Text="Inspection Menu"
-PostBackUrl="~/Inspection.aspx" Height="39px" Width="219px" OnClick="Button3_Click1"/><br />
+PostBackUrl="~/InspectionMain.aspx" Height="39px" Width="219px" OnClick="Button3_Click1"/><br />
         
     <div class="row">
         <div class="col-md-4">
