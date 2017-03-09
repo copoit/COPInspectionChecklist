@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OITMain {
+namespace COPInspectionChecklistProject {
     
     
-    public partial class _Default {
+    public partial class MainMenu {
         
         /// <summary>
         /// Button3 control.
