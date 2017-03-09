@@ -273,8 +273,8 @@
     <Content Include="CaseList.aspx" />
     <Content Include="CaseMain.aspx" />
     <Content Include="CertInspection.aspx" />
-    <Content Include="Checklists Pending Reinspections.aspx" />
     <Content Include="ChecklistsPendingInspections.aspx" />
+    <Content Include="ChecklistsPendingReInspections.aspx" />
     <Content Include="CompletedChecklists.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -497,19 +497,19 @@
     <Compile Include="CertInspection.aspx.designer.cs">
       <DependentUpon>CertInspection.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checklists Pending Reinspections.aspx.cs">
-      <DependentUpon>Checklists Pending Reinspections.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Checklists Pending Reinspections.aspx.designer.cs">
-      <DependentUpon>Checklists Pending Reinspections.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ChecklistsPendingInspections.aspx.cs">
       <DependentUpon>ChecklistsPendingInspections.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ChecklistsPendingInspections.aspx.designer.cs">
       <DependentUpon>ChecklistsPendingInspections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChecklistsPendingReInspections.aspx.cs">
+      <DependentUpon>ChecklistsPendingReInspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChecklistsPendingReInspections.aspx.designer.cs">
+      <DependentUpon>ChecklistsPendingReInspections.aspx</DependentUpon>
     </Compile>
     <Compile Include="Common\DbCommon.cs" />
     <Compile Include="CompletedChecklists.aspx.cs">

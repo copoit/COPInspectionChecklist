@@ -1,16 +1,3 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FailedChecklists.aspx.cs" Inherits="OITMain.WebForm1" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
-</body>
-</html>
+﻿<%@ Page Title="Failed Checklists" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FailedChecklists.aspx.cs" Inherits="COPInspectionChecklistProject.FailedChecklists" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+</asp:Content>

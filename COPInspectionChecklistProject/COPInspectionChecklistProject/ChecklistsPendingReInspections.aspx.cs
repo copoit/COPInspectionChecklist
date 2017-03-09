@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace COPInspectionChecklistProject
 {
-    public partial class CompletedChecklists1 : System.Web.UI.Page
+    public partial class ChecklistsPendingReInspections : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

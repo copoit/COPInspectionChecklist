@@ -11,7 +11,7 @@ namespace COPInspectionChecklistProject
 {
 
 
-    public partial class ChecklistPendingInspections
+    public partial class ChecklistsPendingReInspections
     {
     }
 }
