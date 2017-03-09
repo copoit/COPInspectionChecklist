@@ -3,9 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <%--This page displays information that was called for and retrieved from the database. Data is loaded per request
     by a Case Number from CaseList page or InspectionMain page--%>
-    <div class="container">
-        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:right;width:200px;height:200px;" /> 
-    </div>
+    
     <div>
 	    <div>
             <h1 style="margin:20px;"><b>Case Main</b></h1>
