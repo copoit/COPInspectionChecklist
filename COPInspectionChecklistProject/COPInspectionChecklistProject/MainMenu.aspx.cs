@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace OITMain
 {
-    public partial class _Default : Page
+    public partial class MainMenu : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

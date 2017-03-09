@@ -1,28 +1,30 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="COPInspectionChecklistProject.SiteMaster" %>
 
+
 <!DOCTYPE html>
 
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - City of Pasadena</title>
+    <title><%: Page.Title %>COP Inspection Tool</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
-    <script type='text/javascript'>
-        var appInsights = window.appInsights || function (config) {
-            function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } }
-            var t = { config: config }, u = document, e = window, o = 'script', s = u.createElement(o), i, f; for (s.src = config.url || '//az416426.vo.msecnd.net/scripts/a/ai.0.js', u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Ajax']; i.length;) r('track' + i.pop()); return r('setAuthenticatedUserContext'), r('clearAuthenticatedUserContext'), config.disableExceptionTracking || (i = 'onerror', r('_' + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o), s }), t
+    <script type = 'text/javascript' >
+        var appInsights=window.appInsights||function(config)
+        {
+            function r(config){ t[config] = function(){ var i = arguments; t.queue.push(function(){ t[config].apply(t, i)})} }
+            var t = { config:config},u=document,e=window,o='script',s=u.createElement(o),i,f;for(s.src=config.url||'//az416426.vo.msecnd.net/scripts/a/ai.0.js',u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=['Event','Exception','Metric','PageView','Trace','Ajax'];i.length;)r('track'+i.pop());return r('setAuthenticatedUserContext'),r('clearAuthenticatedUserContext'),config.disableExceptionTracking||(i='onerror',r('_'+i),f=e[i],e[i]=function(config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t['_' + i](config, r, u, e, o),s}),t
         }({
             instrumentationKey: '3beb5f28-13c4-44f8-9157-e5f85dc8665e'
         });
-
-        window.appInsights = appInsights;
+        
+        window.appInsights=appInsights;
         appInsights.trackPageView();
     </script>
 </head>
@@ -49,15 +51,19 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="container body-content">
+       <div class="container body-content">
+            <header>
+            <asp:Image runat="server" ImageURL="~/Images/COP_logo.JPG" ID="imgCOP" Width="140px"/>
+            </header>
+            <hr />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                <img src="Images/Cop_logo.jpg" alt="Pasadena Logo" style="margin-right: 30px; float: right; width: 200px; height: 200px;" />
             </asp:ContentPlaceHolder>
-
-            <div class="footer" style="position: absolute; bottom: 0">
-                <p style="margin: 20px;">&copy; <%: DateTime.Now.Year %> -City of Pasadena</p>
-            </div>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - City Of Pasadena</p>
+            </footer>
         </div>
     </form>
 </body>
 </html>
+
