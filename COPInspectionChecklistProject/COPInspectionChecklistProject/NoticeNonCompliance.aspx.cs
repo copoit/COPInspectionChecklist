@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace COPInspectionChecklistProject
 {
@@ -11,7 +6,17 @@ namespace COPInspectionChecklistProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblNumber.Text = Request.QueryString["CaseNumber"];          
+        }
+        protected void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CaseMain.aspx");
         }
     }
 }
+//CaseMain previousPage = PreviousPage;
+//if(previousPage !=null && previousPage.IsCrossPagePostBack)
+//{
+//    txtCaseNumber.Text = previousPage.CaseNumber;
+//}
+//txtCaseNumber.Text = Request.QueryString["CaseNumber"].ToString();

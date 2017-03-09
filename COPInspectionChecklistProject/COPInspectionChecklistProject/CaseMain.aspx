@@ -3,8 +3,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <%--This page displays information that was called for and retrieved from the database. Data is loaded per request
     by a Case Number from CaseList page or InspectionMain page--%>
-
-        <div>
+    <div class="container">
+        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:right;width:200px;height:200px;" /> 
+    </div>
+    <div>
 	    <div>
             <h1 style="margin:20px;"><b>Case Main</b></h1>
 	    </div>
@@ -82,11 +84,11 @@
         </div>
         <div>
         <!-- InspectionChecklist (Rectangle) -->
-            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Width="200px" />
+            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Width="200px" PostBackUrl="~/InspectionChecklist.aspx" />
         <!-- CertificateInspection (Rectangle) -->
-            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Width="200px" />
+            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Width="200px" PostBackUrl="~/CertInspection.aspx" />
         <!-- ReinspectionNotice (Rectange) -->
-		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Width="200px" />
+		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Width="200px" PostBackUrl="~/ReinspectNotice.aspx" />
         <!-- NoticeNonCompliance (Rectangle) -->
             <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Width="200px" />
         </div>
