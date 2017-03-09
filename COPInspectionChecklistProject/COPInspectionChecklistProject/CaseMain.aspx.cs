@@ -126,6 +126,11 @@
      {          
             Response.Redirect("~/NoticeNonCompliance.aspx?CaseNumber=" + txtCaseNum.Text);
           }
-       #endregion
-      }
-  } 
+      
+           protected void btnInspectionMain_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/InspectionMain.aspx?CaseNumber=" + Server.UrlEncode(CaseNumber));
+        }
+    }
+    #endregion
+}

@@ -88,7 +88,17 @@
         <!-- ReinspectionNotice (Rectange) -->
 		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Width="200px" PostBackUrl="~/ReinspectNotice.aspx" />
         <!-- NoticeNonCompliance (Rectangle) -->
+            
+            <!-- NoticeNonCompliance (Rectangle) -->
+            &nbsp;<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Width="200px" />
+            
+            &nbsp;
+            <asp:Button ID="InspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Width="200px" />
+        &nbsp;&nbsp;
         </div>
 	    <hr />
     </div>
