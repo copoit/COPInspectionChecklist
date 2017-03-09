@@ -272,10 +272,15 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="CaseList.aspx" />
     <Content Include="CaseMain.aspx" />
+    <Content Include="CertInspection.aspx" />
+    <Content Include="Checklists Pending Reinspections.aspx" />
+    <Content Include="ChecklistsPendingInspections.aspx" />
+    <Content Include="CompletedChecklists.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="FailedChecklists.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -292,7 +297,9 @@
     <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="DbScripts\OITDB.sql" />
+    <Content Include="NoticeNonCompliance.aspx" />
     <Content Include="PropertyMain.aspx" />
+    <Content Include="ReinspectNotice.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="TestDbConnection.aspx" />
     <Content Include="ViewCases.aspx" />
@@ -483,7 +490,35 @@
     <Compile Include="CaseMain.aspx.designer.cs">
       <DependentUpon>CaseMain.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CertInspection.aspx.cs">
+      <DependentUpon>CertInspection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CertInspection.aspx.designer.cs">
+      <DependentUpon>CertInspection.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checklists Pending Reinspections.aspx.cs">
+      <DependentUpon>Checklists Pending Reinspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checklists Pending Reinspections.aspx.designer.cs">
+      <DependentUpon>Checklists Pending Reinspections.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ChecklistsPendingInspections.aspx.cs">
+      <DependentUpon>ChecklistsPendingInspections.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ChecklistsPendingInspections.aspx.designer.cs">
+      <DependentUpon>ChecklistsPendingInspections.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Common\DbCommon.cs" />
+    <Compile Include="CompletedChecklists.aspx.cs">
+      <DependentUpon>CompletedChecklists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompletedChecklists.aspx.designer.cs">
+      <DependentUpon>CompletedChecklists.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -497,6 +532,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FailedChecklists.aspx.cs">
+      <DependentUpon>FailedChecklists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FailedChecklists.aspx.designer.cs">
+      <DependentUpon>FailedChecklists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -523,7 +565,21 @@
       <DependentUpon>MainMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="NoticeNonCompliance.aspx.cs">
+      <DependentUpon>NoticeNonCompliance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NoticeNonCompliance.aspx.designer.cs">
+      <DependentUpon>NoticeNonCompliance.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReinspectNotice.aspx.cs">
+      <DependentUpon>ReinspectNotice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReinspectNotice.aspx.designer.cs">
+      <DependentUpon>ReinspectNotice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
