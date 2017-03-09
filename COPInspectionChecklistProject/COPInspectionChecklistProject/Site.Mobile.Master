@@ -29,6 +29,7 @@
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
         </section>
+        <br />
         <friendlyUrls:ViewSwitcher runat="server" />
           <hr />
             <footer>
