@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainMenu.aspx.cs" Inherits="COPInspectionChecklistProject.MainMenu" %>
+﻿<%@ Page Title="Main Menu" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MainMenu.aspx.cs" Inherits="COPInspectionChecklistProject.MainMenu" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <b>Main Menu</b>
             <br />
