@@ -2,13 +2,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <!-- Previous Page (Rectangle) -->
     <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" Width="200px" />
-    <div class="container">
-        <img src="Images/Cop_logo.jpg" alt="City of Pasadena" style="float:right;width:200px;height:200px;" /> 
-        <h1 style="font-size:50px;"><b>City of Pasadena</b></h1>
-        <h3>Planning and Community Development Department</h3>
-        <h3>Building and Safety Division</h3>
-    </div>
-    <div>
+        <div>
         <hr style="border:double"/>
         <div><h1 style="align-content:center">Housing Inspection Report</h1></div>
         <br />
@@ -75,17 +69,23 @@
             </asp:TableHeaderRow>
                 <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                     <asp:TableCell HorizontalAlign="Left" BorderStyle="Solid" BorderWidth="2px" Font-Bold="True" VerticalAlign="Middle" Width="40%">1.0 Building &amp; Structure</asp:TableCell>
+                    <asp:TableCell />
+                    <asp:TableCell />
+                    <asp:TableCell />
                 </asp:TableRow>
                 <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                     <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="40%">1.1 Floorings, foundations, or floor supports</asp:TableCell>
+                    <asp:TableCell />
+                    <asp:TableCell />
+                    <asp:TableCell />
                 </asp:TableRow>
                 <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                     <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle">Inadequate flooring. Flooring must be free of large cracks, holes, or missing/damaged parts. Members may not be split, lean, list, or buckle due to defective material or deterioration.
                     </asp:TableCell>
-                    <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Left" VerticalAlign="Middle" Width="10%">PMC 14.12.610A-C</asp:TableCell>
-                    <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Left" VerticalAlign="Middle" Width="10%">
-                        <asp:CheckBox id="cb11Major" runat="server" Text="Major" TextAlign="Right" Font-Size="Large" />
-                        <asp:CheckBox id="cb11Minor" runat="server" Text="Minor" TextAlign="Right" Font-Size="Large" />
+                    <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Left" VerticalAlign="Middle" Width="10%" Font-Bold="true">PMC 14.12.610A-C</asp:TableCell>
+                    <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center" VerticalAlign="Middle" Width="10%">
+                        <asp:CheckBox id="cb11Major" runat="server" Text="Major" TextAlign="Left" Font-Size="Large" />
+                        <asp:CheckBox id="cb11Minor" runat="server" Text="Minor" TextAlign="Left" Font-Size="Large" />
                     </asp:TableCell>
                     <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Left" VerticalAlign="Top" Width="40%"></asp:TableCell>
                 </asp:TableRow>
@@ -101,4 +101,3 @@
     <br />
     <br />
 </asp:Content>
-

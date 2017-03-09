@@ -289,7 +289,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="InspectionMain.aspx" />
     <Content Include="MainMenu.aspx" />
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\COPInspectionChecklistProject.dll.config" />
@@ -298,11 +297,12 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="DbScripts\OITDB.sql" />
     <Content Include="NoticeNonCompliance.aspx" />
-    <Content Include="PropertyMain.aspx" />
     <Content Include="ReinspectNotice.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="TestDbConnection.aspx" />
     <Content Include="ViewCases.aspx" />
+    <Content Include="InspectionMain.aspx" />
+    <Content Include="PropertyMain.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\CoP_logo.jpg" />
     <Content Include="InspectionChecklist.aspx" />
@@ -550,13 +550,6 @@
     <Compile Include="InspectionChecklist.aspx.designer.cs">
       <DependentUpon>InspectionChecklist.aspx</DependentUpon>
     </Compile>
-    <Compile Include="InspectionMain.aspx.cs">
-      <DependentUpon>InspectionMain.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="InspectionMain.aspx.designer.cs">
-      <DependentUpon>InspectionMain.aspx</DependentUpon>
-    </Compile>
     <Compile Include="MainMenu.aspx.cs">
       <DependentUpon>MainMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -630,19 +623,26 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="PropertyMain.aspx.cs">
-      <DependentUpon>PropertyMain.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="PropertyMain.aspx.designer.cs">
-      <DependentUpon>PropertyMain.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ViewCases.aspx.cs">
       <DependentUpon>ViewCases.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewCases.aspx.designer.cs">
       <DependentUpon>ViewCases.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InspectionMain.aspx.cs">
+      <DependentUpon>InspectionMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InspectionMain.aspx.designer.cs">
+      <DependentUpon>InspectionMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PropertyMain.aspx.cs">
+      <DependentUpon>PropertyMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PropertyMain.aspx.designer.cs">
+      <DependentUpon>PropertyMain.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

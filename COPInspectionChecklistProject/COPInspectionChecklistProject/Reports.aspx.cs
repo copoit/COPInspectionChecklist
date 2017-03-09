@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace OITMain
+namespace COPInspectionChecklistProject
 {
     public partial class Reports : System.Web.UI.Page
     {

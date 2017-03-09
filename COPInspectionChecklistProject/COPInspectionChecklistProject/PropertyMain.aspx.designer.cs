@@ -13,24 +13,6 @@ namespace COPInspectionChecklistProject {
     public partial class PropertyMain {
         
         /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
-        /// Panel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel2;
-        
-        /// <summary>
         /// txtPropAdd control.
         /// </summary>
         /// <remarks>
@@ -94,13 +76,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtNumUnits;
         
         /// <summary>
-        /// txtOwnername control.
+        /// txtOwnerName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtOwnername;
+        protected global::System.Web.UI.WebControls.TextBox txtOwnerName;
         
         /// <summary>
         /// txtOwnerPhone control.
@@ -112,13 +94,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtOwnerPhone;
         
         /// <summary>
-        /// txtSideWalk control.
+        /// txtSidewalk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSideWalk;
+        protected global::System.Web.UI.WebControls.TextBox txtSidewalk;
         
         /// <summary>
         /// btnInspectionMain control.

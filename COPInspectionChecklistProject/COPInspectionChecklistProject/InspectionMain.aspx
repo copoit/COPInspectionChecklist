@@ -1,16 +1,3 @@
-﻿<%@ Page Title="Inspection Main" Language="C#" AutoEventWireup="true" CodeBehind="InspectionMain.aspx.cs" Inherits="COPInspectionChecklistProject.InspectionMain" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-    <div>
-    
-    </div>
-    </form>
-</body>
-</html>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InspectionMain.aspx.cs" Inherits="COPInspectionChecklistProject.WebForm2" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+</asp:Content>
