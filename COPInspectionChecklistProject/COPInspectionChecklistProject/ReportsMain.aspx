@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReportsMain.aspx.cs" Inherits="COPInspectionChecklistProject.ReportsMain" %>
+﻿<%@ Page Title="Reports Main" Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="ReportsMain.aspx.cs" Inherits="COPInspectionChecklistProject.ReportsMain" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 

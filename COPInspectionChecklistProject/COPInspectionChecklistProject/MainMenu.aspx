@@ -8,7 +8,7 @@
                 <td><asp:Button ID="Button3" runat="server" Text="Inspection Menu" PostBackUrl="~/InspectionMain.aspx" Height="38px" Width="223px"/></td>
             </tr>
             <tr>
-                <td><asp:Button ID="Button1" runat="server" Text="Reports Menu" PostBackUrl="~/Reports.aspx" Height="38px" Width="223px"/></td>
+                <td><asp:Button ID="Button1" runat="server" Text="Reports Menu" PostBackUrl="~/ReportsMain.aspx" Height="38px" Width="223px"/></td>
             </tr>          
         </table>
 </asp:Content>

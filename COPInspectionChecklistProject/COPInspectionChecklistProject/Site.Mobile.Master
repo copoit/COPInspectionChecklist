@@ -24,7 +24,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <h1><asp:Image runat="server" ImageURL="~/Images/COP_logo.JPG" ID="imgCOP" /></h1>
+        <h1><asp:Image runat="server" ImageURL="~/Images/COP_logo.JPG" ID="imgCOP" Width="140px" /></h1>
         <asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />
         <section class="content-wrapper main-content clear-fix">
             <asp:ContentPlaceHolder runat="server" ID="MainContent" />
