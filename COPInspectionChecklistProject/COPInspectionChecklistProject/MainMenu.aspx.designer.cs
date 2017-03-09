@@ -13,21 +13,21 @@ namespace COPInspectionChecklistProject {
     public partial class MainMenu {
         
         /// <summary>
-        /// Button3 control.
+        /// btnInspectionMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Button btnInspectionMenu;
         
         /// <summary>
-        /// Button1 control.
+        /// btnReportsMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnReportsMenu;
     }
 }

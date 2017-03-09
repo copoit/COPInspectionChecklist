@@ -13,48 +13,48 @@ namespace COPInspectionChecklistProject {
     public partial class ReportsMain {
         
         /// <summary>
-        /// LinkButton1 control.
+        /// btnCompInspect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.Button btnCompInspect;
         
         /// <summary>
-        /// LinkButton2 control.
+        /// btnFailedInspect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.Button btnFailedInspect;
         
         /// <summary>
-        /// LinkButton3 control.
+        /// btnPendingInspect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.WebControls.Button btnPendingInspect;
         
         /// <summary>
-        /// LinkButton4 control.
+        /// btnPendingReInspect control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.Button btnPendingReInspect;
         
         /// <summary>
-        /// Button5 control.
+        /// btnMain control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button5;
+        protected global::System.Web.UI.WebControls.Button btnMain;
     }
 }

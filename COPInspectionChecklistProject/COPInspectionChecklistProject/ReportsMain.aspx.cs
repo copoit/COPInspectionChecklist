@@ -13,5 +13,10 @@ namespace COPInspectionChecklistProject
         {
 
         }
+
+        protected void btnMain_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("MainMenu.aspx");
+        }
     }
 }
