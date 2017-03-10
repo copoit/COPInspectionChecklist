@@ -31,7 +31,7 @@
 <br />
       <table>
             <tr>
-                <td><asp:Button ID="btnMainMenu" runat="server" Text="Main Menu" PostBackUrl="~/MainMain.aspx" Height="38px" Width="250px"/></td>
+                <td><asp:Button ID="btnMainMenu" runat="server" Text="Main Menu" PostBackUrl="~/MainMenu.aspx" Height="38px" Width="250px"/></td>
             </tr>          
         </table>
 </asp:Content>
