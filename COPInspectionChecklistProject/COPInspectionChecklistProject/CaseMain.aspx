@@ -6,9 +6,11 @@
     
     <div>
 	    <div>
-            <h1 style="margin:20px;"><b>Case Main</b></h1>
+           <b>Case Main</b>
+             <br />
+            <br />
 	    </div>
-	    <table style="margin: 10px; width: 50%; border: 5px solid #000000">
+	    <table >
 		<tbody>
 		    <tr>
 			<td style="width: 160px">Case Number</td>
@@ -72,34 +74,29 @@
 		    </tr>
 		</tbody>
 	    </table>
+        <br />
         
-        <div>
+  <%--      <div>
         <!-- Save (Rectangle) -->
         <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" style="margin-left:75px;" OnClick="btnSave_Click"/>
         <!-- Delete (Rectangle) -->
         <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" style="margin-left:50px;" OnClick="btnDelete_Click" />
         <hr />
-        </div>
+        </div>--%>
         <div>
         <!-- InspectionChecklist (Rectangle) -->
-            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Width="200px" PostBackUrl="~/InspectionChecklist.aspx" />
+            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Height="38px" Width="250px" PostBackUrl="~/InspectionChecklist.aspx" />
         <!-- CertificateInspection (Rectangle) -->
-            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Width="200px" PostBackUrl="~/CertInspection.aspx" />
+            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" PostBackUrl="~/CertInspection.aspx" />
         <!-- ReinspectionNotice (Rectange) -->
-		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Width="200px" PostBackUrl="~/ReinspectNotice.aspx" />
-        <!-- NoticeNonCompliance (Rectangle) -->
-            
-            <!-- NoticeNonCompliance (Rectangle) -->
-            &nbsp;<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Width="200px" />
-            
-            &nbsp;
-            <asp:Button ID="InspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Width="200px" />
-        &nbsp;&nbsp;
-        </div>
+            <br />
+		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" PostBackUrl="~/ReinspectNotice.aspx" />
+            <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" />            
+            <br />
+            <br />  
+            <asp:Button ID="InspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Height="38px" Width="250px" />
+           </div>
 	    <hr />
     </div>
 </asp:Content>

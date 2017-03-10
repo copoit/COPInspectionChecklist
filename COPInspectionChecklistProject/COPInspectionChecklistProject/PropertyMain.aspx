@@ -3,6 +3,8 @@
 
     <div>
             <b>Property Main</b>
+         <br />
+            <br />
 	    </div>
     <table>
   		<tbody>
