@@ -2,68 +2,68 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div>
-            <h1 style="margin:20px;"><b>Property Main</b></h1>
+            <b>Property Main</b>
 	    </div>
-    <table style="margin: 20px; width: 50%; border: 5px none #C0C0C0; background-color: #EFEFEF;">
+    <table>
   		<tbody>
           
 		    <tr>
-			<td style="width: 124px; height: 48px;">Property Address</td>
-			<td style="height: 48px; width: 236px;"><asp:TextBox ID="txtPropAdd" runat="server" Width="435px" Height="35px" style="margin-left: 140" BackColor="#E8E8E8"></asp:TextBox>
+			<td >Property Address</td>
+			<td ><asp:TextBox ID="txtPropAdd" runat="server" Width="300px"  ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Responsible Party</td>
-			<td style="width: 236px"><asp:TextBox ID="txtRespParty" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td >Responsible Party</td>
+			<td ><asp:TextBox ID="txtRespParty" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                  </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Mailing Address</td>
-			<td style="width: 236px"><asp:TextBox ID="txtMailAdd" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td>Mailing Address</td>
+			<td><asp:TextBox ID="txtMailAdd" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Email</td>
-			<td style="width: 236px"> <asp:TextBox ID="txtEmail" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td>Email</td>
+			<td> <asp:TextBox ID="txtEmail" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Applicant Phone</td>
-			<td style="width: 236px"> <asp:TextBox ID="txtAppPhone" runat="server" Width="435px" Height="36px" BackColor="#E8E8E8"></asp:TextBox>
+			<td>Applicant Phone</td>
+			<td> <asp:TextBox ID="txtAppPhone" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Occupant Dwelling Info</td>
-			<td style="width: 236px"><asp:TextBox ID="txtOccDwell" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td>Occupant Dwelling Info</td>
+			<td><asp:TextBox ID="txtOccDwell" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px; height: 43px;">Number of Units</td>
-			<td style="width: 236px; height: 43px;"><asp:TextBox ID="txtNumUnits" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td>Number of Units</td>
+			<td><asp:TextBox ID="txtNumUnits" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Owner Name</td>
-			<td style="width: 236px"> <asp:TextBox ID="txtOwnerName" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td>Owner Name</td>
+			<td> <asp:TextBox ID="txtOwnerName" runat="server" Width="300px"  ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Owner Phone</td>
-			<td style="width: 236px"><asp:TextBox ID="txtOwnerPhone" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td >Owner Phone</td>
+			<td ><asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td style="width: 124px">Sidewalk Fees</td>
-			<td style="width: 236px"><asp:TextBox ID="txtSidewalk" runat="server" Width="435px" Height="35px" BackColor="#E8E8E8"></asp:TextBox>
+			<td >Sidewalk Fees</td>
+			<td ><asp:TextBox ID="txtSidewalk" runat="server" Width="300px" ></asp:TextBox>
                 <br />
                 <br />
                 </td>
@@ -76,10 +76,9 @@
         
         <!-- InspectionMain (Rectange) -->
         <!-- Viewcases (Rectangle) -->
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		    <asp:Button ID="btnInspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Width="200px" />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnViewCases" runat="server" OnClick="btnViewCases_Click" Text="View Cases" Width="200px" />
+            
+		    <asp:Button ID="btnInspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Height="38px" Width="250px" />
+        &nbsp;<asp:Button ID="btnViewCases" runat="server" OnClick="btnViewCases_Click" Text="View Cases" Height="38px" Width="250px" />
         </div>
 	   
 </asp:Content>
