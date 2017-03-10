@@ -28,6 +28,12 @@
         state codes if needed. Lastly, this inspection does not satisfy any private party disclosure requirements mandated by local, state, and federal
         law applying to the property.
     </fieldset>
+<br />
+      <table>
+            <tr>
+                <td><asp:Button ID="btnMainMenu" runat="server" Text="Main Menu" PostBackUrl="~/MainMain.aspx" Height="38px" Width="250px"/></td>
+            </tr>          
+        </table>
 </asp:Content>
 
 <%--        <h3><b>Inspection Findings</b></h3>
