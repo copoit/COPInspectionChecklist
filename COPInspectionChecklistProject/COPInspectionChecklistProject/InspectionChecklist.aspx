@@ -1,53 +1,36 @@
 ﻿<%@ Page Title="Inspection Checklist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InspectionChecklist.aspx.cs" Inherits="COPInspectionChecklistProject.InspectionChecklist" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Previous Page (Rectangle) -->
-    <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" Width="200px" />
-        <div>
-        <hr style="border:double"/>
-        <div><h1 style="align-content:center">Housing Inspection Report</h1></div>
-        <br />
-        <table style="margin: 10px; width: 80%; border: 5px solid #000000">
-            <tr>
-                <th colspan="2" style="font-size:30px;">General Inspection Information</th>
-            <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Case Number:<input type="text" style="width: 207px" /></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3">Inspection Date:<input type="date" style="width: 207px" /></td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Property Address:<input type="text" style="width: 207px" /></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3">Inspection Type<input type="text" style="width: 207px" /></td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Dwelling Info:<input type="text" style="width: 207px"/></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3">Mailing Address:<input type="text" style="width: 207px"/></td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Applicant:<input type="text" style="width: 207px"/></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3"># of Units:<input type="number" style="width: 207px"/></td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Applicant Phone:<input type="text" style="width: 207px"/></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3">Applicant Email:<input type="email" style="width: 207px"/></td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Inspector:<input type="text" style="width: 207px"/></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3">Owner Phone:<input type="text" style="width: 207px"/></td>
-        </tr>
-        <tr>
-            <td style="border:1px solid #000000; width: 399px;" class="auto-style2">Inspector Email:<input type="email" style="width: 207px"/></td>
-            <td style="border:1px solid #000000; width: 420px;" class="auto-style3">Sidewalk Fee:<input type="text" style="width: 207px"/></td>
-        </tr>
+
+    <b>Housing Inspection Report</b>
+    <br />
+        <table> 
+	    <tr><th colspan="2">General Inspection Information</th></tr>
+            <tr><td>Case Number</td><td><asp:TextBox ID="txtCaseNum" runat="server" Width="300px" ></asp:TextBox></td></tr>
+		    <tr><td>Property Address</td><td><asp:TextBox ID="txtPropAdd" runat="server" Width="300px"></asp:TextBox></td></tr>
+		    <tr><td>Dwelling Info</td><td><asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Applicant</td><td><asp:TextBox ID="txtApplicant" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Applicant Phone</td><td><asp:TextBox ID="txtAppPhone" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Applicant Email</td><td><asp:TextBox ID="txtAppEmail" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Inspector Name</td><td><asp:TextBox ID="txtInspectName" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Inspector Email</td><td><asp:TextBox ID="txtInspectEmail" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Inspection Date</td><td><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Inspection Type</td><td><asp:TextBox ID="txtInspectType" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Mailing Address</td><td><asp:TextBox ID="txtMailAdd" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td># of Units</td><td><asp:TextBox ID="txtNumUnit" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Owner Phone</td><td><asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px"></asp:TextBox></tr>
+		    <tr><td>Sidewalk Fee</td><td><asp:TextBox ID="txtSidewalk" runat="server" Width="300px"></asp:TextBox></tr>
         </table>
-        <br />
-        <fieldset style="width: 80%;">
-            This inspection should not be relied on as conclusive proof that the property meets all local and state codes.  Illegal conditions may have
-            been missed during this inspection. The failure of an inspection to have uncovered the illegal condition(s) does not render the illegal 
-            condition(s) as legal or permitted. The City of Pasadena has the right to reinspect this property to ensure compliance with the local and
-            state codes if needed. Lastly, this inspection does not satisfy any private party disclosure requirements mandated by local, state, and federal
-            law applying to the property.
-        </fieldset>
-        <hr />
-        <h3><b>Inspection Findings</b></h3>
+    <br />
+    <fieldset style="width: 80%;border:solid">
+        This inspection should not be relied on as conclusive proof that the property meets all local and state codes.  Illegal conditions may have
+        been missed during this inspection. The failure of an inspection to have uncovered the illegal condition(s) does not render the illegal 
+        condition(s) as legal or permitted. The City of Pasadena has the right to reinspect this property to ensure compliance with the local and
+        state codes if needed. Lastly, this inspection does not satisfy any private party disclosure requirements mandated by local, state, and federal
+        law applying to the property.
+    </fieldset>
+</asp:Content>
+
+<%--        <h3><b>Inspection Findings</b></h3>
         <asp:CheckBox ID="cBMajor" runat="server" Text="THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBMajor_CheckedChanged" />
         <br />
         <asp:CheckBox ID="cBMinor" runat="server" Text="THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cbMinor_CheckedChanged" />
@@ -90,14 +73,4 @@
                     <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Left" VerticalAlign="Top" Width="40%"></asp:TableCell>
                 </asp:TableRow>
         </asp:Table>     
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-</asp:Content>
+    </div>--%>

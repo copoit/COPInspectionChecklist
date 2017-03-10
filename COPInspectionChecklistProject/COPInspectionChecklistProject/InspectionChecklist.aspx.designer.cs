@@ -13,93 +13,129 @@ namespace COPInspectionChecklistProject {
     public partial class InspectionChecklist {
         
         /// <summary>
-        /// btnPreviousPage control.
+        /// txtCaseNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPreviousPage;
+        protected global::System.Web.UI.WebControls.TextBox txtCaseNum;
         
         /// <summary>
-        /// cBMajor control.
+        /// txtPropAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cBMajor;
+        protected global::System.Web.UI.WebControls.TextBox txtPropAdd;
         
         /// <summary>
-        /// cBMinor control.
+        /// txtDwellInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cBMinor;
+        protected global::System.Web.UI.WebControls.TextBox txtDwellInfo;
         
         /// <summary>
-        /// cBNoMajor control.
+        /// txtApplicant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cBNoMajor;
+        protected global::System.Web.UI.WebControls.TextBox txtApplicant;
         
         /// <summary>
-        /// cBNoMinor control.
+        /// txtAppPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cBNoMinor;
+        protected global::System.Web.UI.WebControls.TextBox txtAppPhone;
         
         /// <summary>
-        /// cBNoViolations control.
+        /// txtAppEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cBNoViolations;
+        protected global::System.Web.UI.WebControls.TextBox txtAppEmail;
         
         /// <summary>
-        /// InspectionDetails control.
+        /// txtInspectName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table InspectionDetails;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectName;
         
         /// <summary>
-        /// headin1 control.
+        /// txtInspectEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow headin1;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectEmail;
         
         /// <summary>
-        /// cb11Major control.
+        /// txtInspectDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cb11Major;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectDate;
         
         /// <summary>
-        /// cb11Minor control.
+        /// txtInspectType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cb11Minor;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectType;
+        
+        /// <summary>
+        /// txtMailAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMailAdd;
+        
+        /// <summary>
+        /// txtNumUnit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumUnit;
+        
+        /// <summary>
+        /// txtOwnerPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOwnerPhone;
+        
+        /// <summary>
+        /// txtSidewalk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSidewalk;
     }
 }

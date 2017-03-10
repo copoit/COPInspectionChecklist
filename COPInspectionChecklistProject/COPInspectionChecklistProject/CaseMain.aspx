@@ -85,13 +85,13 @@
         </div>--%>
         <div>
         <!-- InspectionChecklist (Rectangle) -->
-            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Height="38px" Width="250px" PostBackUrl="~/InspectionChecklist.aspx" />
+            <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Height="38px" Width="250px" />
         <!-- CertificateInspection (Rectangle) -->
-            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" PostBackUrl="~/CertInspection.aspx" />
+            <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px"  />
         <!-- ReinspectionNotice (Rectange) -->
             <br />
             <br />
-		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" PostBackUrl="~/ReinspectNotice.aspx" />
+		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px"  />
             <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" />            
             <br />
             <br />  
