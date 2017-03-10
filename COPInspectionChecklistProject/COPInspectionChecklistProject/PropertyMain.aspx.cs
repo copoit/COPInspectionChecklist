@@ -1,4 +1,5 @@
-﻿using System;
+﻿using COPInspectionChecklistProject.Common;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -14,37 +15,40 @@ namespace COPInspectionChecklistProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-        private void getCaseByCaseNumber(string caseNumber)
-        {
-            Case caseNo = new Case();
-            string cs = ConfigurationManager.ConnectionStrings["Data Source=teamdbserver.database.windows.net;Initial Catalog=OITDB;Persist Security Info=False;User ID=DBAdmin;Password=Mon#2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30"].ConnectionString;
-
-            using (SqlConnection conn = new SqlConnection(cs))
+           if (Request.QueryString["PropertyID"] != null)
             {
-
-                {
-
-                    string sql1 = "SELECT CASE_NUM From [CASE_INFO] Where CASE_NUM is " + caseNumber;
-                    SqlCommand cmd = new SqlCommand(sql1, conn);
-                    conn.Open();
-                    SqlDataReader rdr1 = cmd.ExecuteReader();
-                    if (rdr1.Read())
-                    {
-                        caseNo.caseNumber = rdr1["Case_Num"].ToString();
-                         caseNo.property_ID = Convert.ToInt32(rdr1["[Property_ID]"]);
-                    }
-                    string sql3 = "SELECT PROPERTY_ID From [PROPERTY_INFO] Where PROPERTY_ID is " + caseNo.property_ID;
-                    cmd = new SqlCommand(sql3, conn);
-                    SqlDataReader rdr3 = cmd.ExecuteReader();
-                    if (rdr3.Read())
-                    {
-
-                    }
-                }
+                string PropertyID = Request.QueryString["PropertyID"];
+                getProperty(PropertyID);
             }
+
         }
+
+        private void getProperty(string PropertyID)
+        {
+
+            DbCommon clsCommon = new DbCommon();
+            string SQL = "SELECT * FROM[PROPERTY_INFO] Where[PROPERTY_INFO].Property_ID ='" + PropertyID + "'";
+
+            var dt = clsCommon.TestDBConnection(SQL);
+
+            if (dt.Rows.Count > 0)
+            {                               
+                txtPropAdd.Text = dt.Rows[0]["Property_StreetNumber"].ToString() + " " + dt.Rows[0]["Property_StreetName"].ToString() + " " + dt.Rows[0]["Property_Zip"].ToString();
+                txtRespParty.Text = dt.Rows[0]["Applicant_Name"].ToString();
+                txtMailAdd.Text = dt.Rows[0]["Mailing_StreetNumber"].ToString() + " " + dt.Rows[0]["Mailing_StreetName"].ToString() + " " + dt.Rows[0]["Mailing_Zip"].ToString();
+                txtEmail.Text = dt.Rows[0]["Applicant_Email"].ToString();
+                txtAppPhone.Text = dt.Rows[0]["Applicant_Phone"].ToString();
+                txtOccDwell.Text = dt.Rows[0]["Dwelling_info"].ToString();
+                txtNumUnits.Text = dt.Rows[0]["NumberOfUnits"].ToString();
+                txtOwnerName.Text = dt.Rows[0]["Property_Owner_Name"].ToString();
+                txtOwnerPhone.Text = dt.Rows[0]["Property_Owner_Phone"].ToString();
+                txtSidewalk.Text = dt.Rows[0]["Sidewalk_Fee"].ToString();
+               
+            }
+
+        }
+
+
         protected void btnInspectionMain_Click(object sender, EventArgs e)
         {
             Response.Redirect("InspectionMain.aspx");
