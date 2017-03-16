@@ -84,7 +84,7 @@
             <br />
             <asp:CheckBox ID="cBNoMinor" runat="server"  Style="padding-left:20px;" Text="THIS INSPECTION REVEALED NO MINOR VIOLATIONS" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" />
             <br />
-            <asp:CheckBox ID="cBNoViolations" runat="server"  Style="padding-left:20px;" Text="NO VIOLATIONS WERE OBSERVED" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" />
+            <asp:CheckBox ID="cBNoViolations" runat="server"  Style="padding-left:20px;" Text="NO VIOLATIONS WERE OBSERVED" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Checked="True" />
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="Inspection Details">
@@ -490,7 +490,7 @@
         <br />
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
-                <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Height="38px" Width="250px" />
+                <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />
                 <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="false" />
 		        <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />            

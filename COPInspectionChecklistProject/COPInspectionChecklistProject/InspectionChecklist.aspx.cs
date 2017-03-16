@@ -2,8 +2,10 @@
 using System.Web.UI;
 using COPInspectionChecklistProject.Common;
 
-namespace COPInspectionChecklistProject { 
-    public partial class InspectionChecklist : Page {
+namespace COPInspectionChecklistProject
+{
+    public partial class InspectionChecklist : Page
+    {
         public Case newCase;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,76 +48,88 @@ namespace COPInspectionChecklistProject {
         }
         private void DisplayForms()
         {
-            if(cBNoViolations.Checked)
+            if (cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
             }
-            else if(cBMajor.Checked || cBMinor.Checked)
+            else if (cBMajor.Checked || cBMinor.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
             }
-            else if(cBNoMajor.Checked && cBNoMinor.Checked)
+            else if (cBNoMajor.Checked && cBNoMinor.Checked)
             {
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
             }
         }
+
         #region Buttons
-        protected void cBMajor_CheckedChanged(object sender, EventArgs e) {
-            //major violation noted
+        protected void cBMajor_CheckedChanged(object sender, EventArgs e)
+        {
+            //major violation noted 
             if (cBMajor.Checked)
             {
                 cBNoViolations.Checked = false;
                 cBNoMajor.Checked = false;
-                DisplayForms();
-            } 
+            }
+            DisplayForms();
         }
-        protected void cBMinor_CheckedChanged(object sender, EventArgs e) {
-            //minor violation noted
+        protected void cBMinor_CheckedChanged(object sender, EventArgs e)
+        {
+            //minor violation noted 
             if (cBMinor.Checked)
             {
                 cBNoMinor.Checked = false;
                 cBNoViolations.Checked = false;
-                DisplayForms();
             }
+                DisplayForms();
         }
-        protected void cBNoMajor_CheckedChanged(object sender, EventArgs e) {
-            //no major violations
-            if (cBNoMajor.Checked && cBNoMinor.Checked)
-                cBNoViolations.Checked = true;
-            if(cBNoMajor.Checked)
+        protected void cBNoMajor_CheckedChanged(object sender, EventArgs e)
+        {
+            //no major violations 
+            if (cBNoMajor.Checked)
                 cBMajor.Checked = false;
-            else if (!cBNoMajor.Checked)            
+            else if (!cBNoMajor.Checked)
                 cBMajor.Checked = true;
-            DisplayForms();            
-        }
-        protected void cBNoMinor_CheckedChanged(object sender, EventArgs e) {
-            //no minor violations
             if (cBNoMajor.Checked && cBNoMinor.Checked)
                 cBNoViolations.Checked = true;
-            if (cBNoMinor.Checked)            
+            DisplayForms();
+        }
+        protected void cBNoMinor_CheckedChanged(object sender, EventArgs e)
+        {
+            //no minor violations 
+            if (cBNoMinor.Checked)
                 cBMinor.Checked = false;
-            else if (!cBNoMinor.Checked)            
+            else if (!cBNoMinor.Checked)
                 cBMinor.Checked = true;
-            DisplayForms();            
-        }
-        protected void cBNoViolations_CheckedChanged(object sender, EventArgs e) {
-            if (!cBMajor.Checked && !cBMinor.Checked && cBNoMajor.Checked && cBNoMinor.Checked)
+            if (cBNoMajor.Checked && cBNoMinor.Checked)
                 cBNoViolations.Checked = true;
-            DisplayForms();             
+            DisplayForms();
         }
+        protected void cBNoViolations_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cBNoViolations.Checked)
+            {
+                cBMajor.Checked = false;
+                cBMinor.Checked = false;
+                cBNoMajor.Checked = false;
+                cBNoMinor.Checked = false;
+            }
+            DisplayForms();
+        }
+
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //save data to database
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
-            Response.Redirect("!/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
+            Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
@@ -136,4 +150,38 @@ namespace COPInspectionChecklistProject {
         #endregion
     }
 }
+//private void UpdateCheckbox()
+//{
+//    if (!cBMajor.Checked && !cBMinor.Checked && cBNoMajor.Checked && cBNoMinor.Checked) //no violations found
+//        cBNoViolations.Checked = true;
+//    else if (cBMajor.Checked)                                                           //major violation found
+//    {
+//        cBNoViolations.Checked = false;
+//        cBNoMajor.Checked = false;
+//    }
+//    else if (cBMinor.Checked)                                                           //minor violation found
+//    {
+//        cBNoMinor.Checked = false;
+//        cBNoViolations.Checked = false;
+//    }
+//    else if (cBNoMajor.Checked && cBNoMinor.Checked)                                    //no violations found
+//    {
+//        cBNoViolations.Checked = true;
+//        cBNoMinor.Checked = false;
+//        cBNoMajor.Checked = false;
+//    }
+//    else if (cBNoMajor.Checked)                                                         //only no major violations found
+//    {
+//        cBMajor.Checked = false;
+//        cBNoMinor.Checked = false;
+//        cBNoMajor.Checked = false;
+//    }
+//    else if (cBNoMinor.Checked)                                                         //only no minor violations found
+//    {
+//        cBMinor.Checked = false;
+//        cBNoMinor.Checked = false;
+//        cBNoMajor.Checked = false;
+//    }
+//    DisplayForms();                                                                     //call display method
+//}
 
