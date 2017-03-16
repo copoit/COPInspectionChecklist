@@ -1,71 +1,72 @@
 ﻿<%@ Page Title="Inspection Checklist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InspectionChecklist.aspx.cs" Inherits="COPInspectionChecklistProject.InspectionChecklist" %>
 
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="Inspection Report">
         <h2><b>Housing Inspection Report</b></h2>
-        <asp:Table ID="HousingInspectionReport" runat="server" Width="60%" BorderStyle="Solid" BorderWidth="5px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
+        <asp:Table ID="HousingInspectionReport" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="5px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
             <asp:TableHeaderRow BorderStyle="Solid" VerticalAlign="Middle" ID="heading2">
                 <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" ColumnSpan="2" ><b>General Inspection Information</b></asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Case Number:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtCaseNum" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtCaseNum" runat="server" Width="100%"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Property Address:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtPropAdd" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtPropAdd" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Dwelling INfo:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtDwellInfo" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtDwellInfo" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Applicant Name:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtApplicant" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtApplicant" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Applicant Phone:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtAppPhone" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtAppPhone" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Applicant Email:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtAppEmail" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtAppEmail" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Inspector Name:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtInspectName" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtInspectName" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Inspector Email:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtInspectEmail" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtInspectEmail" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Inspection Date:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtInspectDate" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtInspectDate" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Inspection Type:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtInspectType" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtInspectType" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Mailing Address:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtMailAdd" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtMailAdd" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Number of Units:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtNumUnit" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtNumUnit" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Owner Phone:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtOwnerPhone" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtOwnerPhone" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Sidewalk Fees:</asp:TableCell>
-                <asp:TableCell><asp:TextBox ID="txtSidewalk" runat="server" Width="80%" ></asp:TextBox></asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtSidewalk" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
         </asp:Table>
     </div>
-    <fieldset style="padding:15px; width: 80%; border: solid" >
+    <fieldset style="padding:15px; width:960px; border: solid" >
         This inspection should not be relied on as conclusive proof that the property meets all local and state codes.  Illegal conditions may have
         been missed during this inspection. The failure of an inspection to have uncovered the illegal condition(s) does not render the illegal 
         condition(s) as legal or permitted. The City of Pasadena has the right to reinspect this property to ensure compliance with the local and
@@ -88,7 +89,7 @@
     </asp:UpdatePanel>
     <div class="Inspection Details">
     <h2><b>Inspection Details</b></h2>
-    <asp:Table ID="InspectionDetails" runat="server" Width="969px" BorderStyle="Solid" BorderWidth="5px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
+    <asp:Table ID="InspectionDetails" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="5px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
         <asp:TableHeaderRow BorderStyle="Solid" VerticalAlign="Middle" ID="headin1">
             <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" >Inspection Details</asp:TableHeaderCell>
             <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" >Section</asp:TableHeaderCell>
@@ -481,6 +482,7 @@
         </asp:TableRow>
     </asp:Table>
     </div>
+    <br />
     <div contextmenu="buttons" >
         <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" Style="margin-left: 75px;" OnClick="btnSave_Click" />
         <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" Style="margin-left: 50px;" OnClick="btnDelete_Click" />
@@ -488,6 +490,7 @@
         <br />
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
+                <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Height="38px" Width="250px" />
                 <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="false" />
 		        <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />            

@@ -113,6 +113,10 @@ namespace COPInspectionChecklistProject {
         {
             //save data to database
         }
+        protected void btnCaseMain_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("!/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
+        }
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             //delete data from database
