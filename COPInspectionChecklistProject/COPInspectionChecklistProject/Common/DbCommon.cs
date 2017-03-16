@@ -14,7 +14,7 @@ namespace COPInspectionChecklistProject.Common
         {
             using (SqlConnection conn = new SqlConnection())
             {
-               
+               //Retrieve database connection string from web.config
                 string dbConnString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
 
                 conn.ConnectionString = dbConnString; // "Data Source=teamdbserver.database.windows.net;Initial Catalog=OITDB;Persist Security Info=False;User ID=DBAdmin;Password=Mon#2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
