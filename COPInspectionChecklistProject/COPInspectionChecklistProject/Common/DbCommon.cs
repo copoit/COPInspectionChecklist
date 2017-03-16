@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 
 namespace COPInspectionChecklistProject.Common
 {
@@ -13,7 +14,10 @@ namespace COPInspectionChecklistProject.Common
         {
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = "Data Source=teamdbserver.database.windows.net;Initial Catalog=OITDB;Persist Security Info=False;User ID=DBAdmin;Password=Mon#2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
+               
+                string dbConnString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
+
+                conn.ConnectionString = dbConnString; // "Data Source=teamdbserver.database.windows.net;Initial Catalog=OITDB;Persist Security Info=False;User ID=DBAdmin;Password=Mon#2017;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
 
                 DataTable dt = new DataTable();
 
