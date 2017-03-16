@@ -13,7 +13,7 @@
 	    <table >
 		<tbody>
 		    <tr>
-			<td style="width: 160px">Case Number</td>
+			<td style="width: 160px;">Case Number</td>
 			<td><asp:TextBox ID="txtCaseNum" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
 		    <tr>
@@ -72,23 +72,13 @@
 			<td style="width: 160px">Re-Inspection Date</td>
 			<td><asp:TextBox ID="txtReinspectDate" runat="server" Width="300px"></asp:TextBox></td>
 		    </tr>
+            <tr><td colspan="2"><asp:Label ID="lblError" runat="server" ForeColor="Red"/></td><td>&nbsp;</td></tr>
 		</tbody>
 	    </table>
         <br />
-        
-  <%--      <div>
-        <!-- Save (Rectangle) -->
-        <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" style="margin-left:75px;" OnClick="btnSave_Click"/>
-        <!-- Delete (Rectangle) -->
-        <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" style="margin-left:50px;" OnClick="btnDelete_Click" />
-        <hr />
-        </div>--%>
         <div>
-        <!-- InspectionChecklist (Rectangle) -->
             <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Height="38px" Width="250px" />
-        <!-- CertificateInspection (Rectangle) -->
             <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px"  />
-        <!-- ReinspectionNotice (Rectange) -->
             <br />
             <br />
 		    <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px"  />

@@ -4,26 +4,20 @@ using System.Data.SqlClient;
 using System.Configuration;
 using COPInspectionChecklistProject.Common;
 
-namespace COPInspectionChecklistProject
-  {
-    
+namespace COPInspectionChecklistProject {  
      public partial class CaseMain : Page {
           Case newCase = new Case();
          protected void Page_Load(object sender, EventArgs e)
          {
-            try
-              {
-                  //if page loads with a current case (from page InspectionMain or CaseList), run this code
-                  if (Request.QueryString["CaseNumber"] != null)
-                  {
-                      string caseNumber = Request.QueryString["CaseNumber"];
-                      getCase(caseNumber);
-                  }
-              }
-            catch (Exception ee)
-              {
-                  throw ee;
-              }
+            //if page loads with a current case (from page InspectionMain or CaseList), run this code
+            if (Request.QueryString["CaseNumber"] != null)
+            {
+                string caseNumber = Request.QueryString["CaseNumber"];
+                getCase(caseNumber);
+            }
+            //else populate Case with a generated CaseNumber with either a scheduled caseNumber or
+            //incrementing the last Case_ID from CASE_INFO
+            txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
           }
         private void getCase(string caseNumber) {
 
@@ -117,61 +111,28 @@ namespace COPInspectionChecklistProject
             */
         public string CaseNumber
         {
-            get { return newCase.caseNumber; }
+            get { return txtCaseNum.Text; }
         }
         #region buttons
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            /// <summary>
-            /// Save button updates database for new Case with current attributes
-            /// currently holds dummy info to save data to database
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-        }
-        protected void btnDelete_Click(object sender, EventArgs e) {
-            /// <summary>
-            /// Delete button removes selected CaseNumber from database
-            /// currently holds dummy data to remove data from database
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
-        }
         protected void btnInspectionChecklist_Click(object sender, EventArgs e)
         {
-            if (txtCaseNum.Text.Trim() != "")
-            {
-                SearchForCase(txtCaseNum.Text);
-            }
+            Session["CaseNumber"] = CaseNumber;
+            Response.Redirect("InspectionChecklist.aspx?CaseNumber=" + CaseNumber);
         }
-        private void SearchForCase(string Case) { 
-            DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT * FROM [CASE_INFO] where Case_Num = '" + Case + "'";
-            var dt2 = clsCommon.TestDBConnection(SQL);
-
-            if (dt2.Rows.Count > 0)
-            {
-                Session["CaseNumber"] = Case;
-                Response.Redirect("InspectionChecklist.aspx?CaseNumber=" + Case);
-            }
-        }
-          protected void btnCertificateInspection_Click(object sender, EventArgs e)
+        protected void btnCertificateInspection_Click(object sender, EventArgs e)
           {
-
              Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
           }
-          protected void btnReinspectionNotice_Click(object sender, EventArgs e)
+        protected void btnReinspectionNotice_Click(object sender, EventArgs e)
           {
- 
             Response.Redirect("~/ReinspectNotice.aspx?CaseNumber=" + txtCaseNum.Text);
-          }
-          protected void btnNoticeNonCompliance_Click(object sender, EventArgs e)
+          } 
+        protected void btnNoticeNonCompliance_Click(object sender, EventArgs e)
  
      {          
             Response.Redirect("~/NoticeNonCompliance.aspx?CaseNumber=" + txtCaseNum.Text);
           }
-      
-           protected void btnInspectionMain_Click(object sender, EventArgs e)
+        protected void btnInspectionMain_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/InspectionMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }

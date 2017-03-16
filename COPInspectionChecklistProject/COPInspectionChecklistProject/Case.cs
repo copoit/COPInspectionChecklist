@@ -9,7 +9,7 @@ namespace COPInspectionChecklistProject
         public string mailingAddress { get; set; }
         public string emailAddress { get; set; }
         public string applicantPhone { get; set; }
-        public string occupantDwellInfo { get; set; }
+        public string dwellingInfo { get; set; }
         public int numUnits { get; set; }
         public string ownerName { get; set; }
         public string ownerPhone { get; set; }
@@ -21,8 +21,11 @@ namespace COPInspectionChecklistProject
         public int inspector_ID { get; set; }
         public int property_ID { get; set; }
         public Case() { }
+        public Case(string newCaseNumb) {
+            caseNumber = newCaseNumb;
+        }
         public Case(string caseNum, string propAdd, string resParty, string mail, string email, string appPhone, string dwell, int units, string owner,
-                string ownPhone, bool fees, string inspect, string inspectEmail, DateTime insDate, DateTime reinsDate)
+                string ownPhone, bool fees, string inspect, string inspectEmail, DateTime insDate, DateTime reinsDate, int inspID, int propID)
         {
             caseNumber = caseNum;
             propertyAddress = propAdd;
@@ -30,7 +33,7 @@ namespace COPInspectionChecklistProject
             mailingAddress = mail;
             emailAddress = email;
             applicantPhone = appPhone;
-            occupantDwellInfo = dwell;
+            dwellingInfo = dwell;
             numUnits = units;
             ownerName = owner;
             ownerPhone = ownPhone;
@@ -39,6 +42,8 @@ namespace COPInspectionChecklistProject
             inspectorEmail = inspectEmail;
             inspectionDate = insDate;
             reinspectionDate = reinsDate;
+            inspector_ID = inspID;
+            property_ID = propID;
         }
     }
 }
