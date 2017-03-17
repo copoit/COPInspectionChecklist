@@ -51,17 +51,20 @@ namespace COPInspectionChecklistProject
             if (cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = true;
+                btnEmail.Visible = false;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
             }
             else if (cBMajor.Checked || cBMinor.Checked)
             {
+                btnEmail.Visible = true;
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
             }
             else if (cBNoMajor.Checked && cBNoMinor.Checked)
             {
+                btnEmail.Visible = false;
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
@@ -134,6 +137,12 @@ namespace COPInspectionChecklistProject
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             //delete data from database
+       
+        }
+        protected void btnEmail_Click(object sender, EventArgs e)
+        {
+           //Opening Email Checklist Deficiencies
+       
         }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
