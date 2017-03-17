@@ -51,17 +51,20 @@ namespace COPInspectionChecklistProject
             if (cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = true;
+               
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
             }
             else if (cBMajor.Checked || cBMinor.Checked)
             {
+               
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
             }
             else if (cBNoMajor.Checked && cBNoMinor.Checked)
             {
+               
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
