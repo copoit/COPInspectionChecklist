@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections;
 using COPInspectionChecklistProject.Common;
-using System.Data;
+
 
 namespace COPInspectionChecklistProject
 {
