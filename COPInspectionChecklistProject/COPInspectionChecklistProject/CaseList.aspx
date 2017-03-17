@@ -6,7 +6,7 @@
     <div> 
 	    <div> 
 	        <h1>Case List</h1>
-            <asp:HiddenField id="txtPropertyId" runat="server" />
+            <asp:HiddenField id="txtPropertyId" runat="server"/>
             <br />
             <br />
 	        <asp:Label runat="server" Text="Property Address" /> 

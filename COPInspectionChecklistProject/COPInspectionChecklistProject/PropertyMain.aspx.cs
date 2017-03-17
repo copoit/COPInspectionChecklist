@@ -25,7 +25,7 @@ namespace COPInspectionChecklistProject
 
         private void getProperty(string PropertyID)
         {
-            //set hidden field value for propertyid, added by Chaode He 3/17/2017
+            //set hidden field value for propertyid, added by Chaode He 3/16/2017
             txtPropertyId.Value = PropertyID;
             //end
 

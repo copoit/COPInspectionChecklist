@@ -42,7 +42,7 @@ namespace COPInspectionChecklistProject
                 }
 
 
-
+                //retrieve all cases by property Id
                 string SQL = "SELECT CASE_INFO.Case_Num,CASE_INFO.Inspection_Date, CASE_INFO.ReInspection_Date,CASE_INFO.Inspection_Status," +
                     " CASE_INFO.Inspection_Type,INSPECTOR_INFO.Inspector_FName+' '+INSPECTOR_INFO.Inspector_LName as Inspector " +
                     "  FROM CASE_INFO left join INSPECTOR_INFO ON CASE_INFO.Inspector_ID=INSPECTOR_INFO.Inspector_ID  Where CASE_INFO.Property_ID ='" + propertyID + "'";
