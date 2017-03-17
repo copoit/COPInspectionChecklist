@@ -7,6 +7,7 @@
             <br />
 	    </div>
     <table>
+        <asp:HiddenField id="txtPropertyId" runat="server" />
   		<tbody>
           
 		    <tr>

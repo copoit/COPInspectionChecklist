@@ -25,6 +25,9 @@ namespace COPInspectionChecklistProject
 
         private void getProperty(string PropertyID)
         {
+            //set hidden field value for propertyid, added by Chaode He 3/17/2017
+            txtPropertyId.Value = PropertyID;
+            //end
 
             DbCommon clsCommon = new DbCommon();
             string SQL = "SELECT * FROM[PROPERTY_INFO] Where[PROPERTY_INFO].Property_ID ='" + PropertyID + "'";
@@ -56,7 +59,7 @@ namespace COPInspectionChecklistProject
 
         protected void btnViewCases_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ViewCases.aspx");
+            Response.Redirect("CaseList.aspx?PropertyID="+ txtPropertyId.Value);
         }
     }
 }
