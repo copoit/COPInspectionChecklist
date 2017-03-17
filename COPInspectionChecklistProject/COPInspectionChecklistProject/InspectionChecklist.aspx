@@ -486,7 +486,7 @@
     <div contextmenu="buttons" >
         <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" Style="margin-left: 75px;" OnClick="btnSave_Click" />
         <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" Style="margin-left: 50px;" OnClick="btnDelete_Click" />
-        <asp:Button ID="btnEmail" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Email Inspection Deficiencies" Width="150px" Style="margin-left: 50px;" OnClick="btnEmail_Click" />
+     
 		
 	    
 	    <br />
