@@ -54,18 +54,12 @@ namespace COPInspectionChecklistProject
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
             }
-            else if (cBMajor.Checked || cBMinor.Checked)
+            else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
-            }
-            else if (cBNoMajor.Checked && cBNoMinor.Checked)
-            {
-                btnCertificateInspection.Visible = true;
-                btnReinspectionNotice.Visible = false;
-                btnNoticeNonCompliance.Visible = false;
-            }
+            }           
         }
 
         #region Buttons
@@ -94,10 +88,15 @@ namespace COPInspectionChecklistProject
             //no major violations 
             if (cBNoMajor.Checked)
                 cBMajor.Checked = false;
-            else if (!cBNoMajor.Checked)
-                cBMajor.Checked = true;
+            
             if (cBNoMajor.Checked && cBNoMinor.Checked)
+            {
                 cBNoViolations.Checked = true;
+                cBNoMajor.Checked = false;
+                cBNoMinor.Checked = false;
+            }
+            else if(!cBNoMajor.Checked || !cBNoMinor.Checked)
+                cBNoViolations.Checked = false;
             DisplayForms();
         }
         protected void cBNoMinor_CheckedChanged(object sender, EventArgs e)
@@ -105,10 +104,15 @@ namespace COPInspectionChecklistProject
             //no minor violations 
             if (cBNoMinor.Checked)
                 cBMinor.Checked = false;
-            else if (!cBNoMinor.Checked)
-                cBMinor.Checked = true;
+
             if (cBNoMajor.Checked && cBNoMinor.Checked)
+            {
                 cBNoViolations.Checked = true;
+                cBNoMajor.Checked = false;
+                cBNoMinor.Checked = false;
+            }
+            else if (!cBNoMajor.Checked || !cBNoMinor.Checked)
+                cBNoViolations.Checked = false;
             DisplayForms();
         }
         protected void cBNoViolations_CheckedChanged(object sender, EventArgs e)
@@ -150,38 +154,3 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
-//private void UpdateCheckbox()
-//{
-//    if (!cBMajor.Checked && !cBMinor.Checked && cBNoMajor.Checked && cBNoMinor.Checked) //no violations found
-//        cBNoViolations.Checked = true;
-//    else if (cBMajor.Checked)                                                           //major violation found
-//    {
-//        cBNoViolations.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    else if (cBMinor.Checked)                                                           //minor violation found
-//    {
-//        cBNoMinor.Checked = false;
-//        cBNoViolations.Checked = false;
-//    }
-//    else if (cBNoMajor.Checked && cBNoMinor.Checked)                                    //no violations found
-//    {
-//        cBNoViolations.Checked = true;
-//        cBNoMinor.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    else if (cBNoMajor.Checked)                                                         //only no major violations found
-//    {
-//        cBMajor.Checked = false;
-//        cBNoMinor.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    else if (cBNoMinor.Checked)                                                         //only no minor violations found
-//    {
-//        cBMinor.Checked = false;
-//        cBNoMinor.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    DisplayForms();                                                                     //call display method
-//}
-

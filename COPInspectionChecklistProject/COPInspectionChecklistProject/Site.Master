@@ -58,9 +58,7 @@
             </asp:ContentPlaceHolder>
             <br />
         </div>
-        <div id="footerContent" style="margin: 10px; padding: 5px; text-align: left; position:fixed; bottom:3px;">
-            <p>&copy; <%: DateTime.Now.Year %> - City Of Pasadena</p>
-        </div>        
+        <footer><p>&copy; <%: DateTime.Now.Year %> - City Of Pasadena</p></footer>             
     </form>
 </body>
 </html>

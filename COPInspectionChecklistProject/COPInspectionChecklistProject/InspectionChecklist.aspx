@@ -1,10 +1,9 @@
 ﻿<%@ Page Title="Inspection Checklist" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InspectionChecklist.aspx.cs" Inherits="COPInspectionChecklistProject.InspectionChecklist" %>
 
-
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="Inspection Report">
         <h2><b>Housing Inspection Report</b></h2>
-        <asp:Table ID="HousingInspectionReport" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="5px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
+        <asp:Table ID="HousingInspectionReport" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="3px" BorderColor="Black" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
             <asp:TableHeaderRow BorderStyle="Solid" VerticalAlign="Middle" ID="heading2">
                 <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" ColumnSpan="2" ><b>General Inspection Information</b></asp:TableHeaderCell>
             </asp:TableHeaderRow>
@@ -17,7 +16,7 @@
                 <asp:TableCell><asp:TextBox ID="txtPropAdd" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Dwelling INfo:</asp:TableCell>
+                <asp:TableCell BorderStyle="Solid" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="20%" >Dwelling Info:</asp:TableCell>
                 <asp:TableCell><asp:TextBox ID="txtDwellInfo" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
@@ -66,35 +65,38 @@
             </asp:TableRow>
         </asp:Table>
     </div>
-    <fieldset style="padding:15px; width:960px; border: solid" >
-        This inspection should not be relied on as conclusive proof that the property meets all local and state codes.  Illegal conditions may have
-        been missed during this inspection. The failure of an inspection to have uncovered the illegal condition(s) does not render the illegal 
-        condition(s) as legal or permitted. The City of Pasadena has the right to reinspect this property to ensure compliance with the local and
-        state codes if needed. Lastly, this inspection does not satisfy any private party disclosure requirements mandated by local, state, and federal
-        law applying to the property.
-    </fieldset>
+    <asp:Table ID="InspectionFindingTable" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="3px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left" BorderColor="Black">
+        <asp:TableRow runat="server">
+            <asp:TableCell BorderStyle="Solid" BorderWidth="2px" Style="padding-left:20px;" HorizontalAlign="Left" VerticalAlign="Middle" Width="60%" >This inspection should not be relied on as conclusive proof that the property meets all local and state codes.  Illegal conditions may have
+                been missed during this inspection. The failure of an inspection to have uncovered the illegal condition(s) does not render the illegal 
+                condition(s) as legal or permitted. The City of Pasadena has the right to reinspect this property to ensure compliance with the local and
+                state codes if needed. Lastly, this inspection does not satisfy any private party disclosure requirements mandated by local, state, and federal
+                law applying to the property.</asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <h2><b>Inspection Findings</b></h2>
-            <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left:20px;" Text="THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" />
+            <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left:30px;" Text="THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" />
             <br />
-            <asp:CheckBox ID="cBMinor" runat="server"  Style="padding-left:20px;" Text="THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" />
-            <br />  
-            <asp:CheckBox ID="cBNoMajor" runat="server"  Style="padding-left:20px;" Text="THIS INSPECTION REVEALED NO MAJOR VIOLATIONS" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" />
+            <asp:CheckBox ID="cBMinor" runat="server"  Style="padding-left:30px;" Text="THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" />
+            <br /> 
+            <asp:CheckBox ID="cBNoMajor" runat="server"  Style="padding-left:30px;" Text="THIS INSPECTION REVEALED NO MAJOR VIOLATIONS" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" />
             <br />
-            <asp:CheckBox ID="cBNoMinor" runat="server"  Style="padding-left:20px;" Text="THIS INSPECTION REVEALED NO MINOR VIOLATIONS" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" />
+            <asp:CheckBox ID="cBNoMinor" runat="server"  Style="padding-left:30px;" Text="THIS INSPECTION REVEALED NO MINOR VIOLATIONS" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" />
             <br />
-            <asp:CheckBox ID="cBNoViolations" runat="server"  Style="padding-left:20px;" Text="NO VIOLATIONS WERE OBSERVED" Font-Names="Arial Black" TextAlign="Left" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Checked="True" />
+            <asp:CheckBox ID="cBNoViolations" runat="server"  Style="padding-left:30px;" Text="NO VIOLATIONS WERE OBSERVED" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Checked="True" />
         </ContentTemplate>
     </asp:UpdatePanel>
     <div class="Inspection Details">
     <h2><b>Inspection Details</b></h2>
-    <asp:Table ID="InspectionDetails" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="5px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
+    <asp:Table ID="InspectionDetails" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="3px" CellPadding="1" CellSpacing="1" HorizontalAlign="Left" BorderColor="Black">
         <asp:TableHeaderRow BorderStyle="Solid" VerticalAlign="Middle" ID="headin1">
             <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" >Inspection Details</asp:TableHeaderCell>
             <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" >Section</asp:TableHeaderCell>
-            <asp:TableHeaderCell HorizontalAlign="Center" BorderStyle="Inset" VerticalAlign="Middle">Major</asp:TableHeaderCell>
-            <asp:TableHeaderCell HorizontalAlign="Center" BorderStyle="Inset" VerticalAlign="Middle">Minor</asp:TableHeaderCell>
+            <asp:TableHeaderCell HorizontalAlign="Center" BorderStyle="Inset" VerticalAlign="Middle" >Major</asp:TableHeaderCell>
+            <asp:TableHeaderCell HorizontalAlign="Center" BorderStyle="Inset" VerticalAlign="Middle" >Minor</asp:TableHeaderCell>
         </asp:TableHeaderRow>
         <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
             <asp:TableCell BorderStyle="Solid" BorderWidth="2px" Font-Bold="True" Font-Underline="true" HorizontalAlign="Left" VerticalAlign="Middle" Width="60%" ><u>1.0 Building and Structure</u></asp:TableCell>
@@ -355,7 +357,7 @@
             <asp:TableCell BorderStyle="Solid" BorderWidth="1px" HorizontalAlign="Center" VerticalAlign="Top" Width="10%" ></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
-            <asp:TableCell Style="padding-left:50px;" Width="80%" >For more information on how to obtain a new permit or reactivate the exiting permit, contact the Building Division at (626) 744-4200 or visit the Permit Center - 175 N Garfield Ave.</asp:TableCell>
+            <asp:TableCell Style="padding-left:50px;" Width="80%" Font-Italic="True">For more information on how to obtain a new permit or reactivate the exiting permit, contact the Building Division at (626) 744-4200 or visit the Permit Center - 175 N Garfield Ave.</asp:TableCell>
             <asp:TableCell />
             <asp:TableCell />
             <asp:TableCell />
@@ -482,20 +484,50 @@
         </asp:TableRow>
     </asp:Table>
     </div>
-    <br />
+    <fieldset style="padding:15px; width:960px; border:solid; border-color:black" >
+        If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
+        unless otherwise noted by the inspector. Major violations require reinspection. Minor violations do not require reinspection (at the discretion of 
+        the inspector); however, the property owner must correct the violations, sign the report, and return it to the address listed at the bottom of this 
+        report before issuance of the Certificate of Inspection.
+    </fieldset>
+    <div>
+        <asp:Table ID="CertTable" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="3px" BorderColor="Black" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
+            <asp:TableHeaderRow BorderStyle="Solid" VerticalAlign="Middle" ID="header1">
+                <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" ColumnSpan="2" >I hereby certify that all the violations listed above have been corrected</asp:TableHeaderCell>
+            </asp:TableHeaderRow>
+            <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
+                <asp:TableCell BorderStyle="Solid" Style="padding-left:20px;" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="40%" >Date</asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtDate" runat="server" Width="100%"></asp:TextBox></asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
+                <asp:TableCell BorderStyle="Solid" Style="padding-left:20px;" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="40%" >Property Address</asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtProp" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
+            </asp:TableRow>
+                <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
+                <asp:TableCell BorderStyle="Solid" Style="padding-left:20px;" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="40%" >PRINT: Property Owner/Owner Representative Name</asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtPrint" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
+            </asp:TableRow>
+                <asp:TableRow BorderStyle="Solid" HorizontalAlign="Left" VerticalAlign="Top">
+                <asp:TableCell BorderStyle="Solid" Style="padding-left:20px;" BorderWidth="2px" HorizontalAlign="Left" VerticalAlign="Middle" Width="40%" >SIGN: Property Owner/Owner Representative Name</asp:TableCell>
+                <asp:TableCell><asp:TextBox ID="txtSign" runat="server" Width="100%" ></asp:TextBox></asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+        <asp:Table ID="InspectionPhotosTable" runat="server" Width="960px" BorderStyle="Solid" BorderWidth="3px" BorderColor="Black" CellPadding="1" CellSpacing="1" HorizontalAlign="Left">
+            <asp:TableHeaderRow BorderStyle="Solid" VerticalAlign="Middle" ID="header2">
+                <asp:TableHeaderCell BorderStyle="Inset" VerticalAlign="Middle" ColumnSpan="2" >Inspection Photos:</asp:TableHeaderCell>
+            </asp:TableHeaderRow>
+        </asp:Table>
+    </div>
     <div contextmenu="buttons" >
         <asp:Button ID="btnSave" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Save" Width="150px" Style="margin-left: 75px;" OnClick="btnSave_Click" />
         <asp:Button ID="btnDelete" runat="server" BorderStyle="Solid" BorderWidth="3px" Font-Bold="True" Font-Names="Arial Black" Text="Delete" Width="150px" Style="margin-left: 50px;" OnClick="btnDelete_Click" />
-        <br />
-        <br />
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />
-		    <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="true" />
+		        <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="true" />
 		        <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
-                <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />            
+                <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />
             </ContentTemplate>
         </asp:UpdatePanel>
-        <br />
     </div>
 </asp:Content>

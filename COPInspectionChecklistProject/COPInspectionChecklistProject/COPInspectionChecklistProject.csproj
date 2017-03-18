@@ -551,6 +551,7 @@
     <Compile Include="InspectionChecklist.aspx.designer.cs">
       <DependentUpon>InspectionChecklist.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InspectionStatus.cs" />
     <Compile Include="MainMenu.aspx.cs">
       <DependentUpon>MainMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
