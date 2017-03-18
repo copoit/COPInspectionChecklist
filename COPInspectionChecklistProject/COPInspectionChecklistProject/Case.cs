@@ -20,6 +20,10 @@ namespace COPInspectionChecklistProject
         public DateTime reinspectionDate { get; set; }
         public int inspector_ID { get; set; }
         public int property_ID { get; set; }
+        //added by Chaode He 3/17/2017
+        public string inspectionType { get; set; }
+        public string inspectionStatus { get; set; }
+        //end
         public Case() { }
         public Case(string newCaseNumb) {
             caseNumber = newCaseNumb;

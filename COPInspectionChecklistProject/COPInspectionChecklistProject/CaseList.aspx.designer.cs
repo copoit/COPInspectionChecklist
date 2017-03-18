@@ -13,6 +13,15 @@ namespace COPInspectionChecklistProject {
     public partial class CaseList {
         
         /// <summary>
+        /// txtPropertyId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField txtPropertyId;
+        
+        /// <summary>
         /// txtPropAdd control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtPropAdd;
         
         /// <summary>
-        /// GridView1 control.
+        /// CaseListGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView CaseListGridView;
         
         /// <summary>
         /// btnNewCase control.
