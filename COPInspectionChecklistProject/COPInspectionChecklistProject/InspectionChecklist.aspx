@@ -529,7 +529,7 @@
 		        <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
               <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />
            
-		    public void SendSupportEmail(string emailAddress, string subject, string body)
+		    public void SendEmail(string emailAddress, string subject, string body)
 {
    Process.Start("mailto:" + emailAddress + "?subject=" + subject + "&body=" 
                 + body);
