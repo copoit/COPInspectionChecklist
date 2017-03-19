@@ -139,15 +139,12 @@ namespace COPInspectionChecklistProject
         {
             //delete data from database
         }
-         protected void btnEmail_Click(object sender, EventArgs e)
- 
+         
+          protected void btnEmail_Click(object sender, EventArgs e)
+          //Sending email
          {
-             //process checklist for email
-         }
-         protected void Page_Load(object sender, EventArgs e)
-{
-    try
-    {
+          try
+         {
         MailMessage mailMessage = new MailMessage();
         mailMessage.To.Add("your.own@mail-address.com");
         mailMessage.From = new MailAddress("another@mail-address.com");
@@ -156,11 +153,11 @@ namespace COPInspectionChecklistProject
         SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com");
         smtpClient.Send(mailMessage);
         Response.Write("E-mail sent!");
-    }
-    catch(Exception ex)
-    {
+        }
+         catch(Exception ex)
+        {
         Response.Write("Could not send the e-mail - error: " + ex.Message);
-    }
+        }
 
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
