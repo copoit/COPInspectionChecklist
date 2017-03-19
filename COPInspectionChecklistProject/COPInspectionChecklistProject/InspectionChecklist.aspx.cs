@@ -144,6 +144,24 @@ namespace COPInspectionChecklistProject
          {
              //process checklist for email
          }
+         protected void Page_Load(object sender, EventArgs e)
+{
+    try
+    {
+        MailMessage mailMessage = new MailMessage();
+        mailMessage.To.Add("your.own@mail-address.com");
+        mailMessage.From = new MailAddress("another@mail-address.com");
+        mailMessage.Subject = "Inpection Deficiencies";
+        mailMessage.Body = "Inspection Deficiencies report";
+        SmtpClient smtpClient = new SmtpClient("smtp.your-isp.com");
+        smtpClient.Send(mailMessage);
+        Response.Write("E-mail sent!");
+    }
+    catch(Exception ex)
+    {
+        Response.Write("Could not send the e-mail - error: " + ex.Message);
+    }
+
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
