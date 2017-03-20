@@ -137,6 +137,12 @@ namespace COPInspectionChecklistProject
         {
             //delete data from database
         }
+         
+          protected void btnSendMail_Click(object sender, EventArgs e)
+         {
+         Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
+         }
+
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
