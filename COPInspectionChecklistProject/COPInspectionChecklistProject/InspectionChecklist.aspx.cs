@@ -141,8 +141,9 @@ namespace COPInspectionChecklistProject
         }
          
           protected void btnEmail_Click(object sender, EventArgs e)
-          //Sending email
-        {
+         {
+         //Sending email
+         }
 
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
