@@ -26,7 +26,6 @@ namespace COPInspectionChecklistProject
 
             if (dt.Rows.Count > 0)
             {
-
                 string SQL2 = "SELECT * FROM[INSPECTOR_INFO] Where[INSPECTOR_INFO].Inspector_ID ='" + dt.Rows[0]["Inspector_ID"].ToString() + "'";
 
                 var dtInspector = clsCommon.TestDBConnection(SQL2);
@@ -41,6 +40,7 @@ namespace COPInspectionChecklistProject
                 txtApplicant.Text = dt.Rows[0]["Property_Owner_Name"].ToString();
                 txtOwnerPhone.Text = dt.Rows[0]["Property_Owner_Phone"].ToString();
                 txtSidewalk.Text = dt.Rows[0]["Sidewalk_Fee"].ToString();
+                txtInspectType.Text = dt.Rows[0]["Inspection_Type"].ToString();
                 txtInspectName.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
                 txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
@@ -61,7 +61,6 @@ namespace COPInspectionChecklistProject
                 btnNoticeNonCompliance.Visible = true;
             }           
         }
-
         #region Buttons
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
@@ -126,7 +125,6 @@ namespace COPInspectionChecklistProject
             }
             DisplayForms();
         }
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //save data to database

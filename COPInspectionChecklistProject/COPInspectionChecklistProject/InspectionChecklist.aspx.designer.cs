@@ -157,13 +157,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtSidewalk;
         
         /// <summary>
-        /// InspectionFindingTable control.
+        /// NoticeTable1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table InspectionFindingTable;
+        protected global::System.Web.UI.WebControls.Table NoticeTable1;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -173,6 +173,24 @@ namespace COPInspectionChecklistProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// InspectionFindingsTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table InspectionFindingsTable;
+        
+        /// <summary>
+        /// headin2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderRow headin2;
         
         /// <summary>
         /// cBMajor control.

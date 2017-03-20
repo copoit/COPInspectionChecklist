@@ -12,22 +12,17 @@ namespace COPInspectionChecklistProject
         protected void Page_Load(object sender, EventArgs e)
         {
         }
-            protected void btnPreviousPage_Click(object sender, EventArgs e)
+        protected void btnPreviousPage_Click(object sender, EventArgs e)
         {
             Response.Redirect("CaseMain.aspx");
         }
-
         protected void txtPropAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
     }
-
-    
-    
 }
