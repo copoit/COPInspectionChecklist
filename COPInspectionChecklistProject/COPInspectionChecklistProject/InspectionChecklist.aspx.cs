@@ -142,7 +142,7 @@ namespace COPInspectionChecklistProject
          
           protected void btnEmail_Click(object sender, EventArgs e)
          {
-          Response.Redirect("SendMail.aspx");
+         Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
          }
 
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
