@@ -1,4 +1,4 @@
-<%@ Page language="c#" Codebehind="SendMail.aspx.cs" AutoEventWireup="false" Inherits="COPInspectionChecklistProject.SendMail" %
+<%@ Page Title="Send Mail" Language="c#" Codebehind="SendMail.aspx.cs" AutoEventWireup="false" Inherits="COPInspectionChecklistProject.SendMail" %
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
 <HTML>
   <HEAD>
