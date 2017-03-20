@@ -524,7 +524,7 @@
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />
-		       <asp:Button ID="btnSendMail" runat="server" OnClick="btnSendEmail_Click" Text="Email Inspection Deficiencies" Height="38px" Width="250px" Visible="true" />            
+		       <asp:Button ID="btnSendMail" runat="server" OnClick="btnSendMail_Click" Text="Email Inspection Deficiencies" Height="38px" Width="250px" Visible="true" />            
 		    <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="true" />
 		        <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
               <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />
