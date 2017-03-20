@@ -53,6 +53,7 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
+                btnSendMail.Visible = false;
               
             }
             else if (!cBNoViolations.Checked)
@@ -60,7 +61,8 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
-               
+                btnSendMail.Visible = true;
+              
             }           
         }
         #region Buttons
