@@ -50,13 +50,13 @@ namespace COPInspectionChecklistProject
 		/// </summary>
 		private void InitializeComponent()
 		{    
-			this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+			this.btnSendMail.Click += new System.EventHandler(this.btnSendMail_Click);
 			this.Load += new System.EventHandler(this.Page_Load);
 
 		}
 		#endregion
 
-		private void btnSend_Click(object sender, System.EventArgs e)
+		private void btnSendMail_Click(object sender, System.EventArgs e)
 		{
 			try
 			{
