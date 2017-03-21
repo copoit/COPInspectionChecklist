@@ -11,9 +11,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
-namespace EMailSample
+namespace COPInspectionChecklistProject
 {
-	public class SendMail : System.Web.UI.Page
+	public partial class SendMail : System.Web.UI.Page
 	{
 		protected System.Web.UI.WebControls.Label lblHeader;
 		protected System.Web.UI.WebControls.TextBox txtSender;
