@@ -238,22 +238,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.CheckBox cBNoViolations;
         
         /// <summary>
-        /// InspectionDetails control.
+        /// InspectionGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table InspectionDetails;
-        
-        /// <summary>
-        /// headin1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderRow headin1;
+        protected global::System.Web.UI.WebControls.GridView InspectionGrid;
         
         /// <summary>
         /// CertTable control.
@@ -364,13 +355,14 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.Button btnCaseMain;
         
         /// <summary>
-        /// btnEmail control.
+        /// btnSendMail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEmail;
+        protected global::System.Web.UI.WebControls.Button btnSendMail;
+        
         /// <summary>
         /// btnCertificateInspection control.
         /// </summary>

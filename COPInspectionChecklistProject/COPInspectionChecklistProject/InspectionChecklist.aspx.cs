@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.UI;
 using COPInspectionChecklistProject.Common;
+using System.Collections;
+using System.Data;
 
 namespace COPInspectionChecklistProject
 {
@@ -12,16 +14,15 @@ namespace COPInspectionChecklistProject
             if (Request.QueryString["CaseNumber"] != null)
             {
                 string caseNumber = Request.QueryString["CaseNumber"];
-                getCase(caseNumber);
+                retrieveCaseByCaseNumber(caseNumber);
+                retrieveViolationsByCaseNumber(caseNumber);
             }
             txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
-        private void getCase(string caseNumber)
+        private void retrieveCaseByCaseNumber(string caseNumber)
         {
-
             DbCommon clsCommon = new DbCommon();
             string SQL = "SELECT * FROM[CASE_INFO] INNER JOIN[PROPERTY_INFO] ON[CASE_INFO].Property_ID = [PROPERTY_INFO].Property_ID Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
-
             var dt = clsCommon.TestDBConnection(SQL);
 
             if (dt.Rows.Count > 0)
@@ -46,6 +47,33 @@ namespace COPInspectionChecklistProject
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
             }
         }
+        private void retrieveViolationsByCaseNumber(string caseNumber)
+        {
+            DbCommon clsCommon = new DbCommon();
+            ArrayList violationList = new ArrayList();
+            DataTable dataTable = new DataTable();
+            DataSet violationDataSet = new DataSet();
+            try
+            {
+                //retrieve violation list by caseNumber
+                string SQL = "SELECT VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes, VIOLATIONS.SubSection_Major, VIOLATIONS.SubSection_Minor" +
+                    " From VIOLATIONS left join CASE_INFO ON VIOLATIONS.Case_Num=CASE_INFO.Case_Num Where VIOLATIONS.Case_Num ='" + caseNumber + "'";
+
+                var caseListDT = clsCommon.TestDBConnection(SQL);
+                if (caseListDT.Rows.Count > 0)
+                {
+                    dataTable = caseListDT;
+                }
+                violationDataSet.Tables.Add(dataTable);
+                InspectionGrid.DataSource = violationDataSet.Tables[0];
+                InspectionGrid.DataBind();
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)
@@ -53,12 +81,14 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
+                //btnSendMail.Visible = false;
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
+                //btnSendMail.Visible = true;
             }           
         }
         #region Buttons
@@ -86,32 +116,32 @@ namespace COPInspectionChecklistProject
         {
             //no major violations 
             if (cBNoMajor.Checked)
+            {
                 cBMajor.Checked = false;
-            
-            if (cBNoMajor.Checked && cBNoMinor.Checked)
+                cBNoViolations.Checked = false;
+            }
+            if(cBNoMajor.Checked && cBNoMinor.Checked)
             {
                 cBNoViolations.Checked = true;
-                cBNoMajor.Checked = false;
                 cBNoMinor.Checked = false;
+                cBNoMajor.Checked = false;
             }
-            else if(!cBNoMajor.Checked || !cBNoMinor.Checked)
-                cBNoViolations.Checked = false;
             DisplayForms();
         }
         protected void cBNoMinor_CheckedChanged(object sender, EventArgs e)
         {
             //no minor violations 
             if (cBNoMinor.Checked)
+            {
                 cBMinor.Checked = false;
-
+                cBNoViolations.Checked = false;
+            }
             if (cBNoMajor.Checked && cBNoMinor.Checked)
             {
                 cBNoViolations.Checked = true;
-                cBNoMajor.Checked = false;
                 cBNoMinor.Checked = false;
+                cBNoMajor.Checked = false;
             }
-            else if (!cBNoMajor.Checked || !cBNoMinor.Checked)
-                cBNoViolations.Checked = false;
             DisplayForms();
         }
         protected void cBNoViolations_CheckedChanged(object sender, EventArgs e)
