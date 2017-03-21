@@ -2,7 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="Inspection Report">
-        <h2><b>Case Main</b></h2>
+        <b>Case Main</b>
         <asp:Table ID="CaseMainTable" runat="server" Width="960px">
             <asp:TableRow>
                 <asp:TableCell Width="20%">Case Number:</asp:TableCell>
