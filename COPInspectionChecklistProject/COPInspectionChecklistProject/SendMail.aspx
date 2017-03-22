@@ -1,11 +1,10 @@
 <%@ Page Title="SendMail" Language="c#" MasterPageFile="~/Site.Master" AutoEventWireup="true" Codebehind="SendMail.aspx.cs" Inherits="COPInspectionChecklistProject.SendMail" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-<!DOCTYPE html>
+
 <HTML>
 	<HEAD>
 		<title></title>
-		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
 		<style type="text/css">
 		TD { FONT-SIZE: 10pt; COLOR: #000000; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif }
 		.width386 { WIDTH: 386px }
