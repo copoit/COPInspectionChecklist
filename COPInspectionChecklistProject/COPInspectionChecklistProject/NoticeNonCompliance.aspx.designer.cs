@@ -13,51 +13,93 @@ namespace COPInspectionChecklistProject {
     public partial class NoticeNonCompliance {
         
         /// <summary>
-        /// form1 control.
+        /// txtNonComplianceCaseNum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox txtNonComplianceCaseNum;
         
         /// <summary>
-        /// btnPreviousPage control.
+        /// txtNonCompliancePropAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPreviousPage;
+        protected global::System.Web.UI.WebControls.TextBox txtNonCompliancePropAdd;
         
         /// <summary>
-        /// lblCaseNumber control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCaseNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
         
         /// <summary>
-        /// lblNumber control.
+        /// txtInspectionDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNumber;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionDate;
         
         /// <summary>
-        /// PreviousPage property.
+        /// txtInspector control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new COPInspectionChecklistProject.CaseMain PreviousPage {
-            get {
-                return ((COPInspectionChecklistProject.CaseMain)(base.PreviousPage));
-            }
-        }
+        protected global::System.Web.UI.WebControls.TextBox txtInspector;
+        
+        /// <summary>
+        /// btnNonComplianceSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNonComplianceSave;
+        
+        /// <summary>
+        /// btnNonComplianceCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNonComplianceCancel;
+        
+        /// <summary>
+        /// btnNonComplianceCheckList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNonComplianceCheckList;
+        
+        /// <summary>
+        /// btnNonComplianceCaseMain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNonComplianceCaseMain;
+        
+        /// <summary>
+        /// btnNonComplianceMainMenaul control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNonComplianceMainMenaul;
     }
 }
