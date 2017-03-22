@@ -13,15 +13,6 @@ namespace COPInspectionChecklistProject {
     public partial class CertInspection {
         
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
         /// btnPreviousPage control.
         /// </summary>
         /// <remarks>
@@ -58,22 +49,22 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtInspectDate;
         
         /// <summary>
-        /// txtPropAdd control.
+        /// txtPropAddr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox txtPropAdd;
+        protected global::System.Web.UI.WebControls.TextBox txtPropAddr;
         
         /// <summary>
-        /// txtInpsectType control.
+        /// txtInspType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtInpsectType;
+        protected global::System.Web.UI.WebControls.TextBox txtInspType;
         
         /// <summary>
         /// txtApplicant control.
@@ -103,13 +94,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtInspector;
         
         /// <summary>
-        /// txtDwellingInfo control.
+        /// txtDwellInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox txtDwellingInfo;
+        protected global::System.Web.UI.WebControls.TextBox txtDwellInfo;
         
         /// <summary>
         /// lstInspectorNotes control.
