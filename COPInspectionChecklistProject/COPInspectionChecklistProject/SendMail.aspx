@@ -1,12 +1,9 @@
-<%@ Page Title="SendMail" Language="c#" MasterPageFile="~/Site.Master" AutoEventWireup="true" Codebehind="SendMail.aspx.cs" Inherits="COPInspectionChecklistProject.SendMail" %>
-
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-
+<%@ Page language="c#" Codebehind="SendMail.aspx.cs" AutoEventWireup="false" Inherits="MailWebService.WebForm1" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<HTML>
+	<HEAD>
 		<title></title>
+		<meta content="http://schemas.microsoft.com/intellisense/ie5" name="vs_targetSchema">
 		<style type="text/css">
 		TD { FONT-SIZE: 10pt; COLOR: #000000; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif }
 		.width386 { WIDTH: 386px }
@@ -14,11 +11,11 @@
 		.titl { FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #ffffff; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif }
 		BODY { BORDER-RIGHT: 0px; BORDER-TOP: 0px; BACKGROUND: white; MARGIN: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif }
 		</style>
-	</head>
+	</HEAD>
 	<body>
 		<table cellSpacing="0" cellPadding="3" width="100%" bgColor="navy" border="0">
 			<tr>
-				<td align="center"><span class="titl">COP&nbsp;Email</span></td>
+				<td align="center"><span class="titl">&nbsp;Email Deficiencies Report</span></td>
 			</tr>
 		</table>
 		<br>
@@ -69,6 +66,10 @@
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
+									<td vAlign="middle" align="right">&nbsp;</td>
+									<td>&nbsp;</td>
+								</tr>
+								<tr>
 									<td align="center" colSpan="2"><asp:button id="btnSend" tabIndex="9" runat="server" width="100px" text="Send"></asp:button></td>
 								</tr>
 							</table>
@@ -84,5 +85,4 @@
 			<br>
 		</div>
 	</body>
-	</html>
-
+</HTML>
