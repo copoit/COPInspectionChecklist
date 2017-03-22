@@ -40,7 +40,7 @@ namespace COPInspectionChecklistProject
 			//
 			// CODEGEN: This call is required by the ASP.NET Web Form Designer.
 			//
-			InitializeComponent();
+			
 			base.OnInit(e);
 		}
 		
