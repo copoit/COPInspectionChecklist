@@ -921,8 +921,18 @@
         </asp:Table>
     </div>--%>
     <div class="InspectionGrid">
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False">
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="DBOIT">
+            <Columns>
+                <asp:BoundField DataField="Section_ID" HeaderText="Section_ID" SortExpression="Section_ID" />
+                <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name"></asp:BoundField>
+                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc"></asp:BoundField>
+                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code"></asp:BoundField>
+                <asp:CheckBoxField DataField="Expr1" HeaderText="Major" SortExpression="Expr1" />
+                <asp:CheckBoxField DataField="Expr2" HeaderText="Minor" SortExpression="Expr2" />
+                <asp:BoundField DataField="Expr3" HeaderText="Notes" SortExpression="Expr3" />
+            </Columns>
         </asp:GridView>
+        <asp:SqlDataSource ID="DBOIT" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" SelectCommand="SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID"></asp:SqlDataSource>
     </div>
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 

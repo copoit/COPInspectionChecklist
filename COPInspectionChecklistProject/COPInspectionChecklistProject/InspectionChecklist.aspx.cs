@@ -15,7 +15,7 @@ namespace COPInspectionChecklistProject
             {
                 string caseNumber = Request.QueryString["CaseNumber"];
                 retrieveCaseByCaseNumber(caseNumber);
-                retrieveViolationsByCaseNumber(caseNumber);
+                //retrieveViolationsByCaseNumber(caseNumber);
             }
             txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
@@ -47,33 +47,32 @@ namespace COPInspectionChecklistProject
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
             }
         }
-        private void retrieveViolationsByCaseNumber(string caseNumber)
-        {
-            DbCommon clsCommon = new DbCommon();
-            ArrayList violationList = new ArrayList();
-            DataTable dataTable = new DataTable();
-            DataSet violationDataSet = new DataSet();
-            try
-            {
-                //retrieve violation list by caseNumber
-                string SQL = "SELECT VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes, VIOLATIONS.SubSection_Major, VIOLATIONS.SubSection_Minor" +
-                    " From VIOLATIONS left join CASE_INFO ON VIOLATIONS.Case_Num=CASE_INFO.Case_Num Where VIOLATIONS.Case_Num ='" + caseNumber + "'";
+        //private void retrieveViolationsByCaseNumber(string caseNumber)
+        //{
+        //    DbCommon clsCommon = new DbCommon();
+        //    ArrayList violationList = new ArrayList();
+        //    DataTable dataTable = new DataTable();
+        //    DataSet violationDataSet = new DataSet();
+        //    try
+        //    {
+        //        //retrieve violation list by caseNumber
+        //        string SQL = "SELECT * From VIOLATIONS"; //From VIOLATIONS Where VIOLATIONS.Case_Num ='" + caseNumber + "'";
 
-                var caseListDT = clsCommon.TestDBConnection(SQL);
-                if (caseListDT.Rows.Count > 0)
-                {
-                    dataTable = caseListDT;
-                }
-                violationDataSet.Tables.Add(dataTable);
-                InspectionGrid.DataSource = violationDataSet.Tables[0];
-                InspectionGrid.DataBind();
+        //        var caseListDT = clsCommon.TestDBConnection(SQL);
+        //        if (caseListDT.Rows.Count > 0)
+        //        {
+        //            dataTable = caseListDT;
+        //        }
+        //        violationDataSet.Tables.Add(dataTable);
+        //        InspectionGrid.DataSource = violationDataSet.Tables[0];
+        //        InspectionGrid.DataBind();
 
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)
