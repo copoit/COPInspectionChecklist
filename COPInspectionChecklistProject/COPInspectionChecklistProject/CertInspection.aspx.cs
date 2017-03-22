@@ -11,7 +11,18 @@ namespace COPInspectionChecklistProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string caseNumber = Request.QueryString["CaseNumber"];
+        }
+        protected void btnPreviousPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CaseMain.aspx");
+        }
+        protected void txtPropAdd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

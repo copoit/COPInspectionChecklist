@@ -13,6 +13,15 @@ namespace COPInspectionChecklistProject {
     public partial class CaseMain {
         
         /// <summary>
+        /// CaseMainTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table CaseMainTable;
+        
+        /// <summary>
         /// txtCaseNum control.
         /// </summary>
         /// <remarks>
@@ -49,13 +58,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtMailAdd;
         
         /// <summary>
-        /// txtEmail control.
+        /// txtAppEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtAppEmail;
         
         /// <summary>
         /// txtAppPhone control.
@@ -146,15 +155,6 @@ namespace COPInspectionChecklistProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReinspectDate;
-        
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
         
         /// <summary>
         /// btnInspectionChecklist control.

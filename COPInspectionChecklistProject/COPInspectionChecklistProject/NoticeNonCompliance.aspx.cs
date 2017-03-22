@@ -14,9 +14,3 @@ namespace COPInspectionChecklistProject
         }
     }
 }
-//CaseMain previousPage = PreviousPage;
-//if(previousPage !=null && previousPage.IsCrossPagePostBack)
-//{
-//    txtCaseNumber.Text = previousPage.CaseNumber;
-//}
-//txtCaseNumber.Text = Request.QueryString["CaseNumber"].ToString();

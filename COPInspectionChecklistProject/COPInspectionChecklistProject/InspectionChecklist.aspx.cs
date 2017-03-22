@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.UI;
 using COPInspectionChecklistProject.Common;
+using System.Collections;
+using System.Data;
 
 namespace COPInspectionChecklistProject
 {
@@ -12,21 +14,19 @@ namespace COPInspectionChecklistProject
             if (Request.QueryString["CaseNumber"] != null)
             {
                 string caseNumber = Request.QueryString["CaseNumber"];
-                getCase(caseNumber);
+                retrieveCaseByCaseNumber(caseNumber);
+                //retrieveViolationsByCaseNumber(caseNumber);
             }
             txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
-        private void getCase(string caseNumber)
+        private void retrieveCaseByCaseNumber(string caseNumber)
         {
-
             DbCommon clsCommon = new DbCommon();
             string SQL = "SELECT * FROM[CASE_INFO] INNER JOIN[PROPERTY_INFO] ON[CASE_INFO].Property_ID = [PROPERTY_INFO].Property_ID Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
-
             var dt = clsCommon.TestDBConnection(SQL);
 
             if (dt.Rows.Count > 0)
             {
-
                 string SQL2 = "SELECT * FROM[INSPECTOR_INFO] Where[INSPECTOR_INFO].Inspector_ID ='" + dt.Rows[0]["Inspector_ID"].ToString() + "'";
 
                 var dtInspector = clsCommon.TestDBConnection(SQL2);
@@ -41,36 +41,55 @@ namespace COPInspectionChecklistProject
                 txtApplicant.Text = dt.Rows[0]["Property_Owner_Name"].ToString();
                 txtOwnerPhone.Text = dt.Rows[0]["Property_Owner_Phone"].ToString();
                 txtSidewalk.Text = dt.Rows[0]["Sidewalk_Fee"].ToString();
+                txtInspectType.Text = dt.Rows[0]["Inspection_Type"].ToString();
                 txtInspectName.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
                 txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
             }
         }
+        //private void retrieveViolationsByCaseNumber(string caseNumber)
+        //{
+        //    DbCommon clsCommon = new DbCommon();
+        //    ArrayList violationList = new ArrayList();
+        //    DataTable dataTable = new DataTable();
+        //    DataSet violationDataSet = new DataSet();
+        //    try
+        //    {
+        //        //retrieve violation list by caseNumber
+        //        string SQL = "SELECT * From VIOLATIONS"; //From VIOLATIONS Where VIOLATIONS.Case_Num ='" + caseNumber + "'";
+
+        //        var caseListDT = clsCommon.TestDBConnection(SQL);
+        //        if (caseListDT.Rows.Count > 0)
+        //        {
+        //            dataTable = caseListDT;
+        //        }
+        //        violationDataSet.Tables.Add(dataTable);
+        //        InspectionGrid.DataSource = violationDataSet.Tables[0];
+        //        InspectionGrid.DataBind();
+
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        throw e;
+        //    }
+        //}
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = true;
-               
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
+                btnSendMail.Visible = false;
             }
-            else if (cBMajor.Checked || cBMinor.Checked)
+            else if (!cBNoViolations.Checked)
             {
-               
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
-            }
-            else if (cBNoMajor.Checked && cBNoMinor.Checked)
-            {
-               
-                btnCertificateInspection.Visible = true;
-                btnReinspectionNotice.Visible = false;
-                btnNoticeNonCompliance.Visible = false;
-            }
+                btnSendMail.Visible = true;
+            }           
         }
-
         #region Buttons
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
@@ -96,22 +115,32 @@ namespace COPInspectionChecklistProject
         {
             //no major violations 
             if (cBNoMajor.Checked)
+            {
                 cBMajor.Checked = false;
-            else if (!cBNoMajor.Checked)
-                cBMajor.Checked = true;
-            if (cBNoMajor.Checked && cBNoMinor.Checked)
+                cBNoViolations.Checked = false;
+            }
+            if(cBNoMajor.Checked && cBNoMinor.Checked)
+            {
                 cBNoViolations.Checked = true;
+                cBNoMinor.Checked = false;
+                cBNoMajor.Checked = false;
+            }
             DisplayForms();
         }
         protected void cBNoMinor_CheckedChanged(object sender, EventArgs e)
         {
             //no minor violations 
             if (cBNoMinor.Checked)
+            {
                 cBMinor.Checked = false;
-            else if (!cBNoMinor.Checked)
-                cBMinor.Checked = true;
+                cBNoViolations.Checked = false;
+            }
             if (cBNoMajor.Checked && cBNoMinor.Checked)
+            {
                 cBNoViolations.Checked = true;
+                cBNoMinor.Checked = false;
+                cBNoMajor.Checked = false;
+            }
             DisplayForms();
         }
         protected void cBNoViolations_CheckedChanged(object sender, EventArgs e)
@@ -125,7 +154,6 @@ namespace COPInspectionChecklistProject
             }
             DisplayForms();
         }
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
             //save data to database
@@ -138,6 +166,12 @@ namespace COPInspectionChecklistProject
         {
             //delete data from database
         }
+         
+          protected void btnSendMail_Click(object sender, EventArgs e)
+         {
+         Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
+         }
+
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
@@ -153,38 +187,3 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
-//private void UpdateCheckbox()
-//{
-//    if (!cBMajor.Checked && !cBMinor.Checked && cBNoMajor.Checked && cBNoMinor.Checked) //no violations found
-//        cBNoViolations.Checked = true;
-//    else if (cBMajor.Checked)                                                           //major violation found
-//    {
-//        cBNoViolations.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    else if (cBMinor.Checked)                                                           //minor violation found
-//    {
-//        cBNoMinor.Checked = false;
-//        cBNoViolations.Checked = false;
-//    }
-//    else if (cBNoMajor.Checked && cBNoMinor.Checked)                                    //no violations found
-//    {
-//        cBNoViolations.Checked = true;
-//        cBNoMinor.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    else if (cBNoMajor.Checked)                                                         //only no major violations found
-//    {
-//        cBMajor.Checked = false;
-//        cBNoMinor.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    else if (cBNoMinor.Checked)                                                         //only no minor violations found
-//    {
-//        cBMinor.Checked = false;
-//        cBNoMinor.Checked = false;
-//        cBNoMajor.Checked = false;
-//    }
-//    DisplayForms();                                                                     //call display method
-//}
-
