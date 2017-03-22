@@ -300,7 +300,6 @@
     <Content Include="DbScripts\OITDB.sql" />
     <Content Include="NoticeNonCompliance.aspx" />
     <Content Include="ReinspectNotice.aspx" />
-    <Content Include="SendMail.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="TestDbConnection.aspx" />
     <Content Include="ViewCases.aspx" />
@@ -580,9 +579,6 @@
     <Compile Include="SendMail.aspx.cs">
       <DependentUpon>SendMail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-     <Compile Include="SendMail.aspx.designer.cs">
-     <DependentUpon>SendMail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports.aspx.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
