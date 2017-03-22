@@ -4,15 +4,15 @@
     <%--This page displays information that was called for and retrieved from the database. Data is loaded per request 
     by a Case Number from CaseList page or InspectionMain page--%> 
     <div> 
-	    <div> 
-	        <h1>Case List</h1>
+	    <div>  
+	        <b>Case List</b>
             <asp:HiddenField id="txtPropertyId" runat="server"/>
             <br />
             <br />
 	        <asp:Label runat="server" Text="Property Address" /> 
 	        <asp:TextBox ID="txtPropAdd" runat="server" Text="Enter a property Address here" Width="500px" />
  	        <br />
-            <br />
+            <br /> 
             <asp:GridView ID="CaseListGridView" runat="server" autogeneratecolumns="false">
                 <Columns>
                     <asp:HyperLinkField HeaderText="Case Number" DataTextField="Case_Num" DataNavigateUrlFields="Case_Num" DataNavigateUrlFormatString="CaseMain.aspx?CaseNumber={0}" /> 
@@ -25,6 +25,6 @@
             <br />
  	    </div>
 	    <asp:Button ID="btnNewCase" runat="server" Onclick="btnNewCase_Click" Text="New Case" Width="200px" />
-	    <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" Width="200px" />
+	    <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Property Main" Width="200px" />
     </div>
 </asp:Content>
