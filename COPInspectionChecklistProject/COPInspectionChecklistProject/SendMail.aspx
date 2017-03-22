@@ -1,9 +1,11 @@
 <%@ Page Title="SendMail" Language="c#" MasterPageFile="~/Site.Master" AutoEventWireup="true" Codebehind="SendMail.aspx.cs" Inherits="COPInspectionChecklistProject.SendMail" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<HTML>
-	<HEAD>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<head>
 		<title></title>
 		<style type="text/css">
 		TD { FONT-SIZE: 10pt; COLOR: #000000; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif }
@@ -12,7 +14,7 @@
 		.titl { FONT-WEIGHT: bold; FONT-SIZE: 13pt; COLOR: #ffffff; FONT-STYLE: normal; FONT-FAMILY: Arial, Helvetica, sans-serif }
 		BODY { BORDER-RIGHT: 0px; BORDER-TOP: 0px; BACKGROUND: white; MARGIN: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif }
 		</style>
-	</HEAD>
+	</head>
 	<body>
 		<table cellSpacing="0" cellPadding="3" width="100%" bgColor="navy" border="0">
 			<tr>
@@ -82,5 +84,5 @@
 			<br>
 		</div>
 	</body>
-</HTML>
-</asp:Content>
+	</html>
+
