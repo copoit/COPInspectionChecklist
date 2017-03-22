@@ -49,7 +49,7 @@ namespace COPInspectionChecklistProject
 		/// the contents of this method with the code editor.
 		/// </summary>
 		
-
+                          #endregion
 		private void btnSendMail_Click(object sender, System.EventArgs e)
 		{
 			try
