@@ -921,15 +921,27 @@
         </asp:Table>
     </div>--%>
     <div class="InspectionGrid">
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AutoGenerateEditButton="false">
             <Columns>
                 <asp:BoundField HeaderText="ID" DataField="ID" SortExpression="ID" ReadOnly="True" />
                 <asp:BoundField HeaderText="Heading" DataField="Heading" SortExpression="Heading" ReadOnly="True" />
                 <asp:BoundField HeaderText="Description" DataField="Description" SortExpression="Description" ReadOnly="True" />
-                <asp:BoundField DataField="Building Code" HeaderText="Building Code" SortExpression="Building Code" ReadOnly="True" ></asp:BoundField>
-                <asp:CheckBoxField DataField="Major" HeaderText="Major" SortExpression="Major" ReadOnly="false" />
-                <asp:CheckBoxField DataField="Minor" HeaderText="Minor" SortExpression="Minor" ReadOnly="false" />
-                <asp:BoundField HeaderText="Notes" DataField="Notes" SortExpression="Notes"  ReadOnly="false" />
+                <asp:BoundField DataField="Building Code" HeaderText="Building Code" SortExpression="Building Code" ReadOnly="True" ></asp:BoundField>                
+                <asp:TemplateField HeaderText="Major" SortExpression="Major">                    
+                    <ItemTemplate>
+                        <asp:CheckBox ID="tbMajor" runat="server" Checked='<%# Bind("Major") %>' Enabled="true" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Minor" SortExpression="Minor">                    
+                    <ItemTemplate>
+                        <asp:CheckBox ID="tbMinor" runat="server" Checked='<%# Bind("Minor") %>' Enabled="true" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Notes" SortExpression="Notes">                    
+                    <ItemTemplate>
+                        <asp:TextBox ID="tbNotes" runat="server" Text='<%# Bind("Notes") %>' ></asp:TextBox>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" 
