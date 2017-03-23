@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace COPInspectionChecklistProject
+namespace COPInspectionChecklistProject {
     
     
-    public partial class WebForm1 {
+    public partial class MainMenu {
         
         /// <summary>
-        /// Form1 control.
+        /// btnInspectionMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        protected global::System.Web.UI.WebControls.Button btnInspectionMenu;
+        
+        /// <summary>
+        /// btnReportsMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReportsMenu;
     }
 }

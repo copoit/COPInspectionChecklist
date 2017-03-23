@@ -45,12 +45,8 @@ namespace COPInspectionChecklistProject
                 txtSidewalk.Text = dt.Rows[0]["Sidewalk_Fee"].ToString();
                 txtInspector.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
                 txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
-                if (Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]) != null)
-                    txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
-                else txtInspectDate.Text = "No Date Set";
-                if (Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]) != null)
-                    txtReinspectDate.Text = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]).ToString();
-                else txtReinspectDate.Text = "No Date Set";
+                txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
+                txtReinspectDate.Text = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]).ToString();
             }
         }
         public string CaseNumber

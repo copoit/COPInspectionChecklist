@@ -116,27 +116,27 @@
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
+                            <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" /></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
+                            <asp:CheckBox ID="cBMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" /></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED NO MAJOR VIOLATIONS</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
+                            <asp:CheckBox ID="cBNoMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" /></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED NO MINOR VIOLATIONS</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
+                            <asp:CheckBox ID="cBNoMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" /></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">NO VIOLATIONS WERE OBSERVED</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoViolations" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
+                            <asp:CheckBox ID="cBNoViolations" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" /></asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
             </ContentTemplate>
@@ -921,55 +921,25 @@
         </asp:Table>
     </div>--%>
     <div class="InspectionGrid">
-        <b>Inspection Details</b>
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AutoGenerateEditButton="false">
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="DBOIT">
             <Columns>
-                <asp:BoundField HeaderText="ID" DataField="ID" SortExpression="ID" ReadOnly="True" />
-                <asp:BoundField HeaderText="Heading" DataField="Heading" SortExpression="Heading" ReadOnly="True" />
-                <asp:BoundField HeaderText="Description" DataField="Description" SortExpression="Description" ReadOnly="True" />
-                <asp:BoundField DataField="Building Code" HeaderText="Building Code" SortExpression="Building Code" ReadOnly="True" ></asp:BoundField>                
-                <asp:TemplateField HeaderText="Major" SortExpression="Major">                    
-                    <ItemTemplate>
-                        <asp:CheckBox ID="tbMajor" runat="server" Checked='<%# Bind("Major") %>' Enabled="true" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Minor" SortExpression="Minor">                    
-                    <ItemTemplate>
-                        <asp:CheckBox ID="tbMinor" runat="server" Checked='<%# Bind("Minor") %>' Enabled="true" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Notes" SortExpression="Notes">                    
-                    <ItemTemplate>
-                        <asp:TextBox ID="tbNotes" runat="server" Text='<%# Bind("Notes") %>' ></asp:TextBox>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="Section_ID" HeaderText="Section_ID" SortExpression="Section_ID" />
+                <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name"></asp:BoundField>
+                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc"></asp:BoundField>
+                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code"></asp:BoundField>
+                <asp:CheckBoxField DataField="Expr1" HeaderText="Major" SortExpression="Expr1" />
+                <asp:CheckBoxField DataField="Expr2" HeaderText="Minor" SortExpression="Expr2" />
+                <asp:BoundField DataField="Expr3" HeaderText="Notes" SortExpression="Expr3" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" 
-            SelectCommand="SELECT 
-                                CL_SectionDetail.SubSection_Minor AS Minor, 
-                                CL_SectionDetail.SubSection_Major AS Major, 
-                                CL_SectionDetail.SubSection_Code AS [Building Code], 
-                                CL_SectionDetail.SubSection_Notes AS Notes, 
-                                CL_SectionDetail.SubSection_Desc AS Description, 
-                                CL_SectionDetail.Section_ID AS ID, 
-                                CL_Section.Section_Name AS Heading 
-                            FROM 
-                                CL_SectionDetail 
-                            INNER JOIN 
-                                CL_Section ON CL_SectionDetail.Section_ID = CL_Section.Section_ID 
-                            Order by 
-                                CL_SectionDetail.SubSection_ID">
-        </asp:SqlDataSource>
+        <asp:SqlDataSource ID="DBOIT" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" SelectCommand="SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID"></asp:SqlDataSource>
     </div>
-    <div class="Inspection Notice">
-        <fieldset style="padding: 15px;">
-            If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
-            unless otherwise noted by the inspector. Major violations require reinspection. Minor violations do not require reinspection (at the discretion of 
-            the inspector); however, the property owner must correct the violations, sign the report, and return it to the address listed at the bottom of this 
-            report before issuance of the Certificate of Inspection.
-        </fieldset>
-    </div>
+    <fieldset style="padding: 15px;">
+        If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
+        unless otherwise noted by the inspector. Major violations require reinspection. Minor violations do not require reinspection (at the discretion of 
+        the inspector); however, the property owner must correct the violations, sign the report, and return it to the address listed at the bottom of this 
+        report before issuance of the Certificate of Inspection.
+    </fieldset>
     <div class="Certification">
         <asp:Table ID="CertTable" runat="server">
             <asp:TableHeaderRow VerticalAlign="Middle" ID="header1">
