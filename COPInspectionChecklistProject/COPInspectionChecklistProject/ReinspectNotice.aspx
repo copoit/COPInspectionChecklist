@@ -61,7 +61,7 @@
                          </td>
 		            </tr>
                     <tr>
-                         <td style="width: 660px">Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
+                         <td style="width: 660px">Failure to honor this appointment will result in a citation being issued in the amount up to ($)&nbsp<asp:TextBox ID="txtCitationAmount" runat="server"  Width="80px"></asp:TextBox></td>
 		            </tr>
                      </tbody>
             </table>
