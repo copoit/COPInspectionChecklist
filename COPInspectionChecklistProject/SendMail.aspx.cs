@@ -81,11 +81,9 @@ namespace COPInspectionChecklistProject
                 email.Body = txtBody.Text;
                 
               
-
-                // Set the SMTP server and send the email
-                SmtpClient client = new SmtpClient(server);
-        // Add credentials if the SMTP server requires them.
-        client.Credentials = CredentialCache.DefaultNetworkCredentials;
+            // Set the SMTP server and send the email
+                SmtpMail.SmtpServer = "localhost";
+                SmtpMail.Send(email);
 
                 
 
