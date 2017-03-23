@@ -15,7 +15,7 @@ namespace COPInspectionChecklistProject
             {
                 string caseNumber = Request.QueryString["CaseNumber"];
                 retrieveCaseByCaseNumber(caseNumber);
-                //retrieveViolationsByCaseNumber(caseNumber);
+                updateViolationByCaseNumber(caseNumber);
             }
             txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
@@ -47,32 +47,17 @@ namespace COPInspectionChecklistProject
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
             }
         }
-        //private void retrieveViolationsByCaseNumber(string caseNumber)
-        //{
-        //    DbCommon clsCommon = new DbCommon();
-        //    ArrayList violationList = new ArrayList();
-        //    DataTable dataTable = new DataTable();
-        //    DataSet violationDataSet = new DataSet();
-        //    try
-        //    {
-        //        //retrieve violation list by caseNumber
-        //        string SQL = "SELECT * From VIOLATIONS"; //From VIOLATIONS Where VIOLATIONS.Case_Num ='" + caseNumber + "'";
-
-        //        var caseListDT = clsCommon.TestDBConnection(SQL);
-        //        if (caseListDT.Rows.Count > 0)
-        //        {
-        //            dataTable = caseListDT;
-        //        }
-        //        violationDataSet.Tables.Add(dataTable);
-        //        InspectionGrid.DataSource = violationDataSet.Tables[0];
-        //        InspectionGrid.DataBind();
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //}
+        private void updateViolationByCaseNumber(string caseNumber)
+        {
+            DbCommon clsCommon = new DbCommon();
+            string SQL1 = "SELECT * FROM[VIOLATIONS] INNER JOIN[CASE_INFO] ON[VIOLATIONS].Case_Num = [CASE_INFO].Case_Num Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
+            var violationDT = clsCommon.TestDBConnection(SQL1);
+            if (violationDT.Rows.Count > 0)
+            {
+                string SQL2 = "SELECT * FROM[VIOLATIONS] INNER JOIN[CL_SectionDetail] ON[VIOLATIONS].SubSection_ID =[CL_SectionDetail].SubSection_ID";
+                var dt = clsCommon.TestDBConnection(SQL2);
+            }
+        }
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)

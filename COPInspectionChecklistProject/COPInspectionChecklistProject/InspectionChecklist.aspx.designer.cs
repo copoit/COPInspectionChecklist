@@ -247,13 +247,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.GridView InspectionGrid;
         
         /// <summary>
-        /// DBOIT control.
+        /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DBOIT;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
         /// CertTable control.
