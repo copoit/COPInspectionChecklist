@@ -32,7 +32,7 @@ namespace COPInspectionChecklistProject
             {
                 txtNonComplianceCaseNum.Text = caseNumber;
                 DbCommon dbCommon = new DbCommon();
-                string SQL = "SELECT Property_StreetNumber,Property_StreetName,Property_Zip,convert(nvarchar(10),Inspection_Date,101) as Inspection_Date , Inspector_FName, Inspector_LName" +
+                string SQL = "SELECT convert(nvarchar(10),Case_Date,101) as Case_Date ,Property_StreetNumber,Property_StreetName,Property_Zip,convert(nvarchar(10),Inspection_Date,101) as Inspection_Date , Inspector_FName, Inspector_LName" +
                     " FROM[CASE_INFO] INNER JOIN[PROPERTY_INFO] ON[CASE_INFO].Property_ID = [PROPERTY_INFO].Property_ID" +
                     " left join[INSPECTOR_INFO] ON[CASE_INFO].Inspector_ID=[INSPECTOR_INFO].Inspector_ID" +
                     " Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
@@ -40,6 +40,7 @@ namespace COPInspectionChecklistProject
 
                 if (dt.Rows.Count > 0)
                 {
+                    txtDate.Text = dt.Rows[0]["Case_Date"].ToString();
                     txtNonCompliancePropAdd.Text = dt.Rows[0]["Property_StreetNumber"].ToString() + " " + dt.Rows[0]["Property_StreetName"].ToString() + " " + dt.Rows[0]["Property_Zip"].ToString();
                     txtInspectionDate.Text = dt.Rows[0]["Inspection_Date"].ToString();
                     txtInspector.Text = dt.Rows[0]["Inspector_FName"].ToString() + " " + dt.Rows[0]["Inspector_LName"].ToString();
