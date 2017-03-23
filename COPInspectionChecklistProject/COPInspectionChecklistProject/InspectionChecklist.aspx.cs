@@ -15,8 +15,7 @@ namespace COPInspectionChecklistProject
             if (Request.QueryString["CaseNumber"] != null)
             {
                 string caseNumber = Request.QueryString["CaseNumber"];
-                retrieveCaseByCaseNumber(caseNumber);
-                updateViolationByCaseNumber(caseNumber);
+                retrieveCaseByCaseNumber(caseNumber);                
             }
             txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
@@ -46,17 +45,6 @@ namespace COPInspectionChecklistProject
                 txtInspectName.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
                 txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
-            }
-        }
-        private void updateViolationByCaseNumber(string caseNumber)
-        {
-            DbCommon clsCommon = new DbCommon();
-            string SQL1 = "SELECT * FROM[VIOLATIONS] INNER JOIN[CASE_INFO] ON[VIOLATIONS].Case_Num = [CASE_INFO].Case_Num Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
-            var violationDT = clsCommon.TestDBConnection(SQL1);
-            if (violationDT.Rows.Count > 0)
-            {
-                string SQL2 = "SELECT * FROM[VIOLATIONS] INNER JOIN[CL_SectionDetail] ON[VIOLATIONS].SubSection_ID =[CL_SectionDetail].SubSection_ID";
-                var dt = clsCommon.TestDBConnection(SQL2);
             }
         }
         private void DisplayForms()
