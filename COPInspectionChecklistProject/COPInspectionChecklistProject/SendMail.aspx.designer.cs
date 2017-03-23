@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MailWebService  
+namespace COPInspectionChecklistProject
     
     
     public partial class WebForm1 {
