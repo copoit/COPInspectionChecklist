@@ -49,7 +49,7 @@ namespace COPInspectionChecklistProject
                     txtReinspectionPropAdd.Text = dt.Rows[0]["Property_StreetNumber"].ToString() + " " + dt.Rows[0]["Property_StreetName"].ToString() + " " + dt.Rows[0]["Property_Zip"].ToString();
                     txtInspectionDate.Text = dt.Rows[0]["Inspection_Date"].ToString();
                     txtReinspectionDate.Text= dt.Rows[0]["ReInspection_Date"].ToString();
-                    txtCitationAmount.Text = dt.Rows[0]["Citation_Charges"].ToString(); //temparorily, it is left blank
+                    txtCitationAmount.Text ="$"+ dt.Rows[0]["Citation_Charges"].ToString(); //temparorily, it is left blank
                     txtInspector.Text = dt.Rows[0]["Inspector_FName"].ToString() + " " + dt.Rows[0]["Inspector_LName"].ToString();
                  }
 
