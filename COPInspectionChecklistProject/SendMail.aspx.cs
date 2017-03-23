@@ -79,86 +79,15 @@ namespace COPInspectionChecklistProject
                 email.To = txtReceiver.Text;
                 email.Subject = txtSubject.Text;
                 email.Body = txtBody.Text;
-
-
-                // We use the 3 following variables to keep track of
-                // attachments so we can delete them and strFileName is
-                // used to for the name of the file attachment being 
-                // processed.
-                string attach1 = null;
-                string attach2 = null;
-                string attach3 = null;
-                string strFileName = null;
-
-                // Beginning of attachments processing
-                // Check the first open file dialog for a value
-                if (ofdAttachment1.PostedFile != null)
-                {
-                    // Get a reference to PostedFile object
-                    HttpPostedFile ulFile = ofdAttachment1.PostedFile;
-                    // Get size of the file
-                    int nFileLen = ulFile.ContentLength;
-                    // Make sure the size of the file is > 0
-                    if (nFileLen > 0)
-                    {
-                        // Get the file name
-                        strFileName = Path.GetFileName(ofdAttachment1.PostedFile.FileName);
-                        // Preced the file name with "attachments/" so 
-                        // the file is saved to our attachments directory
-                        strFileName = "attachments/" + strFileName;
-                        // Save the file on the server
-                        ofdAttachment1.PostedFile.SaveAs(Server.MapPath(strFileName));
-                        // Create the email attachment with the uploaded file
-                        MailAttachment attach = new MailAttachment(Server.MapPath(strFileName));
-                        // Attach the newly created email attachment
-                        email.Attachments.Add(attach);
-                        // Store filename so we can delete it later
-                        attach1 = strFileName;
-                    }
-                }
-                // Repeat previous step if there is an attachment #2
-                if (ofdAttachment2.PostedFile != null)
-                {
-                    HttpPostedFile ulFile = ofdAttachment2.PostedFile;
-                    int nFileLen = ulFile.ContentLength;
-                    if (nFileLen > 0)
-                    {
-                        strFileName = Path.GetFileName(ofdAttachment2.PostedFile.FileName);
-                        strFileName = "attachments/" + strFileName;
-                        ofdAttachment2.PostedFile.SaveAs(Server.MapPath(strFileName));
-                        MailAttachment attach = new MailAttachment(Server.MapPath(strFileName));
-                        email.Attachments.Add(attach);
-                        attach2 = strFileName;
-                    }
-                }
-                // Repeat previous step if there is an attachment #3
-                if (ofdAttachment3.PostedFile != null)
-                {
-                    HttpPostedFile ulFile = ofdAttachment3.PostedFile;
-                    int nFileLen = ulFile.ContentLength;
-                    if (nFileLen > 0)
-                    {
-                        strFileName = Path.GetFileName(ofdAttachment3.PostedFile.FileName);
-                        strFileName = "attachments/" + strFileName;
-                        ofdAttachment3.PostedFile.SaveAs(Server.MapPath(strFileName));
-                        MailAttachment attach = new MailAttachment(Server.MapPath(strFileName));
-                        email.Attachments.Add(attach);
-                        attach3 = strFileName;
-                    }
-                }
-                // End of attachments processing
+                
+              
 
                 // Set the SMTP server and send the email
-                SmtpMail.SmtpServer = "localhost";
-                SmtpMail.Send(email);
+                SmtpClient client = new SmtpClient(server);
+        // Add credentials if the SMTP server requires them.
+        client.Credentials = CredentialCache.DefaultNetworkCredentials;
 
-                // Delete the attachements if any
-                if (attach1 != null)
-                    File.Delete(Server.MapPath(attach1));
-                if (attach2 != null)
-                    File.Delete(Server.MapPath(attach2));
-                if (attach3 != null)
-                    File.Delete(Server.MapPath(attach3));
+                
 
                 // Reset the form
                 txtSender.Text = "";
