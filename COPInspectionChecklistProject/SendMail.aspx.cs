@@ -13,12 +13,12 @@ using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 
 
-namespace MailWebService
+namespace COPInspectionChecklistProject
 {
     /// <summary>
     /// Summary description for SendMail.
     /// </summary>
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class SendMail : System.Web.UI.Page
     {
         protected System.Web.UI.WebControls.RadioButtonList rblMailFormat;
         protected System.Web.UI.WebControls.Button btnSend;
