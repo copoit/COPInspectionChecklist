@@ -55,14 +55,14 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
-                btnSendMail.Visible = false;
+                btn_SendMail.Visible = false;
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
-                btnSendMail.Visible = true;
+                btn_SendMail.Visible = true;
             }           
         }
         #region Buttons
@@ -142,7 +142,7 @@ namespace COPInspectionChecklistProject
             //delete data from database
         }
          
-          protected void btnSendMail_Click(object sender, EventArgs e)
+          protected void btn_SendMail_Click(object sender, EventArgs e)
          {
          Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
          }

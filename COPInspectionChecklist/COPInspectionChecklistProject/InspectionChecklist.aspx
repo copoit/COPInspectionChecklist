@@ -113,34 +113,35 @@
                         <asp:TableHeaderCell VerticalAlign="Middle">Inspection Findings</asp:TableHeaderCell>
                         <asp:TableHeaderCell></asp:TableHeaderCell>
                     </asp:TableHeaderRow>
+<%--Checkboxes are set to Enable="True" for testing purposes. Once completed and a update function for checkboxes in InspectionDetails, these will be returned to false.--%>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" Enabled="false" />
+                            <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" Enabled="false" />
+                            <asp:CheckBox ID="cBMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED NO MAJOR VIOLATIONS</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" Enabled="false" />
+                            <asp:CheckBox ID="cBNoMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED NO MINOR VIOLATIONS</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" Enabled="false" />
+                            <asp:CheckBox ID="cBNoMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">NO VIOLATIONS WERE OBSERVED</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoViolations" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Enabled="false" />
+                            <asp:CheckBox ID="cBNoViolations" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
@@ -148,12 +149,12 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateEditButton="false" AutoGenerateColumns="False" DataSourceID="DBOIT">
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="DBOIT" Width="1000px">
             <Columns>
-                <asp:BoundField DataField="Section_ID" HeaderText="Section_ID" SortExpression="Section_ID" />
-                <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name"></asp:BoundField>
-                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc"></asp:BoundField>
-                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code"></asp:BoundField>
+                <asp:BoundField DataField="Section_ID" HeaderText="Section ID" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30px"></asp:BoundField>
+                <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" HeaderStyle-Width="100px"></asp:BoundField>
+                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" HeaderStyle-Width="100px"> </asp:BoundField>
+                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="50px"></asp:BoundField>
                 <asp:TemplateField HeaderText="Major" SortExpression="Expr1" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Bind("Expr1") %>' Enabled="true" />
@@ -166,11 +167,8 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Rows="3" Enabled="true" ReadOnly="True"></asp:TextBox>
+                        <asp:TextBox ID="txtNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Rows="3" Enabled="true" ></asp:TextBox>
                     </EditItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("Expr3") %>' Enabled="true" ></asp:Label>
-                    </ItemTemplate>                    
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
@@ -189,25 +187,25 @@
                 <asp:TableHeaderCell ColumnSpan="2">I hereby certify that all the violations listed above have been corrected</asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" >Date</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;">Date</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtDate" runat="server" Width="300px" ></asp:TextBox>
+                    <asp:TextBox ID="txtDate" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" >Property Address</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;">Property Address</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtProp" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" >PRINT: Property Owner/Owner Representative Name</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;">PRINT: Property Owner/Owner Representative Name</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtPrint" runat="server" Width="300px" ></asp:TextBox>
+                    <asp:TextBox ID="txtPrint" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" >SIGN: Property Owner/Owner Representative Name</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;">SIGN: Property Owner/Owner Representative Name</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtSign" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
@@ -224,7 +222,7 @@
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />
-                <asp:Button runat="server" id="btn_SendMail" Text="Email Inpection Deficiencies" OnClientClick="EmailClick" Height="38px" Width="250px" Visible="true" OnClick="btn_SendMail_Click" />
+                <asp:Button ID="btn_SendMail" runat="server" Text="Email Inpection Deficiencies" OnClientClick="EmailClick" Height="38px" Width="250px" Visible="true" OnClick="btn_SendMail_Click" />
                 <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="true" />
                 <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />
