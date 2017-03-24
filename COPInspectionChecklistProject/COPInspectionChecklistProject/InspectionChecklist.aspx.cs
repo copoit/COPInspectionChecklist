@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Web.UI;
 using COPInspectionChecklistProject.Common;
-using System.Collections;
-using System.Data;
-using System.Web.UI.WebControls;
 
 namespace COPInspectionChecklistProject
 {
@@ -15,7 +12,7 @@ namespace COPInspectionChecklistProject
             if (Request.QueryString["CaseNumber"] != null)
             {
                 string caseNumber = Request.QueryString["CaseNumber"];
-                retrieveCaseByCaseNumber(caseNumber);                
+                retrieveCaseByCaseNumber(caseNumber);
             }
             txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
@@ -46,7 +43,7 @@ namespace COPInspectionChecklistProject
                 txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
             }
-        }
+        }       
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)
@@ -62,7 +59,7 @@ namespace COPInspectionChecklistProject
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
                 btnSendMail.Visible = true;
-            }           
+            }
         }
         #region Buttons
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
@@ -83,7 +80,7 @@ namespace COPInspectionChecklistProject
                 cBNoMinor.Checked = false;
                 cBNoViolations.Checked = false;
             }
-                DisplayForms();
+            DisplayForms();
         }
         protected void cBNoMajor_CheckedChanged(object sender, EventArgs e)
         {
@@ -93,7 +90,7 @@ namespace COPInspectionChecklistProject
                 cBMajor.Checked = false;
                 cBNoViolations.Checked = false;
             }
-            if(cBNoMajor.Checked && cBNoMinor.Checked)
+            if (cBNoMajor.Checked && cBNoMinor.Checked)
             {
                 cBNoViolations.Checked = true;
                 cBNoMinor.Checked = false;
@@ -140,12 +137,10 @@ namespace COPInspectionChecklistProject
         {
             //delete data from database
         }
-         
-          protected void btnSendMail_Click(object sender, EventArgs e)
-         {
-         Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
-         }
-
+        protected void btnSendMail_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
+        }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
