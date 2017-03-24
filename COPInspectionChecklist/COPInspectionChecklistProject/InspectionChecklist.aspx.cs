@@ -148,17 +148,7 @@ namespace COPInspectionChecklistProject
          {
             string email = "abc@abc.com";
             ClientScript.RegisterStartupScript(GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
-            Attachment attachFile = new Attachment(txtAttachmentPath.Text);
-            MyMessage.Attachments.Add(attachFile);
-
-            SmtpClient emailClient = new SmtpClient(txtSMTPServer.Text);
-            emailClient.Send(MyMessage);
-
-            litStatus.Text = "Message Sent";
-          }
-             catch (Exception ex)
-          {
-             litStatus.Text=ex.ToString();
+        
            }
         
 
