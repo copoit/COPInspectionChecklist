@@ -189,25 +189,25 @@
                 <asp:TableHeaderCell ColumnSpan="2">I hereby certify that all the violations listed above have been corrected</asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" Width="300px">Date</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;" >Date</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtDate" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtDate" runat="server" Width="300px" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" Width="300px">Property Address</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;" >Property Address</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtProp" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" Width="300px">PRINT: Property Owner/Owner Representative Name</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;" >PRINT: Property Owner/Owner Representative Name</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtPrint" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtPrint" runat="server" Width="300px" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;" Width="300px">SIGN: Property Owner/Owner Representative Name</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;" >SIGN: Property Owner/Owner Representative Name</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtSign" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
