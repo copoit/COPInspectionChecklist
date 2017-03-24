@@ -119,7 +119,7 @@
                             <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
-                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" ">THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW</asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" >THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
                             <asp:CheckBox ID="cBMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="Right" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" Enabled="False" /></asp:TableCell>
                     </asp:TableRow>
