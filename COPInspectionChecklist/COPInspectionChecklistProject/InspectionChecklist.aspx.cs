@@ -3,6 +3,9 @@ using System.Web.UI;
 using COPInspectionChecklistProject.Common;
 using System.Collections;
 using System.Data;
+using System.Web.UI.WebControls;
+using System.Net.Mail;
+
 
 namespace COPInspectionChecklistProject
 {
@@ -47,32 +50,6 @@ namespace COPInspectionChecklistProject
                 txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
             }
         }
-        //private void retrieveViolationsByCaseNumber(string caseNumber)
-        //{
-        //    DbCommon clsCommon = new DbCommon();
-        //    ArrayList violationList = new ArrayList();
-        //    DataTable dataTable = new DataTable();
-        //    DataSet violationDataSet = new DataSet();
-        //    try
-        //    {
-        //        //retrieve violation list by caseNumber
-        //        string SQL = "SELECT * From VIOLATIONS"; //From VIOLATIONS Where VIOLATIONS.Case_Num ='" + caseNumber + "'";
-
-        //        var caseListDT = clsCommon.TestDBConnection(SQL);
-        //        if (caseListDT.Rows.Count > 0)
-        //        {
-        //            dataTable = caseListDT;
-        //        }
-        //        violationDataSet.Tables.Add(dataTable);
-        //        InspectionGrid.DataSource = violationDataSet.Tables[0];
-        //        InspectionGrid.DataBind();
-
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        throw e;
-        //    }
-        //}
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)
@@ -169,8 +146,11 @@ namespace COPInspectionChecklistProject
          
           protected void btnSendMail_Click(object sender, EventArgs e)
          {
-         Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
-         }
+            string email = "abc@abc.com";
+            ClientScript.RegisterStartupScript(GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        
+           }
+        
 
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
