@@ -4,6 +4,8 @@ using COPInspectionChecklistProject.Common;
 using System.Collections;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+
 
 namespace COPInspectionChecklistProject
 {
