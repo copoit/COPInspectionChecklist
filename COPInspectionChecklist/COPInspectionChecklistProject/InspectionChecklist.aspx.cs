@@ -159,10 +159,8 @@ namespace COPInspectionChecklistProject
              catch (Exception ex)
           {
              litStatus.Text=ex.ToString();
-              }
-             }
            }
-         }
+        
 
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
