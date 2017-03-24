@@ -60,7 +60,7 @@
             <table >
 		        <tbody>
                     <tr>
-                         <td style="width: 660px">If you have any questions, feel free to contact me directly at 622-744- </td>
+                         <td style="width: 660px">If you have any questions, feel free to contact me directly at <asp:TextBox ID="txtInspectorPhone" runat="server" Width="200px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox> </td>
 		            </tr>
                     <tr><td>&nbsp</td></tr>
                     <tr>
@@ -77,11 +77,15 @@
               </table>
                 <br />
                 <div>
-                    <asp:Button ID="btnNonComplianceSave" runat="server" OnClick="btnNonComplianceSave_Click" Text="Save" Width="100px" />&nbsp
-                    <asp:Button ID="btnNonComplianceCancel" runat="server" OnClick="btnNonComplianceCancel_Click" Text="Cancel"  Width="100px"  />&nbsp
-                    <asp:Button ID="btnNonComplianceCheckList" runat="server" OnClick="btnNonComplianceCheckList_Click" Text="Check List"  Width="100px"  />&nbsp
-                    <asp:Button ID="btnNonComplianceCaseMain" runat="server" OnClick="btnNonComplianceCaseMain_Click" Text="Case Main"  Width="100px" />&nbsp
-                    <asp:Button ID="btnNonComplianceMainMenaul" runat="server" OnClick="btnNonComplianceMainMenaul_Click" Text="Main Menu"  Width="100px" />                   
+                    <asp:Button ID="btnNonComplianceSave" runat="server" OnClick="btnNonComplianceSave_Click" Text="Save" Height="38px" Width="250px" />&nbsp
+                    <asp:Button ID="btnNonComplianceCancel" runat="server" OnClick="btnNonComplianceCancel_Click" Text="Cancel"  Height="38px" Width="250px"  />&nbsp
+                    <br />
+                    <br />
+                    <asp:Button ID="btnNonComplianceCheckList" runat="server" OnClick="btnNonComplianceCheckList_Click" Text="Check List"  Height="38px" Width="250px"  />&nbsp
+                    <asp:Button ID="btnNonComplianceCaseMain" runat="server" OnClick="btnNonComplianceCaseMain_Click" Text="Case Main"  Height="38px" Width="250px" />&nbsp
+                    <br />
+                    <br />
+                    <asp:Button ID="btnNonComplianceMainMenaul" runat="server" OnClick="btnNonComplianceMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />                   
                 </div>
          </div>
  </div>

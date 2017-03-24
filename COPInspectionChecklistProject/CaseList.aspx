@@ -10,7 +10,7 @@
             <br />
             <br />
 	        <asp:Label runat="server" Text="Property Address" /> 
-	        <asp:TextBox ID="txtPropAdd" runat="server" Text="Enter a property Address here" Width="500px" />
+	        <asp:TextBox ID="txtPropAdd" runat="server" Text="Enter a property Address here" Width="300px" />
  	        <br />
             <br /> 
             <asp:GridView ID="CaseListGridView" runat="server" autogeneratecolumns="false">
@@ -24,7 +24,7 @@
             </asp:GridView>
             <br />
  	    </div>
-	    <asp:Button ID="btnNewCase" runat="server" Onclick="btnNewCase_Click" Text="New Case" Width="200px" />
-	    <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Property Main" Width="200px" />
+	    <asp:Button ID="btnNewCase" runat="server" Onclick="btnNewCase_Click" Text="New Case" Height="38px" Width="250px" />
+	    <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Property Main" Height="38px" Width="250px" />
     </div>
 </asp:Content>
