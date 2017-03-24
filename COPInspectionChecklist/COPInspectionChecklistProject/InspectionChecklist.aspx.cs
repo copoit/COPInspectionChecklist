@@ -4,6 +4,8 @@ using COPInspectionChecklistProject.Common;
 using System.Collections;
 using System.Data;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
+
 
 namespace COPInspectionChecklistProject
 {
@@ -144,8 +146,11 @@ namespace COPInspectionChecklistProject
          
           protected void btn_SendMail_Click(object sender, EventArgs e)
          {
-         Response.Redirect("~/SendMail.aspx?CaseNumber=" + txtCaseNum.Text);
-         }
+            string email = "abc@abc.com";
+            ClientScript.RegisterStartupScript(GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        
+           }
+        
 
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
