@@ -85,17 +85,21 @@
                          <td style="width: 360px">Code Compliance Officer</td>
 		            </tr>
                     <tr>
-                         <td style="width: 160px">626-744-3813</td>
+                         <td style="width: 160px"> <asp:TextBox ID="txtInspectorPhone" runat="server" Width="200px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox></td>
 		            </tr>
                     </tbody>
               </table>
                 <br />
                 <div>
-                    <asp:Button ID="btnReinspectionSave" runat="server" OnClick="btnReinspectionSave_Click" Text="Save" Width="100px" />&nbsp
-                    <asp:Button ID="btnReinspectionCancel" runat="server" OnClick="btnReinspectionCancel_Click" Text="Cancel"  Width="100px"  />&nbsp
-                    <asp:Button ID="btnReinspectionCheckList" runat="server" OnClick="btnReinspectionCheckList_Click" Text="Check List"  Width="100px"  />&nbsp
-                    <asp:Button ID="btnReinspectionCaseMain" runat="server" OnClick="btnReinspectionCaseMain_Click" Text="Case Main"  Width="100px" />&nbsp
-                    <asp:Button ID="btnReinspectionMainMenaul" runat="server" OnClick="btnReinspectionMainMenaul_Click" Text="Main Menu"  Width="100px" />                   
+                    <asp:Button ID="btnReinspectionSave" runat="server" OnClick="btnReinspectionSave_Click" Text="Save" Height="38px" Width="250px" />&nbsp
+                    <asp:Button ID="btnReinspectionCancel" runat="server" OnClick="btnReinspectionCancel_Click" Text="Cancel"  Height="38px" Width="250px" />&nbsp
+                    <br />
+                    <br />
+                    <asp:Button ID="btnReinspectionCheckList" runat="server" OnClick="btnReinspectionCheckList_Click" Text="Check List"  Height="38px" Width="250px"  />&nbsp
+                    <asp:Button ID="btnReinspectionCaseMain" runat="server" OnClick="btnReinspectionCaseMain_Click" Text="Case Main"  Height="38px" Width="250px" />&nbsp
+                    <br />
+                    <br />
+                    <asp:Button ID="btnReinspectionMainMenaul" runat="server" OnClick="btnReinspectionMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />                   
                 </div>
          </div>
  </div>

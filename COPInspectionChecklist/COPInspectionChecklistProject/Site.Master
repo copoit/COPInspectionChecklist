@@ -57,9 +57,11 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <br />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - City Of Pasadena</p>
+            </footer>             
         </div>
-        <footer><p>&copy; <%: DateTime.Now.Year %> - City Of Pasadena</p></footer>             
-    </form>
+      </form>
 </body>
 </html>
 
