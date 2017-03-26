@@ -200,14 +200,14 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
-                btn_SendMail.Visible = false;
+                btnSendMail.Visible = false;
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
-                btn_SendMail.Visible = true;
+                btnSendMail.Visible = true;
             }           
         }
 
@@ -283,9 +283,9 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }         
-           protected void Button1_Click(object sender, EventArgs e)
+           protected void btnSendMail_Click(object sender, EventArgs e)
         {
-            string email = "abc@abc.com";
+            string email = "owneremail@abc.com";
             ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
         }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
