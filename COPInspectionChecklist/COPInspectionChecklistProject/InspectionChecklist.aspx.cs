@@ -283,7 +283,7 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }         
-          protected void btn_SendMail_Click(object sender, EventArgs e)
+          protected void btnSendMail_Click(object sender, EventArgs e)
          {
             string email = "abc@abc.com";
             ClientScript.RegisterStartupScript(GetType(), "mailto", "parent.location='mailto:" + email + "'", true);     
