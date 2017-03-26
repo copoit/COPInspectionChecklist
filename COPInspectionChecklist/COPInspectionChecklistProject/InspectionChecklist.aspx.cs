@@ -283,11 +283,11 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }         
-          protected void btnSendMail_Click(object sender, EventArgs e)
-         {
+           protected void Button1_Click(object sender, EventArgs e)
+        {
             string email = "abc@abc.com";
-            ClientScript.RegisterStartupScript(GetType(), "mailto", "parent.location='mailto:" + email + "'", true);     
-           }       
+            ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
