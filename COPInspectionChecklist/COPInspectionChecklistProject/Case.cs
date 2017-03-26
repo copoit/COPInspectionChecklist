@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace COPInspectionChecklistProject
 {
@@ -23,6 +24,7 @@ namespace COPInspectionChecklistProject
         //added by Chaode He 3/17/2017
         public string inspectionType { get; set; }
         public string inspectionStatus { get; set; }
+        public List<violations> violationList { get; set; }
         //end
         public Case() { }
         public Case(string newCaseNumb) {
@@ -49,5 +51,17 @@ namespace COPInspectionChecklistProject
             inspector_ID = inspID;
             property_ID = propID;
         }
+    }
+    public class violations
+    {
+        private string _SectionID;
+        private bool _majorV;
+        private bool _minorV;
+        private string _noteV;
+
+        public string Section_ID { get { return _SectionID; } set { _SectionID = value; } }
+        public bool MajorV { get { return _majorV; } set { _majorV = value; } }
+        public bool MinorV { get { return _minorV; } set { _minorV = value; } }
+        public string NoteV { get { return _noteV; } set { _noteV = value; } }
     }
 }

@@ -8,7 +8,7 @@
                 <asp:TableHeaderCell ColumnSpan="2"><b>General Inspection Information</b></asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell>Case Number:</asp:TableCell>
+                <asp:TableCell Enabled="False">Case Number:</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtCaseNum" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
@@ -113,7 +113,7 @@
                         <asp:TableHeaderCell VerticalAlign="Middle">Inspection Findings</asp:TableHeaderCell>
                         <asp:TableHeaderCell></asp:TableHeaderCell>
                     </asp:TableHeaderRow>
-<%--Checkboxes are set to Enable="True" for testing purposes. Once completed and a update function for checkboxes in InspectionDetails, these will be returned to false.--%>
+                    <%--Checkboxes are set to Enable="True" for testing purposes. Once completed and a update function for checkboxes in InspectionDetails, these will be returned to false.--%>
                     <asp:TableRow VerticalAlign="Middle">
                         <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
@@ -149,30 +149,47 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataSourceID="DBOIT" Width="1000px">
+        <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" Width="1000px">
             <Columns>
-                <asp:BoundField DataField="Section_ID" HeaderText="Section ID" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30px"></asp:BoundField>
-                <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" HeaderStyle-Width="100px"></asp:BoundField>
-                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" HeaderStyle-Width="100px"> </asp:BoundField>
-                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="50px"></asp:BoundField>
+                <%--<asp:BoundField DataField="Section_ID" HeaderText="Section ID" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30px"></asp:BoundField>--%>
+                <asp:TemplateField HeaderText="Section ID" SortExpression="Section_ID">
+                    <ItemTemplate>
+                        <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("Section_ID") %>' Enabled="false" ></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" />
+                </asp:TemplateField>
+                <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" HeaderStyle-Width="100px" ReadOnly="true" >
+                    <HeaderStyle Width="100px"></HeaderStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" HeaderStyle-Width="100px" ReadOnly="true" >
+                    <HeaderStyle Width="100px"></HeaderStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="50px" ReadOnly="true" >
+                    <HeaderStyle HorizontalAlign="Center" Width="50px"></HeaderStyle>
+                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                </asp:BoundField>
                 <asp:TemplateField HeaderText="Major" SortExpression="Expr1" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Bind("Expr1") %>' Enabled="true" />
                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Minor" SortExpression="Expr2" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Bind("Expr2") %>' Enabled="true" />
                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Rows="3" Enabled="true" ></asp:TextBox>
+                        <asp:TextBox ID="txtNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Enabled="true" Rows="3"></asp:TextBox>                        
                     </EditItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="DBOIT" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" SelectCommand="SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID"></asp:SqlDataSource>
+        <%--<asp:SqlDataSource ID="DBOIT" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" SelectCommand="SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID"></asp:SqlDataSource>--%>
     </div>
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
