@@ -8,7 +8,7 @@
                 <asp:TableHeaderCell ColumnSpan="2"><b>General Inspection Information</b></asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Enabled="False">Case Number:</asp:TableCell>
+                <asp:TableCell>Case Number:</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtCaseNum" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
@@ -115,33 +115,33 @@
                     </asp:TableHeaderRow>
                     <%--Checkboxes are set to Enable="True" for testing purposes. Once completed and a update function for checkboxes in InspectionDetails, these will be returned to false.--%>
                     <asp:TableRow VerticalAlign="Middle">
-                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW</asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="60%">THIS INSPECTION REVEALED MAJOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
                             <asp:CheckBox ID="cBMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBMajor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
-                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW</asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="60%">THIS INSPECTION REVEALED MINOR VIOLATIONS - SEE BELOW</asp:TableCell>
                         <asp:TableCell>
                             <asp:CheckBox ID="cBMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBMinor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
-                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED NO MAJOR VIOLATIONS</asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="60%">THIS INSPECTION REVEALED NO MAJOR VIOLATIONS</asp:TableCell>
                         <asp:TableCell>
                             <asp:CheckBox ID="cBNoMajor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoMajor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
-                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">THIS INSPECTION REVEALED NO MINOR VIOLATIONS</asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="60%">THIS INSPECTION REVEALED NO MINOR VIOLATIONS</asp:TableCell>
                         <asp:TableCell>
                             <asp:CheckBox ID="cBNoMinor" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoMinor_CheckedChanged" AutoPostBack="true" Enabled="true" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow VerticalAlign="Middle">
-                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="50%">NO VIOLATIONS WERE OBSERVED</asp:TableCell>
+                        <asp:TableCell HorizontalAlign="Left" VerticalAlign="Middle" Width="60%">NO VIOLATIONS WERE OBSERVED</asp:TableCell>
                         <asp:TableCell>
-                            <asp:CheckBox ID="cBNoViolations" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Enabled="true" />
+                            <asp:CheckBox ID="cBNoViolations" runat="server" Style="padding-left: 30px;" Text="" Font-Names="Arial Black" TextAlign="left" OnCheckedChanged="cBNoViolations_CheckedChanged" AutoPostBack="true" Enabled="true" Checked="True" />
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
@@ -149,10 +149,9 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-        <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
+    <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
         <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" Width="1000px">
             <Columns>
-                <%--<asp:BoundField DataField="Section_ID" HeaderText="Section ID" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width="30px"></asp:BoundField>--%>
                 <asp:TemplateField HeaderText="Section ID" SortExpression="Section_ID">
                     <ItemTemplate>
                         <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("Section_ID") %>' Enabled="false" ></asp:Label>
@@ -172,13 +171,13 @@
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Major" SortExpression="Expr1" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Bind("Expr1") %>' Enabled="true" />
+                        <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1")==DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Minor" SortExpression="Expr2" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
-                        <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Bind("Expr2") %>' Enabled="true" />
+                        <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Eval("Expr2")==DBNull.Value ? false : Eval("Expr2") %>' Enabled="true" />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
@@ -189,7 +188,6 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <%--<asp:SqlDataSource ID="DBOIT" runat="server" ConnectionString="<%$ ConnectionStrings:DBOIT %>" SelectCommand="SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID"></asp:SqlDataSource>--%>
     </div>
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
