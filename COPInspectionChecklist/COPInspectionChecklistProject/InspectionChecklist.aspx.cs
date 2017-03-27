@@ -30,7 +30,7 @@ namespace COPInspectionChecklistProject
 
                 var dtInspector = clsCommon.TestDBConnection(SQL2);
 
-                txtCaseNum.Text = dt.Rows[0]["Case_Num"].ToString();                
+                txtCaseNum.Text = dt.Rows[0]["Case_Num"].ToString();
                 txtPropAdd.Text = dt.Rows[0]["Property_StreetNumber"].ToString() + " " + dt.Rows[0]["Property_StreetName"].ToString() + " " + dt.Rows[0]["Property_Zip"].ToString();
                 txtMailAdd.Text = dt.Rows[0]["Mailing_StreetNumber"].ToString() + " " + dt.Rows[0]["Mailing_StreetName"].ToString() + " " + dt.Rows[0]["Mailing_Zip"].ToString();
                 txtAppEmail.Text = dt.Rows[0]["Applicant_Email"].ToString();
@@ -54,7 +54,7 @@ namespace COPInspectionChecklistProject
             string SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + caseNumber + "'";
             var dt1 = clsCommon.TestDBConnection(SQL);
             //check to see if there is an existing Violations case
-            if(dt1.Rows.Count >0 )
+            if (dt1.Rows.Count > 0)
             {
                 string SQL1 = "SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, VIOLATION.SubSection_Minor AS Expr1, VIOLATIONS.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, VIOLATIONS.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section" +
                         " INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID LEFT OUTER JOIN CL_SectionDetail ON CL_SectionDetail.SubSection_ID = VIOLATIONS.SubSection_ID Where VIOLATIONS.Case_Num = '" + caseNumber + "' ORDER BY CL_Section.SectionSeq_ID";
@@ -62,13 +62,13 @@ namespace COPInspectionChecklistProject
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
-                caseLoaded.Text = "Case ID is: " + caseNumber;                 
+                caseLoaded.Text = "Case ID is: " + caseNumber;
             }
-            else                    
+            else
             //There is no existing Violation case, need to build Violations table at database
             {
-                string SQL1 = "SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_Section.Section_ID FROM CL_Section " +
-                            "LEFT JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID ORDER BY CL_Section.SectionSeq_ID";
+                string SQL1 = "SELECT CL_Section.Section_Name as Heading, CL_SectionDetail.SubSection_Desc as Description, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code as [Building Code], CL_SectionDetail.SubSection_Notes AS Expr3, CL_Section.Section_ID [AS Section ID] " +
+                    " FROM CL_Section LEFT JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID ORDER BY CL_Section.SectionSeq_ID";
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
@@ -77,22 +77,23 @@ namespace COPInspectionChecklistProject
             }
         }
         //creating a Violation record
-        private void CreateViolationTable(string caseNumber) {
+        private void CreateViolationTable(string caseNumber)
+        {
             try
             {
-                using (SqlConnection conn = new SqlConnection()) {
+                using (SqlConnection conn = new SqlConnection())
+                {
                     conn.ConnectionString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
-                    using (SqlCommand cmd = new SqlCommand()) {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
                         cmd.Connection = conn;
                         conn.Open();
                         string SQL;
-                        for(int i = 0;i < InspectionGrid.Rows.Count; i++) {
-                            SQL = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) Values ( '"
-                                + caseNumber + "', '"
-                                + InspectionGrid.Rows[i].Cells[0].Text + "', '"
-                                + InspectionGrid.Rows[i].Cells[6].Text + "', "
-                                + InspectionGrid.Rows[i].Cells[4].Text + ", "
-                                + InspectionGrid.Rows[i].Cells[5].Text + " )";
+                        for (int i = 0; i < InspectionGrid.Rows.Count; i++)
+                        {
+                            SQL = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) Values " +
+                                "( '" + caseNumber + "', '" + InspectionGrid.Rows[i].Cells[0].Text + "', '" + InspectionGrid.Rows[i].Cells[6].Text +
+                                "', " + InspectionGrid.Rows[i].Cells[4].Text + ", " + InspectionGrid.Rows[i].Cells[5].Text + " )";
                             cmd.CommandText = SQL;
                             cmd.ExecuteNonQuery();
                         }
@@ -105,18 +106,22 @@ namespace COPInspectionChecklistProject
             }
         }
         //updating a Violation record
-        protected void updateNewViolations(string caseNumber) {
+        protected void updateNewViolations(string caseNumber)
+        {
             try
             {
-                using (SqlConnection conn = new SqlConnection()) {
+                using (SqlConnection conn = new SqlConnection())
+                {
                     conn.ConnectionString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
-                    using (SqlCommand cmd = new SqlCommand()) {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
                         cmd.Connection = conn;
                         conn.Open();
                         string SQL;
-                        for (int i = 0; i < InspectionGrid.Rows.Count; i++) {
+                        for (int i = 0; i < InspectionGrid.Rows.Count; i++)
+                        {
                             SQL = "Update Violations Set SubSection_Notes=" + InspectionGrid.Rows[i].Cells[6].Text + ", SubSection_Major=" + InspectionGrid.Rows[i].Cells[4].Text + ", SubSection_Minor=" + InspectionGrid.Rows[i].Cells[5].Text +
-                                    " Where caseNumber='" + caseNumber + "' and SubSection_ID='" + InspectionGrid.Rows[i].Cells[0].Text+"'";
+                                    " Where caseNumber='" + caseNumber + "' and SubSection_ID='" + InspectionGrid.Rows[i].Cells[0].Text + "'";
                             cmd.CommandText = SQL;
                             cmd.ExecuteNonQuery();
                         }
@@ -135,15 +140,15 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
-                btn_SendMail.Visible = false;
+
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
-                btn_SendMail.Visible = true;
-            }           
+
+            }
         }
 
         #region Buttons
@@ -165,7 +170,7 @@ namespace COPInspectionChecklistProject
                 cBNoMinor.Checked = false;
                 cBNoViolations.Checked = false;
             }
-                DisplayForms();
+            DisplayForms();
         }
         protected void cBNoMajor_CheckedChanged(object sender, EventArgs e)
         {
@@ -175,7 +180,7 @@ namespace COPInspectionChecklistProject
                 cBMajor.Checked = false;
                 cBNoViolations.Checked = false;
             }
-            if(cBNoMajor.Checked && cBNoMinor.Checked)
+            if (cBNoMajor.Checked && cBNoMinor.Checked)
             {
                 cBNoViolations.Checked = true;
                 cBNoMinor.Checked = false;
@@ -217,12 +222,12 @@ namespace COPInspectionChecklistProject
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
-        }         
-        protected void btn_SendMail_Click(object sender, EventArgs e)
+        }
+        protected void btnSendMail_Click(object sender, EventArgs e)
         {
-            string email = "abc@abc.com";
-            ClientScript.RegisterStartupScript(GetType(), "mailto", "parent.location='mailto:" + email + "'", true);     
-        }       
+            string email = "owneremail@abc.com";
+            ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+        }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);

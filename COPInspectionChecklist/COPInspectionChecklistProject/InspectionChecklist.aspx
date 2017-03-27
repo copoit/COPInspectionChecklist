@@ -149,7 +149,6 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-        <%--label CaseLoaded identifies whether a case was loaded or created--%>
     <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
         <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" Width="1000px">
             <Columns>
