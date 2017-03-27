@@ -44,7 +44,7 @@
                     order to avoid penalties. All outstanding violations identified in the attached report must be
                     completed within 30 days from the day of this notice. If the violation noted is minor,
                     please aknowledge that the work is done, sign the report and return it to our office. For
-                    major violations, please call 626-744 to schedule a re-inspection.
+                    major violations, please call <asp:TextBox ID="txtInspectorPhone2" runat="server" Width="100px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox> to schedule a re-inspection.
 
                     Some of the work identified in the report may require additional permit and inspections
                     from the Building & Safety Division. To obtain a permits, please visit the Permit Center

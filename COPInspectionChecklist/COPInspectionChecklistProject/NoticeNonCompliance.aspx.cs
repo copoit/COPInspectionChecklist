@@ -51,7 +51,7 @@ namespace COPInspectionChecklistProject
                         txtInspectorPhone.Text = Convert.ToInt64(phoneNumber).ToString("(###)-###-####");
                     else
                         txtInspectorPhone.Text = phoneNumber;
-
+                    txtInspectorPhone2.Text = txtInspectorPhone.Text;//copy txtInspectorPhone value to txtInspectorPhone2
                     //txtInspectorPhone.Text = String.Format("{0:(###) ###-####}", phoneNumber); 
                     //
                 }
