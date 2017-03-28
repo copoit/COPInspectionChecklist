@@ -4,7 +4,7 @@
 	    <div> 
 	        <b>Notice of Non-Compliance</b>
             <br/>
-            <asp:Table ID="NonComplianceNoticeTable" runat="server" Width="960px">
+            <asp:Table ID="NonComplianceNoticeTable" runat="server" Width="760px">
                 <asp:TableRow>
                     <asp:TableCell Width="20%">Case Number:</asp:TableCell>
                     <asp:TableCell>
@@ -26,12 +26,12 @@
             </asp:Table>
             
             <br /><br />
-            <asp:Table runat="server" Width="960px">
+            <asp:Table runat="server" Width="760px">
                   <asp:TableRow>
                     <asp:TableCell Width="100%">Dear Property Owner/Management Company,</asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
-                    <asp:TableCell Width="100%">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px"  ReadOnly="true"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell Width="100%">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server"  ReadOnly="true"></asp:TextBox></asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
 
@@ -58,7 +58,7 @@
                     order to avoid penalties. All outstanding violations identified in the attached report must be
                     completed within 30 days from the day of this notice. If the violation noted is minor,
                     please aknowledge that the work is done, sign the report and return it to our office. For
-                    major violations, please call <asp:Label id="lblInspectorPhone2"  Width="100px" Font-Underline="false"  runat="server"></asp:Label> to schedule a re-inspection.
+                    major violations, please call <asp:Label id="lblInspectorPhone2"  Font-Underline="false"  runat="server"></asp:Label> to schedule a re-inspection.
 
                     Some of the work identified in the report may require additional permit and inspections
                     from the Building & Safety Division. To obtain a permits, please visit the Permit Center
@@ -70,9 +70,9 @@
                 </p>
             </div>
             
-             <asp:Table runat="server" Width="960px">
+             <asp:Table runat="server" Width="760px">
                   <asp:TableRow>  
-                    <asp:TableCell Width="100%">If you have any questions, feel free to contact me directly at <asp:Label id="lblInspectorPhone" Font-Underline="false" Width="300px"  runat="server"></asp:Label> </asp:TableCell>
+                    <asp:TableCell Width="100%">If you have any questions, feel free to contact me directly at <asp:Label id="lblInspectorPhone" Font-Underline="false" runat="server"></asp:Label> </asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
                     <asp:TableCell Width="100%">Sincerely,</asp:TableCell>
