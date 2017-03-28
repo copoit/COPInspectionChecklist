@@ -85,15 +85,6 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.Button btnNonComplianceSave;
         
         /// <summary>
-        /// btnNonComplianceCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNonComplianceCancel;
-        
-        /// <summary>
         /// btnNonComplianceCheckList control.
         /// </summary>
         /// <remarks>

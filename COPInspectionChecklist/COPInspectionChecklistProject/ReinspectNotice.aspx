@@ -92,14 +92,12 @@
                 <br />
                 <div>
                     <asp:Button ID="btnReinspectionSave" runat="server" OnClick="btnReinspectionSave_Click" Text="Save" Height="38px" Width="250px" />&nbsp
-                    <asp:Button ID="btnReinspectionCancel" runat="server" OnClick="btnReinspectionCancel_Click" Text="Cancel"  Height="38px" Width="250px" />&nbsp
+                     <asp:Button ID="btnReinspectionCheckList" runat="server" OnClick="btnReinspectionCheckList_Click" Text="Inspection Checklist"  Height="38px" Width="250px"  />&nbsp
                     <br />
-                    <br />
-                    <asp:Button ID="btnReinspectionCheckList" runat="server" OnClick="btnReinspectionCheckList_Click" Text="Check List"  Height="38px" Width="250px"  />&nbsp
+                    <br />                  
                     <asp:Button ID="btnReinspectionCaseMain" runat="server" OnClick="btnReinspectionCaseMain_Click" Text="Case Main"  Height="38px" Width="250px" />&nbsp
-                    <br />
-                    <br />
-                    <asp:Button ID="btnReinspectionMainMenaul" runat="server" OnClick="btnReinspectionMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />                   
+                    <asp:Button ID="btnReinspectionMainMenaul" runat="server" OnClick="btnReinspectionMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />  
+                                                         
                 </div>
          </div>
  </div>

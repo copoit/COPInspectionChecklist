@@ -68,10 +68,7 @@ namespace COPInspectionChecklistProject
         {
 
         }
-        protected void btnNonComplianceCancel_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         protected void btnNonComplianceCheckList_Click(object sender, EventArgs e)
         {
             Response.Redirect("InspectionChecklist.aspx?CaseNumber=" + caseNumberParamter);
