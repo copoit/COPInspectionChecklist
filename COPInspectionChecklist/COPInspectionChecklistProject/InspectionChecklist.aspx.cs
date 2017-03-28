@@ -56,8 +56,7 @@ namespace COPInspectionChecklistProject
             //check to see if there is an existing Violations case
             if (dt1.Rows.Count > 0)
             {
-                string SQL1 = "SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, VIOLATION.SubSection_Minor AS Expr1, VIOLATIONS.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, VIOLATIONS.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section" +
-                        " INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID LEFT OUTER JOIN CL_SectionDetail ON CL_SectionDetail.SubSection_ID = VIOLATIONS.SubSection_ID Where VIOLATIONS.Case_Num = '" + caseNumber + "' ORDER BY CL_Section.SectionSeq_ID";
+                string SQL1 = "SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, VIOLATION.SubSection_Minor AS Expr1, VIOLATIONS.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, VIOLATIONS.SubSection_Notes AS Expr3, CL_SectionDetail.Section_ID FROM CL_Section INNER JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID LEFT OUTER JOIN CL_SectionDetail ON CL_SectionDetail.SubSection_ID = VIOLATIONS.SubSection_ID Where VIOLATIONS.Case_Num = '" + caseNumber + "' ORDER BY CL_Section.SectionSeq_ID";
 
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
@@ -67,8 +66,7 @@ namespace COPInspectionChecklistProject
             else
             //There is no existing Violation case, need to build Violations table at database
             {
-                string SQL1 = "SELECT CL_Section.Section_Name as Heading, CL_SectionDetail.SubSection_Desc as Description, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code as [Building Code], CL_SectionDetail.SubSection_Notes AS Expr3, CL_Section.Section_ID [AS Section ID] " +
-                    " FROM CL_Section LEFT JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID ORDER BY CL_Section.SectionSeq_ID";
+                string SQL1 = "SELECT CL_Section.Section_Name, CL_SectionDetail.SubSection_Desc, CL_SectionDetail.SubSection_Minor AS Expr1, CL_SectionDetail.SubSection_Major AS Expr2, CL_SectionDetail.SubSection_Code, CL_SectionDetail.SubSection_Notes AS Expr3, CL_Section.Section_ID FROM CL_Section LEFT JOIN CL_SectionDetail ON CL_Section.Section_ID = CL_SectionDetail.Section_ID ORDER BY CL_Section.SectionSeq_ID";
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
