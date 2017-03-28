@@ -4,35 +4,49 @@
 	    <div> 
 	        <b>Notice of Non-Compliance</b>
             <br/>
-            <table >
-		        <tbody>
-		            <tr>
-			        <td style="width: 160px;">Case Number</td>
-			            <td><asp:TextBox ID="txtNonComplianceCaseNum" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
-		            </tr>
-		            <tr>
-			        <td style="width: 160px">Property Address</td>
-			            <td><asp:TextBox ID="txtNonCompliancePropAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
-		            </tr>
-		            <tr>
-			        <td style="width: 160px">Date</td>
-			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
-		            </tr>
-                   
-                    
-                </tbody>
-            </table>
+            <asp:Table ID="NonComplianceNoticeTable" runat="server" Width="960px">
+                <asp:TableRow>
+                    <asp:TableCell Width="20%">Case Number:</asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox ID="txtNonComplianceCaseNum" runat="server" Width="300px"></asp:TextBox>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell Width="20%">Property Address:</asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox ID="txtNonCompliancePropAdd" runat="server" Width="300px"></asp:TextBox>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell Width="20%">Date:</asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox ID="txtDate" runat="server" Width="300px"></asp:TextBox>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            
             <br /><br />
+            <asp:Table runat="server" Width="960px">
+                  <asp:TableRow>
+                    <asp:TableCell Width="100%">Dear Property Owner/Management Company,</asp:TableCell>
+                </asp:TableRow>
+                 <asp:TableRow>
+                    <asp:TableCell Width="100%">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px"  ReadOnly="true"></asp:TextBox></asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+
+            <!--
             <table >
 		        <tbody>
 		            <tr>
                          <td style="width: 660px">Dear Property Owner/Management Company,</td>
 		            </tr>
                     <tr>
-                         <td style="width: 660px">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px"  ReadOnly="true"></asp:TextBox></td>
+                         <td style="width: 660px"></td>
 		            </tr>
                  </tbody>
             </table>
+            -->
             <div style="width:660px;">
                 <p>
                     at the above referenced property.There appears to remain outstanding violations that
@@ -56,18 +70,32 @@
                 </p>
             </div>
             
-            
+             <asp:Table runat="server" Width="960px">
+                  <asp:TableRow>
+                    <asp:TableCell Width="100%">If you have any questions, feel free to contact me directly at <asp:TextBox ID="txtInspectorPhone" runat="server" Width="200px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox></asp:TableCell>
+                </asp:TableRow>
+                 <asp:TableRow>
+                    <asp:TableCell Width="100%">Sincerely,</asp:TableCell>
+                </asp:TableRow>
+                 <asp:TableRow>
+                    <asp:TableCell Width="100%"><asp:TextBox ID="txtInspector" runat="server" Width="200px" ReadOnly="true"></asp:TextBox></asp:TableCell>
+                </asp:TableRow>
+                  <asp:TableRow>
+                    <asp:TableCell Width="100%">Inspector</asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            <!--
             <table >
 		        <tbody>
                     <tr>
-                         <td style="width: 660px">If you have any questions, feel free to contact me directly at <asp:TextBox ID="txtInspectorPhone" runat="server" Width="200px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox> </td>
+                         <td style="width: 660px"> </td>
 		            </tr>
                     <tr><td>&nbsp</td></tr>
                     <tr>
                          <td style="width: 360px">Sincerely,</td>
 		            </tr>
                     <tr>
-                         <td style="width: 360px"><asp:TextBox ID="txtInspector" runat="server" Width="200px" ReadOnly="true"></asp:TextBox></td>
+                         <td style="width: 360px"></td>
 		            </tr>
                     <tr>
                          <td style="width: 360px">Inspector</td>
@@ -75,6 +103,7 @@
                     
                     </tbody>
               </table>
+            -->
                 <br />
                 <div>
                     <asp:Button ID="btnNonComplianceSave" runat="server" OnClick="btnNonComplianceSave_Click" Text="Save" Height="38px" Width="250px" />&nbsp  
@@ -82,9 +111,7 @@
                     <br />
                     <br />                   
                     <asp:Button ID="btnNonComplianceCaseMain" runat="server" OnClick="btnNonComplianceCaseMain_Click" Text="Case Main"  Height="38px" Width="250px" />&nbsp
-                    <asp:Button ID="btnNonComplianceMainMenaul" runat="server" OnClick="btnNonComplianceMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />  
-                   
-                                     
+                    <asp:Button ID="btnNonComplianceMainMenaul" runat="server" OnClick="btnNonComplianceMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />                 
                 </div>
          </div>
  </div>
