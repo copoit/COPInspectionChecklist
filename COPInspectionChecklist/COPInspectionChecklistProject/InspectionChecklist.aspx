@@ -150,41 +150,48 @@
     </div>
     <div class="InspectionGrid">
     <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" Width="1000px">
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" Width="1200px">
             <Columns>
                 <asp:TemplateField HeaderText="Section ID" SortExpression="Section_ID">
                     <ItemTemplate>
                         <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("Section_ID") %>' Enabled="false" ></asp:Label>
                     </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" Width="30px" />
-                    <ItemStyle HorizontalAlign="Center" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px" />
                 </asp:TemplateField>
                 <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" HeaderStyle-Width="100px" ReadOnly="true" >
-                    <HeaderStyle Width="100px"></HeaderStyle>
+                    <HeaderStyle Width="250px"></HeaderStyle>
+                    <ItemStyle HorizontalAlign="Left" Width="250px" />
                 </asp:BoundField>
-                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" HeaderStyle-Width="100px" ReadOnly="true" >
-                    <HeaderStyle Width="100px"></HeaderStyle>
+                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" HeaderStyle-Width="200px" ReadOnly="true" >
+                    <HeaderStyle Width="400px"></HeaderStyle>
+                    <ItemStyle HorizontalAlign="Left" Width="400px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" HeaderStyle-HorizontalAlign="Center" ItemStyle-HorizontalAlign="Left" HeaderStyle-Width="50px" ReadOnly="true" >
-                    <HeaderStyle HorizontalAlign="Center" Width="50px"></HeaderStyle>
-                    <ItemStyle HorizontalAlign="Left"></ItemStyle>
+                    <HeaderStyle HorizontalAlign="Center" Width="80px"></HeaderStyle>
+                    <ItemStyle HorizontalAlign="Left" Width="80px"></ItemStyle>
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Major" SortExpression="Expr1" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1")==DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
                     </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    <HeaderStyle HorizontalAlign="Center" Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px" />
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Minor" SortExpression="Expr2" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Eval("Expr2")==DBNull.Value ? false : Eval("Expr2") %>' Enabled="true" />
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                    </ItemTemplate>                 
+                    <HeaderStyle Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px"></ItemStyle>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Enabled="true" Rows="3"></asp:TextBox>                        
+                        <asp:TextBox ID="txtNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Width="100%" Height="100%"></asp:TextBox>
+                        <HeaderStyle Width="400px"></HeaderStyle>
+                        <ItemStyle HorizontalAlign="Left" Width="400px" />                        
                     </EditItemTemplate>
+                    <ItemStyle HorizontalAlign="Left" Width="400px" />
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
