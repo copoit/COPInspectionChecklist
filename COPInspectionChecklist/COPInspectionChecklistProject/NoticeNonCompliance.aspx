@@ -58,7 +58,7 @@
                     order to avoid penalties. All outstanding violations identified in the attached report must be
                     completed within 30 days from the day of this notice. If the violation noted is minor,
                     please aknowledge that the work is done, sign the report and return it to our office. For
-                    major violations, please call <asp:TextBox ID="txtInspectorPhone2" runat="server" Width="100px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox> to schedule a re-inspection.
+                    major violations, please call <asp:Label id="lblInspectorPhone2"  Width="100px" Font-Underline="false"  runat="server"></asp:Label> to schedule a re-inspection.
 
                     Some of the work identified in the report may require additional permit and inspections
                     from the Building & Safety Division. To obtain a permits, please visit the Permit Center
@@ -71,14 +71,14 @@
             </div>
             
              <asp:Table runat="server" Width="960px">
-                  <asp:TableRow>
-                    <asp:TableCell Width="100%">If you have any questions, feel free to contact me directly at <asp:TextBox ID="txtInspectorPhone" runat="server" Width="200px"  BorderStyle="None"  ReadOnly="true"></asp:TextBox></asp:TableCell>
+                  <asp:TableRow>  
+                    <asp:TableCell Width="100%">If you have any questions, feel free to contact me directly at <asp:Label id="lblInspectorPhone" Font-Underline="false" Width="300px"  runat="server"></asp:Label> </asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
                     <asp:TableCell Width="100%">Sincerely,</asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
-                    <asp:TableCell Width="100%"><asp:TextBox ID="txtInspector" runat="server" Width="200px" ReadOnly="true"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell Width="100%"><asp:TextBox ID="txtInspector" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
                 </asp:TableRow>
                   <asp:TableRow>
                     <asp:TableCell Width="100%">Inspector</asp:TableCell>

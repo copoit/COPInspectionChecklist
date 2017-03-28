@@ -48,10 +48,11 @@ namespace COPInspectionChecklistProject
                     txtInspector.Text = dt.Rows[0]["Inspector_FName"].ToString() + " " + dt.Rows[0]["Inspector_LName"].ToString();
                     string phoneNumber= dt.Rows[0]["Inspector_Phone"].ToString();
                     if (phoneNumber.Length == 10)
-                        txtInspectorPhone.Text = Convert.ToInt64(phoneNumber).ToString("(###)-###-####");
+                        lblInspectorPhone.Text= Convert.ToInt64(phoneNumber).ToString("(###)-###-####");
+                    // txtInspectorPhone.Text = Convert.ToInt64(phoneNumber).ToString("(###)-###-####");
                     else
-                        txtInspectorPhone.Text = phoneNumber;
-                    txtInspectorPhone2.Text = txtInspectorPhone.Text;//copy txtInspectorPhone value to txtInspectorPhone2
+                        lblInspectorPhone.Text = phoneNumber;
+                    lblInspectorPhone2.Text = lblInspectorPhone.Text;//copy txtInspectorPhone value to txtInspectorPhone2
                     //txtInspectorPhone.Text = String.Format("{0:(###) ###-####}", phoneNumber); 
                     //
                 }
