@@ -185,7 +185,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
                 <ItemTemplate>
-                    <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3") %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%"></asp:TextBox>
+                    <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3")  %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%"></asp:TextBox>
                 </ItemTemplate>
                 <HeaderStyle HorizontalAlign="Left" Width="400px" />
                 <ItemStyle HorizontalAlign="Left" Width="400px" />
