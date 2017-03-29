@@ -246,11 +246,7 @@ namespace COPInspectionChecklistProject
      sqlConnection.Open();
 
      // Create a SQL Command to execute
-     using(SqlCommand sqlCommand = new SqlCommand("SELECT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes
-                         FROM CASE_INFO INNER JOIN
-                         PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN
-                         INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN
-                         VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num",sqlConnection))
+     using(SqlCommand sqlCommand = new SqlCommand("SELECT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes,sqlConnection))
      {
            // Execute your query into a datareader and read through your e-mail values
            using(SqlDataReader sqlReader = sqlCommand.ExecuteReader())
