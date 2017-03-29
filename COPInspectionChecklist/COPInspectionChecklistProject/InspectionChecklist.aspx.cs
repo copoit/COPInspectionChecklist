@@ -240,7 +240,28 @@ namespace COPInspectionChecklistProject
         }
         protected void btnSendMail_Click(object sender, EventArgs e)
         {
-            string email = "owneremail@abc.com";
+           using(SqlConnection sqlConnection = new SqlConnection("Your Connection String"))
+{
+     // Open your connection
+     sqlConnection.Open();
+
+     // Create a SQL Command to execute
+     using(SqlCommand sqlCommand = new SqlCommand("SELECT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes
+                         FROM CASE_INFO INNER JOIN
+                         PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN
+                         INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN
+                         VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num",sqlConnection))
+     {
+           // Execute your query into a datareader and read through your e-mail values
+           using(SqlDataReader sqlReader = sqlCommand.ExecuteReader())
+           {
+                 // While there are records, read
+                 while(sqlReader.Read())
+                 {
+                       // Grab your email from the current record and process the email
+                       var Applicant_Email = sqlReader["Applicant_Email"];
+                       var Inspector_Email = sqlReader["Inspector_Email"]; 
+                       
             ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
         }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
