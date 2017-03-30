@@ -117,12 +117,13 @@ namespace COPInspectionChecklistProject
                 SqlCommand cmd = new SqlCommand();
                 conn.Open();
                 cmd.Connection = conn;
+                //first delete the existing row from database where casenumber and subsection_id match query
                 string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
                 cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
                 cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='"+caseNumber+"'";
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
-
+                //secondly insert new field back into database with corresponding fields
                 string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].ToString();
                 string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
                 CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
@@ -138,8 +139,7 @@ namespace COPInspectionChecklistProject
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
-        }
- 
+        } 
         #endregion
         private void DisplayForms()
         {
@@ -183,7 +183,6 @@ namespace COPInspectionChecklistProject
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
         }
-
         #region Checkboxes
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
