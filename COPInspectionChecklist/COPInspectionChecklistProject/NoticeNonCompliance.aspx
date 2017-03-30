@@ -34,19 +34,6 @@
                     <asp:TableCell Width="100%">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server"  ReadOnly="true"></asp:TextBox></asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-
-            <!--
-            <table >
-		        <tbody>
-		            <tr>
-                         <td style="width: 660px">Dear Property Owner/Management Company,</td>
-		            </tr>
-                    <tr>
-                         <td style="width: 660px"></td>
-		            </tr>
-                 </tbody>
-            </table>
-            -->
             <div style="width:660px;">
                 <p>
                     at the above referenced property.There appears to remain outstanding violations that
