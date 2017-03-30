@@ -157,7 +157,12 @@
             <HeaderStyle HorizontalAlign="Center" Width="30px" />
             <ItemStyle HorizontalAlign="Center" Width="30px" />
             </asp:BoundField>
-            <asp:BoundField HeaderText="SubSection_ID" Visible="False" />
+             <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("SubSection_ID") %>'></asp:Label>
+                    <input type="hidden" runat="server" id="subSection_ID" value='<%#Eval("SubSection_ID") %>' />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" >
             <HeaderStyle HorizontalAlign="Left" Width="250px" />
             <ItemStyle HorizontalAlign="Left" Width="250px" />

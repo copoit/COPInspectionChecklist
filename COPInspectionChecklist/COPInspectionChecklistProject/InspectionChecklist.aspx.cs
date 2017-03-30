@@ -94,7 +94,7 @@ namespace COPInspectionChecklistProject
                 cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, ' ', 0, 0)";
                 cmd.CommandType = CommandType.Text;
 
-                string heading = InspectionGrid.Rows[row.RowIndex];
+                string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
 
                 cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
                 cmd.Parameters.AddWithValue("@SubSection_ID", heading);
@@ -103,31 +103,29 @@ namespace COPInspectionChecklistProject
             }
         }
         //update Violation record
-        protected void UpdateViolations(string caseNumber)
+        private void UpdateViolations(string caseNumber)
         {
-            try
+            foreach (GridViewRow row in InspectionGrid.Rows)
             {
-                using (conn)
-                {
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        string SQL;
-                        for (int i = 0; i < InspectionGrid.Rows.Count; i++)
-                        {
-                            SQL = "Update Violations Set SubSection_Notes=" + InspectionGrid.Rows[i].Cells[6].Text + ", SubSection_Major=" + InspectionGrid.Rows[i].Cells[4].Text + ", SubSection_Minor=" + InspectionGrid.Rows[i].Cells[5].Text +
-                                    " Where caseNumber='" + caseNumber + "' and SubSection_ID='" + InspectionGrid.Rows[i].Cells[0].Text + "'";
-                            cmd.CommandText = SQL;
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                }
-                caseLoaded.Text = "CaseNumber: "+caseNumber+" has been updated in database";
-            }
-            catch (Exception )
-            {
-                
+                SqlCommand cmd = new SqlCommand();
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "Update Violations Set CaseNumber=@Case_Num SubSection_ID=@SubSection_ID SubSection_Major=@Major SubSection_Minor=@Minor SubSection_Notes=@Notes";
+                cmd.CommandType = CommandType.Text;
+
+                string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
+                string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txtNotes").ToString();
+                string major = InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor").ToString();
+                string minor = InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor").ToString();
+
+                cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
+                cmd.Parameters.AddWithValue("@SubSection_ID", heading);
+                cmd.Parameters.AddWithValue("@Major", major);
+                cmd.Parameters.AddWithValue("@Minor", minor);
+                cmd.Parameters.AddWithValue("@Notes", notes);
+
+                cmd.ExecuteNonQuery();
+                conn.Close();
             }
         }
         private void DisplayForms()
@@ -255,68 +253,3 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
-
-
-//private void CreateViolationTable(string caseNumber)
-//{
-//    try
-//    {
-//        using (SqlConnection conn = new SqlConnection()) {
-//            conn.ConnectionString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
-//            using (SqlCommand cmd = new SqlCommand()) {
-//                cmd.Connection = conn;
-//                conn.Open();
-//                string SQL, notes,subSectionID;
-//                //for (int i = 0; i < InspectionGrid.Rows.Count; i++) {
-//                //    notes = InspectionGrid.Rows[i].Cells[6].Text;
-//                //    subSectionID = InspectionGrid.Rows[i].Cells[0].Text;
-//                //    SQL = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) Values ( '" + caseNumber + "', '" + subSectionID + "', '" + notes + "', 0,0)";
-//                //    cmd.CommandText = SQL;
-//                //    cmd.ExecuteNonQuery();
-//                //}
-//                foreach(GridViewRow row in InspectionGrid.Rows)
-//                {
-//                    notes =row.FindControl("txtNotes").ToString();
-//                    subSectionID =row.FindControl("lblSubSection_ID").ToString();
-//                    SQL= "Insert into Violations(Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) Values('" + caseNumber + "', '" + subSectionID + "', '" + notes + "', 0, 0)";
-//                    cmd.CommandText = SQL;
-//                    cmd.ExecuteNonQuery();
-//                }
-//                conn.Close();
-//            }
-//        }
-//        caseLoaded.Text += "Case number: " + caseNumber + " added to database";
-//    }
-//    catch (Exception)
-//    {
-//        caseLoaded.Text = "Error creating Violation table";
-//    }
-//}
-
-
-//updating a Violation record
-//    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
-//    {
-//        int rowIndex = ((GridViewRow)(e.CommandSource).NamingContainer).RowIndex;
-
-//        string id = ((TextBox))InspectioGrid.Rows[rowIndex].FindControl("").Text;
-//        string name = ((TextBox)InspectionGrid.Rows[rowIndex].FindControl("TextBox1")).Text;
-//        string gender = ((DropDownList)InspectionGrid.Rows[rowIndex].FindControl("DropDownList1")).SelectedValue;
-//        string city = ((TextBox)InspectionGrid.Rows[rowIndex].FindControl("TextBox3")).Text;
-
-//        ViolationDataAccessLayer.UpdateViolations(caseNumber, id, notes, major, minor);
-
-//        GridView1.EditIndex = -1;
-//        BindGridViewData();
-//    }
-//        else if (e.CommandName == "InsertRow")
-//        {
-//            string name = ((TextBox)GridView1.FooterRow.FindControl("txtName")).Text;
-//    string gender = ((DropDownList)GridView1.FooterRow.FindControl("ddlGender")).SelectedValue;
-//    string city = ((TextBox)GridView1.FooterRow.FindControl("txtCity")).Text;
-
-//    EmployeeDataAccessLayer.InsertEmployee(name, gender, city);
-
-//            BindGridViewData();
-//}
-//}
