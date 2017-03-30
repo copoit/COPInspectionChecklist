@@ -44,6 +44,9 @@ namespace COPInspectionChecklistProject
                 txtInspType.Text = dt.Rows[0]["Inspection_Type"].ToString();
                 txtNumOfUnit.Text = dt.Rows[0]["NumberOfUnits"].ToString();
                 txtDwellInfo.Text = dt.Rows[0]["Dwelling_info"].ToString();
+                txtInspectorNotes.Text = dt.Rows[0]["Inspector_Notes"].ToString();
+                txtInspectSig.Text = dt.Rows[0]["Inspector_Signature"].ToString();
+                txtCertIssueDate.Text = Convert.ToDateTime(dt.Rows[0]["Cert_IssueDate"]).ToString();
             }
         }
 

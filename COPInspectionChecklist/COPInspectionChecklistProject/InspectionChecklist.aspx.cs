@@ -5,27 +5,29 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Web.DynamicData;
 
 namespace COPInspectionChecklistProject
 {
     public partial class InspectionChecklist : Page
     {
+        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
         public Case newCase;
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 if (Request.QueryString["CaseNumber"] != null)
                 {
                     string caseNumber = Request.QueryString["CaseNumber"];
                     retrieveCaseByCaseNumber(caseNumber);
                     retrieveViolationsByCaseNumber(caseNumber);
                 }
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-            }
+            //}
         }
         private void retrieveCaseByCaseNumber(string caseNumber)
         {
@@ -65,8 +67,7 @@ namespace COPInspectionChecklistProject
             //check to see if there is an existing Violations case
             if (dt1.Rows.Count > 0)
             {
-                string SQL1 = "SELECT S.Section_ID, S.Section_Name, D.SubSection_Desc, D.SubSection_Code, V.SubSection_Minor AS Expr1, V.SubSection_Major AS Expr2, V.SubSection_Notes AS Expr3 FROM CL_SectionDetail as D RIGHT JOIN CL_Section as S ON S.Section_ID = D.Section_ID LEFT OUTER JOIN CL_SectionDetail ON D.SubSection_ID = V.SubSection_ID Where V.Case_Num = '" + caseNumber + "' ORDER BY S.SectionSeq_ID";
-
+                string SQL1 = "SELECT S.Section_ID, S.Section_Name, D.SubSection_ID , D.SubSection_Desc, D.SubSection_Code, V.SubSection_Minor AS Expr1, V.SubSection_Major AS Expr2, V.SubSection_Notes AS Expr3 FROM CL_SectionDetail as D RIGHT JOIN CL_Section as S ON S.Section_ID = D.Section_ID LEFT JOIN Violations as V ON D.SubSection_ID = V.SubSection_ID Where V.Case_Num = '" + caseNumber + "' ORDER BY S.SectionSeq_ID";
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
@@ -75,113 +76,114 @@ namespace COPInspectionChecklistProject
             else
             //There is no existing Violation case, need to build Violations table at database
             {
-                string SQL1 = "Select S.Section_ID, S.Section_Name, D.SubSection_Desc, D.SubSection_Code, D.SubSection_Minor as Expr1, D.SubSection_Major as Expr2, D.SubSection_Notes as Expr3 From CL_SectionDetail as D Right Join CL_Section as S On S.Section_ID = D.Section_ID Order by S.SectionSeq_ID";
+                string SQL1 = "Select S.Section_ID, S.Section_Name, D.SubSection_ID, D.SubSection_Desc, D.SubSection_Code, D.SubSection_Minor as Expr1, D.SubSection_Major as Expr2, D.SubSection_Notes as Expr3 From CL_SectionDetail as D Right Join CL_Section as S On S.Section_ID = D.Section_ID Order by S.SectionSeq_ID";
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
-                caseLoaded.Text = "No case loaded";
-                CreateViolationTable(caseNumber);
+                CreateViolation(caseNumber);
             }
         }
-        //creating a Violation record
-        //private void CreateViolationTable(string caseNumber)
-        //{
-        //    foreach(GridViewRow row in InspectionGrid.Rows)
-        //    {
-        //        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
-        //        SqlCommand cmd = new SqlCommand();
-        //        con.Open();
-        //        cmd.Connection = con;
-        //        cmd.CommandText = "Insert into Violations (Case_Num,SubSection_ID,SubSection_Notes,SubSection_Major,SubSection_Minor) values (@Case_Num,@SubSection_ID,@Notes,@Major,@Minor)";
-        //        cmd.CommandType = System.Data.CommandType.Text;
-        //        string subHeading = (((Label)row.FindControl("lblSubSection_ID")).Text);
-        //        CheckBox major = row.FindControl("cbMajor") as CheckBox;
-        //        CheckBox minor = row.FindControl("cbMinor") as CheckBox;
-        //        TextBox notes = (TextBox)row.FindControl("txtNotes");
-        //        cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
-        //        cmd.Parameters.AddWithValue("@SubSection_ID", subHeading);
-        //        cmd.Parameters.Add("@Notes", SqlDbType.VarChar);
-        //        cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = cBMajor.Checked ? 1 : 0 ;
-        //        cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = cBMinor.Checked ? 1 : 0;
-        //        cmd.ExecuteNonQuery();
-        //        con.Close();
-        //    }
-        //    caseLoaded.Text = "Case number: " + caseNumber + " added to database";
-        //}
-        private void CreateViolationTable(string caseNumber)
+
+        #region Eric's code
+        //creating a Violation record this is eric's code
+        private void CreateViolation(string caseNumber)
         {
-            try
+            DbCommon clsCommon = new DbCommon();
+            string sql = "Select * from CL_SectionDetail";
+            DataTable dt1 = clsCommon.TestDBConnection(sql);
+            if (dt1.Rows.Count > 0)
             {
-                using (SqlConnection conn = new SqlConnection())
+                for (int i = 0; i < dt1.Rows.Count; i++)
                 {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        string SQL;
-                        for (int i = 0; i < InspectionGrid.Rows.Count; i++)
-                        {
-                            SQL = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) Values ( '" + caseNumber + "', '" + InspectionGrid.Rows[i].Cells[0].Text + "', '" + InspectionGrid.Rows[i].Cells[6].Text + "', 0,0)";
-                            cmd.CommandText = SQL;
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                }
-                caseLoaded.Text = "Case number: " + caseNumber + " added to database";
-            }
-            catch (Exception)
-            {
-                
-            }
-        }
-        //updating a Violation record
-        protected void updateNewViolations(string caseNumber)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection())
-                {
-                    conn.ConnectionString = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
-                    using (SqlCommand cmd = new SqlCommand())
-                    {
-                        cmd.Connection = conn;
-                        conn.Open();
-                        string SQL;
-                        for (int i = 0; i < InspectionGrid.Rows.Count; i++)
-                        {
-                            SQL = "Update Violations Set SubSection_Notes=" + InspectionGrid.Rows[i].Cells[6].Text + ", SubSection_Major=" + InspectionGrid.Rows[i].Cells[4].Text + ", SubSection_Minor=" + InspectionGrid.Rows[i].Cells[5].Text +
-                                    " Where caseNumber='" + caseNumber + "' and SubSection_ID='" + InspectionGrid.Rows[i].Cells[0].Text + "'";
-                            cmd.CommandText = SQL;
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
+                    string subSectionID = dt1.Rows[i]["SubSection_ID"].ToString();
+                    SqlCommand cmd = new SqlCommand();
+                    conn.Open();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, ' ', 0, 0)";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
+                    cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
                 }
             }
-            catch (Exception e)
-            {
-                //throw e;
-            }
+            caseLoaded.Text = "Case created. Case ID is: " + caseNumber;
         }
+        //update Violation record
+        private void UpdateViolations(string caseNumber)
+        {
+            foreach (GridViewRow row in InspectionGrid.Rows)
+            {
+                SqlCommand cmd = new SqlCommand();
+                conn.Open();
+                cmd.Connection = conn;
+                //first delete the existing row from database where casenumber and subsection_id match query
+                string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
+                cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
+                cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='"+caseNumber+"'";
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+                //secondly insert new field back into database with corresponding fields
+                string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].ToString();
+                string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
+                CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
+                CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMinor");
+
+                cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, @Notes, @Major, @Minor)";
+                cmd.CommandType = CommandType.Text;
+
+                cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
+                cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = major.Checked;
+                cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = minor.Checked;
+                cmd.Parameters.AddWithValue("@Notes", notes);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        } 
+        #endregion
         private void DisplayForms()
         {
             if (cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
-                btnNoticeNonCompliance.Visible = false;
-
+                btnNoticeNonCompliance.Visible = false;                
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
-                btnNoticeNonCompliance.Visible = true;
-
+                btnNoticeNonCompliance.Visible = true;            
             }
         }
+        private void EmailInspection(string caseNumber)
+        {
+            DbCommon clsCommon = new DbCommon();
+            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
+                            + "FROM CASE_INFO INNER JOIN "
+                            + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
+                            + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
+                            + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
+                            + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
+            var dt = clsCommon.TestDBConnection(SQL);
 
-        #region Buttons
+            if (dt.Rows.Count > 0)
+            {
+                string to = "";
+                string body = "";
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
+                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                }
+
+                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
+                string script = string.Format("parent.location='{0}'", url);
+                ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
+            }
+        }
+        #region Checkboxes
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
             //major violation noted 
@@ -245,18 +247,19 @@ namespace COPInspectionChecklistProject
             }
             DisplayForms();
         }
+        #endregion
+        #region Buttons
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            //save data to database
+                UpdateViolations(txtCaseNum.Text);
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
-        protected void btnSendMail_Click(object sender, EventArgs e)
+        protected void btnMail_Click(object sender, EventArgs e)
         {
-            string email = "owneremail@abc.com";
-            ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
+            EmailInspection(txtCaseNum.Text);
         }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)
         {
@@ -273,3 +276,30 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
+
+
+//private void UpdateViolations(string caseNumber)
+//{
+//    foreach (GridViewRow row in InspectionGrid.Rows)
+//    {
+//        SqlCommand cmd = new SqlCommand();
+//        conn.Open();
+//        cmd.Connection = conn;
+//        cmd.CommandText = "Update Violations Set CaseNumber=@Case_Num SubSection_ID=@SubSection_ID SubSection_Major=@Major SubSection_Minor=@Minor SubSection_Notes=@Notes";
+//        cmd.CommandType = CommandType.Text;
+
+//        string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
+//        string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
+//        string major = InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor").ToString();
+//        string minor = InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor").ToString();
+
+//        cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
+//        cmd.Parameters.AddWithValue("@SubSection_ID", heading);
+//        cmd.Parameters.AddWithValue("@Major", major);
+//        cmd.Parameters.AddWithValue("@Minor", minor);
+//        cmd.Parameters.AddWithValue("@Notes", notes);
+
+//        cmd.ExecuteNonQuery();
+//        conn.Close();
+//    }
+//}
