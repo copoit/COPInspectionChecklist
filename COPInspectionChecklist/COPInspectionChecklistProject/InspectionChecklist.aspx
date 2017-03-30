@@ -240,7 +240,7 @@
        
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
-                btnSendMail_Click
+              
                  c<asp:Button ID="btnSendMail" runat="server" OnClick="btnSendMail_Click" Text="Email Inspection Deficiencies" Height="38px" Width="250px" Visible="false" /
                 c<asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />  
                 <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspetion" Height="38px" Width="250px" Visible="true" />
