@@ -240,7 +240,13 @@ namespace COPInspectionChecklistProject
         }
         protected void btnSendMail_Click(object sender, EventArgs e)
         {
-            string email = "owneremail@abc.com";
+          //call the function that fetch the mailto from database and set the toMail with that value like
+            //string toMail = GetToMailId();
+           
+
+
+            string toMail = GetToMailId();
+            toMail = "mailto:" + toMail;
                        
             ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
         }
