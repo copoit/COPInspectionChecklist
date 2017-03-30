@@ -8,15 +8,15 @@
             <table >
 		        <tbody>
 		            <tr>
-			        <td style="width: 160px;">Case Number</td>
+			        <td style="width: 160px;">Case Number:</td>
 			            <td><asp:TextBox ID="txtReinspectionCaseNum" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
 		            <tr>
-			        <td style="width: 160px">Property Address</td>
+			        <td style="width: 160px">Property Address:</td>
 			            <td><asp:TextBox ID="txtReinspectionPropAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
 		            <tr>
-			        <td style="width: 160px">Date</td>
+			        <td style="width: 160px">Date:</td>
 			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
                    
@@ -34,7 +34,7 @@
 		            </tr>
                  </tbody>
             </table>
-            <div style="width:660px;">
+            <div >
                 <p>
                     and has revealed conditions that affect the health and safety of occupants and cause
                     the building to be determined to be in violation of the city of Pasadena Municipal Code.
@@ -65,7 +65,7 @@
 		            </tr>
                      </tbody>
             </table>
-            <div style="width:660px;">
+            <div >
                 <p>
                 You or your representative must be present to escort the Code Complience Inspector. You
                 must provide notice to all affected tenants not less than 24 hours prior to the scheduled
