@@ -239,7 +239,7 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
-        protected void btnSendMail_Click(object sender, EventArgs e)
+        protected void btnMail_Click(object sender, EventArgs e)
         {
           //call the function that fetch the mailto from database and set the toMail with that value like
             //string email = GetemaillId();
