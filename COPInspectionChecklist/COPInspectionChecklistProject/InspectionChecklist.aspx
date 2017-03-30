@@ -157,7 +157,7 @@
             <HeaderStyle HorizontalAlign="Center" Width="30px" />
             <ItemStyle HorizontalAlign="Center" Width="30px" />
             </asp:BoundField>
-             <asp:TemplateField>
+             <asp:TemplateField SortExpression="SubSection_ID" Visible="False" HeaderText="SubSection_ID">
                 <ItemTemplate>
                     <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("SubSection_ID") %>'></asp:Label>
                     <input type="hidden" runat="server" id="subSection_ID" value='<%#Eval("SubSection_ID") %>' />
@@ -198,6 +198,8 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+
+
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
         unless otherwise noted by the inspector. Major violations require reinspection. Minor violations do not require reinspection (at the discretion of 
