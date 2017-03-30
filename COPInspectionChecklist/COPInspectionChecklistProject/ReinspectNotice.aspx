@@ -8,15 +8,15 @@
             <table >
 		        <tbody>
 		            <tr>
-			        <td style="width: 160px;">Case Number</td>
+			        <td style="width: 160px;">Case Number:</td>
 			            <td><asp:TextBox ID="txtReinspectionCaseNum" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
 		            <tr>
-			        <td style="width: 160px">Property Address</td>
+			        <td style="width: 160px">Property Address:</td>
 			            <td><asp:TextBox ID="txtReinspectionPropAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
 		            <tr>
-			        <td style="width: 160px">Date</td>
+			        <td style="width: 160px">Date:</td>
 			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
                    
@@ -27,14 +27,14 @@
             <table >
 		        <tbody>
 		            <tr>
-                         <td style="width: 660px">Dear Property Owner/Management Company,</td>
+                         <td >Dear Property Owner/Management Company,</td>
 		            </tr>
                     <tr>
-                         <td style="width: 660px">A quadrenial inspection of the above referenced property was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px" DataFormatString="{0:d}" ReadOnly="true"></asp:TextBox></td>
+                         <td >A quadrenial inspection of the above referenced property was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px" DataFormatString="{0:d}" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
                  </tbody>
             </table>
-            <div style="width:660px;">
+            <div >
                 <p>
                     and has revealed conditions that affect the health and safety of occupants and cause
                     the building to be determined to be in violation of the city of Pasadena Municipal Code.
@@ -56,16 +56,16 @@
             <table >
 		        <tbody>
                      <tr>
-                         <td style="width: 660px">A reinspection of the premises will conducted on: <asp:TextBox ID="txtReinspectionDate" runat="server" Width="100px"></asp:TextBox>
+                         <td >A reinspection of the premises will conducted on: <asp:TextBox ID="txtReinspectionDate" runat="server" Width="100px"></asp:TextBox>
                             
                          </td>
 		            </tr>
                     <tr>
-                         <td style="width: 660px">Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
+                         <td >Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
 		            </tr>
                      </tbody>
             </table>
-            <div style="width:660px;">
+            <div >
                 <p>
                 You or your representative must be present to escort the Code Complience Inspector. You
                 must provide notice to all affected tenants not less than 24 hours prior to the scheduled
