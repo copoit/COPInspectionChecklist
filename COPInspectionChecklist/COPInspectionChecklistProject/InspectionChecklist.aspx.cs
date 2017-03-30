@@ -117,23 +117,24 @@ namespace COPInspectionChecklistProject
                 SqlCommand cmd = new SqlCommand();
                 conn.Open();
                 cmd.Connection = conn;
-                string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[1].ToString();
+                string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
                 cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
-                cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case+Num='"+caseNumber+"'";
+                cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='"+caseNumber+"'";
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
 
                 string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].ToString();
-                string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].ToString();
+                string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
+                CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
+                CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMinor");
+
                 cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, @Notes, @Major, @Minor)";
                 cmd.CommandType = CommandType.Text;
 
                 cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
-                cmd.Parameters.AddWithValue("@SubSection_ID", heading);
-                cmd.Parameters.Add("@Major", SqlDbType.Bit).Value= cBMajor.Checked;
-                cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = cBMajor.Checked;
+                cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = major.Checked;
+                cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = minor.Checked;
                 cmd.Parameters.AddWithValue("@Notes", notes);
-
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
