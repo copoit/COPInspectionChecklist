@@ -66,7 +66,7 @@ namespace COPInspectionChecklistProject
             //check to see if there is an existing Violations case
             if (dt1.Rows.Count > 0)
             {
-                string SQL1 = "SELECT S.Section_ID, S.Section_Name, D.SubSection_Desc, D.SubSection_Code, V.SubSection_Minor AS Expr1, V.SubSection_Major AS Expr2, V.SubSection_Notes AS Expr3 FROM CL_SectionDetail as D RIGHT JOIN CL_Section as S ON S.Section_ID = D.Section_ID LEFT OUTER JOIN CL_SectionDetail ON D.SubSection_ID = V.SubSection_ID Where V.Case_Num = '" + caseNumber + "' ORDER BY S.SectionSeq_ID";
+                string SQL1 = "SELECT S.Section_ID, S.Section_Name, D.SubSection_ID , D.SubSection_Desc, D.SubSection_Code, V.SubSection_Minor AS Expr1, V.SubSection_Major AS Expr2, V.SubSection_Notes AS Expr3 FROM CL_SectionDetail as D RIGHT JOIN CL_Section as S ON S.Section_ID = D.Section_ID LEFT OUTER JOIN CL_SectionDetail ON D.SubSection_ID = V.SubSection_ID Where V.Case_Num = '" + caseNumber + "' ORDER BY S.SectionSeq_ID";
 
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
@@ -76,7 +76,7 @@ namespace COPInspectionChecklistProject
             else
             //There is no existing Violation case, need to build Violations table at database
             {
-                string SQL1 = "Select S.Section_ID, S.Section_Name, D.SubSection_Desc, D.SubSection_Code, D.SubSection_Minor as Expr1, D.SubSection_Major as Expr2, D.SubSection_Notes as Expr3 From CL_SectionDetail as D Right Join CL_Section as S On S.Section_ID = D.Section_ID Order by S.SectionSeq_ID";
+                string SQL1 = "Select S.Section_ID, S.Section_Name, D.SubSection_ID, D.SubSection_Desc, D.SubSection_Code, D.SubSection_Minor as Expr1, D.SubSection_Major as Expr2, D.SubSection_Notes as Expr3 From CL_SectionDetail as D Right Join CL_Section as S On S.Section_ID = D.Section_ID Order by S.SectionSeq_ID";
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
@@ -86,28 +86,21 @@ namespace COPInspectionChecklistProject
         //creating a Violation record
         private void CreateViolation(string caseNumber)
         {
-            caseLoaded.Text = "Saving to database";
-
             foreach (GridViewRow row in InspectionGrid.Rows)
             {
                 SqlCommand cmd = new SqlCommand();
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "Insert into Violations (Case_Num,SubSection_ID,SubSection_Notes,SubSection_Major,SubSection_Minor) values (@Case_Num, @SubSection_ID, @Notes, @Major, @Minor)";
+                cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, ' ', 0, 0)";
                 cmd.CommandType = CommandType.Text;
-               
-                string heading = InspectionGrid.Rows[row.RowIndex].Cells[0].Text;                
-                string notes = InspectionGrid.Rows[row.RowIndex].Cells[6].Text;
+
+                string heading = InspectionGrid.Rows[row.RowIndex];
 
                 cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
                 cmd.Parameters.AddWithValue("@SubSection_ID", heading);
-                cmd.Parameters.AddWithValue("@Notes", notes);
-                cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = cBMajor.Checked ? 1 : 0;
-                cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = cBMinor.Checked ? 1 : 0;
-                cmd.ExecuteNonQuery();                
+                cmd.ExecuteNonQuery();
                 conn.Close();
             }
-            caseLoaded.Text = "CaseNumber: " + caseNumber + " added to database";
         }
         //update Violation record
         protected void UpdateViolations(string caseNumber)

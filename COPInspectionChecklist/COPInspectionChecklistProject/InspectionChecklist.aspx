@@ -157,6 +157,7 @@
             <HeaderStyle HorizontalAlign="Center" Width="30px" />
             <ItemStyle HorizontalAlign="Center" Width="30px" />
             </asp:BoundField>
+            <asp:BoundField HeaderText="SubSection_ID" Visible="False" />
             <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" >
             <HeaderStyle HorizontalAlign="Left" Width="250px" />
             <ItemStyle HorizontalAlign="Left" Width="250px" />
