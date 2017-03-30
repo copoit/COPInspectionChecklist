@@ -27,10 +27,10 @@
             <table >
 		        <tbody>
 		            <tr>
-                         <td style="width: 660px">Dear Property Owner/Management Company,</td>
+                         <td >Dear Property Owner/Management Company,</td>
 		            </tr>
                     <tr>
-                         <td style="width: 660px">A quadrenial inspection of the above referenced property was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px" DataFormatString="{0:d}" ReadOnly="true"></asp:TextBox></td>
+                         <td >A quadrenial inspection of the above referenced property was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px" DataFormatString="{0:d}" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
                  </tbody>
             </table>
@@ -56,12 +56,12 @@
             <table >
 		        <tbody>
                      <tr>
-                         <td style="width: 660px">A reinspection of the premises will conducted on: <asp:TextBox ID="txtReinspectionDate" runat="server" Width="100px"></asp:TextBox>
+                         <td >A reinspection of the premises will conducted on: <asp:TextBox ID="txtReinspectionDate" runat="server" Width="100px"></asp:TextBox>
                             
                          </td>
 		            </tr>
                     <tr>
-                         <td style="width: 660px">Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
+                         <td >Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
 		            </tr>
                      </tbody>
             </table>
