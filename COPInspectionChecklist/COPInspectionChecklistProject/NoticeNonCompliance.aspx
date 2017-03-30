@@ -4,7 +4,7 @@
 	    <div> 
 	        <b>Notice of Non-Compliance</b>
             <br/>
-            <asp:Table ID="NonComplianceNoticeTable" runat="server" Width="760px">
+            <asp:Table ID="NonComplianceNoticeTable" runat="server">
                 <asp:TableRow>
                     <asp:TableCell Width="20%">Case Number:</asp:TableCell>
                     <asp:TableCell>
@@ -24,9 +24,8 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-            
-            <br /><br />
-            <asp:Table runat="server" Width="760px">
+                      
+            <asp:Table runat="server">
                   <asp:TableRow>
                     <asp:TableCell Width="100%">Dear Property Owner/Management Company,</asp:TableCell>
                 </asp:TableRow>
@@ -47,7 +46,7 @@
                  </tbody>
             </table>
             -->
-            <div style="width:660px;">
+            <div>
                 <p>
                     at the above referenced property.There appears to remain outstanding violations that
                     need to be corrected before a Certificate of Inspection can be issued per Pasadena
@@ -70,12 +69,12 @@
                 </p>
             </div>
             
-             <asp:Table runat="server" Width="760px">
+             <asp:Table runat="server" >
                   <asp:TableRow>  
                     <asp:TableCell Width="100%">If you have any questions, feel free to contact me directly at <asp:Label id="lblInspectorPhone" Font-Underline="false" runat="server"></asp:Label> </asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
-                    <asp:TableCell Width="100%">Sincerely,</asp:TableCell>
+                     <asp:TableCell Width="100%"> <br />Sincerely,</asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
                     <asp:TableCell Width="100%"><asp:TextBox ID="txtInspector" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
@@ -104,8 +103,7 @@
                     </tbody>
               </table>
             -->
-                <br />
-                
+                      
          </div>
  </div>
     <br />
@@ -117,5 +115,4 @@
         <asp:Button ID="btnNonComplianceCaseMain" runat="server" OnClick="btnNonComplianceCaseMain_Click" Text="Case Main"  Height="38px" Width="250px" />&nbsp
         <asp:Button ID="btnNonComplianceMainMenaul" runat="server" OnClick="btnNonComplianceMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />                 
     </div>
-    <br /><br />
 </asp:Content>

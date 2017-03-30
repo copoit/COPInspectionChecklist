@@ -238,11 +238,13 @@
     </div>
     <div class="buttons">
         <asp:Button ID="btnSave" runat="server" Text="Save" Width="250px" Height="38px" Style="margin-left: 75px;" OnClick="btnSave_Click" />
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl = "mailto:owner@abc.com" Text = "Email Inspection Deficiencies"></asp:HyperLink>
+       
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
+              
+                 <asp:Button ID="btnMail" runat="server" OnClick="btnMail_Click" Text="Email Inspection Deficiencies" Height="38px" Width="250px" Visible="true" />
                 <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />  
-                <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="true" />
+                <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspetion" Height="38px" Width="250px" Visible="true" />
                 <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />
             </ContentTemplate>

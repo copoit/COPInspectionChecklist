@@ -137,13 +137,14 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
                 btnNoticeNonCompliance.Visible = false;
-
+                
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
                 btnNoticeNonCompliance.Visible = true;
+                
 
             }
         }
@@ -231,9 +232,12 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
-        protected void btnSendMail_Click(object sender, EventArgs e)
+        protected void btnMail_Click(object sender, EventArgs e)
         {
-            string email = "owneremail@abc.com";
+          //call the function that fetch the mailto from database and set the toMail with that value like
+            //string email = GetemaillId();
+           
+             string email = "owner@abc.com";
             ClientScript.RegisterStartupScript(this.GetType(), "mailto", "parent.location='mailto:" + email + "'", true);
         }
         protected void btnCertificateInspection_Click(object sender, EventArgs e)

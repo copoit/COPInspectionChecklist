@@ -13,13 +13,22 @@ namespace COPInspectionChecklistProject {
     public partial class CertInspection {
         
         /// <summary>
-        /// btnPreviousPage control.
+        /// HousingInspectionReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPreviousPage;
+        protected global::System.Web.UI.WebControls.Table HousingInspectionReport;
+        
+        /// <summary>
+        /// heading2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderRow heading2;
         
         /// <summary>
         /// txtPropertyId control.
@@ -103,13 +112,40 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtDwellInfo;
         
         /// <summary>
-        /// lstInspectorNotes control.
+        /// NoticeTable1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox lstInspectorNotes;
+        protected global::System.Web.UI.WebControls.Table NoticeTable1;
+        
+        /// <summary>
+        /// Table1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table Table1;
+        
+        /// <summary>
+        /// txtInspectorNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInspectorNotes;
+        
+        /// <summary>
+        /// Table2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table Table2;
         
         /// <summary>
         /// txtInspectSig control.
@@ -130,21 +166,12 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtCertIssueDate;
         
         /// <summary>
-        /// Label1 control.
+        /// btnPreviousPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Button btnPreviousPage;
     }
 }
