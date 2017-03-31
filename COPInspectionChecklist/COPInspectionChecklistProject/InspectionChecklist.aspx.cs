@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Web.DynamicData;
 
 namespace COPInspectionChecklistProject
 {
@@ -26,9 +25,9 @@ namespace COPInspectionChecklistProject
                         retrieveViolationsByCaseNumber(caseNumber);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    Console.WriteLine(e.Message);
+                  
                 }
             }
         }
@@ -257,7 +256,7 @@ namespace COPInspectionChecklistProject
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
                     if (dr["SubSection_Notes"].ToString() != null)
-                        body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                        body += string.Format("{0}]t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
                 }
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
