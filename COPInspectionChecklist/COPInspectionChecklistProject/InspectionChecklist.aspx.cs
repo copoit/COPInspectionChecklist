@@ -15,19 +15,22 @@ namespace COPInspectionChecklistProject
         public Case newCase;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-                if (Request.QueryString["CaseNumber"] != null)
+            if (!IsPostBack)
+            {
+                try
                 {
-                    string caseNumber = Request.QueryString["CaseNumber"];
-                    retrieveCaseByCaseNumber(caseNumber);
-                    retrieveViolationsByCaseNumber(caseNumber);
+                    if (Request.QueryString["CaseNumber"] != null)
+                    {
+                        string caseNumber = Request.QueryString["CaseNumber"];
+                        retrieveCaseByCaseNumber(caseNumber);
+                        retrieveViolationsByCaseNumber(caseNumber);
+                    }
                 }
-            //}
-            //catch (Exception)
-            //{
+                catch (Exception)
+                {
 
-            //}
+                }
+            }
         }
         private void retrieveCaseByCaseNumber(string caseNumber)
         {
@@ -82,9 +85,9 @@ namespace COPInspectionChecklistProject
                 InspectionGrid.DataBind();
                 CreateViolation(caseNumber);
             }
+            CheckForViolations();
         }
-
-        //creating a Violation record this is eric's code
+        //creating a Violation record 
         private void CreateViolation(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
@@ -107,6 +110,34 @@ namespace COPInspectionChecklistProject
                 }
             }
             caseLoaded.Text = "Case created. Case ID is: " + caseNumber;
+            CheckForViolations();
+        }
+        private void CheckForViolations()
+        {
+            try
+            {
+                bool bMajor = false, bMinor = false;
+                foreach (GridViewRow row in InspectionGrid.Rows)
+                {
+                    CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
+                    CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor");
+                    if (major.Checked) bMajor = true;
+                    if (minor.Checked) bMinor = true;
+                }
+                if (bMajor)
+                    cBMajor.Checked = true;
+                else if (!bMajor)
+                    cBMajor.Checked = false;
+                if (bMinor)
+                    cBMinor.Checked = true;
+                else if (!bMinor)
+                    cBMinor.Checked = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            DisplayForms();
         }
         //update Violation record
         private void UpdateViolations(string caseNumber)
@@ -118,50 +149,93 @@ namespace COPInspectionChecklistProject
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    //first delete the existing row from database where casenumber and subsection_id match query
                     string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
-                    cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
-                    cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='" + caseNumber + "'";
-                    cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
-                    //secondly insert new field back into database with corresponding fields
-                    //string heading = InspectionGrid.Rows[row.RowIndex].Cells[2].Text;
-                    string notes = ((TextBox)InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes")).Text;                 
+                    TextBox tbNotes = (TextBox)(InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes"));
+                    string notes = tbNotes.Text;                    
                     CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
                     CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor");
                     bool bMajor = major.Checked;
                     bool bMinor = minor.Checked;
 
-                    cmd.CommandText = "insert into VIOLATIONS (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, '"+notes+"' ,"+bMajor+" , "+bMinor+" )";
-                    cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
-                    cmd.Parameters.AddWithValue("@Notes", notes.Trim());
-                    cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = bMajor;
-                    cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = bMinor;
-
+                    cmd.CommandText = "Update VIOLATIONS set SubSection_Notes='"+tbNotes+"', SubSection_Major='"+bMajor+"', SubSection_Minor='"+bMinor+"' WHERE Case_Num="+caseNumber+" and SubSection_ID="+ subSectionID;
                     cmd.ExecuteNonQuery();
-                  
                 }
-                
-            }catch (Exception e)
+            }
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
             //close the database connection
             conn.Close();
-        } 
+            CheckForViolations();
+        }
+        //private void UpdateViolations(string caseNumber)
+        //{
+        //    conn.Open();
+        //    try
+        //    {
+        //        foreach (GridViewRow row in InspectionGrid.Rows)
+        //        {
+        //            SqlCommand cmd = new SqlCommand();
+        //            cmd.Connection = conn;
+        //            //first delete the existing row from database where casenumber and subsection_id match query
+        //            string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
+        //            cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
+        //            cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='" + caseNumber + "'";
+        //            cmd.CommandType = CommandType.Text;
+        //            cmd.ExecuteNonQuery();
+        //            //secondly insert new field back into database with corresponding fields
+        //            string notes = ((TextBox)InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes")).Text;
+        //            CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
+        //            CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor");
+        //            bool bMajor = major.Checked;
+        //            bool bMinor = minor.Checked;
+
+        //            cmd.CommandText = "insert into VIOLATIONS (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, '" + notes + "' ," + bMajor + " , " + bMinor + " )";
+        //            cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
+        //            cmd.Parameters.AddWithValue("@Notes", notes.Trim());
+        //            cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = bMajor;
+        //            cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = bMinor;
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Console.WriteLine(e.Message);
+        //    }
+        //    //close the database connection
+        //    conn.Close();
+        //    CheckForViolations();
+        //}
         private void DisplayForms()
         {
+            if (cBMajor.Checked)
+                cBNoMajor.Checked = false;
+            else
+                cBNoMajor.Checked = true;
+            if (cBMinor.Checked)
+                cBNoMinor.Checked = false;
+            else
+                cBNoMinor.Checked = true;
+            if (cBNoMajor.Checked && cBNoMinor.Checked)
+            {
+                cBNoMajor.Checked = false;
+                cBNoMinor.Checked = false;
+                cBNoViolations.Checked = true;
+            }
+            else
+                cBNoViolations.Checked = false;
             if (cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = true;
                 btnReinspectionNotice.Visible = false;
-                btnNoticeNonCompliance.Visible = false;                
+                btnNoticeNonCompliance.Visible = false;
             }
             else if (!cBNoViolations.Checked)
             {
                 btnCertificateInspection.Visible = false;
                 btnReinspectionNotice.Visible = true;
-                btnNoticeNonCompliance.Visible = true;            
+                btnNoticeNonCompliance.Visible = true;
             }
         }
         private void EmailInspection(string caseNumber)
@@ -180,12 +254,12 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
-             foreach (DataRow dr in dt.Rows)
+                foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                                        if(dr["SubSection_Notes"].ToString() !=null)
-                         body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
-                } 
+                    if (dr["SubSection_Notes"].ToString() != null)
+                        body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                }
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
                 string script = string.Format("parent.location='{0}'", url);
@@ -260,7 +334,7 @@ namespace COPInspectionChecklistProject
         #region Buttons
         protected void btnSave_Click(object sender, EventArgs e)
         {
-                UpdateViolations(txtCaseNum.Text);
+            UpdateViolations(txtCaseNum.Text);
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
@@ -294,10 +368,10 @@ namespace COPInspectionChecklistProject
 //        SqlCommand cmd = new SqlCommand();
 //        conn.Open();
 //        cmd.Connection = conn;
-//        cmd.CommandText = "Update Violations Set CaseNumber=@Case_Num SubSection_ID=@SubSection_ID SubSection_Major=@Major SubSection_Minor=@Minor SubSection_Notes=@Notes";
+//        cmd.CommandText = "Update Violations Set SubSection_Major=@Major SubSection_Minor=@Minor SubSection_Notes=@Notes where Case_Num='"+caseNumber+"' and SubSection_ID='"+SubSection_ID+"'";
 //        cmd.CommandType = CommandType.Text;
 
-//        string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
+//        string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
 //        string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
 //        string major = InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor").ToString();
 //        string minor = InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor").ToString();
