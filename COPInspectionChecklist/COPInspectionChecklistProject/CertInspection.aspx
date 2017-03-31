@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CertInspection.aspx.cs" Inherits="COPInspectionChecklistProject.CertInspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>CERTIFICATE OF INSPECTION</h1>
+  <b>Certificate of Inspection</b>
                <br />
         <div class="Inspection Report">
         <asp:Table ID="HousingInspectionReport" runat="server">
@@ -16,36 +16,44 @@
               <tr> 
  <td class="auto-style4" >Case Number:</td>
            <td class="auto-style2"><asp:TextBox ID="txtCaseNum" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Inspection Date:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"  ></asp:TextBox> </td>
         </tr> 
        <tr> 
            <td class="auto-style4" >Property Address:</td>
            <td  class="auto-style2"><asp:TextBox ID="txtPropAddr" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Inspection Type:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtInspType" runat="server" Width="300px"  ></asp:TextBox> </td>
           
  </tr>
+               <tr>
+                   <td class="auto-style4">Dwelling Info:</td>
+           <td  class="auto-style2"><asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"  ></asp:TextBox> </td>
+ 
+              </tr>
            <tr> 
 
 <td class="auto-style4" >Applicant:</td>
            <td class="auto-style2"><asp:TextBox ID="txtApplicant" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Number Of Units:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtNumOfUnit" runat="server" Width="300px"  ></asp:TextBox> </td>
         </tr> 
  
               <tr> 
 
-<td class="auto-style4" >Inspector:</td>
+<td class="auto-style4" >Inspector Name:</td>
            <td class="auto-style2"><asp:TextBox ID="txtInspector" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Dwelling Info:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"  ></asp:TextBox> </td>
-        </tr> 
+       </tr> 
+              <tr>
+                  <td class="auto-style4">Inspection Date:</td>
+           <td  class="auto-style2"><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"  ></asp:TextBox> </td>
+ 
+              </tr>
+              <tr> <td class="auto-style4">Inspection Type:</td>
+           <td  class="auto-style2"><asp:TextBox ID="txtInspType" runat="server" Width="300px"  ></asp:TextBox> </td>
+</tr>
+              <tr><td class="auto-style4">Number Of Units:</td>
+           <td  class="auto-style2"><asp:TextBox ID="txtNumOfUnit" runat="server" Width="300px"  ></asp:TextBox> </td>
+ </tr>
+             
      
               </tbody>
 	    </table>
-       <br /> 
-
+     
 <div >
                <div class="InspectionBreakdown">
         <asp:Table ID="NoticeTable1" runat="server" >
@@ -70,25 +78,15 @@
            <asp:TableCell> <b> Inspector Notes:</b></asp:TableCell>
      </asp:TableRow>
     <asp:TableRow>
-           <asp:TableCell>  <asp:Textbox ID="txtInspectorNotes" runat="server" TextMode="multiline" Columns="50" Rows="5"></asp:TextBox></asp:TableCell>
+           <asp:TableCell>  <asp:Textbox ID="txtInspectorNotes" Width="300px" runat="server" TextMode="multiline"></asp:TextBox></asp:TableCell>
      </asp:TableRow>
     </asp:Table>
       <br />
-          
-    <asp:Table runat="server" ID="Table2">
-                        <asp:TableRow>
-                              
-                    <asp:TableCell><asp:TextBox ID="txtInspectSig" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
-                    <asp:TableCell><asp:TextBox ID="txtCertIssueDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
-                </asp:TableRow>
-                  <asp:TableRow>
-                    <asp:TableCell>Inspector Signature</asp:TableCell>
-                       <asp:TableCell>Certificate Issue Date</asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
-           
-        <br />
-
+      
+    <table>
+        <tr><td>Inspector Signature: </td><td><asp:TextBox ID="txtInspectSig" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td></tr>
+         <tr><td>Certificate Issue Date: </td><td><asp:TextBox ID="txtCertIssueDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td></tr>
+    </table>    
                <p>
            
                    &nbsp;</p>

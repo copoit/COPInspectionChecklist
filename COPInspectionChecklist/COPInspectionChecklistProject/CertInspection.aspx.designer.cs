@@ -49,15 +49,6 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtCaseNum;
         
         /// <summary>
-        /// txtInspectDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInspectDate;
-        
-        /// <summary>
         /// txtPropAddr control.
         /// </summary>
         /// <remarks>
@@ -67,13 +58,13 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtPropAddr;
         
         /// <summary>
-        /// txtInspType control.
+        /// txtDwellInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInspType;
+        protected global::System.Web.UI.WebControls.TextBox txtDwellInfo;
         
         /// <summary>
         /// txtApplicant control.
@@ -85,15 +76,6 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtApplicant;
         
         /// <summary>
-        /// txtNumOfUnit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumOfUnit;
-        
-        /// <summary>
         /// txtInspector control.
         /// </summary>
         /// <remarks>
@@ -103,13 +85,31 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtInspector;
         
         /// <summary>
-        /// txtDwellInfo control.
+        /// txtInspectDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDwellInfo;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectDate;
+        
+        /// <summary>
+        /// txtInspType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInspType;
+        
+        /// <summary>
+        /// txtNumOfUnit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumOfUnit;
         
         /// <summary>
         /// NoticeTable1 control.
@@ -137,15 +137,6 @@ namespace COPInspectionChecklistProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtInspectorNotes;
-        
-        /// <summary>
-        /// Table2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table2;
         
         /// <summary>
         /// txtInspectSig control.
