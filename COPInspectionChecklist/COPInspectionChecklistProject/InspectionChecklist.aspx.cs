@@ -190,11 +190,12 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
-                foreach (DataRow dr in dt.Rows)
+             foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
-                }
+                                        if(dr["SubSection_Notes"].ToString() !=null)
+                         body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                } 
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
                 string script = string.Format("parent.location='{0}'", url);

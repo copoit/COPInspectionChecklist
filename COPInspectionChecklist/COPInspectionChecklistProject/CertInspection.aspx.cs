@@ -21,7 +21,7 @@ namespace COPInspectionChecklistProject
             }
             //else populate Case with a generated CaseNumber with either a scheduled caseNumber or
             //incrementing the last Case_ID from CASE_INFO
-            txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
+           // txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
         private void getCase(string caseNumber)
         {
@@ -50,13 +50,11 @@ namespace COPInspectionChecklistProject
             }
         }
 
-        protected void btnPreviousPage_Click(object sender, EventArgs e)
+        protected void btnCaseMainPage_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
-        protected void txtPropAdd_TextChanged(object sender, EventArgs e)
-        {
 
-        }
+       
     }
 }

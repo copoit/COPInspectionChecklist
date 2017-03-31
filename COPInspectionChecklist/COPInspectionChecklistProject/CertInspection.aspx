@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CertInspection.aspx.cs" Inherits="COPInspectionChecklistProject.CertInspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 style="margin-left: 240px">CERTIFICATE OF INSPECTION</h1>
+    <h1 style="margin-left: 60px">CERTIFICATE OF INSPECTION</h1>
                <br />
         <div class="Inspection Report">
         <asp:Table ID="HousingInspectionReport" runat="server">
@@ -14,31 +14,31 @@
         <asp:HiddenField id="txtPropertyId" runat="server"/>
   		<tbody>
               <tr> 
- <td class="auto-style4" >Case Number</td>
+ <td class="auto-style4" >Case Number:</td>
            <td class="auto-style2"><asp:TextBox ID="txtCaseNum" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Inspection Date</td>
+ <td class="auto-style4">Inspection Date:</td>
            <td  class="auto-style2"><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"  ></asp:TextBox> </td>
         </tr> 
        <tr> 
-           <td class="auto-style4" >Property Address</td>
+           <td class="auto-style4" >Property Address:</td>
            <td  class="auto-style2"><asp:TextBox ID="txtPropAddr" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Inspection Type</td>
+ <td class="auto-style4">Inspection Type:</td>
            <td  class="auto-style2"><asp:TextBox ID="txtInspType" runat="server" Width="300px"  ></asp:TextBox> </td>
           
  </tr>
            <tr> 
 
-<td class="auto-style4" >Applicant</td>
+<td class="auto-style4" >Applicant:</td>
            <td class="auto-style2"><asp:TextBox ID="txtApplicant" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Number Of Units</td>
+ <td class="auto-style4">Number Of Units:</td>
            <td  class="auto-style2"><asp:TextBox ID="txtNumOfUnit" runat="server" Width="300px"  ></asp:TextBox> </td>
         </tr> 
  
               <tr> 
 
-<td class="auto-style4" >Inspector</td>
+<td class="auto-style4" >Inspector:</td>
            <td class="auto-style2"><asp:TextBox ID="txtInspector" runat="server" Width="300px"  ></asp:TextBox> </td>
- <td class="auto-style4">Dwelling Info</td>
+ <td class="auto-style4">Dwelling Info:</td>
            <td  class="auto-style2"><asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"  ></asp:TextBox> </td>
         </tr> 
      
@@ -91,13 +91,13 @@
 
                <p>
            
-        <asp:Button ID="btnPreviousPage" runat="server" OnClick="btnPreviousPage_Click" Text="Previous Page" Width="300px" />
-
-               </p>
-    <p>
-           
-        &nbsp;</p>
+                   &nbsp;</p>
      <footer style="width: 1097px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;175N Garfield Av 1st floor paedena Ca 91101-1704&nbsp;&nbsp;&nbsp;&nbsp;<br />
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cityofpasedena.net">www.cityofpasedena.net</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (626) 744-7144&nbsp; (626)744-3979 fax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </footer>    
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.cityofpasedena.net">www.cityofpasedena.net</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fax: (626)744-7144&nbsp; (626)744-3979 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+         <br />
+           
+        <asp:Button ID="btnCaseMainPage" runat="server" OnClick="btnCaseMainPage_Click" Text="Previous Page"  Height="38px" Width="250px" />
+
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </footer>    
 </asp:Content>
       
