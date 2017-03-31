@@ -12,6 +12,7 @@ namespace COPInspectionChecklistProject
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblError.Text = "";
             if (!IsPostBack)
             {
                 DisplayRecord();
@@ -33,7 +34,8 @@ namespace COPInspectionChecklistProject
 
 
             }
-
+            else
+                lblError.Text = "No Case found. ";
         }
 
         protected void btnReportMainPage_Click(object sender, EventArgs e)

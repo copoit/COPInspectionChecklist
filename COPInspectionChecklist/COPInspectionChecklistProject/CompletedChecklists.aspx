@@ -10,7 +10,7 @@
      <div class="InspectionGrid1">
     <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
     </div>
-    <asp:GridView ID="InspectionGrid1" runat="server" AutoGenerateColumns="False"  Width="1200px" >
+    <asp:GridView ID="InspectionGrid1" runat="server" AutoGenerateColumns="False"   >
         <Columns>
             <asp:TemplateField HeaderText="Case Number">  
                 <ItemTemplate>  
@@ -41,6 +41,9 @@
     </asp:GridView>
         <br />
  	    </div>
+         <asp:Label ID="lblError" runat="server" ForeColor="Red"/>  
+         <br />
+         <br/>
 	    <asp:Button ID="btnReportMainPage" runat="server" OnClick="btnReportMainPage_Click" Text="Previous Page"  Height="38px" Width="250px" />
     </div>
 </asp:Content>

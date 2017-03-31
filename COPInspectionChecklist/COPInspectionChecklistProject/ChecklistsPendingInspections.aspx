@@ -40,6 +40,9 @@
     </asp:GridView>
         <br />
  	    </div>
+          <asp:Label ID="lblError" runat="server" ForeColor="Red"/>  
+         <br />
+         <br/>
 	    <asp:Button ID="btnReportMainPage" runat="server" OnClick="btnReportMainPage_Click" Text="Previous Page"  Height="38px" Width="250px" />
     </div>
 </asp:Content>
