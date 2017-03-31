@@ -9,7 +9,7 @@
      <div class="InspectionGrid1">
     <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
     </div>
-    <asp:GridView ID="InspectionGrid1" runat="server" AutoGenerateColumns="False"  Width="1200px" >
+    <asp:GridView ID="InspectionGrid1" runat="server" AutoGenerateColumns="False" >
         <Columns>
             <asp:TemplateField HeaderText="Case Number">  
                 <ItemTemplate>  
