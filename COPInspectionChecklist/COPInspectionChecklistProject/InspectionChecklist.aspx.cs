@@ -26,12 +26,13 @@ namespace COPInspectionChecklistProject
                         retrieveViolationsByCaseNumber(caseNumber);
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-
+                    Console.WriteLine(e.Message);
                 }
             }
         }
+        //retrieve a InspectionCase based upon CaseNumber
         private void retrieveCaseByCaseNumber(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
@@ -87,7 +88,7 @@ namespace COPInspectionChecklistProject
             }
             CheckForViolations();
         }
-        //creating a Violation record 
+        //creating a Violation record when none exists for current caseNumber
         private void CreateViolation(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
@@ -149,15 +150,14 @@ namespace COPInspectionChecklistProject
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
-                    TextBox tbNotes = (TextBox)(InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes"));
-                    string notes = tbNotes.Text;                    
-                    CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
-                    CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor");
-                    bool bMajor = major.Checked;
-                    bool bMinor = minor.Checked;
-
-                    cmd.CommandText = "Update VIOLATIONS set SubSection_Notes='"+tbNotes+"', SubSection_Major='"+bMajor+"', SubSection_Minor='"+bMinor+"' WHERE Case_Num="+caseNumber+" and SubSection_ID="+ subSectionID;
+                    string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;                    
+                    string notes = ((TextBox)row.FindControl("txbNotes")).Text;                    
+                    bool bMajor = ((CheckBox)row.FindControl("cbMajor")).Checked;
+                    bool bMinor = ((CheckBox)row.FindControl("cbMinor")).Checked;
+                    string updateStr = "Update Violations set SubSection_Major=@Major, SubSection_Minor=@Minor, SubSection_Notes='" + notes + "' WHERE Case_Num='" + caseNumber + "' and SubSection_ID='" + subSectionID +"'";
+                    cmd.CommandText = updateStr;
+                    cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = bMajor;
+                    cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = bMinor;
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -167,7 +167,6 @@ namespace COPInspectionChecklistProject
             }
             //close the database connection
             conn.Close();
-            CheckForViolations();
         }
         //private void UpdateViolations(string caseNumber)
         //{
@@ -321,6 +320,7 @@ namespace COPInspectionChecklistProject
         }
         protected void cBNoViolations_CheckedChanged(object sender, EventArgs e)
         {
+            //no violations noted 
             if (cBNoViolations.Checked)
             {
                 cBMajor.Checked = false;
@@ -334,6 +334,7 @@ namespace COPInspectionChecklistProject
         #region Buttons
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            CheckForViolations();
             UpdateViolations(txtCaseNum.Text);
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
@@ -359,30 +360,3 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
-
-
-//private void UpdateViolations(string caseNumber)
-//{
-//    foreach (GridViewRow row in InspectionGrid.Rows)
-//    {
-//        SqlCommand cmd = new SqlCommand();
-//        conn.Open();
-//        cmd.Connection = conn;
-//        cmd.CommandText = "Update Violations Set SubSection_Major=@Major SubSection_Minor=@Minor SubSection_Notes=@Notes where Case_Num='"+caseNumber+"' and SubSection_ID='"+SubSection_ID+"'";
-//        cmd.CommandType = CommandType.Text;
-
-//        string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
-//        string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
-//        string major = InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor").ToString();
-//        string minor = InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor").ToString();
-
-//        cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
-//        cmd.Parameters.AddWithValue("@SubSection_ID", heading);
-//        cmd.Parameters.AddWithValue("@Major", major);
-//        cmd.Parameters.AddWithValue("@Minor", minor);
-//        cmd.Parameters.AddWithValue("@Notes", notes);
-
-//        cmd.ExecuteNonQuery();
-//        conn.Close();
-//    }
-//}

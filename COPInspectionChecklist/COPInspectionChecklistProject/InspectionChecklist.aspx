@@ -151,9 +151,7 @@
     <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
     <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px" >
         <Columns>
-            <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" >
-            <HeaderStyle HorizontalAlign="Center" Width="30px" />
-            <ItemStyle HorizontalAlign="Center" Width="30px" />
+            <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30px">
             </asp:BoundField>
              <asp:TemplateField SortExpression="SubSection_ID" Visible="false" HeaderText="SubSection_ID">
                 <ItemTemplate>
@@ -170,26 +168,26 @@
             <ItemStyle HorizontalAlign="Left" Width="400px" />
             </asp:BoundField>
             <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" >
-            <HeaderStyle HorizontalAlign="Right" Width="90px" />
+            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
             <ItemStyle HorizontalAlign="Center" Width="90px" />
             </asp:BoundField>
             <asp:TemplateField HeaderText="Major" SortExpression="Expr1">
                 <ItemTemplate>
-                    <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# /*Eval("Expr1")==DBNull.Value ? false :*/ Eval("Expr1") %>' Enabled="true" />
+                    <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
                 </ItemTemplate>
                 <HeaderStyle HorizontalAlign="Right" Width="30px" />
                 <ItemStyle HorizontalAlign="Center" Width="30px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Minor" SortExpression="Expr2">
                 <ItemTemplate>
-                        <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# /*Eval("Expr2") == DBNull.Value ? false :*/ Eval("Expr2") %>' Enabled="true" />
+                        <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Eval("Expr2") == DBNull.Value ? false : Eval("Expr2") %>' Enabled="true" />
                 </ItemTemplate>
                 <HeaderStyle HorizontalAlign="Right" Width="30px" />
                 <ItemStyle HorizontalAlign="Center" Width="30px" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
                 <ItemTemplate>
-                    <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3")  %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%" Enabled="true" ></asp:TextBox>
+                    <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3")  %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%" ></asp:TextBox>
                 </ItemTemplate>
                 <HeaderStyle HorizontalAlign="Left" Width="400px" />
                 <ItemStyle HorizontalAlign="Left" Width="400px" />
