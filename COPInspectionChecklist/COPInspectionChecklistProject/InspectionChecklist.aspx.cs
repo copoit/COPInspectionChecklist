@@ -112,33 +112,51 @@ namespace COPInspectionChecklistProject
         //update Violation record
         private void UpdateViolations(string caseNumber)
         {
-            foreach (GridViewRow row in InspectionGrid.Rows)
+            conn.Open();
+            try
             {
-                SqlCommand cmd = new SqlCommand();
-                conn.Open();
-                cmd.Connection = conn;
-                //first delete the existing row from database where casenumber and subsection_id match query
-                string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
-                cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
-                cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='"+caseNumber+"'";
-                cmd.CommandType = CommandType.Text;
-                cmd.ExecuteNonQuery();
-                //secondly insert new field back into database with corresponding fields
-                string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].ToString();
-                string notes = InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes").ToString();
-                CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
-                CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMinor");
+                foreach (GridViewRow row in InspectionGrid.Rows)
+                {
+               
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    //first delete the existing row from database where casenumber and subsection_id match query
+                    //string  = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
+                    string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[0].Text;
+                    //string subSectionID = InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID").ToString();
+                    cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
+                    cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='" + caseNumber + "'";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                    //secondly insert new field back into database with corresponding fields
+                   // string heading = InspectionGrid.Rows[row.RowIndex].Cells[1].Text;
+                    string heading = row.Cells[1].Text;
+                    string notes = ((TextBox)(row.Cells[6].Controls[0].FindControl("txbNotes"))).Text;
+                    //string notes = ((TextBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl().Text;
+                   
+                    CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[4].FindControl("cbMajor");
+                    CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMinor");
+                    bool bMajor = major.Checked;
+                    bool bMinor = minor.Checked;
 
-                cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, @Notes, @Major, @Minor)";
-                cmd.CommandType = CommandType.Text;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
+                    cmd.Parameters.AddWithValue("@SubSection", subSectionID);
+                    cmd.Parameters.AddWithValue("@Notes", notes);
+                    cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = bMajor;
+                    cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = bMinor;
+                    cmd.CommandText = "Insert into Violations (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection, @Notes, @Major, @Minor)";
 
-                cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
-                cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = major.Checked;
-                cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = minor.Checked;
-                cmd.Parameters.AddWithValue("@Notes", notes);
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                    cmd.ExecuteNonQuery();
+                  
+                }
+                
+            }catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
+            //close the database connection
+            conn.Close();
         } 
         #endregion
         private void DisplayForms()
