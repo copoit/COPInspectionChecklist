@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CertInspection.aspx.cs" Inherits="COPInspectionChecklistProject.CertInspection" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h1 style="margin-left: 60px">CERTIFICATE OF INSPECTION</h1>
+    <h1>CERTIFICATE OF INSPECTION</h1>
                <br />
         <div class="Inspection Report">
         <asp:Table ID="HousingInspectionReport" runat="server">
@@ -50,7 +50,7 @@
                <div class="InspectionBreakdown">
         <asp:Table ID="NoticeTable1" runat="server" >
             <asp:TableRow runat="server">
-                 <asp:TableCell Width="100%"> <b>   Note:</b></asp:TableCell>
+                 <asp:TableCell> <b>   Note:</b></asp:TableCell>
         </asp:TableRow>
                   <asp:TableRow>
         
@@ -67,10 +67,10 @@
 
 <asp:Table runat="server" ID="Table1" Height="42px">
      <asp:TableRow>
-           <asp:TableCell Width="100%"> <b> Inspector Notes:</b></asp:TableCell>
+           <asp:TableCell> <b> Inspector Notes:</b></asp:TableCell>
      </asp:TableRow>
     <asp:TableRow>
-           <asp:TableCell Width="100%">  <asp:Textbox ID="txtInspectorNotes" runat="server"  Width="700px" TextMode="multiline" Columns="50" Rows="5"></asp:TextBox></asp:TableCell>
+           <asp:TableCell>  <asp:Textbox ID="txtInspectorNotes" runat="server" TextMode="multiline" Columns="50" Rows="5"></asp:TextBox></asp:TableCell>
      </asp:TableRow>
     </asp:Table>
       <br />
@@ -78,12 +78,12 @@
     <asp:Table runat="server" ID="Table2">
                         <asp:TableRow>
                               
-                    <asp:TableCell Width="100%"><asp:TextBox ID="txtInspectSig" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
-                    <asp:TableCell Width="100%"><asp:TextBox ID="txtCertIssueDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell><asp:TextBox ID="txtInspectSig" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell><asp:TextBox ID="txtCertIssueDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
                 </asp:TableRow>
                   <asp:TableRow>
-                    <asp:TableCell Width="100%">Inspector Signature</asp:TableCell>
-                       <asp:TableCell Width="100%">Certificate Issue Date</asp:TableCell>
+                    <asp:TableCell>Inspector Signature</asp:TableCell>
+                       <asp:TableCell>Certificate Issue Date</asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
            
