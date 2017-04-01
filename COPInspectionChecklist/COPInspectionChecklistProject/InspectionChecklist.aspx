@@ -148,7 +148,6 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-    <asp:Label ID="caseLoaded" runat="server" Text=""></asp:Label>
     <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px" >
         <Columns>
             <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30px">
@@ -238,17 +237,15 @@
             </asp:TableHeaderRow>
         </asp:Table>
     </div>
-    <div class="buttons">
-        <asp:Button ID="btnSave" runat="server" Text="Save" Width="250px" Height="38px" Style="margin-left: 75px;" OnClick="btnSave_Click" />
-       
+    <div class="buttons">       
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
-              
-                 <asp:Button ID="btnMail" runat="server" OnClick="btnMail_Click" Text="Email Inspection Deficiencies" Height="38px" Width="250px" Visible="true" />
-                <asp:Button ID="btnCaseMain" runat="server" OnClick="btnCaseMain_Click" Text="Case Main" Height="38px" Width="250px" Visible="true" />  
-                <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspetion" Height="38px" Width="250px" Visible="true" />
-                <asp:Button ID="btnReinspectionNotice" runat="server" OnClick="btnReinspectionNotice_Click" Text="Reinspection Notice" Height="38px" Width="250px" Visible="false" />
-                <asp:Button ID="btnNoticeNonCompliance" runat="server" OnClick="btnNoticeNonCompliance_Click" Text="Notice of NonCompliance" Height="38px" Width="250px" Visible="false" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" Width="250px" Height="38px" Visible="true" OnClick="btnSave_Click" />
+                <asp:Button ID="btnMail" runat="server" Text="Email Inspection Deficiencies" Width="250px" Height="38px" Visible="true" OnClick="btnMail_Click" />
+                <asp:Button ID="btnCaseMain" runat="server" Text="Case Main" Width="250px" Height="38px" Visible="true" OnClick="btnCaseMain_Click" />  
+                <asp:Button ID="btnCertificateInspection" runat="server" Text="Certificate of Inspetion" Height="38px" Width="250px" Visible="true" OnClick="btnCertificateInspection_Click" />
+                <asp:Button ID="btnReinspectionNotice" runat="server" Text="Reinspection Notice" Width="250px" Height="38px" Visible="false" OnClick="btnReinspectionNotice_Click" />
+                <asp:Button ID="btnNoticeNonCompliance" runat="server" Text="Notice of NonCompliance" Width="250px" Height="38px" Visible="false" OnClick="btnNoticeNonCompliance_Click" />
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>

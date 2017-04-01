@@ -25,10 +25,7 @@ namespace COPInspectionChecklistProject
                         retrieveViolationsByCaseNumber(caseNumber);
                     }
                 }
-                catch (Exception)
-                {
-                  
-                }
+                catch (Exception) { }
             }
         }
         //retrieve a InspectionCase based upon CaseNumber
@@ -74,7 +71,6 @@ namespace COPInspectionChecklistProject
                 var dt2 = clsCommon.TestDBConnection(SQL1);
                 InspectionGrid.DataSource = dt2;
                 InspectionGrid.DataBind();
-                caseLoaded.Text = "Case ID is: " + caseNumber;
             }
             else
             //There is no existing Violation case, need to build Violations table at database
@@ -109,7 +105,7 @@ namespace COPInspectionChecklistProject
                     conn.Close();
                 }
             }
-            caseLoaded.Text = "Case created. Case ID is: " + caseNumber;
+
             CheckForViolations();
         }
         private void CheckForViolations()
@@ -167,44 +163,6 @@ namespace COPInspectionChecklistProject
             //close the database connection
             conn.Close();
         }
-        //private void UpdateViolations(string caseNumber)
-        //{
-        //    conn.Open();
-        //    try
-        //    {
-        //        foreach (GridViewRow row in InspectionGrid.Rows)
-        //        {
-        //            SqlCommand cmd = new SqlCommand();
-        //            cmd.Connection = conn;
-        //            //first delete the existing row from database where casenumber and subsection_id match query
-        //            string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
-        //            cmd.Parameters.AddWithValue("@SubSection_ID", subSectionID);
-        //            cmd.CommandText = "Delete from Violations where SubSection_ID = @SubSection_ID and Case_Num='" + caseNumber + "'";
-        //            cmd.CommandType = CommandType.Text;
-        //            cmd.ExecuteNonQuery();
-        //            //secondly insert new field back into database with corresponding fields
-        //            string notes = ((TextBox)InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes")).Text;
-        //            CheckBox major = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
-        //            CheckBox minor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor");
-        //            bool bMajor = major.Checked;
-        //            bool bMinor = minor.Checked;
-
-        //            cmd.CommandText = "insert into VIOLATIONS (Case_Num, SubSection_ID, SubSection_Notes, SubSection_Major, SubSection_Minor) values (@Case_Num, @SubSection_ID, '" + notes + "' ," + bMajor + " , " + bMinor + " )";
-        //            cmd.Parameters.AddWithValue("@Case_Num", caseNumber);
-        //            cmd.Parameters.AddWithValue("@Notes", notes.Trim());
-        //            cmd.Parameters.Add("@Major", SqlDbType.Bit).Value = bMajor;
-        //            cmd.Parameters.Add("@Minor", SqlDbType.Bit).Value = bMinor;
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //    }
-        //    //close the database connection
-        //    conn.Close();
-        //    CheckForViolations();
-        //}
         private void DisplayForms()
         {
             if (cBMajor.Checked)
@@ -255,8 +213,8 @@ namespace COPInspectionChecklistProject
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    if (dr["SubSection_Notes"].ToString() != null)
-                        body += string.Format("{0}]t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                    //if (dr["SubSection_Notes"].ToString() != null)
+                    body += string.Format("{0}]t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
                 }
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
