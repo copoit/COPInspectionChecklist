@@ -197,11 +197,14 @@ namespace COPInspectionChecklistProject
         private void EmailInspection(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
+            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, "
+                            + "VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes, VIOLATIONS.SubSection_Major, VIOLATIONS.SubSection_Minor, "
+                            + "D.SubSection_Desc "
                             + "FROM CASE_INFO INNER JOIN "
                             + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
                             + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
                             + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
+                            + "LEFT JOIN CL_SectionDetail D ON VIOLATIONS.SubSection_ID = D.SubSection_ID "
                             + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
             var dt = clsCommon.TestDBConnection(SQL);
 
@@ -210,12 +213,24 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
+                var headings = "Violation\tMajor/Minor\tNotes";
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    //if (dr["SubSection_Notes"].ToString() != null)
-                    body += string.Format("{0}]t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+
+                    var major = Convert.ToBoolean(dr["SubSection_Major"]);
+                    var minor = Convert.ToBoolean(dr["SubSection_Minor"]);
+                    if (major || minor)
+                    {
+                        body += string.Format("{0}\t{2}\t{1}\n",
+                                    dr["SubSection_Desc"].ToString(),
+                                    dr["SubSection_Notes"].ToString(),
+                                    major ? "Major" : "Minor"
+                                    );
+                    }
                 }
+
+                body = headings + "\n" + body;
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
                 string script = string.Format("parent.location='{0}'", url);
