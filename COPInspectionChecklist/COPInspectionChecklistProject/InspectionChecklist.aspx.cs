@@ -336,7 +336,7 @@ namespace COPInspectionChecklistProject
             CheckForViolations();
             UpdateViolations(txtCaseNum.Text);
             UpdateCertifications(txtCaseNum.Text);
-            Response.Redirect("~/InspectionChecklist.apsx?CaseNumber=" + txtCaseNum.Text);
+         
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
