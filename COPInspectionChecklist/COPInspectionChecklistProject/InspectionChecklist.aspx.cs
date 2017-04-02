@@ -177,10 +177,10 @@ namespace COPInspectionChecklistProject
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             //Update Case_Info
-            DateTime dateTxt = DateTime.Parse(txtDate.Text);
+            DateTime inspectTxt = DateTime.Parse(txtDate.Text);
             cmd.Parameters.AddWithValue("@InspSig", txtSign.Text);
-            cmd.Parameters.Add("@CertIssueDate", SqlDbType.DateTime).Value = dateTxt;
-            string updateStr = "Update Case_Info set Inspector_Signature=@InspSig, Cert_IssueDate=@CertIssueDate WHERE Case_Num='" + caseNumber + "'";
+            cmd.Parameters.Add("@CertIssueDate", SqlDbType.DateTime).Value = inspectTxt;
+            string updateStr = "Update Case_Info set Inspector_Signature=@InspSig, Cert_IssueDate=@CertIssueDate  WHERE Case_Num='" + caseNumber + "'";
             cmd.CommandText = updateStr;
             cmd.ExecuteNonQuery();
             conn.Close();
@@ -333,6 +333,7 @@ namespace COPInspectionChecklistProject
             CheckForViolations();
             UpdateViolations(txtCaseNum.Text);
             UpdateCertifications(txtCaseNum.Text);
+            Response.Redirect("~/InspectionChecklist.apsx?CaseNumber" + txtCaseNum.Text);
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
