@@ -162,17 +162,17 @@
             <HeaderStyle HorizontalAlign="Left" Width="250px" />
             <ItemStyle HorizontalAlign="Left" Width="250px" />
             </asp:BoundField>
-            <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" >
+            <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" NullDisplayText="" >
             <HeaderStyle HorizontalAlign="Left" Width="400px" />
             <ItemStyle HorizontalAlign="Left" Width="400px" />
             </asp:BoundField>
-            <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" >
+            <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" NullDisplayText="" >
             <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
             <ItemStyle HorizontalAlign="Center" Width="90px" />
             </asp:BoundField>
             <asp:TemplateField HeaderText="Major" SortExpression="Expr1">
                 <ItemTemplate>
-                    <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
+                    <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true"  />
                 </ItemTemplate>
                 <HeaderStyle HorizontalAlign="Right" Width="30px" />
                 <ItemStyle HorizontalAlign="Center" Width="30px" />
@@ -215,7 +215,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell Style="padding-left: 20px;">Property Address</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtProp" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtProp" runat="server" Width="300px" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
