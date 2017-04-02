@@ -148,7 +148,7 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-    <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px" >
+    <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" >
         <Columns>
             <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30px">
             </asp:BoundField>
@@ -159,37 +159,37 @@
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" >
-            <HeaderStyle HorizontalAlign="Left" Width="250px" />
-            <ItemStyle HorizontalAlign="Left" Width="250px" />
+            <HeaderStyle HorizontalAlign="Left"/>
+            <ItemStyle HorizontalAlign="Left" />
             </asp:BoundField>
             <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" >
-            <HeaderStyle HorizontalAlign="Left" Width="400px" />
-            <ItemStyle HorizontalAlign="Left" Width="400px" />
+            <HeaderStyle HorizontalAlign="Left" />
+            <ItemStyle HorizontalAlign="Left" />
             </asp:BoundField>
             <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" >
-            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
-            <ItemStyle HorizontalAlign="Center" Width="90px" />
+            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
+            <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
             <asp:TemplateField HeaderText="Major" SortExpression="Expr1">
                 <ItemTemplate>
                     <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
                 </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Right" Width="30px" />
-                <ItemStyle HorizontalAlign="Center" Width="30px" />
+                <HeaderStyle HorizontalAlign="Right" />
+                <ItemStyle HorizontalAlign="Center"  />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Minor" SortExpression="Expr2">
                 <ItemTemplate>
                         <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Eval("Expr2") == DBNull.Value ? false : Eval("Expr2") %>' Enabled="true" />
                 </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Right" Width="30px" />
-                <ItemStyle HorizontalAlign="Center" Width="30px" />
+                <HeaderStyle HorizontalAlign="Right"  />
+                <ItemStyle HorizontalAlign="Center" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
                 <ItemTemplate>
                     <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3")  %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%" ></asp:TextBox>
                 </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Left" Width="400px" />
-                <ItemStyle HorizontalAlign="Left" Width="400px" />
+                <HeaderStyle HorizontalAlign="Left"/>
+                <ItemStyle HorizontalAlign="Left"  />
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
@@ -242,8 +242,12 @@
             <ContentTemplate>
                 <asp:Button ID="btnSave" runat="server" Text="Save" Width="250px" Height="38px" Visible="true" OnClick="btnSave_Click" />
                 <asp:Button ID="btnMail" runat="server" Text="Email Inspection Deficiencies" Width="250px" Height="38px" Visible="true" OnClick="btnMail_Click" />
+                <br />
+                <br />
                 <asp:Button ID="btnCaseMain" runat="server" Text="Case Main" Width="250px" Height="38px" Visible="true" OnClick="btnCaseMain_Click" />  
                 <asp:Button ID="btnCertificateInspection" runat="server" Text="Certificate of Inspetion" Height="38px" Width="250px" Visible="true" OnClick="btnCertificateInspection_Click" />
+                <br />
+                <br />                
                 <asp:Button ID="btnReinspectionNotice" runat="server" Text="Reinspection Notice" Width="250px" Height="38px" Visible="false" OnClick="btnReinspectionNotice_Click" />
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" Text="Notice of NonCompliance" Width="250px" Height="38px" Visible="false" OnClick="btnNoticeNonCompliance_Click" />
             </ContentTemplate>
