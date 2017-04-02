@@ -237,26 +237,29 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
-                var headings = "Violation\tMajor/Minor\tNotes";
+                var headings = "Violation&#9632;Major/Minor&#9632;Notes";
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
 
                     var major = Convert.ToBoolean(dr["SubSection_Major"]);
                     var minor = Convert.ToBoolean(dr["SubSection_Minor"]);
-                    if (major || minor)
+                    var notes = dr["SubSection_Notes"].ToString();
+                    if (major || minor || !string.IsNullOrEmpty(notes))
                     {
-                        body += string.Format("{0}\t{2}\t{1}\n",
+                        body += string.Format("{0}&#9632;{2}&#9632;{1}\n",
                                     dr["SubSection_Desc"].ToString(),
-                                    dr["SubSection_Notes"].ToString(),
-                                    major ? "Major" : "Minor"
+                                    notes,
+                                    major && minor ? "Major/Minor" : (major || minor ? (major ? "Major" : "Minor") : "")
                                     );
                     }
                 }
 
-                body = headings + "\n" + body;
+                var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
+                body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
+                        string.Format("{0}\n{1}", headings, body);
 
-                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));
+                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));
                 string script = string.Format("parent.location='{0}'", url);
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
