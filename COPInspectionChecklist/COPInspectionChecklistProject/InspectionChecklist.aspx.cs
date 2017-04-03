@@ -261,6 +261,7 @@ namespace COPInspectionChecklistProject
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
         }
+        }
         #region Checkboxes
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
