@@ -221,14 +221,11 @@ namespace COPInspectionChecklistProject
          private void EmailInspection(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, "
-                            + "VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes, VIOLATIONS.SubSection_Major, VIOLATIONS.SubSection_Minor, "
-                            + "D.SubSection_Desc "
+            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
                             + "FROM CASE_INFO INNER JOIN "
                             + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
                             + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
                             + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
-                            + "LEFT JOIN CL_SectionDetail D ON VIOLATIONS.SubSection_ID = D.SubSection_ID "
                             + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
             var dt = clsCommon.TestDBConnection(SQL);
 
@@ -237,30 +234,15 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
-                var headings = "Violation;Major/Minor;Notes";
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-
-                    var major = Convert.ToBoolean(dr["SubSection_Major"]);
-                    var minor = Convert.ToBoolean(dr["SubSection_Minor"]);
-                    var notes = dr["SubSection_Notes"].ToString();
-                    if (major || minor || !string.IsNullOrEmpty(notes))
-                    {
-                        body += string.Format("{0};{2};{1}\n",
-                                    dr["SubSection_Desc"].ToString(),
-                                    notes,
-                                    major && minor ? "Major/Minor" : (major || minor ? (major ? "Major" : "Minor") : "")
-                                    );
-                    }
+                    var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
+                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
                 }
 
-                var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
-                body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
-                        string.Format("{0}\n{1}", headings, body);
-
-                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));
-                string script = string.Format("parent.location='{0}'", url);
+                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));                
+                string script = string.Format("parent.location='{0}'", url);             
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
         }
@@ -367,30 +349,3 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
-
-//saves for test code
-
-//private void retrieveViolationsByCaseNumber(string caseNumber)
-//{
-//    DbCommon clsCommon = new DbCommon();
-//    string SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + caseNumber + "'";
-//    var dt1 = clsCommon.TestDBConnection(SQL);
-//    //check to see if there is an existing Violations case
-//    if (dt1.Rows.Count > 0)
-//    {
-//        string SQL1 = "SELECT D.Section_ID, S.Section_Name, D.SubSection_ID , D.SubSection_Desc, D.SubSection_Code, V.SubSection_Minor AS Expr2, V.SubSection_Major AS Expr1, V.SubSection_Notes AS Expr3 FROM CL_SectionDetail as D RIGHT JOIN CL_Section as S ON S.Section_ID = D.Section_ID LEFT JOIN Violations as V ON D.SubSection_ID = V.SubSection_ID Where V.Case_Num = '" + caseNumber + "' ORDER BY S.SectionSeq_ID";
-//        var dt2 = clsCommon.TestDBConnection(SQL1);
-//        InspectionGrid.DataSource = dt2;
-//        InspectionGrid.DataBind();
-//    }
-//    else
-//    //There is no existing Violation case, need to build Violations table at database
-//    {
-//        string SQL1 = "Select D.Section_ID, S.Section_Name, D.SubSection_ID, D.SubSection_Desc, D.SubSection_Code, D.SubSection_Minor as Expr2, D.SubSection_Major as Expr1, D.SubSection_Notes as Expr3 From CL_SectionDetail as D Right Join CL_Section as S On S.Section_ID = D.Section_ID Order by S.SectionSeq_ID";
-//        var dt2 = clsCommon.TestDBConnection(SQL1);
-//        InspectionGrid.DataSource = dt2;
-//        InspectionGrid.DataBind();
-//        CreateViolation(caseNumber);
-//    }
-//    CheckForViolations();
-//}
