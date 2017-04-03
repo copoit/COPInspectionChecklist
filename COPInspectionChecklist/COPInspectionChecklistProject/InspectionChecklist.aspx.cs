@@ -218,14 +218,17 @@ namespace COPInspectionChecklistProject
                 btnMail.Visible = true;
             }
         }
-     private void EmailInspection(string caseNumber)
+         private void EmailInspection(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
+            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, "
+                            + "VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes, VIOLATIONS.SubSection_Major, VIOLATIONS.SubSection_Minor, "
+                            + "D.SubSection_Desc "
                             + "FROM CASE_INFO INNER JOIN "
                             + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
                             + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
                             + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
+                            + "LEFT JOIN CL_SectionDetail D ON VIOLATIONS.SubSection_ID = D.SubSection_ID "
                             + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
             var dt = clsCommon.TestDBConnection(SQL);
 
@@ -234,14 +237,30 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
+                var headings = "Violation&#9632;Major/Minor&#9632;Notes";
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+
+                    var major = Convert.ToBoolean(dr["SubSection_Major"]);
+                    var minor = Convert.ToBoolean(dr["SubSection_Minor"]);
+                    var notes = dr["SubSection_Notes"].ToString();
+                    if (major || minor || !string.IsNullOrEmpty(notes))
+                    {
+                        body += string.Format("{0}&#9632;{2}&#9632;{1}\n",
+                                    dr["SubSection_Desc"].ToString(),
+                                    notes,
+                                    major && minor ? "Major/Minor" : (major || minor ? (major ? "Major" : "Minor") : "")
+                                    );
+                    }
                 }
 
-                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));                
-                string script = string.Format("parent.location='{0}'", url);             
+                var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
+                body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
+                        string.Format("{0}\n{1}", headings, body);
+
+                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));
+                string script = string.Format("parent.location='{0}'", url);
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
         }
@@ -324,106 +343,6 @@ namespace COPInspectionChecklistProject
             {
                 CreateViolation(txtCaseNum.Text);
             }
-        }
-        protected void btnCaseMain_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
-        }
-        protected void btnMail_Click(object sender, EventArgs e)
-        {
-            EmailInspection(txtCaseNum.Text);
-        }
-        protected void btnCertificateInspection_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/CertInspection.aspx?CaseNumber=" + txtCaseNum.Text);
-        }
-        protected void btnReinspectionNotice_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/ReinspectNotice.aspx?CaseNumber=" + txtCaseNum.Text);
-        }
-        protected void btnNoticeNonCompliance_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/NoticeNonCompliance.aspx?CaseNumber=" + txtCaseNum.Text);
-        }
-        #endregion
-    }
-}
-            }
-        }
-        }
-        #region Checkboxes
-        protected void cBMajor_CheckedChanged(object sender, EventArgs e)
-        {
-            //major violation noted 
-            if (cBMajor.Checked)
-            {
-                cBNoViolations.Checked = false;
-                cBNoMajor.Checked = false;
-            }
-            DisplayForms();
-        }
-        protected void cBMinor_CheckedChanged(object sender, EventArgs e)
-        {
-            //minor violation noted 
-            if (cBMinor.Checked)
-            {
-                cBNoMinor.Checked = false;
-                cBNoViolations.Checked = false;
-            }
-            DisplayForms();
-        }
-        protected void cBNoMajor_CheckedChanged(object sender, EventArgs e)
-        {
-            //no major violations 
-            if (cBNoMajor.Checked)
-            {
-                cBMajor.Checked = false;
-                cBNoViolations.Checked = false;
-            }
-            if (cBNoMajor.Checked && cBNoMinor.Checked)
-            {
-                cBNoViolations.Checked = true;
-                cBNoMinor.Checked = false;
-                cBNoMajor.Checked = false;
-            }
-            DisplayForms();
-        }
-        protected void cBNoMinor_CheckedChanged(object sender, EventArgs e)
-        {
-            //no minor violations 
-            if (cBNoMinor.Checked)
-            {
-                cBMinor.Checked = false;
-                cBNoViolations.Checked = false;
-            }
-            if (cBNoMajor.Checked && cBNoMinor.Checked)
-            {
-                cBNoViolations.Checked = true;
-                cBNoMinor.Checked = false;
-                cBNoMajor.Checked = false;
-            }
-            DisplayForms();
-        }
-        protected void cBNoViolations_CheckedChanged(object sender, EventArgs e)
-        {
-            //no violations noted 
-            if (cBNoViolations.Checked)
-            {
-                cBMajor.Checked = false;
-                cBMinor.Checked = false;
-                cBNoMajor.Checked = false;
-                cBNoMinor.Checked = false;
-            }
-            DisplayForms();
-        }
-        #endregion
-        #region Buttons
-        protected void btnSave_Click(object sender, EventArgs e)
-        {
-            CheckForViolations();
-            UpdateViolations(txtCaseNum.Text);
-            UpdateCertifications(txtCaseNum.Text);
-         
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
