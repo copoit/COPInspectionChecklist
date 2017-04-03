@@ -218,7 +218,7 @@ namespace COPInspectionChecklistProject
                 btnMail.Visible = true;
             }
         }
-         private void EmailInspection(string caseNumber)
+           private void EmailInspection(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
             string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
@@ -237,9 +237,7 @@ namespace COPInspectionChecklistProject
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    
-                        body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
-                        string.Format("{0}\n{1}", body);
+                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
                 }
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));                
