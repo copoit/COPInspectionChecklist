@@ -254,7 +254,7 @@ namespace COPInspectionChecklistProject
 
                 var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
                 body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
-                        string.Format("{0}\n{1}", headings, body);
+                        string.Format("{0}\n{1}", body);
 
                 string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));
                 string script = string.Format("parent.location='{0}'", url);
