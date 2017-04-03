@@ -237,7 +237,7 @@ namespace COPInspectionChecklistProject
                 string to = "";
                 string body = "";
 
-                var headings = "Violation&#9632;Major/Minor&#9632;Notes";
+                
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
@@ -247,9 +247,8 @@ namespace COPInspectionChecklistProject
                     var notes = dr["SubSection_Notes"].ToString();
                     if (major || minor || !string.IsNullOrEmpty(notes))
                     {
-                        body += string.Format("{0}&#9632;{2}&#9632;{1}\n",
-                                    dr["SubSection_Desc"].ToString(),
-                                    notes,
+                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Desc"].ToString(), dr["SubSection_Notes"].ToString());
+                                   
                                     major && minor ? "Major/Minor" : (major || minor ? (major ? "Major" : "Minor") : "")
                                     );
                     }
