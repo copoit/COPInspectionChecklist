@@ -249,7 +249,7 @@ namespace COPInspectionChecklistProject
                     {
                     body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Desc"].ToString(), dr["SubSection_Notes"].ToString());
                                    
-                                    major && minor ? "Major/Minor" : (major || minor ? (major ? "Major" : "Minor") : "")
+                                    major && minor ? "Major/Minor" : (major || minor ? (major ? "Major" : "Minor") : "");
                                     );
                     }
                 }
