@@ -237,7 +237,7 @@ namespace COPInspectionChecklistProject
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                    body += string.Format("{0}\t{1}\n", dr["SubSection_Major"].ToString(),dr["SubSection_Minor"].ToString(),dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
                 }
                 
               
