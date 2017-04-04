@@ -239,8 +239,9 @@ namespace COPInspectionChecklistProject
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
                     body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
                 }
-
-                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("Inspection Violations"), Server.UrlPathEncode(body));                
+                
+                var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
+                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode("subject"), Server.UrlPathEncode(body));                
                 string script = string.Format("parent.location='{0}'", url);             
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
