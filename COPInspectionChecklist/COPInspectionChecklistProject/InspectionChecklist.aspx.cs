@@ -237,11 +237,14 @@ namespace COPInspectionChecklistProject
                 foreach (DataRow dr in dt.Rows)
                 {
                     to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
+                    body += string.Format("{0}\t{1}\n", dr["SubSection_Desc"].ToString(), dr["SubSection_Notes"].ToString());
                 }
                 
+              
                 var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
-                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));                
+                 body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
+                        string.Format("{0}\n{1}", body);
+                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));               
                 string script = string.Format("parent.location='{0}'", url);             
                 ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
             }
