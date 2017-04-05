@@ -218,16 +218,18 @@ namespace COPInspectionChecklistProject
                 btnMail.Visible = true;
             }
         }
-           private void EmailInspection(string caseNumber)
+      
+private void EmailInspection(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
-                            + "FROM CASE_INFO INNER JOIN "
-                            + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
-                            + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
-                            + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
-                            + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
-                           
+            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes,CL_SectionDetail.SubSectionSeq_ID "
+                            + "FROM CASE_INFO INNER JOIN PROPERTY_INFO"
+                            + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN INSPECTOR_INFO"
+                            + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN VIOLATIONS"
+                            + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num INNER JOIN CL_SectionDetail"
+                            +  "ON CL_SectionDetail.SubSection_ID = VIOLATIONS.SubSection_ID"
+                            + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'" ORDER BY CL_SectionDetail.SubSectionSeq_ID"
+                            
             var dt = clsCommon.TestDBConnection(SQL);
 
             if (dt.Rows.Count > 0)
