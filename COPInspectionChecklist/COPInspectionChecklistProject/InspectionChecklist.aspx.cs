@@ -227,7 +227,7 @@ namespace COPInspectionChecklistProject
                             + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
                             + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
                             + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
-                            + "Order by CL_Section.SectionSeq"
+                           
             var dt = clsCommon.TestDBConnection(SQL);
 
             if (dt.Rows.Count > 0)
