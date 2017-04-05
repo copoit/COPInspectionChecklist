@@ -219,10 +219,10 @@ namespace COPInspectionChecklistProject
             }
         }
       
-private void EmailInspection(string caseNumber)
+    private void EmailInspection(string caseNumber)
         {
             DbCommon clsCommon = new DbCommon();
-             string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
+            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
                             + "FROM CASE_INFO INNER JOIN "
                             + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
                             + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
