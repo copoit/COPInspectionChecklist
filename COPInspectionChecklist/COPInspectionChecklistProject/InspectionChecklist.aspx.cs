@@ -228,7 +228,7 @@ private void EmailInspection(string caseNumber)
                             + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN VIOLATIONS"
                             + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num INNER JOIN CL_SectionDetail"
                             +  "ON CL_SectionDetail.SubSection_ID = VIOLATIONS.SubSection_ID"
-                            + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'" ORDER BY CL_SectionDetail.SubSectionSeq_ID"
+                            + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'" ORDER BY CL_SectionDetail.SubSectionSeq_ID";
                             
             var dt = clsCommon.TestDBConnection(SQL);
 
