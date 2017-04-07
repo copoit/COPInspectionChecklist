@@ -231,7 +231,8 @@ namespace COPInspectionChecklistProject
 					+ "VIOLATIONS.SubSection_Minor, "
 					+ "VIOLATIONS.SubSection_Notes, "
 					+ "CL_SectionDetail.SubSectionSeq_ID, "
-					+ "CL_SectionDetail.SubSection_Desc "
+					+ "CL_SectionDetail.SubSection_Desc, "
+					+ "CL_SectionDetail.Section_ID "
 					+ "FROM CASE_INFO "
 					+ "INNER JOIN PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID "
 					+ "INNER JOIN INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID "
@@ -260,7 +261,7 @@ namespace COPInspectionChecklistProject
 			var notes = dr["SubSection_Notes"].ToString();
 
 			body += string.Format("{0}\t{1}\t{2}\t{3}\n",
-							dr["SubSection_ID"].ToString(),
+							dr["Section_ID"].ToString(),
 							dr["SubSection_Desc"].ToString(),                                    
 							string.Join("/", list.ToArray()),
 							notes
@@ -276,7 +277,6 @@ namespace COPInspectionChecklistProject
 		ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
 	}
 }
-
         #region Buttons
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
