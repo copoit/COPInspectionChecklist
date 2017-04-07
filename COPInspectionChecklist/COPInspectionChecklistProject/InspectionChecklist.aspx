@@ -148,51 +148,56 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-    <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px" >
-        <Columns>
-            <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30px">
-            </asp:BoundField>
-             <asp:TemplateField SortExpression="SubSection_ID" Visible="false" HeaderText="SubSection_ID">
-                <ItemTemplate>
-                    <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("SubSection_ID") %>'></asp:Label>
-                    <input type="hidden" runat="server" id="subSection_ID" value='<%#Eval("SubSection_ID") %>' />
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:BoundField DataField="Section_Name" HeaderText="Heading" SortExpression="Section_Name" >
-            <HeaderStyle HorizontalAlign="Left" Width="250px" />
-            <ItemStyle HorizontalAlign="Left" Width="250px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" NullDisplayText="" >
-            <HeaderStyle HorizontalAlign="Left" Width="400px" />
-            <ItemStyle HorizontalAlign="Left" Width="400px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" NullDisplayText="" >
-            <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
-            <ItemStyle HorizontalAlign="Center" Width="90px" />
-            </asp:BoundField>
-            <asp:TemplateField HeaderText="Major" SortExpression="Expr1">
-                <ItemTemplate>
-                    <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true"  />
-                </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Right" Width="30px" />
-                <ItemStyle HorizontalAlign="Center" Width="30px" />
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Minor" SortExpression="Expr2">
-                <ItemTemplate>
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px">
+            <Columns>
+                <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30px">
+                    <HeaderStyle HorizontalAlign="Center" Width="30px"></HeaderStyle>
+                    <ItemStyle HorizontalAlign="Center" Width="30px"></ItemStyle>
+                </asp:BoundField>
+                <asp:TemplateField SortExpression="SubSection_ID" Visible="false" HeaderText="SubSection_ID">
+                    <ItemTemplate>
+                        <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("SubSection_ID") %>'></asp:Label>
+                        <input type="hidden" runat="server" id="subSection_ID" value='<%#Eval("SubSection_ID") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Heading" SortExpression="Section_Name">
+                    <ItemTemplate>
+                        <asp:Label ID="lblHeading" runat="server" Text='<%# Bind("Section_Name") %>' Enabled="False"></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Left" Width="250px" />
+                    <ItemStyle HorizontalAlign="Left" Width="250px" />
+                </asp:TemplateField>
+                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" NullDisplayText="">
+                    <HeaderStyle HorizontalAlign="Left" Width="400px" />
+                    <ItemStyle HorizontalAlign="Left" Width="400px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" NullDisplayText="">
+                    <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
+                    <ItemStyle HorizontalAlign="Center" Width="90px" />
+                </asp:BoundField>
+                <asp:TemplateField HeaderText="Major" SortExpression="Expr1">
+                    <ItemTemplate>
+                        <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Right" Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px" />
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Minor" SortExpression="Expr2">
+                    <ItemTemplate>
                         <asp:CheckBox ID="cbMinor" runat="server" Checked='<%# Eval("Expr2") == DBNull.Value ? false : Eval("Expr2") %>' Enabled="true" />
-                </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Right" Width="30px" />
-                <ItemStyle HorizontalAlign="Center" Width="30px" />
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
-                <ItemTemplate>
-                    <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3")  %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%" ></asp:TextBox>
-                </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Left" Width="400px" />
-                <ItemStyle HorizontalAlign="Left" Width="400px" />
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Right" Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px" />
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Notes" SortExpression="Expr3">
+                    <ItemTemplate>
+                        <asp:TextBox ID="txbNotes" runat="server" Text='<%# Bind("Expr3")  %>' TextMode="MultiLine" Height="100%" MaxLength="250" Rows="3" Width="100%"></asp:TextBox>
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Left" Width="400px" />
+                    <ItemStyle HorizontalAlign="Left" Width="400px" />
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
     </div>
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
@@ -215,7 +220,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell Style="padding-left: 20px;">Property Address</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtProp" runat="server" Width="300px" ></asp:TextBox>
+                    <asp:TextBox ID="txtProp" runat="server" Width="300px"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -237,13 +242,13 @@
             </asp:TableHeaderRow>
         </asp:Table>
     </div>
-    <div class="buttons">       
+    <div class="buttons">
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
                 <asp:Button ID="btnSave" runat="server" Text="Save" Width="250px" Height="38px" Visible="true" OnClick="btnSave_Click" />
                 <asp:Button ID="btnMail" runat="server" Text="Email Inspection Deficiencies" Width="250px" Height="38px" Visible="true" OnClick="btnMail_Click" />
-                <asp:Button ID="btnCaseMain" runat="server" Text="Case Main" Width="250px" Height="38px" Visible="true" OnClick="btnCaseMain_Click" />  
-                <asp:Button ID="btnCertificateInspection" runat="server" Text="Certificate of Inspetion" Height="38px" Width="250px" Visible="true" OnClick="btnCertificateInspection_Click" />
+                <asp:Button ID="btnCaseMain" runat="server" Text="Case Main" Width="250px" Height="38px" Visible="true" OnClick="btnCaseMain_Click" />
+                <asp:Button ID="btnCertificateInspection" runat="server" Text="Certificate of Inspection" Height="38px" Width="250px" Visible="true" OnClick="btnCertificateInspection_Click" />
                 <asp:Button ID="btnReinspectionNotice" runat="server" Text="Reinspection Notice" Width="250px" Height="38px" Visible="false" OnClick="btnReinspectionNotice_Click" />
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" Text="Notice of NonCompliance" Width="250px" Height="38px" Visible="false" OnClick="btnNoticeNonCompliance_Click" />
             </ContentTemplate>
