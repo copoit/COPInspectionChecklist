@@ -219,37 +219,63 @@ namespace COPInspectionChecklistProject
             }
         }
       
-    private void EmailInspection(string caseNumber)
-        {
-            DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT DISTINCT CASE_INFO.Case_Num, PROPERTY_INFO.Applicant_Email, INSPECTOR_INFO.Inspector_Email, VIOLATIONS.SubSection_ID, VIOLATIONS.SubSection_Notes "
-                            + "FROM CASE_INFO INNER JOIN "
-                            + "PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID INNER JOIN "
-                            + "INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID INNER JOIN "
-                            + "VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
-                            + "WHERE CASE_INFO.Case_Num = '" + caseNumber + "'";
-                         
-                            
-            var dt = clsCommon.TestDBConnection(SQL);
+ private void EmailInspection(string caseNumber)
+{
+	DbCommon clsCommon = new DbCommon();
+	string SQL = "SELECT DISTINCT "
+					+ "CASE_INFO.Case_Num, "
+					+ "PROPERTY_INFO.Applicant_Email, "
+					+ "INSPECTOR_INFO.Inspector_Email, "
+					+ "VIOLATIONS.SubSection_ID, "
+					+ "VIOLATIONS.SubSection_Major, "
+					+ "VIOLATIONS.SubSection_Minor, "
+					+ "VIOLATIONS.SubSection_Notes, "
+					+ "CL_SectionDetail.SubSectionSeq_ID, "
+					+ "CL_SectionDetail.SubSection_Desc "
+					+ "FROM CASE_INFO "
+					+ "INNER JOIN PROPERTY_INFO ON CASE_INFO.Property_ID = PROPERTY_INFO.Property_ID "
+					+ "INNER JOIN INSPECTOR_INFO ON CASE_INFO.Inspector_ID = INSPECTOR_INFO.Inspector_ID "
+					+ "INNER JOIN VIOLATIONS ON CASE_INFO.Case_Num = VIOLATIONS.Case_Num "
+					+ "INNER JOIN CL_SectionDetail  ON CL_SectionDetail.SubSection_ID = VIOLATIONS.SubSection_ID "
+					+ "WHERE CASE_INFO.Case_Num = '" + caseNumber + "' "
+					+ "ORDER BY CL_SectionDetail.SubSectionSeq_ID";
+	var dt = clsCommon.TestDBConnection(SQL);
 
-            if (dt.Rows.Count > 0)
-            {
-                string to = "";
-                string body = "";
+	if (dt.Rows.Count > 0)
+	{
+		string to = "";
+		string body = "";
 
-                foreach (DataRow dr in dt.Rows)
-                {
-                    to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
-                    body += string.Format("{0}\t{1}\n", dr["SubSection_ID"].ToString(), dr["SubSection_Notes"].ToString());
-                }
-                
-              
-                var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
-                string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));               
-                string script = string.Format("parent.location='{0}'", url);             
-                ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
-            }
-        }
+		var headings = "Section\tViolation\tMajor/Minor\tNotes";
+		foreach (DataRow dr in dt.Rows)
+		{
+			to = dr["Applicant_Email"].ToString() + ";" + dr["Inspector_Email"].ToString();
+
+			var list = new System.Collections.Generic.List<string>();
+			var major = Convert.ToBoolean(dr["SubSection_Major"]);
+			if (major) list.Add("Major");
+			var minor = Convert.ToBoolean(dr["SubSection_Minor"]);
+			if (minor) list.Add("Minor");
+
+			var notes = dr["SubSection_Notes"].ToString();
+
+			body += string.Format("{0}\t{1}\t{2}\t{3}\n",
+							dr["SubSection_ID"].ToString(),
+							dr["SubSection_Desc"].ToString(),                                    
+							string.Join("/", list.ToArray()),
+							notes
+							);
+		}
+
+		var subject = string.Format("Inspection Violations for Case Number: {0}", caseNumber);
+		body = string.Format("Case Number: {0}\nProperty Address: {1}\n\n\n", caseNumber, txtPropAdd.Text) +
+				string.Format("{0}\n{1}", headings, body);
+
+		string url = string.Format("mailto:{0}?subject={1}&body={2}", to, Server.UrlPathEncode(subject), Server.UrlPathEncode(body));
+		string script = string.Format("parent.location='{0}'", url);
+		ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
+	}
+}
 
         #region Buttons
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
