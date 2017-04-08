@@ -129,9 +129,11 @@ namespace COPInspectionChecklistProject
                     {
                         Label prevHeading = ((Label)InspectionGrid.Rows[row.RowIndex - 1].Cells[2].FindControl("lblHeading"));
                         Label curHeading = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[2].FindControl("lblHeading"));
+                        Label curSection = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[0].FindControl("lblSection_ID"));
                         if (prevHeading.Text == curHeading.Text || curHeading.Text == lastHeading)
                         {
                             curHeading.Text = string.Empty;
+                            curSection.Text = string.Empty;
                             if(prevHeading.Text != string.Empty)
                                 lastHeading = prevHeading.Text;
                         }
@@ -316,7 +318,7 @@ namespace COPInspectionChecklistProject
 		ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
 	}
 }
-        #region Buttons
+        #region Checkboxes
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
             //major violation noted 

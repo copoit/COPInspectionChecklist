@@ -150,10 +150,13 @@
     <div class="InspectionGrid">
         <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px">
             <Columns>
-                <asp:BoundField DataField="Section_ID" HeaderText="Section ID" ReadOnly="True" SortExpression="Section_ID" HeaderStyle-HorizontalAlign="Center" HeaderStyle-Width="30px" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="30px">
-                    <HeaderStyle HorizontalAlign="Center" Width="30px"></HeaderStyle>
-                    <ItemStyle HorizontalAlign="Center" Width="30px"></ItemStyle>
-                </asp:BoundField>
+                <asp:TemplateField HeaderText="Section ID" SortExpression="Section_ID">
+                    <ItemTemplate>
+                        <asp:Label ID="lblSection_ID" runat="server" Text='<%# Bind("Section_ID") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle HorizontalAlign="Center" Width="30px" />
+                    <ItemStyle HorizontalAlign="Center" Width="30px" />
+                </asp:TemplateField>
                 <asp:TemplateField SortExpression="SubSection_ID" Visible="false" HeaderText="SubSection_ID">
                     <ItemTemplate>
                         <asp:Label ID="lblSubSection_ID" runat="server" Text='<%# Bind("SubSection_ID") %>'></asp:Label>
@@ -199,6 +202,11 @@
             </Columns>
         </asp:GridView>
     </div>
+    <fieldset style="padding: 15px;">
+        For more information on how to obtain a new permit or reactivate the existing permit, 
+        contact the Building Division at (626)744-4200 or visit the Permit Center - 175 Garfield Ave.
+    </fieldset>
+    <br />
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
         unless otherwise noted by the inspector. Major violations require reinspection. Minor violations do not require reinspection (at the discretion of 
