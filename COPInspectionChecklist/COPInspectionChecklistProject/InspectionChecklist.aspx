@@ -148,7 +148,7 @@
         </asp:UpdatePanel>
     </div>
     <div class="InspectionGrid">
-        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px">
+        <asp:GridView ID="InspectionGrid" runat="server" AutoGenerateColumns="False" DataKeyNames="Section_ID" Width="1200px" >
             <Columns>
                 <asp:TemplateField HeaderText="Section ID" SortExpression="Section_ID">
                     <ItemTemplate>
@@ -170,17 +170,20 @@
                     <HeaderStyle HorizontalAlign="Left" Width="250px" />
                     <ItemStyle HorizontalAlign="Left" Width="250px" />
                 </asp:TemplateField>
-                <asp:BoundField DataField="SubSection_Desc" HeaderText="Description" SortExpression="SubSection_Desc" NullDisplayText="">
+                <asp:TemplateField HeaderText="Description" SortExpression="SubSection_Desc">
+                    <ItemTemplate>
+                        <asp:Label ID="lblDescription" runat="server" Text='<%# Bind("SubSection_Desc") %>'></asp:Label>
+                    </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Left" Width="400px" />
                     <ItemStyle HorizontalAlign="Left" Width="400px" />
-                </asp:BoundField>
+                </asp:TemplateField>
                 <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" NullDisplayText="">
                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
                     <ItemStyle HorizontalAlign="Center" Width="90px" />
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Major" SortExpression="Expr1">
                     <ItemTemplate>
-                        <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true" />
+                        <asp:CheckBox ID="cbMajor" runat="server" Checked='<%# Eval("Expr1") == DBNull.Value ? false : Eval("Expr1") %>' Enabled="true"  />
                     </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Right" Width="30px" />
                     <ItemStyle HorizontalAlign="Center" Width="30px" />
@@ -204,9 +207,8 @@
     </div>
     <fieldset style="padding: 15px;">
         For more information on how to obtain a new permit or reactivate the existing permit, 
-        contact the Building Division at (626)744-4200 or visit the Permit Center - 175 Garfield Ave.
+        contact the Building Division at (626)-744-4200 or visit the Permit Center - 175 Garfield Ave.
     </fieldset>
-    <br />
     <fieldset style="padding: 15px;">
         If violations were noted above, all such violations marked by the inspector must be repaired within thirty (30) days from the date of the inspection, 
         unless otherwise noted by the inspector. Major violations require reinspection. Minor violations do not require reinspection (at the discretion of 

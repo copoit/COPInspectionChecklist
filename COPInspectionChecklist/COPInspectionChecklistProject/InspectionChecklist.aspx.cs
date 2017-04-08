@@ -89,17 +89,6 @@ namespace COPInspectionChecklistProject
             InspectionGrid.DataSource = dt;
             InspectionGrid.DataBind();
             cBNoViolations.Checked = true;
-            //update Section Headings to remove null checkboxes & textboxes
-            //foreach (GridViewRow row in InspectionGrid.Rows)
-            //{
-            //    string heading = (InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("Section_ID").ToString());
-            //    if (heading.Substring(heading.Length - 1, 1) == "0")
-            //    {
-            //        InspectionGrid.Rows[row.RowIndex].Cells[5].Visible = false;
-            //        InspectionGrid.Rows[row.RowIndex].Cells[6].Visible = false;
-            //        InspectionGrid.Rows[row.RowIndex].Cells[7].Visible = false;
-            //    }
-            //}
             //updates gridview with records from violation table referenced by caseNumber
             SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + caseNumber + "'";
             var dt1 = clsCommon.TestDBConnection(SQL);
@@ -107,7 +96,8 @@ namespace COPInspectionChecklistProject
             {
                 string SQL1 = "Select V.SubSection_ID, V.SubSection_Major AS Major, V.SubSection_Minor AS Minor, V.SubSection_Notes AS Notes FROM Violations as V Where V.Case_Num = '" + caseNumber + "'";
                 var dt2 = clsCommon.TestDBConnection(SQL1);
-                foreach (GridViewRow row in InspectionGrid.Rows) {
+                foreach (GridViewRow row in InspectionGrid.Rows)
+                {
                     string subSectionID = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("lblSubSection_ID")).Text;
                     for (int i = 0; i < dt2.Rows.Count; i++)
                     {
@@ -122,24 +112,25 @@ namespace COPInspectionChecklistProject
                         }
                     }
                 }
-                //updates headings to remove duplicate headings
-                string lastHeading="";
-                foreach(GridViewRow row in InspectionGrid.Rows) {
-                    if (row.RowIndex > 0)
+            }
+            //updates headings to remove duplicate headings
+            string lastHeading="";
+            foreach(GridViewRow row in InspectionGrid.Rows) {
+                if (row.RowIndex > 0)
+                {
+                    Label prevHeading = ((Label)InspectionGrid.Rows[row.RowIndex - 1].Cells[2].FindControl("lblHeading"));
+                    Label curHeading = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[2].FindControl("lblHeading"));
+                    Label curSection = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[0].FindControl("lblSection_ID"));
+                    if (prevHeading.Text == curHeading.Text || curHeading.Text == lastHeading)
                     {
-                        Label prevHeading = ((Label)InspectionGrid.Rows[row.RowIndex - 1].Cells[2].FindControl("lblHeading"));
-                        Label curHeading = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[2].FindControl("lblHeading"));
-                        Label curSection = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[0].FindControl("lblSection_ID"));
-                        if (prevHeading.Text == curHeading.Text || curHeading.Text == lastHeading)
-                        {
-                            curHeading.Text = string.Empty;
-                            curSection.Text = string.Empty;
-                            if(prevHeading.Text != string.Empty)
-                                lastHeading = prevHeading.Text;
-                        }
+                        curHeading.Text = string.Empty;
+                        curSection.Text = string.Empty;
+                        if(prevHeading.Text != string.Empty)
+                            lastHeading = prevHeading.Text;
                     }
                 }
             }
+            UpdateHeadings();
             UpdateInspectionStatus();
             CheckForViolations();
         }
@@ -225,6 +216,25 @@ namespace COPInspectionChecklistProject
                 newCase.inspectionStatus = InspectionStatus.Pending_Reinspection.ToString();
             if (newCase.inspectionStatus == InspectionStatus.Scheduled.ToString() && cBNoViolations.Checked)
                 newCase.inspectionStatus = InspectionStatus.Completed.ToString();
+        }
+        protected void UpdateHeadings()
+        {
+            foreach (GridViewRow row in InspectionGrid.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    Label desc = ((Label)InspectionGrid.Rows[row.RowIndex].Cells[3].FindControl("lblDescription"));
+                    if (desc.Text == string.Empty || desc.Text == null)
+                    {
+                        CheckBox cmajor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[5].FindControl("cbMajor");
+                        cmajor.Visible = false;
+                        CheckBox cminor = (CheckBox)InspectionGrid.Rows[row.RowIndex].Cells[6].FindControl("cbMinor");
+                        cminor.Visible = false;
+                        TextBox notes = ((TextBox)InspectionGrid.Rows[row.RowIndex].Cells[7].FindControl("txbNotes"));
+                        notes.Visible = false;
+                    }
+                }
+            }
         }
         private void DisplayForms()
         {
@@ -411,3 +421,15 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
+
+//update Section Headings to remove null checkboxes & textboxes
+//foreach (GridViewRow row in InspectionGrid.Rows)
+//{
+//    string heading = (InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("Section_ID").ToString());
+//    if (heading.Substring(heading.Length - 1, 1) == "0")
+//    {
+//        InspectionGrid.Rows[row.RowIndex].Cells[5].Visible = false;
+//        InspectionGrid.Rows[row.RowIndex].Cells[6].Visible = false;
+//        InspectionGrid.Rows[row.RowIndex].Cells[7].Visible = false;
+//    }
+//}
