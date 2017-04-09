@@ -10,37 +10,37 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Case Number:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Property Address:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtPropAdd" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtPropAdd" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Dwelling Info:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtDwellInfo" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Applicant Name:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtApplicant" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtApplicant" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Applicant Phone:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtAppPhone" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtAppPhone" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Applicant Email:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtAppEmail" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtAppEmail" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -52,7 +52,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspector Email:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectEmail" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectEmail" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -64,31 +64,38 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspection Type:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectType" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectType" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <%--for testing purposes--%>
+            <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
+                <asp:TableCell>Inspection Status:</asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtInspectionStatus" runat="server" Width="300px" Enabled="false" Visible="true" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Mailing Address:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtMailAdd" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtMailAdd" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Number of Units:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtNumUnit" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtNumUnit" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Owner Phone:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Sidewalk Fees:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtSidewalk" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtSidewalk" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
@@ -152,7 +159,7 @@
             <Columns>
                 <asp:TemplateField HeaderText="Section ID" SortExpression="Section_ID">
                     <ItemTemplate>
-                        <asp:Label ID="lblSection_ID" runat="server" Text='<%# Bind("Section_ID") %>'></asp:Label>
+                        <asp:Label ID="lblSection_ID" runat="server" Text='<%# Bind("Section_ID") %>' Enabled="false" ></asp:Label>
                     </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Center" Width="30px" />
                     <ItemStyle HorizontalAlign="Center" Width="30px" />
@@ -172,12 +179,12 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Description" SortExpression="SubSection_Desc">
                     <ItemTemplate>
-                        <asp:Label ID="lblDescription" runat="server" Text='<%# Bind("SubSection_Desc") %>'></asp:Label>
+                        <asp:Label ID="lblDescription" runat="server" Text='<%# Bind("SubSection_Desc") %>' Enabled="false"></asp:Label>
                     </ItemTemplate>
                     <HeaderStyle HorizontalAlign="Left" Width="400px" />
                     <ItemStyle HorizontalAlign="Left" Width="400px" />
                 </asp:TemplateField>
-                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" NullDisplayText="">
+                <asp:BoundField DataField="SubSection_Code" HeaderText="Building Code" SortExpression="SubSection_Code" NullDisplayText="" ReadOnly="true">
                     <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="90px" />
                     <ItemStyle HorizontalAlign="Center" Width="90px" />
                 </asp:BoundField>

@@ -12,6 +12,7 @@ namespace COPInspectionChecklistProject
     {
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
         public Case newCase = new Case();
+        bool hasReinspectDate = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -37,11 +38,9 @@ namespace COPInspectionChecklistProject
             DbCommon clsCommon = new DbCommon();
             string SQL = "SELECT * FROM[CASE_INFO] INNER JOIN[PROPERTY_INFO] ON[CASE_INFO].Property_ID = [PROPERTY_INFO].Property_ID Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
             var dt = clsCommon.TestDBConnection(SQL);
-
             if (dt.Rows.Count > 0)
             {
                 string SQL2 = "SELECT * FROM[INSPECTOR_INFO] Where[INSPECTOR_INFO].Inspector_ID ='" + dt.Rows[0]["Inspector_ID"].ToString() + "'";
-
                 var dtInspector = clsCommon.TestDBConnection(SQL2);
 
                 txtCaseNum.Text = dt.Rows[0]["Case_Num"].ToString();
@@ -53,31 +52,44 @@ namespace COPInspectionChecklistProject
                 txtNumUnit.Text = dt.Rows[0]["NumberOfUnits"].ToString();
                 txtApplicant.Text = dt.Rows[0]["Property_Owner_Name"].ToString();
                 txtOwnerPhone.Text = dt.Rows[0]["Property_Owner_Phone"].ToString();
+                txtInspectType.Text = dt.Rows[0]["Inspection_Type"].ToString();
+                txtInspectionStatus.Text = dt.Rows[0]["Inspection_Status"].ToString();
+                txtInspectName.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
+                txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
+                txtSign.Text = dt.Rows[0]["Inspector_Signature"].ToString();
+                txtInspectionStatus.Text = dt.Rows[0]["Inspection_Status"].ToString();
+                txtPrint.Text = txtSign.Text;
+                txtProp.Text = txtPropAdd.Text;
+                
                 if (Convert.ToBoolean(dt.Rows[0]["Sidewalk_Fee"]))
                     txtSidewalk.Text = "YES";
                 else
                     txtSidewalk.Text = "NO";
-                txtInspectType.Text = dt.Rows[0]["Inspection_Type"].ToString();
-                txtInspectName.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
-                txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
-                txtSign.Text = dt.Rows[0]["Inspector_Signature"].ToString();
-                txtPrint.Text = txtSign.Text;
+                //set Certification issue date, if null set to empty string
                 if (dt.Rows[0]["Cert_IssueDate"] != null)
                     txtDate.Text = Convert.ToDateTime(dt.Rows[0]["Cert_IssueDate"]).ToString();
                 else
-                    txtDate.Text = "";
-                txtProp.Text = txtPropAdd.Text;
-                if (dt.Rows[0]["Inspection_Date"] != null)
+                    txtDate.Text = string.Empty;
+                //set Inspection date, if null set to empty string. set inspectionStatus
+                if (dt.Rows[0]["Inspection_Date"] == null)
+                {
+                    txtInspectDate.Text = string.Empty;
+                    txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
+                }
+                else if (dt.Rows[0]["Inspection_Date"] != null)
+                {
                     txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
+                    txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
+                }
+                //set Reinspection date, if null set to empty string. set inspectionStatus
+                if (dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
+                    hasReinspectDate = false;
                 else
                 {
-                    txtInspectDate.Text = " ";
-                    newCase.inspectionStatus = InspectionStatus.Not_Scheduled.ToString();
-                }
-                if (dt.Rows[0]["ReInspection_Date"] != null)
                     newCase.reinspectionDate = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]);
+                    hasReinspectDate = true;
+                }                    
             }
-            txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should not be adjusted here
         }
         //Search database for Violation table with CaseNumber
         private void retrieveViolationsByCaseNumber(string caseNumber)
@@ -113,7 +125,7 @@ namespace COPInspectionChecklistProject
                     }
                 }
             }
-            //updates headings to remove duplicate headings
+            //updates section headings to remove duplicate headings
             string lastHeading="";
             foreach(GridViewRow row in InspectionGrid.Rows) {
                 if (row.RowIndex > 0)
@@ -130,9 +142,9 @@ namespace COPInspectionChecklistProject
                     }
                 }
             }
-            UpdateHeadings();
-            UpdateInspectionStatus();
+            DisableSubHeadings();
             CheckForViolations();
+            UpdateInspectionStatus();
         }
         //check for Major/Minor violation in table & set appropriate checkboxes
         private void CheckForViolations()
@@ -193,31 +205,36 @@ namespace COPInspectionChecklistProject
                 Console.WriteLine(e.Message);
             }
         }
+        //Updates Case_Info with Inspector Signature, Inspection Status, & Certification Date
         private void UpdateCertification(string caseNumber)
         {
             txtDate.Text = DateTime.Now.ToString();
             conn.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            //Update Case_Info
             DateTime inspectTxt = DateTime.Parse(txtDate.Text);
             cmd.Parameters.AddWithValue("@InspSig", txtSign.Text);
+            cmd.Parameters.AddWithValue("@InspectionStatus", txtInspectionStatus.Text);
             cmd.Parameters.Add("@CertIssueDate", SqlDbType.DateTime).Value = inspectTxt;
-            string updateStr = "Update Case_Info set Inspector_Signature=@InspSig, Cert_IssueDate=@CertIssueDate  WHERE Case_Num='" + caseNumber + "'";
+            string updateStr = "Update Case_Info set Inspector_Signature=@InspSig, Cert_IssueDate=@CertIssueDate, Inspection_Status=@InspectionStatus WHERE Case_Num='" + caseNumber + "'";
             cmd.CommandText = updateStr;
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+        //Updates InspectionStatus, dependent upon Violations & Schedule Dates
         private void UpdateInspectionStatus()
         {
-            if (newCase.inspectionStatus == InspectionStatus.Scheduled.ToString() && !cBNoViolations.Checked)
-                newCase.inspectionStatus = InspectionStatus.Failed.ToString();
-            if (newCase.inspectionStatus == InspectionStatus.Failed.ToString() && newCase.reinspectionDate != null)
-                newCase.inspectionStatus = InspectionStatus.Pending_Reinspection.ToString();
-            if (newCase.inspectionStatus == InspectionStatus.Scheduled.ToString() && cBNoViolations.Checked)
-                newCase.inspectionStatus = InspectionStatus.Completed.ToString();
+            if (txtInspectDate.Text == string.Empty)
+                txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
+            else if ( !cBNoViolations.Checked )
+                txtInspectionStatus.Text = InspectionStatus.Failed.ToString();
+            else if ( cBNoViolations.Checked )
+                txtInspectionStatus.Text = InspectionStatus.Completed.ToString();
+            if ( txtInspectionStatus.Text == InspectionStatus.Failed.ToString() && hasReinspectDate )
+                txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
         }
-        protected void UpdateHeadings()
+        //updates Main headings to turn Major/Minor/Notes section to unavailable
+        protected void DisableSubHeadings()
         {
             foreach (GridViewRow row in InspectionGrid.Rows)
             {
@@ -268,9 +285,8 @@ namespace COPInspectionChecklistProject
                 btnNoticeNonCompliance.Visible = true;
                 btnMail.Visible = true;
             }
-        }
-      
- private void EmailInspection(string caseNumber)
+        }      
+        private void EmailInspection(string caseNumber)
 {
 	DbCommon clsCommon = new DbCommon();
 	string SQL = "SELECT DISTINCT "
@@ -396,6 +412,9 @@ namespace COPInspectionChecklistProject
         #region Buttons
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            CheckForViolations();
+            UpdateInspectionStatus();
+            UpdateCertification(txtCaseNum.Text);
             UpdateViolationRecord(txtCaseNum.Text);
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
@@ -421,15 +440,3 @@ namespace COPInspectionChecklistProject
         #endregion
     }
 }
-
-//update Section Headings to remove null checkboxes & textboxes
-//foreach (GridViewRow row in InspectionGrid.Rows)
-//{
-//    string heading = (InspectionGrid.Rows[row.RowIndex].Cells[1].FindControl("Section_ID").ToString());
-//    if (heading.Substring(heading.Length - 1, 1) == "0")
-//    {
-//        InspectionGrid.Rows[row.RowIndex].Cells[5].Visible = false;
-//        InspectionGrid.Rows[row.RowIndex].Cells[6].Visible = false;
-//        InspectionGrid.Rows[row.RowIndex].Cells[7].Visible = false;
-//    }
-//}
