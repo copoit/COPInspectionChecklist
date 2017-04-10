@@ -286,7 +286,7 @@ namespace COPInspectionChecklistProject
                 btnMail.Visible = true;
             }
         }      
-        private void EmailInspection(string caseNumber)
+       private void EmailInspection(string caseNumber)
 {
 	DbCommon clsCommon = new DbCommon();
 	string SQL = "SELECT DISTINCT "
