@@ -12,11 +12,7 @@
     </div>
     <asp:GridView ID="InspectionGrid1" runat="server" AutoGenerateColumns="False"   >
         <Columns>
-            <asp:TemplateField HeaderText="Case Number">  
-                <ItemTemplate>  
-                 <asp:Label ID="LblCaseNum" runat="server" Text='<%#Bind("Case_Num") %>'></asp:Label>  
-             </ItemTemplate>  
-         </asp:TemplateField>  
+         <asp:HyperLinkField HeaderText="Case Number" DataTextField="Case_Num" DataNavigateUrlFields="Case_Num" DataNavigateUrlFormatString="CaseMain.aspx?CaseNumber={0}" /> 
          <asp:TemplateField HeaderText="Address">  
              <ItemTemplate>  
                  <asp:Label ID="LblAddress" runat="server" Text='<%#Bind("Address") %>'></asp:Label>  

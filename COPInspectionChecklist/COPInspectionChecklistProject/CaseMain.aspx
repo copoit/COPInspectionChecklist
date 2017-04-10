@@ -7,57 +7,57 @@
             <asp:TableRow>
                 <asp:TableCell>Case Number:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>Property Address:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtPropAdd" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtPropAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Responsible Party:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtRespParty" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtRespParty" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Mailing Address:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtMailAdd" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtMailAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Applicant Email:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtAppEmail" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtAppEmail" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Applicant Phone:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtAppPhone" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtAppPhone" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Dwelling Info:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtOccDwell" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtOccDwell" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Number of Units:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtNumUnits" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtNumUnits" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Owner Name:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtOwnerName" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtOwnerName" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Owner Phone:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Sidewalk Fees:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtSidewalk" runat="server" Width="300px"></asp:TextBox></asp:TableCell>
+                    <asp:TextBox ID="txtSidewalk" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell >Inspector Name:</asp:TableCell>
@@ -92,5 +92,6 @@
         <br />
         <br />
         <asp:Button ID="InspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Height="38px" Width="250px" />
+        <asp:Button ID="Save" runat="server" OnClick="btnSave_Click" Text="Save Case" Height="38px" Width="250px" />
     </div>
 </asp:Content>
