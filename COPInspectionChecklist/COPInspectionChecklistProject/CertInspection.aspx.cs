@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 namespace COPInspectionChecklistProject
 {
@@ -13,15 +16,24 @@ namespace COPInspectionChecklistProject
         Case newCase = new Case();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if page loads with a current case (from page InspectionMain or CaseList), run this code
-            if (Request.QueryString["CaseNumber"] != null)
+            try
             {
-                string caseNumber = Request.QueryString["CaseNumber"];
-                getCase(caseNumber);
+                if (!IsPostBack)
+                {
+                    //if page loads with a current case (from page InspectionMain or CaseList), run this code
+                    if (Request.QueryString["CaseNumber"] != null)
+                    {
+                        string caseNumber = Request.QueryString["CaseNumber"];
+                        getCase(caseNumber);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                Console.Write(ex.Message);
             }
             //else populate Case with a generated CaseNumber with either a scheduled caseNumber or
             //incrementing the last Case_ID from CASE_INFO
-           // txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
+            // txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
         private void getCase(string caseNumber)
         {
@@ -50,11 +62,51 @@ namespace COPInspectionChecklistProject
             }
         }
 
+        private void saveCertInspection(string caseNumber)
+        {
+            try
+            {
+
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+
+                string inspectorNote = txtInspectorNotes.Text;
+
+
+                string updateStr = "Update CASE_INFO set Inspector_Notes=@inspectorNote WHERE Case_Num='" + caseNumber + "'";
+                cmd.CommandText = updateStr;
+ 
+                cmd.Parameters.AddWithValue("@inspectorNote", inspectorNote);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                lblMessage.Text = "Certificate inspection was saved successfully!";
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
         protected void btnCaseMainPage_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/CaseMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
 
-       
+        protected void btnCertInspectionSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string caseNumber = txtCaseNum.Text;
+                saveCertInspection(caseNumber);
+            }
+            catch (Exception ex) {
+                Console.Write(ex.Message);
+            }
+
+        }
+        
+
     }
 }

@@ -85,6 +85,7 @@ namespace COPInspectionChecklistProject
         {
             try
             {
+                caseNumberParamter = caseNumber;
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
@@ -114,7 +115,7 @@ namespace COPInspectionChecklistProject
                 cmd.Parameters.AddWithValue("@inspectorId", inspectorId);
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                lblMessage.Text = "Reinspection information is saved successfully!";
+                lblMessage.Text = "Reinspection information was saved successfully!";
             }
             catch (Exception e)
             {
@@ -126,6 +127,9 @@ namespace COPInspectionChecklistProject
         {
             try
             {
+                if (caseNumberParamter == "") {
+                    caseNumberParamter = txtReinspectionCaseNum.Text;
+                }
                 saveReinspection(caseNumberParamter);
             }
             catch (Exception ex) {
@@ -135,10 +139,18 @@ namespace COPInspectionChecklistProject
         
         protected void btnReinspectionCheckList_Click(object sender, EventArgs e)
         {
+            if (caseNumberParamter == "")
+            {
+                caseNumberParamter = txtReinspectionCaseNum.Text;
+            }
             Response.Redirect("InspectionChecklist.aspx?CaseNumber=" + caseNumberParamter); 
         }
         protected void btnReinspectionCaseMain_Click(object sender, EventArgs e)
         {
+            if (caseNumberParamter == "")
+            {
+                caseNumberParamter = txtReinspectionCaseNum.Text;
+            }
             Session["CaseNumber"] = caseNumberParamter;
             Response.Redirect("CaseMain.aspx?CaseNumber=" + caseNumberParamter);
         }

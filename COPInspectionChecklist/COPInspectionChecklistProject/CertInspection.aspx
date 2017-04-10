@@ -10,6 +10,13 @@
             </asp:TableHeaderRow>
              </asp:Table>
 	    </div>
+         <table>
+                <tbody>
+                    <tr>
+                       <td><asp:Label ID="lblMessage" runat="server" ForeColor="Red"/></td>
+                   </tr>
+                </tbody>
+            </table>
         <table>
         <asp:HiddenField id="txtPropertyId" runat="server"/>
   		<tbody>
@@ -93,6 +100,7 @@
          <br />
            
         <asp:Button ID="btnCaseMainPage" runat="server" OnClick="btnCaseMainPage_Click" Text="Previous Page"  Height="38px" Width="250px" />
+         <asp:Button ID="btnCertInspectionSave" runat="server" OnClick="btnCertInspectionSave_Click" Text="Save" Height="38px" Width="250px" />&nbsp 
 </footer>    
 </asp:Content>
       

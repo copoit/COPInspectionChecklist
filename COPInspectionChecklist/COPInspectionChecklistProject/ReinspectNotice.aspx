@@ -23,13 +23,18 @@
 			        <td style="width: 160px">Case Creation Date:</td>
 			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
-                   <tr>
-                       <td><asp:Label ID="lblMessage" runat="server" ForeColor="Red"/></td>
-                   </tr>
+                   
                     
                 </tbody>
             </table>
             <br /><br />
+            <table>
+                <tbody>
+                    <tr>
+                       <td><asp:Label ID="lblMessage" runat="server" ForeColor="Red"/></td>
+                   </tr>
+                </tbody>
+            </table>
             <table >
 		        <tbody>
 		            <tr>

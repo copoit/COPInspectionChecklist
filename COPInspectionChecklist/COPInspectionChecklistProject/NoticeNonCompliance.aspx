@@ -108,11 +108,10 @@
  </div>
     <br />
     <div>
-        <asp:Button ID="btnNonComplianceSave" runat="server" OnClick="btnNonComplianceSave_Click" Text="Save" Height="38px" Width="250px" />&nbsp  
-        <asp:Button ID="btnNonComplianceCheckList" runat="server" OnClick="btnNonComplianceCheckList_Click" Text="Inspection Checklist"  Height="38px" Width="250px"  />&nbsp
-        <br />
-        <br />                   
+        <asp:Button ID="btnNonComplianceCheckList" runat="server" OnClick="btnNonComplianceCheckList_Click" Text="Inspection Checklist"  Height="38px" Width="250px"  />&nbsp                  
         <asp:Button ID="btnNonComplianceCaseMain" runat="server" OnClick="btnNonComplianceCaseMain_Click" Text="Case Main"  Height="38px" Width="250px" />&nbsp
+        <br />
+        <br />
         <asp:Button ID="btnNonComplianceMainMenaul" runat="server" OnClick="btnNonComplianceMainMenaul_Click" Text="Main Menu"  Height="38px" Width="250px" />                 
     </div>
 </asp:Content>
