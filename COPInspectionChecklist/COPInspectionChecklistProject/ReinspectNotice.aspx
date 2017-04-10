@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="Reinspection" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReinspectNotice.aspx.cs" Inherits="COPInspectionChecklistProject.ReinspectNotice" %> 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server"> 
+   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="/resources/demos/style.css">
   <div> 
 	    <div> 
 	        <b>Quadrennial Re-inspection : Notice and Order to Comply</b>
@@ -16,10 +20,12 @@
 			            <td><asp:TextBox ID="txtReinspectionPropAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
 		            <tr>
-			        <td style="width: 160px">Date:</td>
+			        <td style="width: 160px">Case Creation Date:</td>
 			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
 		            </tr>
-                   
+                   <tr>
+                       <td><asp:Label ID="lblMessage" runat="server" ForeColor="Red"/></td>
+                   </tr>
                     
                 </tbody>
             </table>
@@ -56,12 +62,24 @@
             <table >
 		        <tbody>
                      <tr>
-                         <td >A reinspection of the premises will conducted on: <asp:TextBox ID="txtReinspectionDate" runat="server" Width="100px"></asp:TextBox>
-                            
+                         <td >A reinspection of the premises will conducted on: <asp:TextBox ID="txtReinspectionDate" runat="server" Width="100px"></asp:TextBox><img id="calander" alt="Calander" width="25px" height="25px" src="Images/calendar.jpg" style="cursor:pointer" align="absmiddle"  onclick="respectionDate()"/>
+                            <script>
+                                $(function () {
+                                    $('#MainContent_txtReinspectionDate').datepicker({
+                                        format: 'mm/dd/yyyy'
+                                    });
+                                });
+
+                                function respectionDate() {
+                                    $('#MainContent_txtReinspectionDate').focus();
+                                }
+							</script>
+                           
                          </td>
 		            </tr>
                     <tr>
                          <td >Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
+                         
 		            </tr>
                      </tbody>
             </table>
@@ -79,7 +97,7 @@
                          <td style="width: 360px">Sincerely,</td>
 		            </tr>
                     <tr>
-                         <td style="width: 360px"><asp:TextBox ID="txtInspector" runat="server" Width="200px" ReadOnly="true"></asp:TextBox></td>
+                         <td style="width: 360px"><asp:TextBox ID="txtInspector" runat="server" Width="200px" ReadOnly="true"></asp:TextBox><asp:HiddenField ID="inspectorID" runat="server"></asp:HiddenField></td>
 		            </tr>
                     <tr>
                          <td style="width: 360px">Code Compliance Officer</td>
