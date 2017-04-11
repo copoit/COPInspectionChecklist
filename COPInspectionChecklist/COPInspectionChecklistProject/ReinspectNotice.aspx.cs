@@ -97,9 +97,10 @@ namespace COPInspectionChecklistProject
                     throw new Exception();
                     
                 }
-                string citationAmt = txtCitationAmount.Text;
-                float citationCharge;
-                if (!float.TryParse(citationAmt, out citationCharge)) {
+                string citationAmt = txtCitationAmount.Text.Trim();
+                double citationCharge;
+          
+                if (!Double.TryParse(citationAmt, out citationCharge)) {
                     lblMessage.Text = "Please input valid numeric citation charge!";
                     throw new Exception();
                 }
@@ -110,7 +111,7 @@ namespace COPInspectionChecklistProject
                 string updateStr = "Update CASE_INFO set ReInspection_Date=@reinspectionDate, Citation_Charges=@citationCharge, Inspector_ID=@inspectorId WHERE Case_Num='" + caseNumber + "'";
                 cmd.CommandText = updateStr;
                 cmd.Parameters.AddWithValue("@reinspectionDate", reinspectionDate);
-                cmd.Parameters.Add("@citationCharge", SqlDbType.Float).Value = citationCharge;
+                cmd.Parameters.AddWithValue("@citationCharge", citationAmt);
                 //cmd.Parameters.AddWithValue("@Citation_Charges", citationCharge);
                 cmd.Parameters.AddWithValue("@inspectorId", inspectorId);
                 cmd.ExecuteNonQuery();
@@ -119,7 +120,7 @@ namespace COPInspectionChecklistProject
             }
             catch (Exception e)
             {
-
+                lblMessage.Text = "Reinspection information saving failed!";
                 throw e;
             }
         }

@@ -292,6 +292,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\calendar.jpg" />
     <Content Include="MainMenu.aspx" />
     <Content Include="bin\ApplicationInsights.config" />
     <Content Include="bin\COPInspectionChecklistProject.dll.config" />
