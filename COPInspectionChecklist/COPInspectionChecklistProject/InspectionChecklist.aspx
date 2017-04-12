@@ -58,7 +58,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspection Date:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px" ></asp:TextBox>
+                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -74,6 +74,7 @@
                     <asp:TextBox ID="txtInspectionStatus" runat="server" Width="300px" Enabled="false" Visible="true" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
+            <%--remove after testing, before Delivery--%>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Mailing Address:</asp:TableCell>
                 <asp:TableCell>
