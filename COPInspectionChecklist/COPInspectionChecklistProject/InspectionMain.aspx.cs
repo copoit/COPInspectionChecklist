@@ -46,9 +46,8 @@ protected void btnProperty_Click(object sender, EventArgs e)
 	{
 		lblError.Text = "Please enter property search criteria.";
 	}
-}
-            SearchForProperty(txtStreetNum.Text, txtStreetName.Text, txtZip.Text);
-        }
+      }
+        
 
         private void SearchForCase(string Case)
         {
