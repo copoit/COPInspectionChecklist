@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.IO;
+using System.Web;
 
 namespace COPInspectionChecklistProject
 {
@@ -24,6 +26,7 @@ namespace COPInspectionChecklistProject
                         string caseNumber = Request.QueryString["CaseNumber"];
                         retrieveCaseByCaseNumber(caseNumber);
                         retrieveViolationsByCaseNumber(caseNumber);
+                        BindGrid(caseNumber);
                     }
                 }
                 catch (Exception ex)
@@ -344,6 +347,55 @@ namespace COPInspectionChecklistProject
 		ScriptManager.RegisterStartupScript(this, GetType(), "mailto", script, true);
 	}
 }
+       private void BindGrid(string caseNumber)
+       {
+           DbCommon clsCommon = new DbCommon();
+           string constr = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
+           using (SqlConnection con = new SqlConnection(constr))
+           {
+               using (SqlCommand cmd = new SqlCommand())
+               {
+                   cmd.CommandText = "select Image_ID, Image_Name FROM [INSPECTION_IMAGES] Where[INSPECTION_IMAGES].Case_Num ='" + caseNumber + "'";
+                   // cmd.CommandText = "DELETE * FROM [INSPECTION_IMAGES] Where[INSPECTION_IMAGES].Case_Num ='" + caseNumber + "'";
+                   cmd.Connection = con;
+                   con.Open();
+                   ImageGridView.DataSource = cmd.ExecuteReader();
+                   ImageGridView.DataBind();
+                   con.Close();
+               }
+           }
+       }
+       private void StartUpLoad(string caseNumber)
+       {
+
+           //get the file name of the posted image  
+           string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
+           string contentType = FileUpload1.PostedFile.ContentType;
+           using (Stream fs = FileUpload1.PostedFile.InputStream)
+           {
+               using (BinaryReader br = new BinaryReader(fs))
+               {
+                   byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
+                   DbCommon clsCommon = new DbCommon();
+                   {
+                       string query = "insert into INSPECTION_IMAGES values (@Case_num, @Image_Name, @Picture)";
+                       using (SqlCommand cmd = new SqlCommand(query))
+                       {
+                           cmd.Connection = conn;
+                           cmd.Parameters.AddWithValue("@Case_num", caseNumber);
+                           cmd.Parameters.AddWithValue("@Image_Name", filename);
+                           cmd.Parameters.AddWithValue("@Picture", bytes);
+                           conn.Open();
+                           cmd.ExecuteNonQuery();
+                           conn.Close();
+                           BindGrid(caseNumber);
+                       }
+                   }
+               }
+           }
+       }
+          
         #region Checkboxes
         protected void cBMajor_CheckedChanged(object sender, EventArgs e)
         {
@@ -438,6 +490,87 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/NoticeNonCompliance.aspx?CaseNumber=" + txtCaseNum.Text);
         }
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            DbCommon clsCommon = new DbCommon();
+            string SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + txtCaseNum.Text + "'";
+            var dt1 = clsCommon.TestDBConnection(SQL);
+            //check to see if there is an existing Violations case
+            if (dt1.Rows.Count > 0)
+            {
+                StartUpLoad(txtCaseNum.Text);
+            }
+
+        }
+
+        protected void DownloadFile(object sender, EventArgs e)
+        {
+            int id = int.Parse((sender as LinkButton).CommandArgument);
+            byte[] bytes;
+            string fileName, contentType;
+            DbCommon clsCommon = new DbCommon();
+            string constr = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.CommandText = "select Image_Name, Case_Num, Picture FROM [INSPECTION_IMAGES] Where[INSPECTION_IMAGES].Image_ID ='" + id + "'";
+                    cmd.Parameters.AddWithValue("@Image_ID", id);
+                    cmd.Connection = con;
+                    con.Open();
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        sdr.Read();
+                        bytes = (byte[])sdr["Picture"];
+                        contentType = sdr["Case_Num"].ToString();
+                        fileName = sdr["Image_Name"].ToString();
+                    }
+                    con.Close();
+                }
+            }
+            Response.Clear();
+            Response.Buffer = true;
+            Response.Charset = "";
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.ContentType = contentType;
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + fileName);
+            Response.BinaryWrite(bytes);
+            Response.Flush();
+            Response.End();
+        }
+        protected void RemoveFile(object sender, EventArgs e)
+        {
+            DbCommon clsCommon = new DbCommon();
+            string SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + txtCaseNum.Text + "'";
+            var dt1 = clsCommon.TestDBConnection(SQL);
+            //check to see if there is an existing Violations case
+            if (dt1.Rows.Count > 0)
+            {
+                int id = int.Parse((sender as LinkButton).CommandArgument);
+                string constr = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        // cmd.CommandText = "select Image_ID, Image_Name FROM [INSPECTION_IMAGES] Where[INSPECTION_IMAGES].Case_Num ='" + caseNumber + "'";
+                        cmd.CommandText = "DELETE FROM [INSPECTION_IMAGES] Where[INSPECTION_IMAGES].Image_ID ='" + id + "'";
+                        cmd.Parameters.AddWithValue("@Image_ID", id);
+                        cmd.Connection = con;
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        // ImageGridView.DataSource = cmd.ExecuteReader();
+                        // ImageGridView.DataBind();
+                        con.Close();
+                        BindGrid(txtCaseNum.Text);
+
+                    }
+                }
+            }
+        }
+        protected void ImageGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }  
         #endregion
     }
 }

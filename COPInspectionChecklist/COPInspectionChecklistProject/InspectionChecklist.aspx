@@ -254,12 +254,42 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:Table ID="InspectionPhotosTable" runat="server">
-            <asp:TableHeaderRow VerticalAlign="Middle" ID="header2">
-                <asp:TableHeaderCell ColumnSpan="2">Inspection Photos:</asp:TableHeaderCell>
-            </asp:TableHeaderRow>
-        </asp:Table>
-    </div>
+        <div>
+              <br />   
+    <fieldset style="width:594px;">
+    <legend>Upload,Download,Delete Image Files</legend>
+        
+    <asp:FileUpload ID="FileUpload1" runat="server"    />
+<asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+<br />
+<br />
+        <asp:GridView ID="ImageGridView" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="ImageGridView_SelectedIndexChanged" >
+        
+            <Columns>
+                
+                <asp:BoundField DataField="Image_Name" HeaderText="File Name"/>
+        <asp:TemplateField  ItemStyle-HorizontalAlign = "Center">
+                                   <ItemTemplate>
+                          <asp:LinkButton ID="lnkDownload" runat="server" Text="View"  OnClick="DownloadFile" ToolTip="Download Image" CausesValidation="false"
+                    CommandArgument='<%# Eval("Image_ID") %>'></asp:LinkButton>
+                       
+        </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField  ItemStyle-HorizontalAlign = "Center">
+               
+                    <ItemTemplate>
+                         <asp:LinkButton ID="Linkremove" runat="server" Text="Remove" OnClick="RemoveFile" OnClientClick="return confirm('Are you sure you want to delete selected record ?')" ToolTip="Delete" CausesValidation="false"
+                    CommandArgument='<%# Eval("Image_ID") %>'></asp:LinkButton>
+                        </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+
+        </asp:GridView>
+       </fieldset>
+         </div>
+
+           <br />
+  
     <div class="buttons">
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
@@ -271,5 +301,6 @@
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" Text="Notice of NonCompliance" Width="250px" Height="38px" Visible="false" OnClick="btnNoticeNonCompliance_Click" />
             </ContentTemplate>
         </asp:UpdatePanel>
+    </div>
     </div>
 </asp:Content>
