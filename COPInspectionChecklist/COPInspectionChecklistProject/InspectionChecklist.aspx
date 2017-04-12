@@ -46,7 +46,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspector Name:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectName" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectName" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -58,7 +58,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspection Date:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -229,9 +229,9 @@
                 <asp:TableHeaderCell ColumnSpan="2">I hereby certify that all the violations listed above have been corrected</asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;">Date</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;" >Date</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtDate" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtDate" runat="server" Width="300px" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">

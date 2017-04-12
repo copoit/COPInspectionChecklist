@@ -60,35 +60,35 @@ namespace COPInspectionChecklistProject
                 txtInspectionStatus.Text = dt.Rows[0]["Inspection_Status"].ToString();
                 txtPrint.Text = txtSign.Text;
                 txtProp.Text = txtPropAdd.Text;
-                
+                //convert bool value to Text:Yes or No                
                 if (Convert.ToBoolean(dt.Rows[0]["Sidewalk_Fee"]))
                     txtSidewalk.Text = "YES";
                 else
                     txtSidewalk.Text = "NO";
                 //set Certification issue date, if null set to empty string
-                if (dt.Rows[0]["Cert_IssueDate"] != null)
-                    txtDate.Text = Convert.ToDateTime(dt.Rows[0]["Cert_IssueDate"]).ToString();
-                else
+                if (dt.Rows[0]["Cert_IssueDate"] == null || dt.Rows[0]["Cert_IssueDate"].ToString() == "" )
                     txtDate.Text = string.Empty;
+                else
+                    txtDate.Text = Convert.ToDateTime(dt.Rows[0]["Cert_IssueDate"]).ToString();
                 //set Inspection date, if null set to empty string. set inspectionStatus
-                if (dt.Rows[0]["Inspection_Date"] == null)
+                if (dt.Rows[0]["Inspection_Date"] == null || dt.Rows[0]["Inspection_Date"].ToString() == "")
                 {
                     txtInspectDate.Text = string.Empty;
                     txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
                 }
-                else if (dt.Rows[0]["Inspection_Date"] != null)
+                else
                 {
                     txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
                     txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
                 }
                 //set Reinspection date, if null set to empty string. set inspectionStatus
-                if (dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
-                    hasReinspectDate = false;
-                else
-                {
-                    newCase.reinspectionDate = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]);
-                    hasReinspectDate = true;
-                }                    
+                //if (dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
+                //    hasReinspectDate = false;
+                //else
+                //{
+                //    newCase.reinspectionDate = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]);
+                //    hasReinspectDate = true;
+                //}                    
             }
         }
         //Search database for Violation table with CaseNumber
@@ -416,6 +416,7 @@ namespace COPInspectionChecklistProject
             UpdateInspectionStatus();
             UpdateCertification(txtCaseNum.Text);
             UpdateViolationRecord(txtCaseNum.Text);
+            Response.Redirect("InspectionChecklist.aspx?CaseNumber=" + txtCaseNum.Text);
         }
         protected void btnCaseMain_Click(object sender, EventArgs e)
         {
