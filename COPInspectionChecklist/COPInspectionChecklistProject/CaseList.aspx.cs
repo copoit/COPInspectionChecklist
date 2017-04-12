@@ -98,7 +98,7 @@ namespace COPInspectionChecklistProject
 
         protected void btnNewCase_Click(Object sender, EventArgs e)
         {
-            Response.Redirect("CaseMain.aspx");
+            Response.Redirect("CaseMain.aspx?PropertyID=" + txtPropertyId.Value);
         }
        
         protected void btnCancel_Click(object sender, EventArgs e)
