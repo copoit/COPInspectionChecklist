@@ -46,7 +46,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspector Name:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectName" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectName" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -58,7 +58,7 @@
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Inspection Date:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -74,6 +74,7 @@
                     <asp:TextBox ID="txtInspectionStatus" runat="server" Width="300px" Enabled="false" Visible="true" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
+            <%--remove after testing, before Delivery--%>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
                 <asp:TableCell>Mailing Address:</asp:TableCell>
                 <asp:TableCell>
@@ -229,9 +230,9 @@
                 <asp:TableHeaderCell ColumnSpan="2">I hereby certify that all the violations listed above have been corrected</asp:TableHeaderCell>
             </asp:TableHeaderRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
-                <asp:TableCell Style="padding-left: 20px;">Date</asp:TableCell>
+                <asp:TableCell Style="padding-left: 20px;" >Date</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtDate" runat="server" Width="300px"></asp:TextBox>
+                    <asp:TextBox ID="txtDate" runat="server" Width="300px" ></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow HorizontalAlign="Left" VerticalAlign="Top">
@@ -253,12 +254,42 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:Table ID="InspectionPhotosTable" runat="server">
-            <asp:TableHeaderRow VerticalAlign="Middle" ID="header2">
-                <asp:TableHeaderCell ColumnSpan="2">Inspection Photos:</asp:TableHeaderCell>
-            </asp:TableHeaderRow>
-        </asp:Table>
-    </div>
+        <div>
+              <br />   
+    <fieldset style="width:594px;">
+    <legend>Upload,Download,Delete Image Files</legend>
+        
+    <asp:FileUpload ID="FileUpload1" runat="server"    />
+<asp:Button ID="btnUpload" runat="server" Text="Upload" OnClick="btnUpload_Click" />
+<br />
+<br />
+        <asp:GridView ID="ImageGridView" runat="server" AutoGenerateColumns="false" OnSelectedIndexChanged="ImageGridView_SelectedIndexChanged" >
+        
+            <Columns>
+                
+                <asp:BoundField DataField="Image_Name" HeaderText="File Name"/>
+        <asp:TemplateField  ItemStyle-HorizontalAlign = "Center">
+                                   <ItemTemplate>
+                          <asp:LinkButton ID="lnkDownload" runat="server" Text="View"  OnClick="DownloadFile" ToolTip="Download Image" CausesValidation="false"
+                    CommandArgument='<%# Eval("Image_ID") %>'></asp:LinkButton>
+                       
+        </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField  ItemStyle-HorizontalAlign = "Center">
+               
+                    <ItemTemplate>
+                         <asp:LinkButton ID="Linkremove" runat="server" Text="Remove" OnClick="RemoveFile" OnClientClick="return confirm('Are you sure you want to delete selected record ?')" ToolTip="Delete" CausesValidation="false"
+                    CommandArgument='<%# Eval("Image_ID") %>'></asp:LinkButton>
+                        </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+
+        </asp:GridView>
+       </fieldset>
+         </div>
+
+           <br />
+  
     <div class="buttons">
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
@@ -270,5 +301,6 @@
                 <asp:Button ID="btnNoticeNonCompliance" runat="server" Text="Notice of NonCompliance" Width="250px" Height="38px" Visible="false" OnClick="btnNoticeNonCompliance_Click" />
             </ContentTemplate>
         </asp:UpdatePanel>
+    </div>
     </div>
 </asp:Content>

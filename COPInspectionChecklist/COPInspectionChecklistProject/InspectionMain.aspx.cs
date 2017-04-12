@@ -22,31 +22,32 @@ namespace COPInspectionChecklistProject
         }
 
         protected void btnCase_Click(object sender, EventArgs e)
-        {
-            if (txtCase.Text.Trim() != "")
-            {
-                SearchForCase(txtCase.Text);
-            }
-            else
-            {
-                lblError.Text = "Please enter a case number.";
-            }
+       {
+	gvProperties.DataSource = null;
+	gvProperties.DataBind();
 
-        }
+	if (txtCase.Text.Trim() != "")
+	{
+		SearchForCase(txtCase.Text);
+	}
+	else
+	{
+		lblError.Text = "Please enter a case number.";
+	}
+}
 
-        protected void btnProperty_Click(object sender, EventArgs e)
-        {
-            //if (txtStreetNum.Text.Trim() != "" && txtStreetName.Text.Trim() != "" && txtZip.Text.Trim() != "")
-            //{
-            //    SearchForProperty(txtStreetNum.Text, txtStreetName.Text, txtZip.Text);
-            //}
-            //else
-            //{
-            //    lblError.Text = "Please enter a property.";
-            //}
-
-            SearchForProperty(txtStreetNum.Text, txtStreetName.Text, txtZip.Text);
-        }
+protected void btnProperty_Click(object sender, EventArgs e)
+{
+	if (txtStreetNum.Text.Trim() != "" || txtStreetName.Text.Trim() != "" || txtZip.Text.Trim() != "")
+	{
+		SearchForProperty(txtStreetNum.Text, txtStreetName.Text, txtZip.Text);
+	}
+	else
+	{
+		lblError.Text = "Please enter property search criteria.";
+	}
+      }
+        
 
         private void SearchForCase(string Case)
         {
