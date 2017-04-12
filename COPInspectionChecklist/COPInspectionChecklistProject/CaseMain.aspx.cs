@@ -15,15 +15,29 @@ namespace COPInspectionChecklistProject
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if page loads with a current case (from page InspectionMain or CaseList), run this code
-            if (Request.QueryString["CaseNumber"] != null)
+            if (!IsPostBack)
             {
-                string caseNumber = Request.QueryString["CaseNumber"];
-                getCase(caseNumber);
+                try
+                {
+                    if (Request.QueryString["CaseNumber"] != null)
+                    {
+                        string caseNumber = Request.QueryString["CaseNumber"];
+                        getCase(caseNumber);
+                    }
+                    //DbCommon clsCommon = new DbCommon();
+                    //string SQL = "Select Inspector_ID, Inspector_FName, Inspector_LName, Inspector_Email from Inspector_Info";
+                    //var dt = clsCommon.TestDBConnection(SQL);
+
+                    //ddlInspector.DataSource = dt;
+                    //ddlInspector.DataTextField = "Inspector_FName" + " " + "Inspector_LName";
+                    //ddlInspector.DataValueField = "Inspector_ID";
+                    //ddlInspector.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            //else populate Case with a generated CaseNumber with either a scheduled caseNumber or
-            //incrementing the last Case_ID from CASE_INFO
-            txtCaseNum.Attributes.Add("readonly", "readonly");      //Case Number should never change on this page
         }
         private void getCase(string caseNumber)
         {
@@ -48,56 +62,96 @@ namespace COPInspectionChecklistProject
                 txtNumUnits.Text = dt.Rows[0]["NumberOfUnits"].ToString();
                 txtOwnerName.Text = dt.Rows[0]["Property_Owner_Name"].ToString();
                 txtOwnerPhone.Text = dt.Rows[0]["Property_Owner_Phone"].ToString();
-                if ( Convert.ToBoolean(dt.Rows[0]["Sidewalk_Fee"]))
+                //ddlInspector.SelectedIndex = Convert.ToInt16( dt.Rows[0]["Inspector_ID"]);
+                if (Convert.ToBoolean(dt.Rows[0]["Sidewalk_Fee"]))
                     txtSidewalk.Text = "YES";
                 else
                     txtSidewalk.Text = "NO";
                 txtInspector.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
                 txtInspectEmail.Text = dtInspector.Rows[0]["Inspector_Email"].ToString();
-                if (dt.Rows[0]["Inspection_Date"] == null)
-                    txtInspectDate.Text = " ";
-                else
+                //if (dt.Rows[0]["Inspection_Date"] == null || dt.Rows[0]["Inspection_Date"].ToString() == "")
+                //    txtInspectDate.Text = "";
+                //else
                     txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
-                if (dt.Rows[0]["ReInspection_Date"] == null)
-                    txtReinspectDate.Text = " ";
-                else
+                //if (dt.Rows[0]["ReInspection_Date"] == null || dt.Rows[0]["ReInspection_Date"].ToString() == "")
+                //    txtReinspectDate.Text = "";
+                //else
                     txtReinspectDate.Text = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]).ToString();
             }
         }
         private void UpdateCaseByCaseNumber(string caseNumber)
         {
-            DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT * FROM[CASE_INFO] Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
-            var dt1 = clsCommon.TestDBConnection(SQL);
-            //check to see if there is an existing Case
-            if (dt1.Rows.Count > 0)
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = conn;
-                //Updating the Case_Info record                
-                string updateCase = "Update Case_Info set Inspection_Date=@InspectDate ReInspection_Date=@ReinspectDate WHERE Case_Num='" + caseNumber + "'";
-                cmd.CommandText = updateCase;
-                cmd.Parameters.Add("@InspectDate", SqlDbType.DateTime).Value = txtInspectDate.Text;
-                cmd.Parameters.Add("@ReinspectDate", SqlDbType.DateTime).Value = txtReinspectDate.Text;
-                cmd.ExecuteNonQuery();
+                //string inspectionDate = txtInspectDate.Text;
+                //if (!IsValidDateTimeTest(inspectionDate))
+                //{
+                //    lblInspectMessage.Visible = true;
+                //    lblInspectMessage.Text = "Please input/select valid inspection date!";
+                //}
+                //else
+                //    lblInspectMessage.Visible = false;
+                //string reinspectionDate = txtReinspectDate.Text;
+                //if (!IsValidDateTimeTest(reinspectionDate))
+                //{
+                //    lblReinspectMessage.Visible = true;
+                //    lblReinspectMessage.Text = "Please input/select valid reinspection date!";
+                //}
+                //else
+                //    lblReinspectMessage.Visible = false;
 
-                //Updating Inspector_Info record
-                string[] myName = txtInspector.Text.Split(' ');
-                string inspectorFName = myName[0];
-                string inspectorLName = myName[1];
-                string updateInspector = "Update Inspector_Info set " +
-                    "Inspector_FName=@InspectorFName "+
-                    "Inspector_LName=@InspectorLName " +
-                    "Inspector_Email=@InspectorEmail " +
-                    "where Inspector_ID='" + dt1.Rows[0]["Inspector_ID"] + "'";
-                cmd.CommandText = updateInspector;
-                cmd.Parameters.AddWithValue("@InspectorFName",inspectorFName);
-                cmd.Parameters.AddWithValue("@InspectorLName", inspectorLName);
-                cmd.Parameters.AddWithValue("@InspectorEmail", txtInspectEmail.Text);
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                DbCommon clsCommon = new DbCommon();
+                string SQL = "SELECT * FROM[CASE_INFO] Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
+                var dt1 = clsCommon.TestDBConnection(SQL);
+                //check to see if there is an existing Case
+                if (dt1.Rows.Count > 0)
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    //Updating the Case_Info record                
+                    string updateCase = "Update Case_Info set Inspection_Date=@InspectDate WHERE Case_Num='" + caseNumber + "'";
+                    cmd.CommandText = updateCase;
+                    if (txtInspectDate.Text == null || txtInspectDate.Text == "")
+                        cmd.Parameters.AddWithValue("@InspectDate", DBNull.Value);
+                    else
+                        cmd.Parameters.Add("@InspectDate", SqlDbType.DateTime).Value = txtInspectDate.Text;
+                    //if (txtReinspectDate.Text == null || txtInspectDate.Text == "")
+                    //    cmd.Parameters.AddWithValue("@ReinspectDate", DBNull.Value);
+                    //else
+                    //    cmd.Parameters.Add("@InspectDate", SqlDbType.DateTime).Value = txtReinspectDate.Text;
+                    cmd.ExecuteNonQuery();
+/*
+                    //Updating Inspector_Info record
+                    string[] myName = ddlInspector.Text.Split(' ');
+                    string inspectorFName = myName[0];
+                    string inspectorLName = myName[1];
+                    string updateInspector = "Update Inspector_Info set " +
+                        "Inspector_FName=@InspectorFName " +
+                        "Inspector_LName=@InspectorLName " +
+                        "Inspector_Email=@InspectorEmail " +
+                        "where Inspector_ID='" + dt1.Rows[0]["Inspector_ID"] + "'";
+                    cmd.CommandText = updateInspector;
+                    cmd.Parameters.AddWithValue("@InspectorFName", inspectorFName);
+                    cmd.Parameters.AddWithValue("@InspectorLName", inspectorLName);
+                    cmd.Parameters.AddWithValue("@InspectorEmail", txtInspectEmail.Text);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    lblMessage.Text = "Case information updated successfully";
+                    */
+                }
             }
+            catch (Exception ex)
+            {
+                lblMessage.Text = "Case update failed!";
+                throw ex;
+            }
+        }
+        private bool IsValidDateTimeTest(string dateTime)
+        {
+            string[] formats = { "mm/dd/yyyy" };
+            DateTime parsedDateTime;
+            return DateTime.TryParse(dateTime, out parsedDateTime);
         }
         public string CaseNumber
         {
@@ -125,7 +179,6 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("~/InspectionMain.aspx?CaseNumber=" + txtCaseNum.Text);
         }
-
         protected void btnSave_Click(object sender, EventArgs e)
         {
             UpdateCaseByCaseNumber(txtCaseNum.Text);
