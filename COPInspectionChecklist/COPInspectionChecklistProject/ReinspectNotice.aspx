@@ -10,15 +10,15 @@
 		        <tbody>
 		            <tr>
 			        <td style="width: 160px;">Case Number:</td>
-			            <td><asp:TextBox ID="txtReinspectionCaseNum" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
+			            <td><asp:TextBox ID="txtReinspectionCaseNum" runat="server" Width="300px" Enabled="false"></asp:TextBox></td>
 		            </tr>
 		            <tr>
 			        <td style="width: 160px">Property Address:</td>
-			            <td><asp:TextBox ID="txtReinspectionPropAdd" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
+			            <td><asp:TextBox ID="txtReinspectionPropAdd" runat="server" Width="300px" Enabled="false"></asp:TextBox></td>
 		            </tr>
 		            <tr>
 			        <td style="width: 160px">Case Creation Date:</td>
-			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td>
+			            <td><asp:TextBox ID="txtDate" runat="server" Width="300px" Enabled="false"></asp:TextBox></td>
 		            </tr>
                    
                     
@@ -38,7 +38,7 @@
                          <td >Dear Property Owner/Management Company,</td>
 		            </tr>
                     <tr>
-                         <td >A quadrenial inspection of the above referenced property was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px" DataFormatString="{0:d}" ReadOnly="true"></asp:TextBox></td>
+                         <td >A quadrenial inspection of the above referenced property was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server" Width="100px" DataFormatString="{0:d}" Enabled="false"></asp:TextBox></td>
 		            </tr>
                  </tbody>
             </table>

@@ -8,19 +8,19 @@
                 <asp:TableRow>
                     <asp:TableCell Width="20%">Case Number:</asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="txtNonComplianceCaseNum" runat="server" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txtNonComplianceCaseNum" runat="server" Width="300px" Enabled="false"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell Width="20%">Property Address:</asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="txtNonCompliancePropAdd" runat="server" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txtNonCompliancePropAdd" runat="server" Width="300px" Enabled="false"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell Width="20%">Date:</asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="txtDate" runat="server" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="txtDate" runat="server" Width="300px" Enabled="false"></asp:TextBox>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
@@ -30,7 +30,7 @@
                     <asp:TableCell Width="100%">Dear Property Owner/Management Company,</asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
-                    <asp:TableCell Width="100%">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server"  ReadOnly="true"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell Width="100%">This letter is to inform you that a housing inspection was conducted on: <asp:TextBox ID="txtInspectionDate" runat="server"  Enabled="false"></asp:TextBox></asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
 

@@ -22,39 +22,39 @@
   		<tbody>
               <tr> 
  <td class="auto-style4" >Case Number:</td>
-           <td class="auto-style2"><asp:TextBox ID="txtCaseNum" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td class="auto-style2"><asp:TextBox ID="txtCaseNum" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
         </tr> 
        <tr> 
            <td class="auto-style4" >Property Address:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtPropAddr" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td  class="auto-style2"><asp:TextBox ID="txtPropAddr" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
           
  </tr>
                <tr>
                    <td class="auto-style4">Dwelling Info:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td  class="auto-style2"><asp:TextBox ID="txtDwellInfo" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
  
               </tr>
            <tr> 
 
 <td class="auto-style4" >Applicant:</td>
-           <td class="auto-style2"><asp:TextBox ID="txtApplicant" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td class="auto-style2"><asp:TextBox ID="txtApplicant" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
         </tr> 
  
               <tr> 
 
 <td class="auto-style4" >Inspector Name:</td>
-           <td class="auto-style2"><asp:TextBox ID="txtInspector" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td class="auto-style2"><asp:TextBox ID="txtInspector" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
        </tr> 
               <tr>
                   <td class="auto-style4">Inspection Date:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td  class="auto-style2"><asp:TextBox ID="txtInspectDate" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
  
               </tr>
               <tr> <td class="auto-style4">Inspection Type:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtInspType" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td  class="auto-style2"><asp:TextBox ID="txtInspType" runat="server" Width="300px"  Enabled="false"></asp:TextBox> </td>
 </tr>
               <tr><td class="auto-style4">Number Of Units:</td>
-           <td  class="auto-style2"><asp:TextBox ID="txtNumOfUnit" runat="server" Width="300px"  ></asp:TextBox> </td>
+           <td  class="auto-style2"><asp:TextBox ID="txtNumOfUnit" runat="server" Width="300px" Enabled="false" ></asp:TextBox> </td>
  </tr>
              
      
