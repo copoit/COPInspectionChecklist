@@ -19,7 +19,7 @@
               <AlternatingRowStyle BackColor="White" />
               <Columns>
                   <asp:HyperLinkField DataNavigateUrlFields="Property_ID" DataNavigateUrlFormatString="PropertyMain.aspx?PropertyID={0}" DataTextField="Property_ID" DataTextFormatString="{0}" HeaderText="Property ID" />
-                  <asp:BoundField DataField="Property_StreetNumber" HeaderText="Street No." />
+                  <asp:BoundField DataField="Property_StreetNumber" HeaderText="Street Number" />
                   <asp:BoundField DataField="Property_StreetName" HeaderText="Street Name" />
                   <asp:BoundField DataField="Property_Zip" HeaderText="Zip" />
                   <asp:BoundField DataField="Property_Owner_Name" HeaderText="Owner" />
