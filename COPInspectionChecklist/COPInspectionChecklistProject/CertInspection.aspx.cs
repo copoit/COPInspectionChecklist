@@ -52,13 +52,17 @@ namespace COPInspectionChecklistProject
                 txtPropAddr.Text = dt.Rows[0]["Property_StreetNumber"].ToString() + " " + dt.Rows[0]["Property_StreetName"].ToString() + " " + dt.Rows[0]["Property_Zip"].ToString();
                 txtApplicant.Text = dt.Rows[0]["Applicant_Name"].ToString();
                 txtInspector.Text = dtInspector.Rows[0]["Inspector_FName"].ToString() + " " + dtInspector.Rows[0]["Inspector_LName"].ToString();
-                txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
+                
+                txtInspectDate.Text =dt.Rows[0]["Inspection_Date"].ToString();
                 txtInspType.Text = dt.Rows[0]["Inspection_Type"].ToString();
                 txtNumOfUnit.Text = dt.Rows[0]["NumberOfUnits"].ToString();
                 txtDwellInfo.Text = dt.Rows[0]["Dwelling_info"].ToString();
                 txtInspectorNotes.Text = dt.Rows[0]["Inspector_Notes"].ToString();
                 txtInspectSig.Text = dt.Rows[0]["Inspector_Signature"].ToString();
-                txtCertIssueDate.Text = Convert.ToDateTime(dt.Rows[0]["Cert_IssueDate"]).ToString();
+                    //txtCertIssueDate.Text = Convert.ToDateTime(dt.Rows[0]["Cert_IssueDate"]).ToString();
+                 txtCertIssueDate.Text = dt.Rows[0]["Cert_IssueDate"].ToString();
+                
+                
             }
         }
 
@@ -85,7 +89,7 @@ namespace COPInspectionChecklistProject
             }
             catch (Exception e)
             {
-
+                lblMessage.Text = "Saving certificate inspection note failed!";
                 throw e;
             }
         }
