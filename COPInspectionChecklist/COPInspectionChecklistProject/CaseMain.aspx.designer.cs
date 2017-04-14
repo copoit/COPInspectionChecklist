@@ -31,6 +31,15 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtCaseNum;
         
         /// <summary>
+        /// lblCaseMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCaseMessage;
+        
+        /// <summary>
         /// txtPropAdd control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,31 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtSidewalk;
         
         /// <summary>
-        /// txtInspector control.
+        /// txtInspectionType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtInspector;
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionType;
+        
+        /// <summary>
+        /// txtInspectionStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionStatus;
+        
+        /// <summary>
+        /// ddlInspector control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlInspector;
         
         /// <summary>
         /// txtInspectEmail control.
@@ -148,6 +175,15 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.TextBox txtInspectDate;
         
         /// <summary>
+        /// imgInsp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgInsp;
+        
+        /// <summary>
         /// lblInspectMessage control.
         /// </summary>
         /// <remarks>
@@ -164,6 +200,15 @@ namespace COPInspectionChecklistProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtReinspectDate;
+        
+        /// <summary>
+        /// imgRein control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgRein;
         
         /// <summary>
         /// lblReinspectMessage control.

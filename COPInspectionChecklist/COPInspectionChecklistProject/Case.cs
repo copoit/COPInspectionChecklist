@@ -19,8 +19,8 @@ namespace COPInspectionChecklistProject
         public string inspectorEmail { get; set; }
         public DateTime inspectionDate { get; set; }
         public DateTime reinspectionDate { get; set; }
-        public int inspector_ID { get; set; }
-        public int property_ID { get; set; }
+        public string inspector_ID { get; set; }
+        public string property_ID { get; set; }
         //added by Chaode He 3/17/2017
         public string inspectionType { get; set; }
         public string inspectionStatus { get; set; }
@@ -31,7 +31,7 @@ namespace COPInspectionChecklistProject
             caseNumber = newCaseNumb;
         }
         public Case(string caseNum, string propAdd, string resParty, string mail, string email, string appPhone, string dwell, int units, string owner,
-                string ownPhone, bool fees, string inspect, string inspectEmail, DateTime insDate, DateTime reinsDate, int inspID, int propID)
+                string ownPhone, bool fees, string inspect, string inspectEmail, DateTime insDate, DateTime reinsDate, string inspID, string propID)
         {
             caseNumber = caseNum;
             propertyAddress = propAdd;
