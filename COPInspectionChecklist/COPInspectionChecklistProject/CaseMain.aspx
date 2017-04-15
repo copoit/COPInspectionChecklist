@@ -7,7 +7,7 @@
             <asp:TableRow>
                 <asp:TableCell>Case Number:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" Enabled="false"></asp:TextBox>
+                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:Label ID="lblCaseMessage" runat="server" ForeColor="Red" />
@@ -17,6 +17,9 @@
                 <asp:TableCell>Property Address:</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPropAdd" runat="server" Width="300px" Enabled="false"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtPropID" runat="server" Visible="false"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

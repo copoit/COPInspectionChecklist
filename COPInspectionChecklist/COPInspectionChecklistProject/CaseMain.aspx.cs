@@ -10,7 +10,6 @@ namespace COPInspectionChecklistProject
 {
     public partial class CaseMain : Page
     {
-        Case newCase = new Case();
         SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
 
         protected void Page_Load(object sender, EventArgs e)
@@ -64,8 +63,19 @@ namespace COPInspectionChecklistProject
                 else
                     txtSidewalk.Text = "NO";
                 setInspectorEmail(ddlInspector.SelectedValue);
-                txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
-                txtReinspectDate.Text = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]).ToString();
+                if (dt.Rows[0]["Inspection_Date"] == null || dt.Rows[0]["Inspection_Date"].ToString() == "")
+                {
+                    txtInspectDate.Text = string.Empty;
+                    txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
+                }
+                else
+                {
+                    txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
+                    txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
+                }
+                if (dt.Rows[0]["ReInspection_Date"] == null || dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
+                    txtReinspectDate.Text = string.Empty;
+                UpdateStatus();
             }
         }
         private void getProperty(string propertyID)
@@ -96,7 +106,7 @@ namespace COPInspectionChecklistProject
                 txtCaseNum.Enabled = true;
                 txtReinspectDate.Enabled = false;
                 txtCaseNum.Text = "Enter new Case Number";
-                newCase.property_ID = propertyID;
+                txtPropID.Text = propertyID;
             }
         }
         private void getInspectorList()
@@ -126,6 +136,7 @@ namespace COPInspectionChecklistProject
         {
             try
             {
+                UpdateStatus();
                 DbCommon clsCommon = new DbCommon();
                 string SQL = "SELECT * FROM[CASE_INFO] Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
                 var dt1 = clsCommon.TestDBConnection(SQL);
@@ -160,13 +171,20 @@ namespace COPInspectionChecklistProject
                 throw ex;
             }
         }
+        private void UpdateStatus()
+        {
+            if (txtInspectDate.Text == null)
+                txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
+            else if (txtInspectDate.Text != null && (txtInspectionStatus.Text != InspectionStatus.Failed.ToString() || txtInspectionStatus.Text != InspectionStatus.Pending_Reinspection.ToString() || txtInspectionStatus.Text != InspectionStatus.Completed.ToString()))
+                txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();            
+            if (txtInspectionStatus.Text == InspectionStatus.Failed.ToString() && txtReinspectDate !=null)
+                txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
+        }
         private void CreateNewCase(string caseNumber)
         {
             try
-            {                
-
-                if (txtInspectDate.Text != null && txtInspectDate.Text != "")
-                    txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
+            {
+                UpdateStatus();
                 if(txtCaseNum.Text == string.Empty || txtCaseNum.Text == "Enter new Case Number")
                 {
                     lblCaseMessage.Text = "Invalid case number";
@@ -175,21 +193,41 @@ namespace COPInspectionChecklistProject
                 DbCommon clsCommon = new DbCommon();
                 string Sql = "Select * from Case_Info where Case_Num = '" + txtCaseNum.Text + "'";
                 var dt = clsCommon.TestDBConnection(Sql);
-                if(dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0)
                 {
-                    lblCaseMessage.Text = "Case number already exists, enter a new Case Number";
+                    lblCaseMessage.Text = "That Case Number is already in use. Choose another!";
                     throw new Exception();
                 }
-                
+
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString);
                 conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 string SQL = "INSERT into CASE_INFO (Case_Num, Case_Date, Inspector_ID, Property_ID, Inspection_Date, ReInspection_Date, Inspection_Type, Inspection_Status, Citation_Charges, Inspector_Notes, Inspector_Signature, Cert_IssueDate)" +
-                    " Values ('"+ caseNumber + "', '"+ DateTime.Today + "', '"+ ddlInspector.Text + "', '"+ newCase.property_ID + "', '"+ txtInspectDate.Text + "', '"+ txtReinspectDate.Text + "', '"+ txtInspectionType.Text + "', "+
-                    "'"+ txtInspectionStatus.Text + "', 0, '', '', null)";
+                    " Values (@CaseNumber, @CaseDate, @InspectorID, @PropertyID, @InspectionDate, @ReinspectionDate, @InspectionType, @InspectionStatus, @CitationCharges, @InspectorNotes, @InspectorSign, @CertDate)";
                 cmd.CommandText = SQL;
-                cmd.ExecuteNonQuery();               
+                cmd.Parameters.AddWithValue("@CaseNumber", caseNumber);
+                cmd.Parameters.AddWithValue("@CaseDate", DateTime.Today);
+                cmd.Parameters.AddWithValue("@InspectorID", ddlInspector.SelectedValue);
+                cmd.Parameters.AddWithValue("@PropertyID", txtPropID.Text);
+                if (txtInspectDate.Text == null || txtInspectDate.Text == "")
+                    cmd.Parameters.AddWithValue("@InspectionDate", DBNull.Value);
+                else
+                    cmd.Parameters.Add("@InspectionDate", SqlDbType.DateTime).Value = txtInspectDate.Text;
+                if (txtReinspectDate.Text == null || txtReinspectDate.Text == "")
+                    cmd.Parameters.AddWithValue("@ReinspectionDate", DBNull.Value);
+                else
+                    cmd.Parameters.Add("@ReinspectionDate", SqlDbType.DateTime).Value = txtReinspectDate.Text;
+                cmd.Parameters.AddWithValue("@InspectionType", txtInspectionType.Text);
+                cmd.Parameters.AddWithValue("@InspectionStatus", txtInspectionStatus.Text);
+                cmd.Parameters.AddWithValue("@CitationCharges", 0);
+                cmd.Parameters.AddWithValue("@InspectorNotes", DBNull.Value);
+                cmd.Parameters.AddWithValue("@InspectorSign", DBNull.Value);
+                cmd.Parameters.AddWithValue("@CertDate", DBNull.Value);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                lblMessage.Text = "Case information updated successfully";
+                txtCaseNum.Enabled = false;
             }
             catch(Exception ex)
             {
@@ -227,7 +265,10 @@ namespace COPInspectionChecklistProject
         {
             try
             {
-                UpdateCaseByCaseNumber(txtCaseNum.Text);
+                if (txtCaseNum.Enabled == true)
+                    CreateNewCase(txtCaseNum.Text);
+                else
+                    UpdateCaseByCaseNumber(txtCaseNum.Text);
             }
             catch (Exception ex)
             {
