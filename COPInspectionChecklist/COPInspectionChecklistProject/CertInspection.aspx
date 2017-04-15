@@ -82,17 +82,17 @@
 
 <asp:Table runat="server" ID="Table1" Height="42px">
      <asp:TableRow>
-           <asp:TableCell> <b> Inspector Notes:</b></asp:TableCell>
+           <asp:TableCell> <b> Inspector Notes (Max 1000 characters):</b></asp:TableCell>
      </asp:TableRow>
     <asp:TableRow>
-           <asp:TableCell>  <asp:Textbox ID="txtInspectorNotes" Width="420px" Height="100px" runat="server" TextMode="multiline"></asp:TextBox></asp:TableCell>
+           <asp:TableCell>  <asp:Textbox ID="txtInspectorNotes" Width="420px" Height="100px" MaxLength="1000" runat="server" TextMode="multiline"></asp:TextBox></asp:TableCell>
      </asp:TableRow>
     </asp:Table>
       <br />
       
     <table>
-        <tr><td>Inspector Signature: </td><td><asp:TextBox ID="txtInspectSig" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td></tr>
-         <tr><td>Certificate Issue Date: </td><td><asp:TextBox ID="txtCertIssueDate" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></td></tr>
+        <tr><td>Inspector Signature: </td><td><asp:TextBox ID="txtInspectSig" runat="server" Width="300px" disabled="true"></asp:TextBox></td></tr>
+         <tr><td>Certificate Issue Date: </td><td><asp:TextBox ID="txtCertIssueDate" runat="server" Width="300px" disabled="true"></asp:TextBox></td></tr>
     </table>    
      <br />          
      <footer><a href="http://www.cityofpasadena.net">www.cityofpasedena.net</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;175N Garfield Av 1st floor pasadena Ca 91101-1704&nbsp;&nbsp;&nbsp;&nbsp;<br />

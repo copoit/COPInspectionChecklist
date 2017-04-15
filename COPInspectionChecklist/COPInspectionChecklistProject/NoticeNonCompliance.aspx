@@ -77,7 +77,7 @@
                      <asp:TableCell Width="100%"> <br />Sincerely,</asp:TableCell>
                 </asp:TableRow>
                  <asp:TableRow>
-                    <asp:TableCell Width="100%"><asp:TextBox ID="txtInspector" runat="server" Width="300px" ReadOnly="true"></asp:TextBox></asp:TableCell>
+                    <asp:TableCell Width="100%"><asp:TextBox ID="txtInspector" runat="server" Width="300px" disabled="true"></asp:TextBox></asp:TableCell>
                 </asp:TableRow>
                   <asp:TableRow>
                     <asp:TableCell Width="100%">Inspector</asp:TableCell>
