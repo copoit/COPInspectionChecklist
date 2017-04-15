@@ -58,24 +58,22 @@ namespace COPInspectionChecklistProject
                 txtInspectionType.Text = dt.Rows[0]["Inspection_Type"].ToString();
                 txtInspectionStatus.Text = dt.Rows[0]["Inspection_Status"].ToString();
                 ddlInspector.SelectedValue =  dt.Rows[0]["Inspector_ID"].ToString();
+                //set Certification issue date, if null set to empty string
                 if (Convert.ToBoolean(dt.Rows[0]["Sidewalk_Fee"]))
                     txtSidewalk.Text = "YES";
                 else
                     txtSidewalk.Text = "NO";
                 setInspectorEmail(ddlInspector.SelectedValue);
-                if (dt.Rows[0]["Inspection_Date"] == null || dt.Rows[0]["Inspection_Date"].ToString() == "")
-                {
+                //set Inspection date, if null set to empty string. set inspectionStatus
+                if (dt.Rows[0]["Inspection_Date"] == null || dt.Rows[0]["Inspection_Date"].ToString() == string.Empty)
                     txtInspectDate.Text = string.Empty;
-                    txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
-                }
                 else
-                {
                     txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
-                    txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
-                }
+                //set Reinspection date, if null set to empty string
                 if (dt.Rows[0]["ReInspection_Date"] == null || dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
                     txtReinspectDate.Text = string.Empty;
-                UpdateStatus();
+                else
+                    txtReinspectDate.Text = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]).ToString();                                
             }
         }
         private void getProperty(string propertyID)
@@ -173,11 +171,11 @@ namespace COPInspectionChecklistProject
         }
         private void UpdateStatus()
         {
-            if (txtInspectDate.Text == null)
+            if (txtInspectDate.Text == string.Empty)
                 txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
-            else if (txtInspectDate.Text != null && (txtInspectionStatus.Text != InspectionStatus.Failed.ToString() || txtInspectionStatus.Text != InspectionStatus.Pending_Reinspection.ToString() || txtInspectionStatus.Text != InspectionStatus.Completed.ToString()))
+            else if (txtInspectDate.Text != string.Empty && (txtInspectionStatus.Text != InspectionStatus.Failed.ToString() || txtInspectionStatus.Text != InspectionStatus.Pending_Reinspection.ToString() || txtInspectionStatus.Text != InspectionStatus.Completed.ToString()))
                 txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();            
-            if (txtInspectionStatus.Text == InspectionStatus.Failed.ToString() && txtReinspectDate !=null)
+            if (txtInspectionStatus.Text == InspectionStatus.Failed.ToString() && txtReinspectDate.Text != string.Empty)
                 txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
         }
         private void CreateNewCase(string caseNumber)

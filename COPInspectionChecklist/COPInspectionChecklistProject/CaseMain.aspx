@@ -108,14 +108,8 @@
                 <asp:TableCell>
                     <asp:Image ID="imgInsp" runat="server" AlternateText="Calendar" Height="25px" ImageAlign="AbsMiddle" ImageUrl="~/Images/calendar.jpg" Width="25px" onclick="inspectionDate()" />
                     <script>
-                        $(function () {
-                            $('#MainContent_txtInspectDate').datepicker({
-                                format: 'mm/dd/yyyy'
-                            });
-                        });
-                        function inspectionDate() {
-                            $('#MainContent_txtInspectDate').focus();
-                        }
+                        $(function () { $('#MainContent_txtInspectDate').datepicker({ format: 'mm/dd/yyyy' }); });
+                        function inspectionDate() { $('#MainContent_txtInspectDate').focus(); }
                     </script>
                 </asp:TableCell>
                 <asp:TableCell >
@@ -130,14 +124,8 @@
                 <asp:TableCell>
                     <asp:Image ID="imgRein" runat="server" AlternateText="Calendar" Height="25px" ImageAlign="AbsMiddle" ImageUrl="~/Images/calendar.jpg" Width="25px"  onclick="reinspectionDate()" />
                     <script>
-                        $(function () {
-                            $('#MainContent_txtReinspectDate').datepicker({
-                                format: 'mm/dd/yyyy'
-                            });
-                        });
-                        function reinspectionDate() {
-                            $('#MainContent_txtReinspectDate').focus();
-                        }
+                        $(function () { $('#MainContent_txtReinspectDate').datepicker({ format: 'mm/dd/yyyy' }); });
+                        function reinspectionDate() { $('#MainContent_txtReinspectDate').focus(); }
                     </script>
                 </asp:TableCell>
                 <asp:TableCell>
