@@ -9,6 +9,9 @@
                 <asp:TableCell>
                     <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" Enabled="false"></asp:TextBox>
                 </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label ID="lblCaseMessage" runat="server" ForeColor="Red" />
+                </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>Property Address:</asp:TableCell>
@@ -71,10 +74,21 @@
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
+                <asp:TableCell Enabled="false">Inspection Type</asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtInspectionType" runat="server" Width="300px" Enabled="true"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell Enabled="false">Inspection Status</asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtInspectionStatus" runat="server" Width="300px" Enabled="false"></asp:TextBox>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
                 <asp:TableCell>Inspector Name:</asp:TableCell>
                 <asp:TableCell>
-                    <%--<asp:DropDownList ID="ddlInspector" runat="server" Width="290px"></asp:DropDownList>--%>
-                    <asp:TextBox ID="txtInspector" runat="server" Width="300px"></asp:TextBox>
+                    <asp:DropDownList ID="ddlInspector" runat="server" Width="300px" AutoPostBack="true" DataTextField = "InspectorName" DataValueField = "Inspector_ID" OnSelectedIndexChanged="ddlInspector_SelectedIndexChanged" ></asp:DropDownList>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -86,7 +100,10 @@
             <asp:TableRow>
                 <asp:TableCell>Inspection Date:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px" alt="Calender" Height="25px" source="Images/calendar.jpg" Style="cursor: pointer" align="absmiddle" onclick="inspectionDate()" />
+                    <asp:TextBox ID="txtInspectDate" runat="server" Width="300px" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Image ID="imgInsp" runat="server" AlternateText="Calendar" Height="25px" ImageAlign="AbsMiddle" ImageUrl="~/Images/calendar.jpg" Width="25px" onclick="inspectionDate()" />
                     <script>
                         $(function () {
                             $('#MainContent_txtInspectDate').datepicker({
@@ -97,13 +114,18 @@
                             $('#MainContent_txtInspectDate').focus();
                         }
                     </script>
-                </asp:TableCell><asp:TableCell>
-                    <asp:TableCell>
-                        <asp:Label ID="lblInspectMessage" runat="server" ForeColor="Red" />
-                    </asp:TableCell>
-                </asp:TableCell></asp:TableRow><asp:TableRow>
-                <asp:TableCell>Re-Inspection Date:</asp:TableCell><asp:TableCell>
-                    <asp:TextBox ID="txtReinspectDate" runat="server" Width="300px" alt="Calender" Height="25px" source="Images/calendar.jpg" Style="cursor: pointer" align="absmiddle" onclick="reinspectionDate()" />
+                </asp:TableCell>
+                <asp:TableCell >
+                    <asp:Label ID="lblInspectMessage" runat="server" ForeColor="Red" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>Re-Inspection Date:</asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtReinspectDate" runat="server" Width="300px" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Image ID="imgRein" runat="server" AlternateText="Calendar" Height="25px" ImageAlign="AbsMiddle" ImageUrl="~/Images/calendar.jpg" Width="25px"  onclick="reinspectionDate()" />
                     <script>
                         $(function () {
                             $('#MainContent_txtReinspectDate').datepicker({
@@ -114,9 +136,14 @@
                             $('#MainContent_txtReinspectDate').focus();
                         }
                     </script>
-                </asp:TableCell><asp:TableCell>
+                </asp:TableCell>
+                <asp:TableCell>
                     <asp:Label ID="lblReinspectMessage" runat="server" ForeColor="Red" />
-                </asp:TableCell></asp:TableRow></asp:Table></div><br />
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+    </div>
+    <br />
     <div>
         <asp:Button ID="btnInspectionChecklist" runat="server" OnClick="btnInspectionChecklist_Click" Text="Inspection Checklist" Height="38px" Width="250px" />
         <asp:Button ID="btnCertificateInspection" runat="server" OnClick="btnCertificateInspection_Click" Text="Certificate of Inspection" Height="38px" Width="250px" />
@@ -128,7 +155,6 @@
         <br />
         <asp:Button ID="InspectionMain" runat="server" OnClick="btnInspectionMain_Click" Text="Inspection Main" Height="38px" Width="250px" />
         <asp:Button ID="Save" runat="server" OnClick="btnSave_Click" Text="Save Case" Height="38px" Width="250px" />
-        <asp:TableCell> <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
-        </asp:TableCell>
+        <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
     </div>
 </asp:Content>

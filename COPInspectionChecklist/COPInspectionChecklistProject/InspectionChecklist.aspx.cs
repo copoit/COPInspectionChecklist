@@ -84,14 +84,14 @@ namespace COPInspectionChecklistProject
                     txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
                     txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
                 }
-                //set Reinspection date, if null set to empty string. set inspectionStatus
-                //if (dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
-                //    hasReinspectDate = false;
-                //else
-                //{
-                //    newCase.reinspectionDate = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]);
-                //    hasReinspectDate = true;
-                //}                    
+                //set Reinspection date, if null set to empty string.set inspectionStatus
+                if (dt.Rows[0]["ReInspection_Date"] == null || dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
+                    hasReinspectDate = false;
+                else
+                {
+                    newCase.reinspectionDate = Convert.ToDateTime(dt.Rows[0]["ReInspection_Date"]);
+                    hasReinspectDate = true;
+                }
             }
         }
         //Search database for Violation table with CaseNumber
@@ -229,12 +229,12 @@ namespace COPInspectionChecklistProject
         {
             if (txtInspectDate.Text == string.Empty)
                 txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
-            else if ( !cBNoViolations.Checked )
-                txtInspectionStatus.Text = InspectionStatus.Failed.ToString();
             else if ( cBNoViolations.Checked )
                 txtInspectionStatus.Text = InspectionStatus.Completed.ToString();
-            if ( txtInspectionStatus.Text == InspectionStatus.Failed.ToString() && hasReinspectDate )
-                txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
+            else if ( !cBNoViolations.Checked )
+                txtInspectionStatus.Text = InspectionStatus.Failed.ToString();
+            if ( txtInspectionStatus.Text == InspectionStatus.Failed.ToString() && hasReinspectDate)            
+                txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();                  
         }
         //updates Main headings to turn Major/Minor/Notes section to unavailable
         protected void DisableSubHeadings()
@@ -500,9 +500,8 @@ namespace COPInspectionChecklistProject
             {
                 StartUpLoad(txtCaseNum.Text);
             }
-
         }
-
+        #endregion
         protected void DownloadFile(object sender, EventArgs e)
         {
             int id = int.Parse((sender as LinkButton).CommandArgument);
@@ -571,6 +570,5 @@ namespace COPInspectionChecklistProject
         {
 
         }  
-        #endregion
     }
 }
