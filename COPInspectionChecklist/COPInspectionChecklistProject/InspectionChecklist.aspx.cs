@@ -227,6 +227,8 @@ namespace COPInspectionChecklistProject
         //Updates InspectionStatus, dependent upon Violations & Schedule Dates
         private void UpdateInspectionStatus()
         {
+            if (txtInspectionStatus.Text == InspectionStatus.Completed.ToString())
+                return;
             if (txtInspectDate.Text == string.Empty)
                 txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
             else if ( cBNoViolations.Checked )

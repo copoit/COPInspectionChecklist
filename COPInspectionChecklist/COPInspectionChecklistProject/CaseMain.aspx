@@ -79,7 +79,7 @@
             <asp:TableRow>
                 <asp:TableCell Enabled="false">Inspection Type</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectionType" runat="server" Width="300px" Enabled="true"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectionType" runat="server" Width="300px" Enabled="false"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
