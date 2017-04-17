@@ -7,7 +7,7 @@
             <asp:TableRow>
                 <asp:TableCell>Case Number:</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" Enabled="false"></asp:TextBox>
+                    <asp:TextBox ID="txtCaseNum" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:Label ID="lblCaseMessage" runat="server" ForeColor="Red" />
@@ -17,6 +17,9 @@
                 <asp:TableCell>Property Address:</asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox ID="txtPropAdd" runat="server" Width="300px" Enabled="false"></asp:TextBox>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox ID="txtPropID" runat="server" Visible="false"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -76,7 +79,7 @@
             <asp:TableRow>
                 <asp:TableCell Enabled="false">Inspection Type</asp:TableCell>
                 <asp:TableCell>
-                    <asp:TextBox ID="txtInspectionType" runat="server" Width="300px" Enabled="true"></asp:TextBox>
+                    <asp:TextBox ID="txtInspectionType" runat="server" Width="300px" Enabled="false"></asp:TextBox>
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -105,14 +108,8 @@
                 <asp:TableCell>
                     <asp:Image ID="imgInsp" runat="server" AlternateText="Calendar" Height="25px" ImageAlign="AbsMiddle" ImageUrl="~/Images/calendar.jpg" Width="25px" onclick="inspectionDate()" />
                     <script>
-                        $(function () {
-                            $('#MainContent_txtInspectDate').datepicker({
-                                format: 'mm/dd/yyyy'
-                            });
-                        });
-                        function inspectionDate() {
-                            $('#MainContent_txtInspectDate').focus();
-                        }
+                        $(function () { $('#MainContent_txtInspectDate').datepicker({ format: 'mm/dd/yyyy' }); });
+                        function inspectionDate() { $('#MainContent_txtInspectDate').focus(); }
                     </script>
                 </asp:TableCell>
                 <asp:TableCell >
@@ -127,14 +124,8 @@
                 <asp:TableCell>
                     <asp:Image ID="imgRein" runat="server" AlternateText="Calendar" Height="25px" ImageAlign="AbsMiddle" ImageUrl="~/Images/calendar.jpg" Width="25px"  onclick="reinspectionDate()" />
                     <script>
-                        $(function () {
-                            $('#MainContent_txtReinspectDate').datepicker({
-                                format: 'mm/dd/yyyy'
-                            });
-                        });
-                        function reinspectionDate() {
-                            $('#MainContent_txtReinspectDate').focus();
-                        }
+                        $(function () { $('#MainContent_txtReinspectDate').datepicker({ format: 'mm/dd/yyyy' }); });
+                        function reinspectionDate() { $('#MainContent_txtReinspectDate').focus(); }
                     </script>
                 </asp:TableCell>
                 <asp:TableCell>
