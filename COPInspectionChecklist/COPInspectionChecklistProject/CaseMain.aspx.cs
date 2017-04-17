@@ -173,14 +173,41 @@ namespace COPInspectionChecklistProject
         }
         private void UpdateStatus()
         {
+            //set status of the txtInspectionStatus
             if (txtInspectionStatus.Text == InspectionStatus.Completed.ToString())
+            {
+                txtInspectDate.Enabled = false;
+                txtReinspectDate.Enabled = false;
+                ddlInspector.Enabled = false;
+                btnNoticeNonCompliance.Visible = false;
+                btnReinspectionNotice.Visible = false;
+                btnCertificateInspection.Visible = true;
                 return;
+            }
             if (txtInspectDate.Text == string.Empty)
                 txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();           
             if(txtInspectionStatus.Text == InspectionStatus.Not_Scheduled.ToString() && txtInspectDate.Text != string.Empty )
                 txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
             if (txtReinspectDate.Text != string.Empty && (txtInspectionStatus.Text == InspectionStatus.Failed.ToString() || txtInspectionStatus.Text == InspectionStatus.Scheduled.ToString()))
                 txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
+
+            //set enabled of various textboxes based on inspectionStatus
+            if(txtInspectionStatus.Text == InspectionStatus.Not_Scheduled.ToString() || txtInspectionStatus.Text == InspectionStatus.Scheduled.ToString())  //inspection hasn't been started
+            {
+                txtInspectDate.Enabled = true;
+                txtReinspectDate.Enabled = false;
+                ddlInspector.Enabled = true;
+                btnCertificateInspection.Visible = false;
+                btnNoticeNonCompliance.Visible = false;
+                btnReinspectionNotice.Visible = false;
+            }
+            if(txtInspectionStatus.Text == InspectionStatus.Failed.ToString() || txtInspectionStatus.Text == InspectionStatus.Pending_Reinspection.ToString())  //inspection has failed or is waiting to be reinspected
+            {
+                txtInspectDate.Enabled = false;
+                txtReinspectDate.Enabled = true;
+                ddlInspector.Enabled = true;
+                btnCertificateInspection.Visible = false;
+            }
         }
         private void CreateNewCase(string caseNumber)
         {
