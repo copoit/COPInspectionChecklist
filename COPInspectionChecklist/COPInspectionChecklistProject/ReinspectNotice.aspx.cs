@@ -21,6 +21,8 @@ namespace COPInspectionChecklistProject
             {
                 if (!IsPostBack)
                 {
+                    getInspectorList();
+
                     lblMessage.Text = "";
                     string caseNumber = Request.QueryString["CaseNumber"];
                     if (caseNumber != null)
@@ -44,7 +46,7 @@ namespace COPInspectionChecklistProject
                 DbCommon dbCommon = new DbCommon();
                 string SQL = "SELECT Property_StreetNumber,Property_StreetName,Property_Zip," +
                     "convert(nvarchar(10),Case_Date,101) as Case_Date,convert(nvarchar(10),Inspection_Date,101) as Inspection_Date ,convert(nvarchar(10),ReInspection_Date,101)as ReInspection_Date," +
-                    " CAST(Citation_Charges AS numeric(10,2)) as Citation_Charges, Inspector_FName, Inspector_LName,Inspector_Phone, [CASE_INFO].Inspector_ID as inspectorID" +
+                    " CAST(Citation_Charges AS numeric(10,2)) as Citation_Charges,[CASE_INFO].Inspector_ID, Inspector_FName, Inspector_LName,Inspector_Phone, [CASE_INFO].Inspector_ID as inspectorID" +
                     " FROM[CASE_INFO] INNER JOIN[PROPERTY_INFO] ON[CASE_INFO].Property_ID = [PROPERTY_INFO].Property_ID" +
                     " left join[INSPECTOR_INFO] ON[CASE_INFO].Inspector_ID=[INSPECTOR_INFO].Inspector_ID" +
                     " Where[CASE_INFO].Case_Num ='" + caseNumber + "'";
@@ -57,7 +59,8 @@ namespace COPInspectionChecklistProject
                     txtReinspectionDate.Text= dt.Rows[0]["ReInspection_Date"].ToString();
                     txtDate.Text= dt.Rows[0]["Case_Date"].ToString();
                     txtCitationAmount.Text = dt.Rows[0]["Citation_Charges"].ToString() ;
-                    txtInspector.Text = dt.Rows[0]["Inspector_FName"].ToString() + " " + dt.Rows[0]["Inspector_LName"].ToString();
+                    ddlInspector.SelectedValue = dt.Rows[0]["Inspector_ID"].ToString();
+                    //txtInspector.Text = dt.Rows[0]["Inspector_FName"].ToString() + " " + dt.Rows[0]["Inspector_LName"].ToString();
                     inspectorID.Value= dt.Rows[0]["inspectorID"].ToString(); 
                     //txtInspectorPhone.Text = dt.Rows[0]["Inspector_Phone"].ToString();
                     string phoneNumber = dt.Rows[0]["Inspector_Phone"].ToString();
@@ -105,8 +108,8 @@ namespace COPInspectionChecklistProject
                     throw new Exception();
                 }
 
-                string inspectorId = inspectorID.Value;
-               
+                string inspectorId = ddlInspector.SelectedValue;
+
 
                 string updateStr = "Update CASE_INFO set ReInspection_Date=@reinspectionDate, Citation_Charges=@citationCharge, Inspector_ID=@inspectorId WHERE Case_Num='" + caseNumber + "'";
                 cmd.CommandText = updateStr;
@@ -137,7 +140,19 @@ namespace COPInspectionChecklistProject
                 Console.WriteLine(ex.Message);
             }
         }
-        
+
+        private void getInspectorList()
+        {
+            string CS = ConfigurationManager.ConnectionStrings["DBOIT"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(CS))
+            {
+                SqlCommand cmd = new SqlCommand("Select Inspector_ID, Inspector_FName +' '+Inspector_LName as InspectorName from Inspector_Info", conn);
+                conn.Open();
+                ddlInspector.DataSource = cmd.ExecuteReader();
+                ddlInspector.DataBind();
+                conn.Close();
+            }
+        }
         protected void btnReinspectionCheckList_Click(object sender, EventArgs e)
         {
             if (caseNumberParamter == "")
@@ -159,11 +174,16 @@ namespace COPInspectionChecklistProject
         {
             Response.Redirect("Default.aspx");
         }
+
+        protected void ddlInspector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //setInspectorEmail(ddlInspector.SelectedValue);
+        }
         /*protected void calReinspectionDate_SelectionChanged(object sender, EventArgs e)
         {
             txtReinspectionDate.Text = calReinspectionDate.SelectedDate.ToString();
         }
         */
-        
+
     }
 }

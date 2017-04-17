@@ -80,7 +80,7 @@
                          </td>
 		            </tr>
                     <tr>
-                         <td >Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px"></asp:TextBox></td>
+                         <td >Failure to honor this appointment will result in a citation being issued in the amount up to <asp:TextBox ID="txtCitationAmount" runat="server"  Width="100px" MaxLength="7"></asp:TextBox></td>
                          
 		            </tr>
                      </tbody>
@@ -99,7 +99,13 @@
                          <td style="width: 360px">Sincerely,</td>
 		            </tr>
                     <tr>
-                         <td style="width: 360px"><asp:TextBox ID="txtInspector" runat="server" Width="200px" ReadOnly="true"></asp:TextBox><asp:HiddenField ID="inspectorID" runat="server"></asp:HiddenField></td>
+                         <td style="width: 360px">
+                             <asp:TableCell>
+                                <asp:DropDownList ID="ddlInspector" runat="server" Width="300px" AutoPostBack="true" DataTextField = "InspectorName" DataValueField = "Inspector_ID" OnSelectedIndexChanged="ddlInspector_SelectedIndexChanged" ></asp:DropDownList>
+                            </asp:TableCell>
+                             <asp:HiddenField ID="inspectorID" runat="server"></asp:HiddenField>
+
+                         </td>
 		            </tr>
                     <tr>
                          <td style="width: 360px">Code Compliance Officer</td>
