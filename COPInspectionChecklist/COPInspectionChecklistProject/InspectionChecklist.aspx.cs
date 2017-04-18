@@ -77,12 +77,12 @@ namespace COPInspectionChecklistProject
                 if (dt.Rows[0]["Inspection_Date"] == null || dt.Rows[0]["Inspection_Date"].ToString() == "")
                 {
                     txtInspectDate.Text = string.Empty;
-                    txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
+                    //txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();
                 }
                 else
                 {
                     txtInspectDate.Text = Convert.ToDateTime(dt.Rows[0]["Inspection_Date"]).ToString();
-                    txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
+                    //txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
                 }
                 //set Reinspection date, if null set to empty string.set inspectionStatus
                 if (dt.Rows[0]["ReInspection_Date"] == null || dt.Rows[0]["ReInspection_Date"].ToString() == string.Empty)
@@ -147,7 +147,6 @@ namespace COPInspectionChecklistProject
             }
             DisableSubHeadings();
             CheckForViolations();
-            UpdateInspectionStatus();
         }
         //check for Major/Minor violation in table & set appropriate checkboxes
         private void CheckForViolations()
