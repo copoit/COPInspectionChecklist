@@ -32,7 +32,6 @@ namespace COPInspectionChecklistProject
                     if (dt.Rows.Count > 0)
                     {
                         lblPropertyMessage.Text = "That Address is already in use. Choose another!";
-                        throw new Exception();
                     }
                     else
                     {
@@ -56,7 +55,16 @@ namespace COPInspectionChecklistProject
                         cmd.Parameters.AddWithValue("@MailName", txtMailName.Text);
                         cmd.Parameters.AddWithValue("@MailZip", txtMailZip.Text);
                         cmd.Parameters.AddWithValue("@Dwell", txtOccDwell.Text);
-                        cmd.Parameters.AddWithValue("@NumUnits", txtNumUnits.Text);
+
+                        if (txtNumUnits.Text == "")
+                        {
+                            cmd.Parameters.AddWithValue("@NumUnits", "0");
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@NumUnits", txtNumUnits.Text);
+                        }
+                        
                         cmd.Parameters.AddWithValue("@Sidewalk", ddlsidewalk.SelectedValue);
                         
                         cmd.ExecuteNonQuery();
