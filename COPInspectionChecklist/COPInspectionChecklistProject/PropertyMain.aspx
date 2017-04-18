@@ -12,61 +12,61 @@
           
 		    <tr>
 			<td >Property Address</td>
-			<td ><asp:TextBox ID="txtPropAdd" runat="server" Width="300px"  ></asp:TextBox>
+			<td ><asp:TextBox ID="txtPropAdd" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td >Responsible Party</td>
-			<td ><asp:TextBox ID="txtRespParty" runat="server" Width="300px" ></asp:TextBox>
+			<td ><asp:TextBox ID="txtRespParty" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                  </td>
 		    </tr>
 		    <tr>
 			<td>Mailing Address</td>
-			<td><asp:TextBox ID="txtMailAdd" runat="server" Width="300px" ></asp:TextBox>
+			<td><asp:TextBox ID="txtMailAdd" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td>Email</td>
-			<td> <asp:TextBox ID="txtEmail" runat="server" Width="300px" ></asp:TextBox>
+			<td> <asp:TextBox ID="txtEmail" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td>Applicant Phone</td>
-			<td> <asp:TextBox ID="txtAppPhone" runat="server" Width="300px" ></asp:TextBox>
+			<td> <asp:TextBox ID="txtAppPhone" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td>Occupant Dwelling Info</td>
-			<td><asp:TextBox ID="txtOccDwell" runat="server" Width="300px" ></asp:TextBox>
+			<td><asp:TextBox ID="txtOccDwell" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
-			<td>Number of Units</td>
-			<td><asp:TextBox ID="txtNumUnits" runat="server" Width="300px" ></asp:TextBox>
+			<td>Number of Units</td> 
+			<td><asp:TextBox ID="txtNumUnits" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td>Owner Name</td>
-			<td> <asp:TextBox ID="txtOwnerName" runat="server" Width="300px"  ></asp:TextBox>
+			<td> <asp:TextBox ID="txtOwnerName" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td >Owner Phone</td>
-			<td ><asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px" ></asp:TextBox>
+			<td ><asp:TextBox ID="txtOwnerPhone" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 </td>
 		    </tr>
 		    <tr>
 			<td >Sidewalk Fees</td>
-			<td ><asp:TextBox ID="txtSidewalk" runat="server" Width="300px" ></asp:TextBox>
+			<td ><asp:TextBox ID="txtSidewalk" runat="server" Width="300px" Enabled="false" ></asp:TextBox>
                 <br />
                 <br />
                 </td>
