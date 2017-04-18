@@ -36,6 +36,11 @@ namespace COPInspectionChecklistProject
 	}
 }
 
+protected void btnAddProperty_Click(object sender, EventArgs e)
+{
+    Response.Redirect("PropertyAdd.aspx");
+}
+
 protected void btnProperty_Click(object sender, EventArgs e)
 {
 	if (txtStreetNum.Text.Trim() != "" || txtStreetName.Text.Trim() != "" || txtZip.Text.Trim() != "")

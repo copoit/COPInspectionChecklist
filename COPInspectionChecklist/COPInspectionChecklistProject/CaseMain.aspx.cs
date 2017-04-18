@@ -106,6 +106,9 @@ namespace COPInspectionChecklistProject
                 txtReinspectDate.Enabled = false;
                 txtCaseNum.Text = "Enter new Case Number";
                 txtPropID.Text = propertyID;
+                btnNoticeNonCompliance.Visible = false;
+                btnReinspectionNotice.Visible = false;
+                btnCertificateInspection.Visible = false;
             }
         }
         private void getInspectorList()
@@ -174,6 +177,19 @@ namespace COPInspectionChecklistProject
         private void UpdateStatus()
         {
             //set status of the txtInspectionStatus
+            if (txtInspectDate.Text == string.Empty)
+            {
+                txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();        
+            }
+            if(txtInspectionStatus.Text == InspectionStatus.Not_Scheduled.ToString() && txtInspectDate.Text != string.Empty)
+            {
+                txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
+            }
+            if (txtReinspectDate.Text != string.Empty && txtInspectionStatus.Text == InspectionStatus.Failed.ToString())
+            {
+                txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
+            }
+            //set enabled of various textboxes based on inspectionStatus
             if (txtInspectionStatus.Text == InspectionStatus.Completed.ToString())
             {
                 txtInspectDate.Enabled = false;
@@ -184,14 +200,6 @@ namespace COPInspectionChecklistProject
                 btnCertificateInspection.Visible = true;
                 return;
             }
-            if (txtInspectDate.Text == string.Empty)
-                txtInspectionStatus.Text = InspectionStatus.Not_Scheduled.ToString();           
-            if(txtInspectionStatus.Text == InspectionStatus.Not_Scheduled.ToString() && txtInspectDate.Text != string.Empty )
-                txtInspectionStatus.Text = InspectionStatus.Scheduled.ToString();
-            if (txtReinspectDate.Text != string.Empty && (txtInspectionStatus.Text == InspectionStatus.Failed.ToString() || txtInspectionStatus.Text == InspectionStatus.Scheduled.ToString()))
-                txtInspectionStatus.Text = InspectionStatus.Pending_Reinspection.ToString();
-
-            //set enabled of various textboxes based on inspectionStatus
             if(txtInspectionStatus.Text == InspectionStatus.Not_Scheduled.ToString() || txtInspectionStatus.Text == InspectionStatus.Scheduled.ToString())  //inspection hasn't been started
             {
                 txtInspectDate.Enabled = true;

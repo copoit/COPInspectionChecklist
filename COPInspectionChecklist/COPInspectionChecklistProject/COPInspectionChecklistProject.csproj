@@ -302,6 +302,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="DbScripts\OITDB.sql" />
     <Content Include="NoticeNonCompliance.aspx" />
+    <Content Include="PropertyAdd.aspx" />
     <Content Include="ReinspectNotice.aspx" />
     <Content Include="Reports.aspx" />
     <Content Include="TestDbConnection.aspx" />
@@ -579,6 +580,13 @@
       <DependentUpon>NoticeNonCompliance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyAdd.aspx.cs">
+      <DependentUpon>PropertyAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PropertyAdd.aspx.designer.cs">
+      <DependentUpon>PropertyAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ReinspectNotice.aspx.cs">
       <DependentUpon>ReinspectNotice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
