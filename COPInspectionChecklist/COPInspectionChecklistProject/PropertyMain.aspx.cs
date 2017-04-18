@@ -45,8 +45,11 @@ namespace COPInspectionChecklistProject
                 txtNumUnits.Text = dt.Rows[0]["NumberOfUnits"].ToString();
                 txtOwnerName.Text = dt.Rows[0]["Property_Owner_Name"].ToString();
                 txtOwnerPhone.Text = dt.Rows[0]["Property_Owner_Phone"].ToString();
-                txtSidewalk.Text = dt.Rows[0]["Sidewalk_Fee"].ToString();
-               
+                //convert bool value to Text:Yes or No                
+                if (Convert.ToBoolean(dt.Rows[0]["Sidewalk_Fee"]))
+                    txtSidewalk.Text = "YES";
+                else
+                    txtSidewalk.Text = "NO";
             }
 
         }
