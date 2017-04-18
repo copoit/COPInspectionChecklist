@@ -106,6 +106,9 @@ namespace COPInspectionChecklistProject
                 txtReinspectDate.Enabled = false;
                 txtCaseNum.Text = "Enter new Case Number";
                 txtPropID.Text = propertyID;
+                btnNoticeNonCompliance.Visible = false;
+                btnReinspectionNotice.Visible = false;
+                btnCertificateInspection.Visible = false;
             }
         }
         private void getInspectorList()
