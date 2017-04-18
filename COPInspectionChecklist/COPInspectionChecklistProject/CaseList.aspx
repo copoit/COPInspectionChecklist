@@ -9,17 +9,17 @@
             <asp:HiddenField id="txtPropertyId" runat="server"/>
             <br />
             <br />
-	        <asp:Label runat="server" Text="Property Address" /> 
+	        <asp:Label runat="server" Text="Property Address" Enabled="false" /> 
 	        <asp:TextBox ID="txtPropAdd" runat="server" Text="Enter a property Address here" Width="300px" />
  	        <br />
             <br /> 
             <asp:GridView ID="CaseListGridView" runat="server" autogeneratecolumns="false">
                 <Columns>
                     <asp:HyperLinkField HeaderText="Case Number" DataTextField="Case_Num" DataNavigateUrlFields="Case_Num" DataNavigateUrlFormatString="CaseMain.aspx?CaseNumber={0}" /> 
-                    <asp:BoundField HeaderText="Inspector"  DataField="Inspector" />
-                    <asp:BoundField HeaderText="Inspection Date"  DataField="Inspection_Date" DataFormatString="{0:d}" />
-                    <asp:BoundField HeaderText="Inspection Type" DataField="Inspection_Type" />
-                    <asp:BoundField HeaderText="Inspection Status" DataField="Inspection_Status"  />
+                    <asp:BoundField HeaderText="Inspector"  DataField="Inspector" ReadOnly="true" />
+                    <asp:BoundField HeaderText="Inspection Date"  DataField="Inspection_Date" DataFormatString="{0:d}" ReadOnly="true" />
+                    <asp:BoundField HeaderText="Inspection Type" DataField="Inspection_Type" ReadOnly="true" />
+                    <asp:BoundField HeaderText="Inspection Status" DataField="Inspection_Status" ReadOnly="true" />
                 </Columns>
             </asp:GridView>
             <br />
