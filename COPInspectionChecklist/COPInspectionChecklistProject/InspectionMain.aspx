@@ -15,7 +15,7 @@
        <tr><td>Zip:</td></tr>
        <tr><td><asp:TextBox ID="txtZip" runat="server"></asp:TextBox></td></tr>
       <tr><td colspan="2"><asp:Button ID="btnProperty" runat="server" Text="Search Property" Height="38px" Width="250px" OnClick="btnProperty_Click" /></td></tr>
-      <tr><td><asp:GridView ID="gvProperties" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
+       <tr><td><asp:GridView ID="gvProperties" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
               <AlternatingRowStyle BackColor="White" />
               <Columns>
                   <asp:HyperLinkField DataNavigateUrlFields="Property_ID" DataNavigateUrlFormatString="PropertyMain.aspx?PropertyID={0}" DataTextField="Property_ID" DataTextFormatString="{0}" HeaderText="Property ID" />
@@ -35,6 +35,7 @@
               <SortedDescendingHeaderStyle BackColor="#575357" />
           </asp:GridView>
           </td></tr>
+      <tr><td colspan="2"><asp:Button ID="btnAdd" runat="server" Text="Add Property" Height="38px" Width="250px" OnClick="btnAddProperty_Click" /></td></tr>
       <tr><td colspan="2"><asp:Label ID="lblError" runat="server" ForeColor="Red" EnableViewState="False"/></td><td>&nbsp;</td></tr> 
       <tr><td colspan="2"><asp:Button ID="btnMain" runat="server" Text="Main Menu" Height="38px" Width="250px" OnClick="btnMain_Click" /></td><td>&nbsp;</td></tr> 
    </table>
