@@ -66,11 +66,17 @@ namespace COPInspectionChecklistProject
                         }
                         
                         cmd.Parameters.AddWithValue("@Sidewalk", ddlsidewalk.SelectedValue);
-                        
+
+                    try
+                    {
                         cmd.ExecuteNonQuery();
                         conn.Close();
-
-                    Response.Redirect("InspectionMain.aspx");
+                        Response.Redirect("InspectionMain.aspx");
+                    }
+                    catch (Exception Ex)
+                    {
+                        lblPropertyMessage.Text = "Property did not save.  Please enter valid property data.";
+                    }                                            
 
                 }
 
