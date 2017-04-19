@@ -368,27 +368,30 @@ namespace COPInspectionChecklistProject
        {
 
            //get the file name of the posted image  
-           string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
-           string contentType = FileUpload1.PostedFile.ContentType;
-           using (Stream fs = FileUpload1.PostedFile.InputStream)
+           if (FileUpload1.HasFile)
            {
-               using (BinaryReader br = new BinaryReader(fs))
+               string filename = Path.GetFileName(FileUpload1.PostedFile.FileName);
+               string contentType = FileUpload1.PostedFile.ContentType;
+               using (Stream fs = FileUpload1.PostedFile.InputStream)
                {
-                   byte[] bytes = br.ReadBytes((Int32)fs.Length);
-
-                   DbCommon clsCommon = new DbCommon();
+                   using (BinaryReader br = new BinaryReader(fs))
                    {
-                       string query = "insert into INSPECTION_IMAGES values (@Case_num, @Image_Name, @Picture)";
-                       using (SqlCommand cmd = new SqlCommand(query))
+                       byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
+                       DbCommon clsCommon = new DbCommon();
                        {
-                           cmd.Connection = conn;
-                           cmd.Parameters.AddWithValue("@Case_num", caseNumber);
-                           cmd.Parameters.AddWithValue("@Image_Name", filename);
-                           cmd.Parameters.AddWithValue("@Picture", bytes);
-                           conn.Open();
-                           cmd.ExecuteNonQuery();
-                           conn.Close();
-                           BindGrid(caseNumber);
+                           string query = "insert into INSPECTION_IMAGES values (@Case_num, @Image_Name, @Picture)";
+                           using (SqlCommand cmd = new SqlCommand(query))
+                           {
+                               cmd.Connection = conn;
+                               cmd.Parameters.AddWithValue("@Case_num", caseNumber);
+                               cmd.Parameters.AddWithValue("@Image_Name", filename);
+                               cmd.Parameters.AddWithValue("@Picture", bytes);
+                               conn.Open();
+                               cmd.ExecuteNonQuery();
+                               conn.Close();
+                               BindGrid(caseNumber);
+                           }
                        }
                    }
                }
