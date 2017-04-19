@@ -49,6 +49,15 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.Button btnPendingReInspect;
         
         /// <summary>
+        /// ButInspectorReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButInspectorReport;
+        
+        /// <summary>
         /// btnMain control.
         /// </summary>
         /// <remarks>

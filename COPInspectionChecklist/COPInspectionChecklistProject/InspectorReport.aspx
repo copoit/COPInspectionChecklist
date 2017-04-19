@@ -4,6 +4,13 @@
 	    <div>  
 	        <b>Inspector Report</b>           
             <br />
+             <table>
+                <tbody>
+                    <tr>
+                       <td><asp:Label ID="lblMessage" runat="server" ForeColor="Red"/></td>
+                   </tr>
+                </tbody>
+            </table>
             <br />
             <asp:Table ID="InspectorReportTable" runat="server">
 	            <asp:TableRow>
@@ -13,8 +20,6 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
- 	        <br />
-            <br /> 
             <asp:GridView ID="CaseListGridView" runat="server" autogeneratecolumns="false">
                 <Columns>
                     <asp:HyperLinkField HeaderText="Case Number" DataTextField="Case_Num" DataNavigateUrlFields="Case_Num" DataNavigateUrlFormatString="CaseMain.aspx?CaseNumber={0}" /> 
@@ -25,6 +30,9 @@
                 </Columns>
             </asp:GridView>
             <br />
- 	    </div>	   
+           
+             <br/>
+	        <asp:Button ID="btnInspectorReportPage" runat="server" OnClick="btnInspectorReportPage_Click" Text="Previous Page"  Height="38px" Width="250px" />
+ 	        </div>	   
     </div>
 </asp:Content>

@@ -20,6 +20,7 @@ namespace COPInspectionChecklistProject
             {
                 if (!IsPostBack)
                 {
+                    lblMessage.Text = "";
                     getInspectorList();
                 }
             }catch(Exception ex)
@@ -46,12 +47,18 @@ namespace COPInspectionChecklistProject
                 var caseListDT = clsCommon.TestDBConnection(SQL);
                 if (caseListDT.Rows.Count > 0)
                 {
+                    lblMessage.Text = "";
                     dataTable = caseListDT;
                 }
-
+                else
+                {
+                    lblMessage.Text = "There is no case assigned to the selected inspector!";
+                }
+                
                 caseListDataSet.Tables.Add(dataTable);
                 CaseListGridView.DataSource = caseListDataSet.Tables[0];
                 CaseListGridView.DataBind();
+
 
             }
             catch (Exception e)
@@ -79,6 +86,10 @@ namespace COPInspectionChecklistProject
         {
             string inspectorId = ddlInspector.SelectedValue;
             retrieveCaseByInspectorId(inspectorId);
+        }
+        protected void btnInspectorReportPage_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ReportsMain.aspx");
         }
     }
 
