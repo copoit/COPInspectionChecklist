@@ -355,15 +355,6 @@ namespace COPInspectionChecklistProject {
         protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// btnMail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMail;
-        
-        /// <summary>
         /// btnCaseMain control.
         /// </summary>
         /// <remarks>
@@ -371,6 +362,15 @@ namespace COPInspectionChecklistProject {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCaseMain;
+        
+        /// <summary>
+        /// btnMail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMail;
         
         /// <summary>
         /// btnCertificateInspection control.
