@@ -279,6 +279,11 @@ namespace COPInspectionChecklistProject
         #region buttons
         protected void btnInspectionChecklist_Click(object sender, EventArgs e)
         {
+            if(txtCaseNum.Text == string.Empty)
+            {
+                lblMessage.Text = "Please enter a valid Case Number";
+                return;
+            }
             Session["CaseNumber"] = CaseNumber;
             Response.Redirect("InspectionChecklist.aspx?CaseNumber=" + CaseNumber);
         }
