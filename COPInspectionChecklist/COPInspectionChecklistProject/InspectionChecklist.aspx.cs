@@ -495,7 +495,7 @@ namespace COPInspectionChecklistProject
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + txtCaseNum.Text + "'";
+            string SQL = "SELECT * FROM[CASE_INFO] Where[CASE_INFO].Case_Num ='" + txtCaseNum.Text + "'";
             var dt1 = clsCommon.TestDBConnection(SQL);
             //check to see if there is an existing Violations case
             if (dt1.Rows.Count > 0)
@@ -542,7 +542,7 @@ namespace COPInspectionChecklistProject
         protected void RemoveFile(object sender, EventArgs e)
         {
             DbCommon clsCommon = new DbCommon();
-            string SQL = "SELECT * FROM[VIOLATIONS] Where[VIOLATIONS].Case_Num ='" + txtCaseNum.Text + "'";
+            string SQL = "SELECT * FROM[CASE_INFO] Where[CASE_INFO].Case_Num ='" + txtCaseNum.Text + "'";
             var dt1 = clsCommon.TestDBConnection(SQL);
             //check to see if there is an existing Violations case
             if (dt1.Rows.Count > 0)
