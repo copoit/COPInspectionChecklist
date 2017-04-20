@@ -24,9 +24,11 @@
                 <Columns>
                     <asp:HyperLinkField HeaderText="Case Number" DataTextField="Case_Num" DataNavigateUrlFields="Case_Num" DataNavigateUrlFormatString="CaseMain.aspx?CaseNumber={0}" /> 
                     <asp:BoundField HeaderText="Inspector"  DataField="Inspector" />
-                    <asp:BoundField HeaderText="Inspection Date"  DataField="Inspection_Date" DataFormatString="{0:d}" />
+                    <asp:BoundField HeaderText="Inspection Date"  DataField="Inspection_Date" DataFormatString="{0:d}" />                  
                     <asp:BoundField HeaderText="Inspection Type" DataField="Inspection_Type" />
+                    <asp:BoundField HeaderText="Re-inspection Date" DataField="ReInspection_Date" DataFormatString="{0:d}" />
                     <asp:BoundField HeaderText="Inspection Status" DataField="Inspection_Status"  />
+
                 </Columns>
             </asp:GridView>
             <br />
