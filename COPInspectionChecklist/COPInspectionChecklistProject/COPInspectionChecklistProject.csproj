@@ -309,6 +309,7 @@
     <Content Include="ViewCases.aspx" />
     <Content Include="InspectionMain.aspx" />
     <Content Include="PropertyMain.aspx" />
+    <Content Include="WebForm3.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\CoP_logo.jpg" />
     <Content Include="InspectionChecklist.aspx" />
@@ -668,6 +669,13 @@
     </Compile>
     <Compile Include="PropertyMain.aspx.designer.cs">
       <DependentUpon>PropertyMain.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
